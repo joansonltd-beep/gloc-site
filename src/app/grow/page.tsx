@@ -4,7 +4,7 @@ import PensionInflationProjector from "@/components/tools/PensionInflationProjec
 import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
 
 export const metadata: Metadata = {
-  title: "Grow — Pension, Annuities & Investments",
+  title: "Grow: Pension, Annuities & Investments",
   description:
     "Build wealth and beat inflation with pensions, annuities and investments. Try the projectors.",
 };

@@ -29,7 +29,7 @@ export default function InvestmentGrowthProjector() {
   const high = project(highAnnualReturn);
   const invested = lumpSum + monthlyContribution * 12 * years;
 
-  const message = `Hi — the investment projector estimates ${formatTTD(
+  const message = `Hi, the investment projector estimates ${formatTTD(
     low
   )}–${formatTTD(high)} over ${years} years from what I put in. I'd like to talk investment options.`;
 
@@ -38,7 +38,7 @@ export default function InvestmentGrowthProjector() {
   return (
     <ToolFrame
       title="Investment Growth Projector"
-      intro="Estimate where a lump sum, regular contributions, or both could land over time — shown as a cautious-to-optimistic range."
+      intro="Estimate where a lump sum, regular contributions, or both could land over time, shown as a cautious to optimistic range."
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <Field
@@ -89,7 +89,15 @@ export default function InvestmentGrowthProjector() {
           </div>
 
           <div className="pt-1">
-            <WhatsAppCTA message={message} label="Explore investing on WhatsApp" />
+            <WhatsAppCTA
+              message={message}
+              label="Explore investing on WhatsApp"
+              lead={{
+                source: "investment-projector",
+                recommended: "Investments / Mutual Funds",
+                figures: { lumpSum, monthlyContribution, years, low, high },
+              }}
+            />
           </div>
         </div>
       ) : (
@@ -100,7 +108,7 @@ export default function InvestmentGrowthProjector() {
 
       <Assumptions>
         Monthly compounding across a {pct(lowAnnualReturn)}–{pct(highAnnualReturn)}/yr
-        return range (editable in costFigures.ts). Illustration only — returns
+        return range (editable in costFigures.ts). Illustration only. Returns
         are not guaranteed and funds can fall as well as rise.
       </Assumptions>
     </ToolFrame>

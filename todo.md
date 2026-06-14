@@ -5,7 +5,7 @@ Milestones from `spec.md` §13. Build in order, one at a time.
 - [x] **M0 — Scaffold:** Next.js (App Router, TS) + Tailwind + Git + route structure + todo.md
 - [x] **M1 — Landing page + Needs-Router** with placeholder (dummy) content
 - [x] **M2 — Cluster hub pages + the five interactive tools** (dummy data)
-- [ ] **M3 — WhatsApp lead flow** wired across all CTAs and tools
+- [x] **M3 — WhatsApp lead flow** wired across all CTAs and tools
 - [ ] **M4 — Sanity CMS integration;** move all content into editable fields
 - [ ] **M5 — /about, /results, /book pages** + design polish + mobile QA
 - [ ] **M6 — Deploy to Vercel** + connect domain
@@ -56,3 +56,19 @@ Four cluster hub pages, each with its line sections + tool(s):
 - Every tool shows a clear result and a WhatsApp CTA with a pre-filled summary
   (placeholder number; real wiring + lead capture in M3).
 - Line content per cluster added to `src/lib/content.ts` (`LINES`).
+
+## M3 — done
+
+- Every tool result and the discovery router CTA opens a WhatsApp deep link
+  (`https://wa.me/<NUMBER>?text=<message>`) with a pre-filled, context-aware
+  message (recommended lines + the figures the visitor produced).
+- Persistent WhatsApp float button on every page (`WhatsAppFloat`, in the root layout).
+- WhatsApp number is a config value driven by `NEXT_PUBLIC_WHATSAPP_NUMBER`
+  (falls back to a fake placeholder). Never hardcoded; moves to Sanity in M4.
+- Lead capture: `WhatsAppCTA`/float fire `captureLead()` (sendBeacon) -> `/api/lead`
+  route, which forwards to `LEAD_WEBHOOK_URL` (Airtable / Google Sheet / Zapier).
+  No webhook set = logs and returns OK; never blocks the WhatsApp hand-off.
+- Copy pass: removed all em dashes and toned down marketing/AI-style language.
+
+**To go live (paste your own values):** copy `.env.local.example` to `.env.local`,
+set `NEXT_PUBLIC_WHATSAPP_NUMBER` and `LEAD_WEBHOOK_URL`, restart `npm run dev`.

@@ -19,7 +19,7 @@ export default function GroupBenefitsEnquiry() {
       ? "We have some cover already and want to review it"
       : "We don't have group cover yet";
 
-  const message = `Hi — I'd like to look at group/employee benefits for a team of ${team}${
+  const message = `Hi, I'd like to look at group/employee benefits for a team of ${team}${
     company ? ` at ${company}` : ""
   }. ${coverLine}.`;
 
@@ -41,7 +41,7 @@ export default function GroupBenefitsEnquiry() {
           onChange={setHasCover}
           options={[
             { value: "no", label: "Not yet" },
-            { value: "yes", label: "Yes — reviewing" },
+            { value: "yes", label: "Yes, reviewing" },
           ]}
         />
         <Field
@@ -59,7 +59,15 @@ export default function GroupBenefitsEnquiry() {
             <p className="font-medium text-brand">Ready to send:</p>
             <p className="mt-1">{message}</p>
           </div>
-          <WhatsAppCTA message={message} label="Enquire on WhatsApp" />
+          <WhatsAppCTA
+            message={message}
+            label="Enquire on WhatsApp"
+            lead={{
+              source: "group-benefits",
+              recommended: "Group / Employee Benefits",
+              figures: { headcount: team, hasExistingCover: hasCover },
+            }}
+          />
         </div>
       ) : (
         <p className="mt-6 text-sm text-slate-500">

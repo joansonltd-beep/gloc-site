@@ -12,7 +12,7 @@ export default function PagePlaceholder({
   return (
     <div className="space-y-3">
       <p className="text-sm font-medium uppercase tracking-wide text-slate-400">
-        Placeholder — content arrives in {milestone}
+        Placeholder, content arrives in {milestone}
       </p>
       <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
       <p className="max-w-2xl text-slate-600">{note}</p>

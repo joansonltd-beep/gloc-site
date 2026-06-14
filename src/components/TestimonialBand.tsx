@@ -5,7 +5,7 @@ export default function TestimonialBand() {
   return (
     <section className="rounded-2xl bg-brand px-6 py-10 sm:px-10">
       <h2 className="text-2xl font-semibold tracking-tight text-white">
-        Real people, real peace of mind
+        What clients say
       </h2>
       <div className="mt-6 grid gap-5 md:grid-cols-3">
         {TESTIMONIALS.map((t) => (
@@ -23,7 +23,7 @@ export default function TestimonialBand() {
           </figure>
         ))}
       </div>
-      <p className="mt-4 text-xs text-white/40">Dummy testimonials — placeholder.</p>
+      <p className="mt-4 text-xs text-white/40">Dummy testimonials (placeholder).</p>
     </section>
   );
 }

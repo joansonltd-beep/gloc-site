@@ -40,7 +40,7 @@ export default function ProtectionPlanner() {
 
   const combined = lifeGap + criticalIllness;
 
-  const message = `Hi — the Protection Planner suggested about ${formatTTD(
+  const message = `Hi, the Protection Planner suggested about ${formatTTD(
     lifeGap
   )} more life cover, a ${formatTTD(
     criticalIllness
@@ -51,7 +51,7 @@ export default function ProtectionPlanner() {
   return (
     <ToolFrame
       title="Protection Planner"
-      intro="A rough picture of the cover that would keep your family steady. Built on editable benchmarks — your real numbers come from a conversation."
+      intro="A rough picture of the cover that would keep your family steady. Your real numbers come from a conversation."
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <Field
@@ -107,7 +107,19 @@ export default function ProtectionPlanner() {
           </div>
 
           <div className="pt-1">
-            <WhatsAppCTA message={message} />
+            <WhatsAppCTA
+              message={message}
+              lead={{
+                source: "protection-planner",
+                recommended: "Life, Critical Illness, Health",
+                figures: {
+                  lifeGap,
+                  criticalIllness,
+                  healthExposure,
+                  combined,
+                },
+              }}
+            />
           </div>
         </div>
       ) : (
@@ -121,8 +133,8 @@ export default function ProtectionPlanner() {
         {formatTTD(perDependentLumpSum)} per dependent. Critical-illness lump sum
         = {criticalIllnessIncomeMonths} months of income + a major orthopedic
         surgery ({formatTTD(orthopedicSurgery.high)}) and post-op (
-        {formatTTD(orthopedicSurgery.postOpHigh)}). Figures from spec.md §10 —
-        placeholders, verify before launch.
+        {formatTTD(orthopedicSurgery.postOpHigh)}). Figures from spec.md §10
+        (placeholders, verify before launch).
       </Assumptions>
     </ToolFrame>
   );

@@ -1,5 +1,5 @@
 // Dummy content + placeholder discovery logic for M1.
-// All of this moves into Sanity in M4 — keep it centralized so the swap is clean.
+// All of this moves into Sanity in M4. Keep it centralized so the swap is clean.
 
 export type ClusterKey = "protect" | "grow" | "assets" | "business";
 
@@ -43,7 +43,7 @@ export const CLUSTERS: Cluster[] = [
 ];
 
 // Lines within each cluster, shown as sections on the hub pages (spec.md §4, §11).
-// Dummy blurbs — move to Sanity in M4.
+// Dummy blurbs, move to Sanity in M4.
 export type Line = { title: string; blurb: string; icon: string };
 
 export const LINES: Record<ClusterKey, Line[]> = {
@@ -64,7 +64,7 @@ export const LINES: Record<ClusterKey, Line[]> = {
       title: "Critical Illness",
       icon: "❤️",
       blurb:
-        "A tax-free lump sum on diagnosis of cancer, heart attack, stroke and more — so you can focus on recovery, not bills.",
+        "A tax-free lump sum on diagnosis of cancer, heart attack, stroke and more, so you can focus on recovery instead of bills.",
     },
   ],
   grow: [
@@ -72,13 +72,13 @@ export const LINES: Record<ClusterKey, Line[]> = {
       title: "Pension / Annuities",
       icon: "🏖️",
       blurb:
-        "Turn today's savings into a steady income that lasts through retirement — and keep more of it with tax-advantaged contributions.",
+        "Turn today's savings into a steady income for retirement, and keep more of it with tax-advantaged contributions.",
     },
     {
       title: "Investments / Mutual Funds",
       icon: "📈",
       blurb:
-        "Put your money to work across diversified funds so it grows ahead of inflation instead of sitting still in an account.",
+        "Invest across diversified funds so your money grows ahead of inflation instead of sitting still in an account.",
     },
   ],
   assets: [
@@ -92,7 +92,7 @@ export const LINES: Record<ClusterKey, Line[]> = {
       title: "Home",
       icon: "🏠",
       blurb:
-        "Protect your house and its contents against fire, flood, storm and theft — the risks that matter most locally.",
+        "Protect your house and its contents against fire, flood, storm and theft.",
     },
     {
       title: "Property",
@@ -106,7 +106,7 @@ export const LINES: Record<ClusterKey, Line[]> = {
       title: "Group / Employee Benefits",
       icon: "👥",
       blurb:
-        "Group health, life and pension benefits that help you attract and keep good staff — scaled to a team of any size.",
+        "Group health, life and pension benefits that help you attract and keep good staff, for a team of any size.",
     },
   ],
 };
@@ -124,7 +124,7 @@ export const ROUTER_CARDS: RouterCard[] = [
   { title: "Plan retirement & grow my money", subtitle: "Pension, annuities & investments", href: "/grow" },
   { title: "Insure my car, home or property", subtitle: "Motor, home & property cover", href: "/assets" },
   { title: "Cover my business & staff", subtitle: "Group & employee benefits", href: "/business" },
-  { title: "Not sure — help me figure it out", subtitle: "Answer 4 quick questions", discovery: true },
+  { title: "Not sure? Help me figure it out", subtitle: "Answer 4 quick questions", discovery: true },
 ];
 
 // --- Discovery flow (4 questions) ---------------------------------------
@@ -164,7 +164,7 @@ export const DISCOVERY_QUESTIONS: DiscoveryQuestion[] = [
   },
   {
     key: "home",
-    question: "Your home — do you own or rent?",
+    question: "Do you own or rent your home?",
     options: [
       { value: "own", label: "I own" },
       { value: "rent", label: "I rent" },
@@ -224,7 +224,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
       line: "Investments / Mutual Funds",
       cluster: "grow",
       href: "/grow",
-      why: "Start compounding early — time is your biggest advantage.",
+      why: "Start early. Time is your biggest advantage.",
     });
   }
 
@@ -254,7 +254,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
     line: "Health Cover",
     cluster: "protect",
     href: "/protect",
-    why: "Private treatment in T&T adds up fast — close the gap while premiums are low.",
+    why: "Private treatment in T&T adds up fast. Lock in cover while premiums are low.",
   });
 
   const ranked = scored.sort((x, y) => y.weight - x.weight);
@@ -279,7 +279,7 @@ export type Testimonial = { quote: string; person: string; line: string };
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "I always thought insurance was for ‘later.’ She showed me what a plan actually costs at my age — I signed up the same week.",
+      "I always thought insurance was for ‘later.’ She showed me what a plan actually costs at my age, and I signed up the same week.",
     person: "Kerry-Ann, 29 · Port of Spain",
     line: "Life + Critical Illness",
   },

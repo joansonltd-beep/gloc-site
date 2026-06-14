@@ -30,7 +30,7 @@ export default function QuickQuoteRequest() {
   const typeLabel =
     ASSET_TYPES.find((a) => a.value === assetType)?.label ?? assetType;
 
-  const message = `Hi — I'd like a quick quote for ${typeLabel.toLowerCase()}. Details: ${details}${
+  const message = `Hi, I'd like a quick quote for ${typeLabel.toLowerCase()}. Details: ${details}${
     estValue ? `. Estimated value: ${formatTTD(estValue)}` : ""
   }.`;
 
@@ -67,7 +67,15 @@ export default function QuickQuoteRequest() {
             <p className="font-medium text-brand">Ready to send:</p>
             <p className="mt-1">{message}</p>
           </div>
-          <WhatsAppCTA message={message} label="Send my details on WhatsApp" />
+          <WhatsAppCTA
+            message={message}
+            label="Send my details on WhatsApp"
+            lead={{
+              source: "quick-quote",
+              recommended: typeLabel,
+              figures: estValue ? { estimatedValue: estValue } : undefined,
+            }}
+          />
         </div>
       ) : (
         <p className="mt-6 text-sm text-slate-500">

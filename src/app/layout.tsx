@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,12 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Guardian Group Agent — Trinidad & Tobago",
+  title: "Guardian Group Agent in Trinidad & Tobago",
   description:
     "Independent Guardian Group insurance agent in Trinidad & Tobago. Protect your family, grow your wealth, insure your assets, cover your business.",
 };
 
-// M0 placeholder nav — replaced with real design in later milestones.
+// M0 placeholder nav, replaced with real design in later milestones.
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/protect", label: "Protect" },
@@ -63,11 +64,12 @@ export default function RootLayout({
         </main>
         <footer className="border-t border-slate-200">
           <div className="mx-auto max-w-5xl px-4 py-6 text-xs text-slate-500">
-            {/* Disclaimer placeholder — moves to Sanity site settings in M4. */}
+            {/* Disclaimer placeholder. Moves to Sanity site settings in M4. */}
             Disclaimer placeholder. Authorized Guardian Representative
-            (endorsement placeholder — GLOC mark pending written sign-off).
+            (endorsement placeholder; GLOC mark pending written sign-off).
           </div>
         </footer>
+        <WhatsAppFloat />
       </body>
     </html>
   );

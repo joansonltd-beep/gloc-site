@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AGENT } from "@/config/site";
 
-// About teaser — full story, credentials & HeyGen video live on /about (M5).
+// About teaser. Full story, credentials & HeyGen video live on /about (M5).
 export default function AboutTeaser() {
   return (
     <section className="grid items-center gap-6 rounded-2xl border border-slate-200 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
@@ -15,7 +15,7 @@ export default function AboutTeaser() {
         <p className="mt-2 max-w-prose text-slate-600">
           {AGENT.name} is an independent Guardian Group adviser based in
           Trinidad &amp; Tobago, helping young professionals and families make
-          confident calls about their money and their cover — in plain language.
+          good decisions about their money and their cover.
         </p>
         <Link
           href="/about"

@@ -5,7 +5,7 @@
 // a live private-facility quote before launch. They move into Sanity in M4
 // so the agent can edit them without touching code.
 //
-// Everything a tool computes traces back to a labelled number here — change
+// Everything a tool computes traces back to a labelled number here. Change
 // a figure in this file and every tool result updates.
 // =====================================================================
 
@@ -19,7 +19,7 @@ export const COST_FIGURES = {
     postOpHigh: 15_000,
   },
   // Dialysis: ~TT$1,200/session + TT$550+ meds -> TT$15,000+/month at 3x/week
-  // (dated figure — re-quote before launch)
+  // (dated figure, re-quote before launch)
   dialysisMonthly: 15_000,
   // Local individual health plan: ~TT$300–1,500/month by age & cover
   healthPlanMonthly: { low: 300, high: 1_500 },

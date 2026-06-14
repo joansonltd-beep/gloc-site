@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CLUSTERS } from "@/lib/content";
 
-// Four need-clusters, equal weight — no single "anchor" product (spec.md §4).
+// Four need-clusters, equal weight, no single "anchor" product (spec.md §4).
 export default function ClusterCards() {
   return (
     <section>
@@ -10,7 +10,7 @@ export default function ClusterCards() {
           The full portfolio
         </h2>
         <p className="mt-1 text-slate-600">
-          Four ways I help — pick the one that matches where you are.
+          Four ways I can help. Pick the one that matches where you are.
         </p>
       </div>
 

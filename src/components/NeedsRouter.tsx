@@ -9,7 +9,7 @@ import {
   type DiscoveryAnswers,
   type Recommendation,
 } from "@/lib/content";
-import { whatsappLink } from "@/config/site";
+import WhatsAppCTA from "./tools/WhatsAppCTA";
 
 type Mode = "cards" | "discovery" | "results";
 
@@ -51,7 +51,7 @@ export default function NeedsRouter() {
           What brings you here today?
         </h2>
         <p className="mt-2 text-slate-600">
-          Pick what fits — or let us figure it out with you.
+          Pick what fits, or answer a few questions and we&apos;ll point you the right way.
         </p>
       </div>
 
@@ -172,7 +172,7 @@ function Results({
   onReset: () => void;
 }) {
   const summary = results.map((r) => r.line).join(" + ");
-  const message = `Hi — the planner suggested ${summary} for me. I'd like to talk options.`;
+  const message = `Hi, the planner suggested ${summary} for me. I'd like to talk about options.`;
 
   return (
     <div className="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
@@ -203,15 +203,13 @@ function Results({
         ))}
       </ul>
 
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-        <a
-          href={whatsappLink(message)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-brand-dark transition hover:bg-accent-dark"
-        >
-          Talk it through on WhatsApp
-        </a>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="flex-1">
+          <WhatsAppCTA
+            message={message}
+            lead={{ source: "discovery-router", recommended: summary }}
+          />
+        </div>
         <button
           type="button"
           onClick={onReset}
@@ -221,7 +219,7 @@ function Results({
         </button>
       </div>
       <p className="mt-3 text-center text-xs text-slate-400">
-        Placeholder suggestions &amp; WhatsApp number — refined in later milestones.
+        Sample suggestions and placeholder number for now.
       </p>
     </div>
   );

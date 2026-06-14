@@ -28,7 +28,7 @@ export default function PensionInflationProjector() {
   const structured = futureValueMonthly(monthly, structuredAnnualReturn, years);
   const structuredReal = realValue(structured, inflationAnnualRate, years);
 
-  const message = `Hi — the pension projector shows my contributions could reach about ${formatTTD(
+  const message = `Hi, the pension projector shows my contributions could reach about ${formatTTD(
     structured
   )} in a structured plan by age ${retirementAge}, vs ${formatTTD(
     savingsOnly
@@ -39,7 +39,7 @@ export default function PensionInflationProjector() {
   return (
     <ToolFrame
       title="Pension vs. Inflation Projector"
-      intro="See what regular contributions could become in a structured plan — and how much purchasing power plain savings quietly lose to inflation."
+      intro="See what regular contributions could become in a structured plan, and how much value plain savings lose to inflation."
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <Field label="Your current age" value={age} onChange={setAge} placeholder="e.g. 30" />
@@ -65,7 +65,7 @@ export default function PensionInflationProjector() {
             </p>
             <p className="mt-1 text-3xl font-semibold">{formatTTD(structured)}</p>
             <p className="mt-1 text-xs text-white/60">
-              vs {formatTTD(savingsOnly)} left in plain savings — a{" "}
+              vs {formatTTD(savingsOnly)} left in plain savings, a{" "}
               {formatTTD(structured - savingsOnly)} difference
             </p>
           </div>
@@ -89,7 +89,20 @@ export default function PensionInflationProjector() {
           </div>
 
           <div className="pt-1">
-            <WhatsAppCTA message={message} label="Plan my pension on WhatsApp" />
+            <WhatsAppCTA
+              message={message}
+              label="Plan my pension on WhatsApp"
+              lead={{
+                source: "pension-projector",
+                recommended: "Pension / Annuities",
+                figures: {
+                  monthlyContribution: monthly,
+                  years,
+                  structured,
+                  savingsOnly,
+                },
+              }}
+            />
           </div>
         </div>
       ) : (
@@ -102,7 +115,7 @@ export default function PensionInflationProjector() {
         Monthly compounding. Structured plan ~{pct(structuredAnnualReturn)}/yr,
         plain savings ~{pct(savingsAnnualReturn)}/yr, inflation ~
         {pct(inflationAnnualRate)}/yr (editable in costFigures.ts). Illustration
-        only — not a guarantee of returns.
+        only, not a guarantee of returns.
       </Assumptions>
     </ToolFrame>
   );

@@ -9,17 +9,17 @@ export default function Hero() {
       <div>
         <p className="inline-flex items-center gap-2 rounded-full bg-brand/5 px-3 py-1 text-xs font-medium text-brand">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          Insurance, made simple — for Trinidad &amp; Tobago
+          Insurance for Trinidad &amp; Tobago
         </p>
 
         <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-brand sm:text-5xl">
-          Cover the life you&apos;re building — before life surprises you.
+          Get the right cover before you need it.
         </h1>
 
         <p className="mt-4 max-w-prose text-lg text-slate-600">
-          Whether you&apos;re protecting family, growing your money, insuring
-          what you own, or covering your team — let&apos;s find the right fit in
-          one straight-talking conversation. No jargon, no pressure.
+          Protecting your family, growing your money, insuring what you own, or
+          covering your team. Tell me what you need and I&apos;ll help you find
+          the right fit.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -39,7 +39,7 @@ export default function Hero() {
       </div>
 
       <div className="order-first md:order-last">
-        {/* Placeholder headshot block — real headshot / HeyGen video in M5. */}
+        {/* Placeholder headshot block. Real headshot / HeyGen video in M5. */}
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-brand to-brand-dark">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white/70">
@@ -58,7 +58,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* GLOC endorsement slot — smaller than the agent (spec.md §9, §12). */}
+        {/* GLOC endorsement slot, smaller than the agent (spec.md §9, §12). */}
         <div className="mt-3 flex items-center gap-2 text-xs text-slate-500">
           <span className="flex h-7 items-center rounded border border-dashed border-slate-300 px-2 text-[10px] uppercase tracking-wide text-slate-400">
             GLOC mark
