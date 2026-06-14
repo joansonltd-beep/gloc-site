@@ -4,7 +4,7 @@ Milestones from `spec.md` §13. Build in order, one at a time.
 
 - [x] **M0 — Scaffold:** Next.js (App Router, TS) + Tailwind + Git + route structure + todo.md
 - [x] **M1 — Landing page + Needs-Router** with placeholder (dummy) content
-- [ ] **M2 — Cluster hub pages + the five interactive tools** (dummy data)
+- [x] **M2 — Cluster hub pages + the five interactive tools** (dummy data)
 - [ ] **M3 — WhatsApp lead flow** wired across all CTAs and tools
 - [ ] **M4 — Sanity CMS integration;** move all content into editable fields
 - [ ] **M5 — /about, /results, /book pages** + design polish + mobile QA
@@ -39,3 +39,20 @@ No real content or tools yet — that starts in M1.
 All dummy content is centralized in `src/lib/content.ts` for a clean Sanity swap in M4.
 WhatsApp links use the placeholder number — full lead flow (float button, capture,
 pre-filled context) is wired in M3.
+
+## M2 — done
+
+Four cluster hub pages, each with its line sections + tool(s):
+- `/protect` — Life · Health · Critical Illness + **Protection Planner**.
+- `/grow` — Pension/Annuities · Investments + **Pension-vs-Inflation** and **Investment Growth** projectors.
+- `/assets` — Motor · Home · Property + **Quick-Quote Request**.
+- `/business` — Group/employee benefits + **Group Benefits Enquiry**.
+
+- Each tool is its own reusable component under `src/components/tools/`, sharing
+  `ToolUI.tsx` (frame, fields, result cards, assumptions) and `WhatsAppCTA.tsx`.
+- All cost benchmarks + tool assumptions live in `src/lib/costFigures.ts`
+  (spec.md §10 figures, clearly labelled, easy to edit — move to Sanity in M4).
+  FV math in `src/lib/finance.ts`, TT$ formatting in `src/lib/format.ts`.
+- Every tool shows a clear result and a WhatsApp CTA with a pre-filled summary
+  (placeholder number; real wiring + lead capture in M3).
+- Line content per cluster added to `src/lib/content.ts` (`LINES`).

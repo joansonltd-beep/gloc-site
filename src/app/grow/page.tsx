@@ -1,11 +1,19 @@
-import PagePlaceholder from "@/components/PagePlaceholder";
+import type { Metadata } from "next";
+import ClusterHub from "@/components/ClusterHub";
+import PensionInflationProjector from "@/components/tools/PensionInflationProjector";
+import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
+
+export const metadata: Metadata = {
+  title: "Grow — Pension, Annuities & Investments",
+  description:
+    "Build wealth and beat inflation with pensions, annuities and investments. Try the projectors.",
+};
 
 export default function GrowPage() {
   return (
-    <PagePlaceholder
-      title="Grow"
-      milestone="M2"
-      note="Pension/Annuities · Investments, plus the Pension-vs-Inflation and Investment growth projectors."
-    />
+    <ClusterHub cluster="grow">
+      <PensionInflationProjector />
+      <InvestmentGrowthProjector />
+    </ClusterHub>
   );
 }

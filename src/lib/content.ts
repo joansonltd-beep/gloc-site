@@ -42,6 +42,75 @@ export const CLUSTERS: Cluster[] = [
   },
 ];
 
+// Lines within each cluster, shown as sections on the hub pages (spec.md §4, §11).
+// Dummy blurbs — move to Sanity in M4.
+export type Line = { title: string; blurb: string; icon: string };
+
+export const LINES: Record<ClusterKey, Line[]> = {
+  protect: [
+    {
+      title: "Life Insurance",
+      icon: "🛡️",
+      blurb:
+        "Replace your income so the people who depend on you keep their home, their plans and their lifestyle if you're not there.",
+    },
+    {
+      title: "Health",
+      icon: "➕",
+      blurb:
+        "Private treatment in Trinidad & Tobago adds up fast. Health cover closes the gap between public waitlists and the care you'd actually want.",
+    },
+    {
+      title: "Critical Illness",
+      icon: "❤️",
+      blurb:
+        "A tax-free lump sum on diagnosis of cancer, heart attack, stroke and more — so you can focus on recovery, not bills.",
+    },
+  ],
+  grow: [
+    {
+      title: "Pension / Annuities",
+      icon: "🏖️",
+      blurb:
+        "Turn today's savings into a steady income that lasts through retirement — and keep more of it with tax-advantaged contributions.",
+    },
+    {
+      title: "Investments / Mutual Funds",
+      icon: "📈",
+      blurb:
+        "Put your money to work across diversified funds so it grows ahead of inflation instead of sitting still in an account.",
+    },
+  ],
+  assets: [
+    {
+      title: "Motor",
+      icon: "🚗",
+      blurb:
+        "Comprehensive and third-party cover for your vehicle, with claims handled by people who pick up the phone.",
+    },
+    {
+      title: "Home",
+      icon: "🏠",
+      blurb:
+        "Protect your house and its contents against fire, flood, storm and theft — the risks that matter most locally.",
+    },
+    {
+      title: "Property",
+      icon: "🏢",
+      blurb:
+        "Cover for landlords and additional properties, from rental units to commercial space.",
+    },
+  ],
+  business: [
+    {
+      title: "Group / Employee Benefits",
+      icon: "👥",
+      blurb:
+        "Group health, life and pension benefits that help you attract and keep good staff — scaled to a team of any size.",
+    },
+  ],
+};
+
 // Step 1 of the Needs-Discovery Router (spec.md §6).
 export type RouterCard = {
   title: string;
