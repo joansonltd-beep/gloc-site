@@ -1,7 +1,7 @@
 "use client";
 
-import { whatsappLink } from "@/config/site";
 import { captureLead, type LeadPayload } from "@/lib/leadCapture";
+import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 
 // Shared CTA used by every tool result (spec.md §8). Opens a WhatsApp deep
 // link with the pre-filled message, and records the lead on the way out.
@@ -14,6 +14,7 @@ export default function WhatsAppCTA({
   label?: string;
   lead: Omit<LeadPayload, "message">; // source + any recommended lines / figures
 }) {
+  const whatsappLink = useWhatsAppLink();
   return (
     <a
       href={whatsappLink(message)}

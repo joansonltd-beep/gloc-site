@@ -1,14 +1,20 @@
-import { TESTIMONIALS } from "@/lib/content";
+import type { TestimonialData } from "@/lib/siteData";
 
-// Dummy testimonials (move to Sanity in M4).
-export default function TestimonialBand() {
+// Testimonials, sourced from Sanity (spec.md §11).
+export default function TestimonialBand({
+  testimonials,
+}: {
+  testimonials: TestimonialData[];
+}) {
+  if (!testimonials.length) return null;
+
   return (
     <section className="rounded-2xl bg-brand px-6 py-10 sm:px-10">
       <h2 className="text-2xl font-semibold tracking-tight text-white">
         What clients say
       </h2>
       <div className="mt-6 grid gap-5 md:grid-cols-3">
-        {TESTIMONIALS.map((t) => (
+        {testimonials.map((t) => (
           <figure
             key={t.person}
             className="flex flex-col rounded-xl bg-white/5 p-5 ring-1 ring-white/10"
@@ -18,12 +24,13 @@ export default function TestimonialBand() {
             </blockquote>
             <figcaption className="mt-4">
               <p className="text-sm font-semibold text-white">{t.person}</p>
-              <p className="text-xs text-accent">{t.line}</p>
+              {t.relatedLine ? (
+                <p className="text-xs text-accent">{t.relatedLine}</p>
+              ) : null}
             </figcaption>
           </figure>
         ))}
       </div>
-      <p className="mt-4 text-xs text-white/40">Dummy testimonials (placeholder).</p>
     </section>
   );
 }

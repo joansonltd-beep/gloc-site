@@ -1,54 +1,60 @@
 // =====================================================================
-// EDITABLE COST BENCHMARKS & TOOL ASSUMPTIONS
+// COST BENCHMARKS (defaults / seed) & TOOL ASSUMPTIONS
 // =====================================================================
-// Source: spec.md §10. These are PLACEHOLDERS and must be VERIFIED against
-// a live private-facility quote before launch. They move into Sanity in M4
-// so the agent can edit them without touching code.
+// The §10 cost figures now live in Sanity (editable by the agent). The values
+// below are the seed + offline fallback: they are imported by the seed script
+// and used when Sanity is not configured. Source: spec.md §10 — PLACEHOLDERS,
+// verify against a live private-facility quote before launch.
 //
-// Everything a tool computes traces back to a labelled number here. Change
-// a figure in this file and every tool result updates.
+// The calculator ASSUMPTIONS stay in code: they are math, not editable copy,
+// and are clearly labelled here so they are easy to change.
 // =====================================================================
 
-// --- §10 cost benchmarks ---------------------------------------------
-export const COST_FIGURES = {
-  // Major orthopedic surgery (e.g. hip): TT$25,000–40,000 + TT$10,000–15,000 post-op
-  orthopedicSurgery: {
-    low: 25_000,
-    high: 40_000,
-    postOpLow: 10_000,
-    postOpHigh: 15_000,
+export type CostFigureSeed = {
+  key: string; // stable id the code looks up
+  label: string;
+  value: number;
+  note?: string;
+  order: number;
+};
+
+// §10 benchmarks, one keyed scenario+value per row (matches the Sanity model).
+export const DEFAULT_COST_FIGURES: CostFigureSeed[] = [
+  { key: "orthopedicSurgeryLow", label: "Major orthopedic surgery (low)", value: 25_000, order: 1 },
+  { key: "orthopedicSurgeryHigh", label: "Major orthopedic surgery (high)", value: 40_000, order: 2 },
+  { key: "orthopedicPostOpLow", label: "Orthopedic surgery post-op (low)", value: 10_000, order: 3 },
+  { key: "orthopedicPostOpHigh", label: "Orthopedic surgery post-op (high)", value: 15_000, order: 4 },
+  {
+    key: "dialysisMonthly",
+    label: "Dialysis, per month at 3x/week incl. meds",
+    value: 15_000,
+    note: "Dated figure, re-quote before launch.",
+    order: 5,
   },
-  // Dialysis: ~TT$1,200/session + TT$550+ meds -> TT$15,000+/month at 3x/week
-  // (dated figure, re-quote before launch)
-  dialysisMonthly: 15_000,
-  // Local individual health plan: ~TT$300–1,500/month by age & cover
-  healthPlanMonthly: { low: 300, high: 1_500 },
-} as const;
+  { key: "healthPlanMonthlyLow", label: "Local individual health plan (low)", value: 300, order: 6 },
+  { key: "healthPlanMonthlyHigh", label: "Local individual health plan (high)", value: 1_500, order: 7 },
+];
+
+// Convenience: keyed map of just the values, used as the fallback for tools.
+export const DEFAULT_COST_FIGURE_VALUES: Record<string, number> =
+  Object.fromEntries(DEFAULT_COST_FIGURES.map((f) => [f.key, f.value]));
 
 // --- Protection Planner assumptions (spec.md §7) ---------------------
 export const PLANNER_ASSUMPTIONS = {
-  // Life cover target = annual income × this many years of income replacement.
-  incomeReplacementYears: 10,
-  // Extra life cover per dependent (education, care, etc.).
-  perDependentLumpSum: 50_000,
-  // A critical-illness lump sum should bridge this many months of income…
-  criticalIllnessIncomeMonths: 12,
-  // …on top of a major treatment cost (orthopedic high + post-op high is used).
+  incomeReplacementYears: 10, // life cover target = annual income × this
+  perDependentLumpSum: 50_000, // extra life cover per dependent
+  criticalIllnessIncomeMonths: 12, // months of income a CI lump sum should bridge
 } as const;
 
 // --- Pension-vs-Inflation projector assumptions (spec.md §7) ---------
 export const PENSION_ASSUMPTIONS = {
-  // Money left in a plain savings account barely grows…
-  savingsAnnualReturn: 0.01, // 1%/yr
-  // …vs a structured Guardian pension/annuity plan.
-  structuredAnnualReturn: 0.06, // 6%/yr
-  // TT-dollar erosion: assumed long-run inflation.
+  savingsAnnualReturn: 0.01, // 1%/yr in a plain savings account
+  structuredAnnualReturn: 0.06, // 6%/yr in a structured plan
   inflationAnnualRate: 0.04, // 4%/yr
 } as const;
 
 // --- Investment growth projector assumptions (spec.md §7) ------------
 export const INVESTMENT_ASSUMPTIONS = {
-  // Projected value is shown as a range between a cautious and an optimistic return.
   lowAnnualReturn: 0.04, // 4%/yr
   highAnnualReturn: 0.08, // 8%/yr
 } as const;

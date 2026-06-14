@@ -1,25 +1,22 @@
-import { AGENT } from "@/config/site";
+import type { SiteSettings } from "@/lib/siteData";
 
-// Agent-led hero (spec.md §9). Placeholder headshot + GLOC endorsement slot.
-// Real headshot / HeyGen video and copy land later; copy here speaks to a
-// 25–35 Trinidadian professional (audience #1).
-export default function Hero() {
+// Agent-led hero (spec.md §9). All copy comes from Sanity site settings.
+// Placeholder headshot + GLOC endorsement slot until M5 / sign-off.
+export default function Hero({ settings }: { settings: SiteSettings }) {
   return (
     <section className="grid items-center gap-8 sm:gap-10 md:grid-cols-2">
       <div>
         <p className="inline-flex items-center gap-2 rounded-full bg-brand/5 px-3 py-1 text-xs font-medium text-brand">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          Insurance for Trinidad &amp; Tobago
+          {settings.heroEyebrow}
         </p>
 
         <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-brand sm:text-5xl">
-          Get the right cover before you need it.
+          {settings.heroHeadline}
         </h1>
 
         <p className="mt-4 max-w-prose text-lg text-slate-600">
-          Protecting your family, growing your money, insuring what you own, or
-          covering your team. Tell me what you need and I&apos;ll help you find
-          the right fit.
+          {settings.heroSubcopy}
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -51,10 +48,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Agent name plate */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/90 to-transparent p-5">
-            <p className="text-lg font-semibold text-white">{AGENT.name}</p>
-            <p className="text-sm text-white/70">{AGENT.tagline}</p>
+            <p className="text-lg font-semibold text-white">{settings.agentName}</p>
+            <p className="text-sm text-white/70">{settings.agentTagline}</p>
           </div>
         </div>
 
@@ -63,7 +59,8 @@ export default function Hero() {
           <span className="flex h-7 items-center rounded border border-dashed border-slate-300 px-2 text-[10px] uppercase tracking-wide text-slate-400">
             GLOC mark
           </span>
-          {AGENT.endorsement} <span className="text-slate-400">(pending sign-off)</span>
+          {settings.glocAffiliationLine}{" "}
+          <span className="text-slate-400">(pending sign-off)</span>
         </div>
       </div>
     </section>

@@ -1,10 +1,11 @@
 "use client";
 
-import { whatsappLink } from "@/config/site";
 import { captureLead } from "@/lib/leadCapture";
+import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 
 // Persistent WhatsApp float button on every page (spec.md §8).
 export default function WhatsAppFloat() {
+  const whatsappLink = useWhatsAppLink();
   const message = "Hi, I have a question about insurance and would like to chat.";
 
   return (

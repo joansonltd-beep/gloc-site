@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { COST_FIGURES, PLANNER_ASSUMPTIONS } from "@/lib/costFigures";
+import { PLANNER_ASSUMPTIONS } from "@/lib/costFigures";
 import { formatTTD } from "@/lib/format";
 import WhatsAppCTA from "./WhatsAppCTA";
 import { ToolFrame, Field, ResultCard, Assumptions } from "./ToolUI";
 
 // Protection Planner (spec.md §7). Inputs: monthly income, dependents,
 // existing cover. Output: combined need across life cover, health gap and a
-// critical-illness lump sum, using the §10 cost figures.
-export default function ProtectionPlanner() {
+// critical-illness lump sum, using the §10 cost figures (from Sanity).
+export default function ProtectionPlanner({
+  costFigures,
+}: {
+  costFigures: Record<string, number>;
+}) {
   const [income, setIncome] = useState("");
   const [dependents, setDependents] = useState("");
   const [existing, setExisting] = useState("");
@@ -21,7 +25,8 @@ export default function ProtectionPlanner() {
 
   const { incomeReplacementYears, perDependentLumpSum, criticalIllnessIncomeMonths } =
     PLANNER_ASSUMPTIONS;
-  const { orthopedicSurgery } = COST_FIGURES;
+  const surgeryHigh = costFigures.orthopedicSurgeryHigh ?? 0;
+  const postOpHigh = costFigures.orthopedicPostOpHigh ?? 0;
 
   const annualIncome = monthlyIncome * 12;
 
@@ -31,12 +36,12 @@ export default function ProtectionPlanner() {
   const lifeGap = Math.max(0, lifeNeed - existingCover);
 
   // Critical-illness lump sum: bridge income + cover a major treatment.
-  const majorTreatment = orthopedicSurgery.high + orthopedicSurgery.postOpHigh;
+  const majorTreatment = surgeryHigh + postOpHigh;
   const criticalIllness =
     annualIncome * (criticalIllnessIncomeMonths / 12) + majorTreatment;
 
   // Health exposure: out-of-pocket risk a health plan removes (major surgery).
-  const healthExposure = orthopedicSurgery.high + orthopedicSurgery.postOpHigh;
+  const healthExposure = surgeryHigh + postOpHigh;
 
   const combined = lifeGap + criticalIllness;
 
@@ -132,9 +137,8 @@ export default function ProtectionPlanner() {
         Life cover target = {incomeReplacementYears}× annual income +{" "}
         {formatTTD(perDependentLumpSum)} per dependent. Critical-illness lump sum
         = {criticalIllnessIncomeMonths} months of income + a major orthopedic
-        surgery ({formatTTD(orthopedicSurgery.high)}) and post-op (
-        {formatTTD(orthopedicSurgery.postOpHigh)}). Figures from spec.md §10
-        (placeholders, verify before launch).
+        surgery ({formatTTD(surgeryHigh)}) and post-op ({formatTTD(postOpHigh)}).
+        Cost figures are editable in Sanity (placeholders, verify before launch).
       </Assumptions>
     </ToolFrame>
   );

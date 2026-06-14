@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
 import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
+import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: "Business: Group & Employee Benefits",
@@ -8,9 +9,14 @@ export const metadata: Metadata = {
     "Cover your team with group health, life and pension benefits. Send an enquiry.",
 };
 
-export default function BusinessPage() {
+export default async function BusinessPage() {
+  const [cluster, lines] = await Promise.all([
+    getCluster("business"),
+    getLines("business"),
+  ]);
+
   return (
-    <ClusterHub cluster="business">
+    <ClusterHub cluster={cluster} lines={lines}>
       <GroupBenefitsEnquiry />
     </ClusterHub>
   );

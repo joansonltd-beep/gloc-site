@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
 import QuickQuoteRequest from "@/components/tools/QuickQuoteRequest";
+import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: "Assets: Motor, Home & Property",
@@ -8,9 +9,14 @@ export const metadata: Metadata = {
     "Insure what you own: motor, home and property cover. Request a quick quote.",
 };
 
-export default function AssetsPage() {
+export default async function AssetsPage() {
+  const [cluster, lines] = await Promise.all([
+    getCluster("assets"),
+    getLines("assets"),
+  ]);
+
   return (
-    <ClusterHub cluster="assets">
+    <ClusterHub cluster={cluster} lines={lines}>
       <QuickQuoteRequest />
     </ClusterHub>
   );

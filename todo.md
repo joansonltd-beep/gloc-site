@@ -6,7 +6,7 @@ Milestones from `spec.md` §13. Build in order, one at a time.
 - [x] **M1 — Landing page + Needs-Router** with placeholder (dummy) content
 - [x] **M2 — Cluster hub pages + the five interactive tools** (dummy data)
 - [x] **M3 — WhatsApp lead flow** wired across all CTAs and tools
-- [ ] **M4 — Sanity CMS integration;** move all content into editable fields
+- [x] **M4 — Sanity CMS integration;** move all content into editable fields
 - [ ] **M5 — /about, /results, /book pages** + design polish + mobile QA
 - [ ] **M6 — Deploy to Vercel** + connect domain
 - [ ] **M7 — (later) AI chat qualifier + booking module**
@@ -72,3 +72,22 @@ Four cluster hub pages, each with its line sections + tool(s):
 
 **To go live (paste your own values):** copy `.env.local.example` to `.env.local`,
 set `NEXT_PUBLIC_WHATSAPP_NUMBER` and `LEAD_WEBHOOK_URL`, restart `npm run dev`.
+
+## M4 — done
+
+- Sanity added with an **embedded Studio at `/studio`**. Content model (spec.md §11):
+  Site settings, Clusters, Lines, Testimonials, Cost figures, About content.
+- All dummy content (copy, testimonials, cost figures, WhatsApp number, hero/footer
+  copy) now reads from Sanity via a server data layer (`src/lib/siteData.ts`).
+  Components are prop-driven; pages are async server components that fetch and pass data.
+- WhatsApp number flows from Sanity → `SiteSettingsProvider` (context) → every CTA/float.
+- Bundled defaults (`src/lib/defaults.ts`, `content.ts`, `costFigures.ts`) double as the
+  **seed source** (`npm run seed`) and an **offline fallback** so the site runs before
+  Sanity is connected.
+- Route group `(site)` holds the site chrome; minimal root layout lets `/studio` render
+  bare. Build passes (Studio isolated to the client graph to avoid a Turbopack SSR issue).
+- Setup + edit walkthrough in `docs/sanity-setup.md`.
+
+**Setup (yours):** create a Sanity project, add `NEXT_PUBLIC_SANITY_PROJECT_ID`,
+`NEXT_PUBLIC_SANITY_DATASET`, `SANITY_API_WRITE_TOKEN` to `.env.local`, run `npm run seed`,
+then edit at `/studio`. Full steps in `docs/sanity-setup.md`.
