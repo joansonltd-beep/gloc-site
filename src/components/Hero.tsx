@@ -22,13 +22,13 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <a
             href="#router"
-            className="rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-light"
+            className="rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-light active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
             Find what fits me
           </a>
           <a
             href="/about"
-            className="rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-brand transition hover:border-brand"
+            className="rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-brand transition hover:border-brand active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
             Meet your adviser
           </a>

@@ -12,10 +12,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "Guardian Group Agent in Trinidad & Tobago",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Guardian Group Agent in Trinidad & Tobago",
+    template: "%s · Guardian Group Agent",
+  },
   description:
     "Independent Guardian Group insurance agent in Trinidad & Tobago. Protect your family, grow your wealth, insure your assets, cover your business.",
+  openGraph: {
+    type: "website",
+    locale: "en_TT",
+    siteName: "Guardian Group Agent",
+    title: "Guardian Group Agent in Trinidad & Tobago",
+    description:
+      "Protect your family, grow your wealth, insure your assets, cover your business. One straightforward conversation away.",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 // Minimal root layout: just html/body. The site chrome lives in (site)/layout

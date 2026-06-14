@@ -65,7 +65,7 @@ const CLUSTERS_QUERY = `*[_type == "cluster"]|order(order asc){key, title, inten
 const LINES_QUERY = `*[_type == "line"]|order(order asc){title, blurb, icon, "clusterKey": cluster->key}`;
 const TESTIMONIALS_QUERY = `*[_type == "testimonial"]|order(order asc){quote, person, relatedLine}`;
 const COST_FIGURES_QUERY = `*[_type == "costFigure"]{key, value}`;
-const ABOUT_QUERY = `*[_type == "aboutContent"][0]{teaser}`;
+const ABOUT_QUERY = `*[_type == "aboutContent"][0]{teaser, story, videoUrl, credentials}`;
 
 // Cache CMS reads for a minute; edits show up shortly after publishing.
 const fetchOpts = { next: { revalidate: 60 } } as const;

@@ -19,7 +19,7 @@ export default function ClusterCards({ clusters }: { clusters: ClusterData[] }) 
           <Link
             key={c.key}
             href={`/${c.key}`}
-            className="group flex flex-col rounded-xl border border-slate-200 p-5 transition hover:border-brand hover:shadow-sm"
+            className="group flex flex-col rounded-xl border border-slate-200 p-5 transition hover:border-brand hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
             <span className="text-xs font-medium uppercase tracking-wide text-accent-dark">
               {c.intent}

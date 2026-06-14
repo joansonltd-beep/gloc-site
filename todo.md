@@ -7,7 +7,7 @@ Milestones from `spec.md` §13. Build in order, one at a time.
 - [x] **M2 — Cluster hub pages + the five interactive tools** (dummy data)
 - [x] **M3 — WhatsApp lead flow** wired across all CTAs and tools
 - [x] **M4 — Sanity CMS integration;** move all content into editable fields
-- [ ] **M5 — /about, /results, /book pages** + design polish + mobile QA
+- [x] **M5 — /about, /results, /book pages** + design polish + mobile QA
 - [ ] **M6 — Deploy to Vercel** + connect domain
 - [ ] **M7 — (later) AI chat qualifier + booking module**
 
@@ -90,4 +90,23 @@ set `NEXT_PUBLIC_WHATSAPP_NUMBER` and `LEAD_WEBHOOK_URL`, restart `npm run dev`.
 
 **Setup (yours):** create a Sanity project, add `NEXT_PUBLIC_SANITY_PROJECT_ID`,
 `NEXT_PUBLIC_SANITY_DATASET`, `SANITY_API_WRITE_TOKEN` to `.env.local`, run `npm run seed`,
-then edit at `/studio`. Full steps in `docs/sanity-setup.md`.
+then edit at `/studio`. Full steps in `docs/sanity-setup.md`. (Done: project 83r56hq8 seeded.)
+
+## M5 — done
+
+- **/about** — agent story (Sanity portable text, with a default fallback), credentials
+  list, and an embedded HeyGen video slot (`VideoEmbed`, placeholder until URL is set).
+- **/results** — testimonials hub sourced from Sanity.
+- **/book** — pre-wired booking slot (spec.md §12) with a "Book a call on WhatsApp" CTA
+  until the calendar module lands in M7.
+- **Polish:** sticky header with active nav state (`NavLink`), unified hover/active/focus
+  states on all buttons and cards, consistent spacing/type hierarchy, fuller footer.
+- **Mobile:** mobile-first grids stack to one column; tap targets sized; `pb-24` so the
+  WhatsApp float never covers content.
+- **SEO:** title template + Open Graph/Twitter defaults + `metadataBase`; per-page titles
+  and descriptions; `robots.txt` and `sitemap.xml`.
+- **Accessibility:** skip-to-content link, visible focus rings, `aria-current` on nav,
+  decorative emoji marked `aria-hidden`, alt/labels on interactive elements.
+
+**Add the HeyGen video:** Studio → About content → "HeyGen video URL" (use the embed/iframe
+URL), Publish. The /about video slot fills in automatically.
