@@ -8,7 +8,7 @@ Milestones from `spec.md` §13. Build in order, one at a time.
 - [x] **M3 — WhatsApp lead flow** wired across all CTAs and tools
 - [x] **M4 — Sanity CMS integration;** move all content into editable fields
 - [x] **M5 — /about, /results, /book pages** + design polish + mobile QA
-- [ ] **M6 — Deploy to Vercel** + connect domain
+- [~] **M6 — Deploy to Vercel** + connect domain (live on Vercel; custom domain pending)
 - [ ] **M7 — (later) AI chat qualifier + booking module**
 
 ---
@@ -110,3 +110,14 @@ then edit at `/studio`. Full steps in `docs/sanity-setup.md`. (Done: project 83r
 
 **Add the HeyGen video:** Studio → About content → "HeyGen video URL" (use the embed/iframe
 URL), Publish. The /about video slot fills in automatically.
+
+## M6 — in progress
+
+- Pushed to GitHub: https://github.com/joansonltd-beep/gloc-site (branch `main`).
+- **Live on Vercel: https://gloc-site-xi.vercel.app** (HTTPS, reading from Sanity,
+  lead capture forwarding to the Google Sheet, WhatsApp number 18687236644).
+- Fixed two deploy blockers: hardened Sanity env (blank dataset crash) and rewrote
+  commit author email to Joansonltd@gmail.com.
+- Remaining: add live URL + custom domain to Sanity CORS; connect custom domain in
+  Vercel; set `NEXT_PUBLIC_SITE_URL` to the real domain and redeploy (sitemap/canonical).
+- Full walkthrough + pre-launch checklist in `docs/deploy.md`.
