@@ -1,11 +1,19 @@
-import { createClient } from "next-sanity";
+import { createClient, type SanityClient } from "next-sanity";
 import { projectId, dataset, apiVersion } from "./env";
 
-// Read-only client for fetching content into the site.
-// useCdn for fast cached reads; the data layer revalidates periodically.
-export const client = createClient({
-  projectId: projectId || "placeholder",
-  dataset,
-  apiVersion,
-  useCdn: true,
-});
+// Lazily-created read client. Building it on first use (not at module load)
+// means an unconfigured/invalid project never instantiates a client during the
+// build. The data layer only calls this when isSanityConfigured is true.
+let cached: SanityClient | null = null;
+
+export function getClient(): SanityClient {
+  if (!cached) {
+    cached = createClient({
+      projectId: projectId || "placeholder",
+      dataset,
+      apiVersion,
+      useCdn: true,
+    });
+  }
+  return cached;
+}

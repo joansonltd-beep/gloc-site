@@ -4,7 +4,7 @@
 // return the bundled defaults, so the site always renders.
 
 import "server-only";
-import { client } from "@/sanity/client";
+import { getClient } from "@/sanity/client";
 import { isSanityConfigured } from "@/sanity/env";
 import { CLUSTERS, LINES, TESTIMONIALS, type ClusterKey } from "@/lib/content";
 import { DEFAULT_COST_FIGURE_VALUES } from "@/lib/costFigures";
@@ -79,7 +79,7 @@ function stripNulls<T extends object>(obj: T): Partial<T> {
 async function query<T>(groq: string): Promise<T | null> {
   if (!isSanityConfigured) return null;
   try {
-    return await client.fetch<T>(groq, {}, fetchOpts);
+    return await getClient().fetch<T>(groq, {}, fetchOpts);
   } catch {
     return null;
   }
