@@ -28,8 +28,8 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   glocAffiliationLine: "Guardian Life Sales Representative",
   footerDisclaimer:
     "This website is for general information only and is not financial advice. Contact us to discuss cover suited to your needs.",
-  agentName: "Your Agent",
-  agentTagline: "Insurance agent",
+  agentName: "Joanson Baptiste James",
+  agentTagline: "Insurance Agent",
   heroEyebrow: "Insurance for Trinidad & Tobago",
   heroHeadline: "Get the right cover before you need it.",
   heroSubcopy:
