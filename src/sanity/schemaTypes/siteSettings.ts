@@ -37,6 +37,13 @@ export const siteSettings = defineType({
       type: "string",
     }),
     defineField({
+      name: "headshot",
+      title: "Agent headshot / photo",
+      description: "Used in the hero, the About page, and the home-page teaser.",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "heroEyebrow",
       title: "Hero eyebrow",
       description: "Small line above the hero headline.",

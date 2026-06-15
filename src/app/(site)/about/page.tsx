@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
 import VideoEmbed from "@/components/VideoEmbed";
 import { getAbout, getSiteSettings } from "@/lib/siteData";
@@ -43,6 +44,18 @@ export default async function AboutPage() {
         </div>
 
         <aside className="space-y-8">
+          {settings.headshotUrl ? (
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+              <Image
+                src={settings.headshotUrl}
+                alt={`${settings.agentName}, ${settings.agentTagline}`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 360px"
+                className="object-cover"
+              />
+            </div>
+          ) : null}
+
           <VideoEmbed url={about.videoUrl} title={`Intro from ${settings.agentName}`} />
 
           {about.credentials.length > 0 && (
@@ -60,12 +73,11 @@ export default async function AboutPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 flex items-center gap-2 text-xs text-slate-400">
-                <span className="flex h-6 items-center rounded border border-dashed border-slate-300 px-2 text-[10px] uppercase tracking-wide">
-                  GLOC mark
-                </span>
-                {settings.glocAffiliationLine} (pending sign-off)
-              </p>
+              {settings.glocAffiliationLine ? (
+                <p className="mt-4 text-xs text-slate-400">
+                  {settings.glocAffiliationLine}
+                </p>
+              ) : null}
             </div>
           )}
         </aside>

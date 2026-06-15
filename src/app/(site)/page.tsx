@@ -25,7 +25,11 @@ export default async function Home() {
       <NeedsRouter />
       <ClusterCards clusters={clusters} />
       <TestimonialBand testimonials={testimonials} />
-      <AboutTeaser agentName={settings.agentName} teaser={about.teaser} />
+      <AboutTeaser
+        agentName={settings.agentName}
+        teaser={about.teaser}
+        headshotUrl={settings.headshotUrl}
+      />
     </div>
   );
 }

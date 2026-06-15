@@ -10,6 +10,7 @@ export type SiteSettings = {
   heroEyebrow: string;
   heroHeadline: string;
   heroSubcopy: string;
+  headshotUrl: string | null;
 };
 
 export type AboutData = {
@@ -24,13 +25,14 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "1868XXXXXXX",
   glocAffiliationLine: "Authorized Guardian Representative",
   footerDisclaimer:
-    "Disclaimer placeholder. Authorized Guardian Representative (endorsement placeholder; GLOC mark pending written sign-off).",
+    "This website is for general information only and is not financial advice. Contact us to discuss cover suited to your needs.",
   agentName: "Agent Name",
   agentTagline: "Your Guardian Group Adviser",
   heroEyebrow: "Insurance for Trinidad & Tobago",
   heroHeadline: "Get the right cover before you need it.",
   heroSubcopy:
     "Protecting your family, growing your money, insuring what you own, or covering your team. Tell me what you need and I'll help you find the right fit.",
+  headshotUrl: null,
 };
 
 export const DEFAULT_ABOUT: AboutData = {

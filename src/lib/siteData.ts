@@ -59,7 +59,8 @@ const DEFAULT_TESTIMONIALS: TestimonialData[] = TESTIMONIALS.map((t) => ({
 // --- GROQ ---------------------------------------------------------------
 const SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
   whatsappNumber, glocAffiliationLine, footerDisclaimer,
-  agentName, agentTagline, heroEyebrow, heroHeadline, heroSubcopy
+  agentName, agentTagline, heroEyebrow, heroHeadline, heroSubcopy,
+  "headshotUrl": headshot.asset->url
 }`;
 const CLUSTERS_QUERY = `*[_type == "cluster"]|order(order asc){key, title, intent, lines}`;
 const LINES_QUERY = `*[_type == "line"]|order(order asc){title, blurb, icon, "clusterKey": cluster->key}`;

@@ -1,7 +1,7 @@
+import Image from "next/image";
 import type { SiteSettings } from "@/lib/siteData";
 
-// Agent-led hero (spec.md §9). All copy comes from Sanity site settings.
-// Placeholder headshot + GLOC endorsement slot until M5 / sign-off.
+// Agent-led hero (spec.md §9). Copy + headshot come from Sanity site settings.
 export default function Hero({ settings }: { settings: SiteSettings }) {
   return (
     <section className="grid items-center gap-8 sm:gap-10 md:grid-cols-2">
@@ -36,17 +36,30 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
       </div>
 
       <div className="order-first md:order-last">
-        {/* Placeholder headshot block. Real headshot / HeyGen video in M5. */}
+        {/* Headshot from Sanity, with a placeholder until one is uploaded. */}
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-brand to-brand-dark">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-white/70">
-              <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-full bg-white/10 text-2xl">
-                📷
+          {settings.headshotUrl ? (
+            <Image
+              src={settings.headshotUrl}
+              alt={`${settings.agentName}, ${settings.agentTagline}`}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 400px"
+              className="object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center text-white/70">
+                <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-full bg-white/10 text-2xl">
+                  📷
+                </div>
+                <p className="text-sm">Agent headshot</p>
+                <p className="text-xs text-white/50">
+                  upload in Studio → Site settings
+                </p>
               </div>
-              <p className="text-sm">Agent headshot / video</p>
-              <p className="text-xs text-white/50">placeholder</p>
             </div>
-          </div>
+          )}
 
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/90 to-transparent p-5">
             <p className="text-lg font-semibold text-white">{settings.agentName}</p>
@@ -54,14 +67,12 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
           </div>
         </div>
 
-        {/* GLOC endorsement slot, smaller than the agent (spec.md §9, §12). */}
-        <div className="mt-3 flex items-center gap-2 text-xs text-slate-500">
-          <span className="flex h-7 items-center rounded border border-dashed border-slate-300 px-2 text-[10px] uppercase tracking-wide text-slate-400">
-            GLOC mark
-          </span>
-          {settings.glocAffiliationLine}{" "}
-          <span className="text-slate-400">(pending sign-off)</span>
-        </div>
+        {/* Affiliation line. GLOC logo itself stays off until written sign-off (spec.md §12). */}
+        {settings.glocAffiliationLine ? (
+          <p className="mt-3 text-xs text-slate-500">
+            {settings.glocAffiliationLine}
+          </p>
+        ) : null}
       </div>
     </section>
   );
