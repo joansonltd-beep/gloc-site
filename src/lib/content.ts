@@ -302,3 +302,206 @@ export const TESTIMONIALS: Testimonial[] = [
     line: "Group Benefits",
   },
 ];
+
+// --- Line detail pages (spec.md §4) ------------------------------------
+// Each product line gets its own page explaining what it is and why it matters,
+// with the relevant calculator. Slugs are derived from line titles.
+
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export type CalculatorKey =
+  | "protection"
+  | "critical-illness"
+  | "pension"
+  | "investment"
+  | "quick-quote"
+  | "group"
+  | null;
+
+export type LineDetail = {
+  slug: string;
+  clusterKey: ClusterKey;
+  title: string;
+  tagline: string;
+  what: string[];
+  why: string[];
+  calculator: CalculatorKey;
+};
+
+export const LINE_DETAILS: LineDetail[] = [
+  {
+    slug: "life-insurance",
+    clusterKey: "protect",
+    title: "Life Insurance",
+    tagline: "Replace your income so your family keeps going if you can't.",
+    what: [
+      "Life insurance pays a lump sum to the people you choose if you pass away. It replaces the income they relied on, so the mortgage still gets paid, the children stay in school and daily life carries on.",
+      "You choose the amount of cover and how long it runs. Term plans cover a set number of years at a lower cost; whole-life plans last for life and can build cash value over time.",
+    ],
+    why: [
+      "Your family keeps their home and lifestyle instead of facing forced changes.",
+      "It clears debts like a mortgage or car loan so they aren't left behind.",
+      "It costs less the younger and healthier you are when you start.",
+      "The payout is generally tax-free in Trinidad & Tobago.",
+    ],
+    calculator: "protection",
+  },
+  {
+    slug: "health",
+    clusterKey: "protect",
+    title: "Health",
+    tagline: "Get the care you want without the public waitlist.",
+    what: [
+      "Health insurance covers the cost of private medical care: doctor visits, tests, surgery, hospital stays and more. It closes the gap between the public system and the timing and comfort of private treatment.",
+      "Plans range from basic hospital cover to full plans that include specialists, prescriptions and overseas treatment.",
+    ],
+    why: [
+      "Private treatment in Trinidad & Tobago is expensive to pay for out of pocket.",
+      "You skip long waitlists for surgery and specialist care.",
+      "It protects your savings from a sudden medical bill.",
+      "Premiums are lower while you are young and healthy.",
+    ],
+    calculator: "protection",
+  },
+  {
+    slug: "critical-illness",
+    clusterKey: "protect",
+    title: "Critical Illness",
+    tagline: "A cash lump sum on diagnosis, so you can focus on getting better.",
+    what: [
+      "Critical illness cover pays a tax-free lump sum if you are diagnosed with one of the covered conditions, such as cancer, heart attack or stroke. The money is yours to use however you need: treatment, bills, time off work or care.",
+      "It pays out on diagnosis and is separate from health insurance, which only covers medical costs.",
+    ],
+    why: [
+      "Treating a major illness can cost hundreds of thousands of dollars.",
+      "It replaces your income while you are unable to work.",
+      "It covers costs health insurance will not, like home help or travel for treatment.",
+      "Many of us will face a serious illness at some point in our lives.",
+    ],
+    calculator: "critical-illness",
+  },
+  {
+    slug: "personal-accident",
+    clusterKey: "protect",
+    title: "Personal Accident",
+    tagline: "A cash benefit if an accident injures or disables you.",
+    what: [
+      "Personal accident cover pays out if an accident causes injury, disability or death. It is straightforward, affordable cover that sits on top of your other policies.",
+      "Benefits can include a lump sum for permanent disability, a weekly income while you recover, and cover for medical expenses.",
+    ],
+    why: [
+      "Accidents happen at work, on the road and at home.",
+      "It pays on top of any health or life cover you already have.",
+      "It is affordable, with cover that starts quickly and little paperwork.",
+      "It gives you an income cushion while you recover.",
+    ],
+    calculator: null,
+  },
+  {
+    slug: "pension-annuities",
+    clusterKey: "grow",
+    title: "Pension / Annuities",
+    tagline: "Turn today's savings into a steady income for retirement.",
+    what: [
+      "A pension or annuity plan helps you build a pot of money during your working years, then turns it into a regular income when you retire.",
+      "Approved annuity contributions can reduce the income tax you pay now, so you keep more of what you earn while you save for later.",
+    ],
+    why: [
+      "The state pension alone rarely covers the lifestyle you want.",
+      "Tax-advantaged contributions mean you save on tax today.",
+      "Starting early lets compounding do most of the work.",
+      "A structured plan grows ahead of inflation, unlike cash sitting in an account.",
+    ],
+    calculator: "pension",
+  },
+  {
+    slug: "investments-mutual-funds",
+    clusterKey: "grow",
+    title: "Investments / Mutual Funds",
+    tagline: "Grow your money ahead of inflation.",
+    what: [
+      "Investing puts your money into a mix of assets through mutual funds so it can grow over time. A fund spreads your money across many investments, which lowers the risk of any single one.",
+      "You can invest a lump sum, contribute monthly, or both, and choose a fund that matches how much risk you are comfortable with.",
+    ],
+    why: [
+      "Money left in a regular account loses value to inflation.",
+      "Diversified funds spread the risk for you.",
+      "You can start with a small monthly amount and build over time.",
+      "Your money stays accessible compared with locked-in savings.",
+    ],
+    calculator: "investment",
+  },
+  {
+    slug: "motor",
+    clusterKey: "assets",
+    title: "Motor",
+    tagline: "Cover your vehicle, with claims handled properly.",
+    what: [
+      "Motor insurance covers your vehicle against accidents, theft and damage, and covers your liability to others. Third-party is the legal minimum; comprehensive also covers your own vehicle.",
+      "Your premium depends on the vehicle, how you use it and your driving history.",
+    ],
+    why: [
+      "Third-party cover is required by law to drive in Trinidad & Tobago.",
+      "Comprehensive protects the cost of repairing or replacing your own vehicle.",
+      "It covers you if you injure someone or damage their property.",
+      "A good agent makes claims faster and less stressful.",
+    ],
+    calculator: "quick-quote",
+  },
+  {
+    slug: "home",
+    clusterKey: "assets",
+    title: "Home",
+    tagline: "Protect your home and everything in it.",
+    what: [
+      "Home insurance covers your house and its contents against risks like fire, flood, storm and theft. You can cover the building, the contents, or both.",
+      "Cover is based on the cost to rebuild and replace, not the market price of the property.",
+    ],
+    why: [
+      "Your home is likely the biggest thing you own.",
+      "Local risks like flooding and storms are real and costly.",
+      "It covers your belongings, not just the structure.",
+      "It is often required if you have a mortgage.",
+    ],
+    calculator: "quick-quote",
+  },
+  {
+    slug: "property",
+    clusterKey: "assets",
+    title: "Property",
+    tagline: "Cover for landlords and additional properties.",
+    what: [
+      "Property cover protects buildings you own beyond your main home, such as rental units or commercial space.",
+      "It can include the building, loss of rental income, and your liability to tenants or visitors.",
+    ],
+    why: [
+      "It protects an income-producing asset.",
+      "It covers loss of rent if the property becomes uninhabitable.",
+      "It covers your liability as a landlord.",
+      "It keeps your investment safe from fire, flood and storm.",
+    ],
+    calculator: "quick-quote",
+  },
+  {
+    slug: "group-employee-benefits",
+    clusterKey: "business",
+    title: "Group / Employee Benefits",
+    tagline: "Look after your team with cover that scales.",
+    what: [
+      "Group benefits provide health, life and pension cover for your employees under one plan. They are usually cheaper per person than individual cover and easier to manage.",
+      "You choose the mix of benefits and how much the company contributes.",
+    ],
+    why: [
+      "Good benefits help you attract and keep strong staff.",
+      "Group rates are typically lower than individual cover.",
+      "It shows your team you are invested in them.",
+      "It scales as your business grows.",
+    ],
+    calculator: "group",
+  },
+];

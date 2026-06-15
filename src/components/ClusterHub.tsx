@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { slugify } from "@/lib/content";
 import type { ClusterData, LineData } from "@/lib/siteData";
 
 // Shared hub header + line sections for a cluster page (spec.md §4, §5).
@@ -24,13 +26,23 @@ export default function ClusterHub({
 
       <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {lines.map((line) => (
-          <article key={line.title} className="rounded-xl border border-slate-200 p-5">
+          <Link
+            key={line.title}
+            href={`/${cluster.key}/${slugify(line.title)}`}
+            className="group flex flex-col rounded-xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+          >
             <div className="text-2xl" aria-hidden>
               {line.icon}
             </div>
             <h2 className="mt-3 text-lg font-semibold text-brand">{line.title}</h2>
-            <p className="mt-1 text-sm text-slate-600">{line.blurb}</p>
-          </article>
+            <p className="mt-1 flex-1 text-sm text-slate-600">{line.blurb}</p>
+            <span className="mt-3 text-sm font-medium text-brand">
+              Learn more{" "}
+              <span className="inline-block transition group-hover:translate-x-0.5">
+                →
+              </span>
+            </span>
+          </Link>
         ))}
       </section>
 

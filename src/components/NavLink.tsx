@@ -12,14 +12,17 @@ export default function NavLink({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const active = pathname === href || pathname.startsWith(href + "/");
+  const active =
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 
   return (
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`rounded transition hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 ${
-        active ? "font-semibold text-brand" : "text-slate-600"
+      className={`rounded border-b-2 pb-0.5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 ${
+        active
+          ? "border-accent font-semibold text-accent-dark"
+          : "border-transparent text-slate-600 hover:text-brand"
       }`}
     >
       {children}
