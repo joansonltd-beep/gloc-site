@@ -79,7 +79,7 @@ export default function NeedsRouter() {
               <Link
                 key={card.title}
                 href={card.href!}
-                className="group flex flex-col rounded-xl border border-slate-200 bg-white p-5 transition hover:border-brand hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className="group flex flex-col rounded-xl border border-white/60 bg-white/70 backdrop-blur-sm p-5 transition hover:border-brand hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
                 <span className="text-base font-semibold text-brand">
                   {card.title}
@@ -125,7 +125,7 @@ function DiscoveryStep({
 }) {
   const q = DISCOVERY_QUESTIONS[step];
   return (
-    <div className="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="mx-auto max-w-xl rounded-2xl border border-white/60 bg-white/75 backdrop-blur-sm p-6 sm:p-8">
       <div className="mb-5 flex items-center justify-between text-xs text-slate-500">
         <span>
           Question {step + 1} of {total}
@@ -175,7 +175,7 @@ function Results({
   const message = `Hi, the planner suggested ${summary} for me. I'd like to talk about options.`;
 
   return (
-    <div className="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="mx-auto max-w-xl rounded-2xl border border-white/60 bg-white/75 backdrop-blur-sm p-6 sm:p-8">
       <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
         Based on your answers
       </p>

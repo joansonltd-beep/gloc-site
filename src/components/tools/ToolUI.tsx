@@ -11,7 +11,7 @@ export function ToolFrame({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm sm:p-8">
       <h3 className="text-xl font-semibold text-brand">{title}</h3>
       <p className="mt-1 max-w-prose text-sm text-slate-600">{intro}</p>
       <div className="mt-5">{children}</div>

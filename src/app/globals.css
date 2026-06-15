@@ -23,12 +23,19 @@
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(70% 55% at 6% -10%, color-mix(in srgb, var(--color-accent) 40%, transparent), transparent 55%),
-    radial-gradient(75% 60% at 100% -12%, color-mix(in srgb, var(--color-brand) 48%, transparent), transparent 55%),
-    radial-gradient(55% 45% at 58% -10%, color-mix(in srgb, var(--color-sun) 32%, transparent), transparent 52%),
-    radial-gradient(60% 50% at 0% 60%, color-mix(in srgb, var(--color-brand) 22%, transparent), transparent 55%),
-    radial-gradient(60% 50% at 100% 80%, color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 55%),
-    radial-gradient(70% 45% at 50% 112%, color-mix(in srgb, var(--color-flame) 20%, transparent), transparent 55%),
+    /* whole-viewport diagonal warm field so colour shows across every page */
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-accent) 24%, transparent) 0%,
+      color-mix(in srgb, var(--color-sun) 16%, transparent) 22%,
+      color-mix(in srgb, var(--color-flame) 10%, transparent) 45%,
+      color-mix(in srgb, var(--color-brand-light) 16%, transparent) 72%,
+      color-mix(in srgb, var(--color-brand) 26%, transparent) 100%
+    ),
+    /* bolder pools at the corners */
+    radial-gradient(70% 55% at 4% -8%, color-mix(in srgb, var(--color-accent) 38%, transparent), transparent 55%),
+    radial-gradient(75% 60% at 100% -10%, color-mix(in srgb, var(--color-brand) 46%, transparent), transparent 55%),
+    radial-gradient(70% 50% at 50% 112%, color-mix(in srgb, var(--color-flame) 24%, transparent), transparent 55%),
     #ffffff;
   background-attachment: fixed;
 }
