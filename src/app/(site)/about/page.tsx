@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
 import VideoEmbed from "@/components/VideoEmbed";
+import LearnMore from "@/components/LearnMore";
 import { getAbout, getSiteSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = {
@@ -29,18 +30,22 @@ export default async function AboutPage() {
       </header>
 
       <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-        <div className="space-y-4 text-slate-700">
-          {story ? (
-            <div className="space-y-4 leading-relaxed">
-              <PortableText value={story} />
-            </div>
-          ) : (
-            about.storyParagraphs.map((p, i) => (
-              <p key={i} className="leading-relaxed">
-                {p}
-              </p>
-            ))
-          )}
+        <div className="text-slate-700">
+          <LearnMore>
+            {story ? (
+              <div className="space-y-4 leading-relaxed">
+                <PortableText value={story} />
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {about.storyParagraphs.map((p, i) => (
+                  <p key={i} className="leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            )}
+          </LearnMore>
         </div>
 
         <aside className="space-y-8">
