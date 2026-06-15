@@ -18,14 +18,15 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Soft, warm Caribbean wash: a faint orange + purple glow at the top of every
-   page, fixed behind the content. Subtle on purpose. */
+/* Bold, warm Caribbean wash: a confident purple + orange + gold sweep across the
+   top of every page, fixed behind the content. */
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(60% 55% at 12% -8%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 62%),
-    radial-gradient(55% 55% at 95% -12%, color-mix(in srgb, var(--color-brand) 16%, transparent), transparent 60%),
-    radial-gradient(45% 40% at 70% -10%, color-mix(in srgb, var(--color-sun) 12%, transparent), transparent 60%),
+    radial-gradient(75% 70% at 6% -12%, color-mix(in srgb, var(--color-accent) 42%, transparent), transparent 58%),
+    radial-gradient(80% 75% at 100% -14%, color-mix(in srgb, var(--color-brand) 50%, transparent), transparent 56%),
+    radial-gradient(60% 50% at 58% -12%, color-mix(in srgb, var(--color-sun) 34%, transparent), transparent 55%),
+    radial-gradient(50% 45% at 32% -10%, color-mix(in srgb, var(--color-flame) 26%, transparent), transparent 55%),
     #ffffff;
   background-attachment: fixed;
 }

@@ -61,29 +61,6 @@ export default async function AboutPage() {
             url={about.videoUrl}
             title={`Intro from ${settings.agentName}`}
           />
-
-          {about.credentials.length > 0 && (
-            <div className="rounded-2xl border border-slate-200 p-6">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                Credentials
-              </h2>
-              <ul className="mt-3 space-y-2">
-                {about.credentials.map((c) => (
-                  <li key={c} className="flex gap-2 text-sm text-slate-700">
-                    <span aria-hidden className="text-accent-dark">
-                      ✓
-                    </span>
-                    <span>{c}</span>
-                  </li>
-                ))}
-              </ul>
-              {settings.glocAffiliationLine ? (
-                <p className="mt-4 text-xs text-slate-400">
-                  {settings.glocAffiliationLine}
-                </p>
-              ) : null}
-            </div>
-          )}
         </aside>
       </div>
     </div>
