@@ -9,8 +9,15 @@ export default function TestimonialBand({
   if (!testimonials.length) return null;
 
   return (
-    <section className="rounded-2xl bg-brand px-6 py-10 sm:px-10">
-      <h2 className="text-2xl font-semibold tracking-tight text-white">
+    <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-light via-brand to-brand-dark px-6 py-10 sm:px-10">
+      {/* Warm swoosh glow in the corner. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/30 blur-3xl"
+      />
+      <div className="relative">
+      <span className="block h-1.5 w-24 rounded-full bg-swoosh" />
+      <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white">
         What clients say
       </h2>
       <div className="mt-6 grid gap-5 md:grid-cols-3">
@@ -30,6 +37,7 @@ export default function TestimonialBand({
             </figcaption>
           </figure>
         ))}
+      </div>
       </div>
     </section>
   );

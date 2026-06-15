@@ -11,11 +11,31 @@
   --color-brand-light: #7a4fa8;
   --color-accent: #f5821f;       /* warm orange from the swoosh */
   --color-accent-dark: #c25e00;  /* darker orange for text contrast on white */
+  --color-flame: #e2231a;        /* swoosh red */
+  --color-sun: #ffc20e;          /* swoosh yellow */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* Soft, warm Caribbean wash: a faint orange + purple glow at the top of every
+   page, fixed behind the content. Subtle on purpose. */
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(60% 55% at 12% -8%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 62%),
+    radial-gradient(55% 55% at 95% -12%, color-mix(in srgb, var(--color-brand) 16%, transparent), transparent 60%),
+    radial-gradient(45% 40% at 70% -10%, color-mix(in srgb, var(--color-sun) 12%, transparent), transparent 60%),
+    #ffffff;
+  background-attachment: fixed;
+}
+
+/* The Guardian swoosh as a reusable gradient (red -> orange -> yellow). */
+.bg-swoosh {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-flame),
+    var(--color-accent) 55%,
+    var(--color-sun)
+  );
 }

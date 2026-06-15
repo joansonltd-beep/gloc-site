@@ -19,9 +19,11 @@ export default function ClusterCards({ clusters }: { clusters: ClusterData[] }) 
           <Link
             key={c.key}
             href={`/${c.key}`}
-            className="group flex flex-col rounded-xl border border-slate-200 p-5 transition hover:border-brand hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 p-5 transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
-            <span className="text-xs font-medium uppercase tracking-wide text-accent-dark">
+            {/* Swoosh accent that brightens on hover. */}
+            <span className="absolute inset-x-0 top-0 h-1 bg-swoosh opacity-60 transition group-hover:opacity-100" />
+            <span className="mt-1 text-xs font-medium uppercase tracking-wide text-accent-dark">
               {c.intent}
             </span>
             <span className="mt-2 text-lg font-semibold text-brand">
@@ -29,7 +31,10 @@ export default function ClusterCards({ clusters }: { clusters: ClusterData[] }) 
             </span>
             <span className="mt-1 flex-1 text-sm text-slate-600">{c.lines}</span>
             <span className="mt-4 text-sm font-medium text-brand">
-              Explore {c.title} →
+              Explore {c.title}{" "}
+              <span className="inline-block transition group-hover:translate-x-0.5">
+                →
+              </span>
             </span>
           </Link>
         ))}
