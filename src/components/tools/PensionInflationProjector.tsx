@@ -122,8 +122,7 @@ export default function PensionInflationProjector({
       <Assumptions>
         Monthly compounding. Structured plan ~{pct(structuredAnnualReturn)}/yr,
         plain savings ~{pct(savingsAnnualReturn)}/yr, inflation ~
-        {pct(inflationAnnualRate)}/yr (editable in Studio → Calculator settings). Illustration
-        only, not a guarantee of returns.
+        {pct(inflationAnnualRate)}/yr. Illustration only, not a guarantee of returns.
       </Assumptions>
     </ToolFrame>
   );

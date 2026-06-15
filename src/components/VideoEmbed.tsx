@@ -46,8 +46,7 @@ export default function VideoEmbed({
         <div className="mx-auto mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-2xl">
           ▶
         </div>
-        <p className="text-sm">Intro video</p>
-        <p className="text-xs text-white/50">upload a video in Studio → About content</p>
+        <p className="text-sm">Intro video coming soon</p>
       </div>
     </div>
   );

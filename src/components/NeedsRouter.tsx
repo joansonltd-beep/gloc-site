@@ -218,9 +218,6 @@ function Results({
           Start over
         </button>
       </div>
-      <p className="mt-3 text-center text-xs text-slate-400">
-        Sample suggestions and placeholder number for now.
-      </p>
     </div>
   );
 }

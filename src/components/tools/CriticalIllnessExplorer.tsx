@@ -79,10 +79,9 @@ export default function CriticalIllnessExplorer({
 
       <p className="mt-5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-400">
         <span className="font-semibold text-slate-500">Note: </span>
-        All figures are in TT$ and are indicative estimates, editable in Studio →
-        Critical illness costs. Verify against local facility quotes before
-        relying on them. Critical Illness insurance pays a fixed lump sum on
-        diagnosis; it does not reimburse the actual bill.
+        All figures are in TT$ and are indicative estimates only. Critical Illness
+        insurance pays a fixed lump sum on diagnosis; it does not reimburse the
+        actual bill.
       </p>
     </ToolFrame>
   );

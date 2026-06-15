@@ -132,8 +132,8 @@ export default function ProtectionPlanner({
         {formatTTD(perDependentLumpSum)} per dependent. Critical-illness cover is
         a recommended flat lump sum of {formatTTD(criticalIllness)}. Health
         exposure is a major orthopedic surgery ({formatTTD(surgeryHigh)}) plus
-        post-op ({formatTTD(postOpHigh)}). All figures are editable in Studio →
-        Cost figures (placeholders, verify before launch).
+        post-op ({formatTTD(postOpHigh)}). These are estimates to start a
+        conversation, not a quote.
       </Assumptions>
     </ToolFrame>
   );

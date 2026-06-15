@@ -130,8 +130,8 @@ export default function InvestmentGrowthProjector({
 
       <Assumptions>
         Monthly compounding across a {pct(lowAnnualReturn)}–{pct(highAnnualReturn)}/yr
-        return range (editable in Studio → Calculator settings). Illustration
-        only. Returns are not guaranteed and funds can fall as well as rise.
+        return range. Illustration only. Returns are not guaranteed and funds can
+        fall as well as rise.
       </Assumptions>
     </ToolFrame>
   );

@@ -54,10 +54,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
                 <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-full bg-white/10 text-2xl">
                   📷
                 </div>
-                <p className="text-sm">Agent headshot</p>
-                <p className="text-xs text-white/50">
-                  upload in Studio → Site settings
-                </p>
+                <p className="text-sm">{settings.agentName}</p>
               </div>
             </div>
           )}
