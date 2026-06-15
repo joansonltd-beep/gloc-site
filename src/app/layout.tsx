@@ -17,16 +17,16 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Guardian Group Agent in Trinidad & Tobago",
-    template: "%s · Guardian Group Agent",
+    default: "Your Insurance Agent in Trinidad & Tobago",
+    template: "%s · Your Insurance Agent",
   },
   description:
-    "Independent Guardian Group insurance agent in Trinidad & Tobago. Protect your family, grow your wealth, insure your assets, cover your business.",
+    "Independent insurance agent in Trinidad & Tobago. Protect your family, grow your wealth, insure your assets, cover your business.",
   openGraph: {
     type: "website",
     locale: "en_TT",
-    siteName: "Guardian Group Agent",
-    title: "Guardian Group Agent in Trinidad & Tobago",
+    siteName: "Your Insurance Agent",
+    title: "Your Insurance Agent in Trinidad & Tobago",
     description:
       "Protect your family, grow your wealth, insure your assets, cover your business. One straightforward conversation away.",
   },

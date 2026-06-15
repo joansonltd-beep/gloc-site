@@ -7,7 +7,7 @@ import { getAbout, getSiteSettings } from "@/lib/siteData";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet your independent Guardian Group adviser in Trinidad & Tobago: story, credentials and a short intro video.",
+    "Meet your independent insurance agent in Trinidad & Tobago: story and a short intro video.",
 };
 
 export default async function AboutPage() {

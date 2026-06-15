@@ -409,13 +409,14 @@ export const LINE_DETAILS: LineDetail[] = [
     tagline: "Turn today's savings into a steady income for retirement.",
     what: [
       "A pension or annuity plan helps you build a pot of money during your working years, then turns it into a regular income when you retire.",
-      "Approved annuity contributions can reduce the income tax you pay now, so you keep more of what you earn while you save for later.",
+      "Certain plans, registered as deferred annuities with the Board of Inland Revenue, come with real tax breaks. You can claim a yearly tax deduction on the premiums you pay, up to TT$60,000 a year. That limit covers all of your pension contributions together, including your NIS payments.",
+      "When you reach your chosen retirement age, you can take up to 25% of your built-up fund as a tax-free lump sum, with the rest paid to you as a regular income. That is a welcome cash boost right when retirement begins.",
     ],
     why: [
       "The state pension alone rarely covers the lifestyle you want.",
-      "Tax-advantaged contributions mean you save on tax today.",
-      "Starting early lets compounding do most of the work.",
-      "A structured plan grows ahead of inflation, unlike cash sitting in an account.",
+      "Claim up to TT$60,000 a year in tax deductions on your contributions.",
+      "Take up to 25% of your fund as a tax-free lump sum at retirement.",
+      "Starting early lets compounding do most of the work, ahead of inflation.",
     ],
     calculator: "pension",
   },

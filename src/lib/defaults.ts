@@ -24,11 +24,11 @@ export type AboutData = {
 
 export const DEFAULT_SETTINGS: SiteSettings = {
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "1868XXXXXXX",
-  glocAffiliationLine: "Authorized Guardian Representative",
+  glocAffiliationLine: "Guardian Life Sales Representative",
   footerDisclaimer:
     "This website is for general information only and is not financial advice. Contact us to discuss cover suited to your needs.",
-  agentName: "Agent Name",
-  agentTagline: "Your Guardian Group Adviser",
+  agentName: "Your Agent",
+  agentTagline: "Your insurance agent",
   heroEyebrow: "Insurance for Trinidad & Tobago",
   heroHeadline: "Get the right cover before you need it.",
   heroSubcopy:
@@ -90,10 +90,10 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "an independent Guardian Group adviser based in Trinidad & Tobago, helping young professionals and families make good decisions about their money and their cover.",
+    "an independent insurance agent based in Trinidad & Tobago, helping young professionals and families make good decisions about their money and their cover.",
   storyParagraphs: [
     "I grew up here and I have seen how often good people get caught out by costs they never planned for. A medical bill, a car accident, a parent who outlives their savings. That is what got me into this work.",
-    "I am an independent Guardian Group adviser. That means I sit on your side of the table, walk you through the options in plain language, and help you choose cover that fits your life and your budget. No pressure, no jargon.",
+    "I am an independent insurance agent. That means I sit on your side of the table, walk you through the options in plain language, and help you choose cover that fits your life and your budget. No pressure, no jargon.",
     "Whether you are just starting out, raising a family, or running a business, I am happy to talk it through. Reach out any time and we will figure out the right next step together.",
   ],
   credentials: [
