@@ -33,6 +33,13 @@ export const DEFAULT_COST_FIGURES: CostFigureSeed[] = [
   },
   { key: "healthPlanMonthlyLow", label: "Local individual health plan (low)", value: 300, order: 6 },
   { key: "healthPlanMonthlyHigh", label: "Local individual health plan (high)", value: 1_500, order: 7 },
+  {
+    key: "criticalIllnessCover",
+    label: "Critical Illness recommended cover",
+    value: 75_000,
+    note: "Flat lump sum the Protection Planner recommends on diagnosis.",
+    order: 8,
+  },
 ];
 
 // Convenience: keyed map of just the values, used as the fallback for tools.

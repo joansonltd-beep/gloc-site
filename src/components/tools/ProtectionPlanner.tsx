@@ -23,10 +23,11 @@ export default function ProtectionPlanner({
   const existingCover = Number(existing) || 0;
   const ready = monthlyIncome > 0;
 
-  const { incomeReplacementYears, perDependentLumpSum, criticalIllnessIncomeMonths } =
-    PLANNER_ASSUMPTIONS;
+  const { incomeReplacementYears, perDependentLumpSum } = PLANNER_ASSUMPTIONS;
   const surgeryHigh = costFigures.orthopedicSurgeryHigh ?? 0;
   const postOpHigh = costFigures.orthopedicPostOpHigh ?? 0;
+  // Recommended Critical Illness cover (a flat lump sum), editable in Sanity.
+  const criticalIllness = costFigures.criticalIllnessCover ?? 75_000;
 
   const annualIncome = monthlyIncome * 12;
 
@@ -34,11 +35,6 @@ export default function ProtectionPlanner({
   const lifeNeed =
     annualIncome * incomeReplacementYears + numDependents * perDependentLumpSum;
   const lifeGap = Math.max(0, lifeNeed - existingCover);
-
-  // Critical-illness lump sum: bridge income + cover a major treatment.
-  const majorTreatment = surgeryHigh + postOpHigh;
-  const criticalIllness =
-    annualIncome * (criticalIllnessIncomeMonths / 12) + majorTreatment;
 
   // Health exposure: out-of-pocket risk a health plan removes (major surgery).
   const healthExposure = surgeryHigh + postOpHigh;
@@ -98,11 +94,9 @@ export default function ProtectionPlanner({
               }, less cover you hold`}
             />
             <ResultCard
-              label="Critical-illness lump sum"
+              label="Critical-illness cover"
               value={formatTTD(criticalIllness)}
-              note={`${criticalIllnessIncomeMonths} months income + a major treatment (${formatTTD(
-                majorTreatment
-              )})`}
+              note="Recommended tax-free lump sum on diagnosis"
             />
             <ResultCard
               label="Health exposure"
@@ -135,10 +129,11 @@ export default function ProtectionPlanner({
 
       <Assumptions>
         Life cover target = {incomeReplacementYears}× annual income +{" "}
-        {formatTTD(perDependentLumpSum)} per dependent. Critical-illness lump sum
-        = {criticalIllnessIncomeMonths} months of income + a major orthopedic
-        surgery ({formatTTD(surgeryHigh)}) and post-op ({formatTTD(postOpHigh)}).
-        Cost figures are editable in Sanity (placeholders, verify before launch).
+        {formatTTD(perDependentLumpSum)} per dependent. Critical-illness cover is
+        a recommended flat lump sum of {formatTTD(criticalIllness)}. Health
+        exposure is a major orthopedic surgery ({formatTTD(surgeryHigh)}) plus
+        post-op ({formatTTD(postOpHigh)}). All figures are editable in Studio →
+        Cost figures (placeholders, verify before launch).
       </Assumptions>
     </ToolFrame>
   );
