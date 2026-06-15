@@ -13,8 +13,18 @@ export const aboutContent = defineType({
       of: [{ type: "block" }],
     }),
     defineField({
+      name: "videoFile",
+      title: "Intro video (upload a file)",
+      description:
+        "Upload an MP4 (recommended). This takes priority over the embed URL below.",
+      type: "file",
+      options: { accept: "video/*" },
+    }),
+    defineField({
       name: "videoUrl",
-      title: "HeyGen video URL",
+      title: "Or embed video URL",
+      description:
+        "A YouTube/Vimeo embed link, or a HeyGen SHARE link (share.heygen.com), not the app.heygen.com editor page. Used only if no file is uploaded.",
       type: "url",
     }),
     defineField({

@@ -56,7 +56,11 @@ export default async function AboutPage() {
             </div>
           ) : null}
 
-          <VideoEmbed url={about.videoUrl} title={`Intro from ${settings.agentName}`} />
+          <VideoEmbed
+            fileUrl={about.videoFileUrl}
+            url={about.videoUrl}
+            title={`Intro from ${settings.agentName}`}
+          />
 
           {about.credentials.length > 0 && (
             <div className="rounded-2xl border border-slate-200 p-6">

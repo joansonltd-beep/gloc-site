@@ -18,6 +18,7 @@ export type AboutData = {
   storyParagraphs: string[]; // fallback story when Sanity has no rich text
   credentials: string[];
   videoUrl: string;
+  videoFileUrl: string | null; // uploaded video file, preferred over videoUrl
   story?: unknown[] | null; // Sanity portable text, preferred over storyParagraphs
 };
 
@@ -101,4 +102,5 @@ export const DEFAULT_ABOUT: AboutData = {
     "Based in Trinidad & Tobago",
   ],
   videoUrl: "",
+  videoFileUrl: null,
 };
