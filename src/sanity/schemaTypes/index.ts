@@ -6,6 +6,8 @@ import { line } from "./line";
 import { testimonial } from "./testimonial";
 import { costFigure } from "./costFigure";
 import { aboutContent } from "./aboutContent";
+import { calculatorSettings } from "./calculatorSettings";
+import { illnessCost } from "./illnessCost";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   siteSettings,
@@ -14,4 +16,6 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   testimonial,
   costFigure,
   aboutContent,
+  calculatorSettings,
+  illnessCost,
 ];

@@ -46,15 +46,5 @@ export const PLANNER_ASSUMPTIONS = {
   criticalIllnessIncomeMonths: 12, // months of income a CI lump sum should bridge
 } as const;
 
-// --- Pension-vs-Inflation projector assumptions (spec.md §7) ---------
-export const PENSION_ASSUMPTIONS = {
-  savingsAnnualReturn: 0.01, // 1%/yr in a plain savings account
-  structuredAnnualReturn: 0.06, // 6%/yr in a structured plan
-  inflationAnnualRate: 0.04, // 4%/yr
-} as const;
-
-// --- Investment growth projector assumptions (spec.md §7) ------------
-export const INVESTMENT_ASSUMPTIONS = {
-  lowAnnualReturn: 0.04, // 4%/yr
-  highAnnualReturn: 0.08, // 8%/yr
-} as const;
+// Pension & investment projector rates now live in Sanity (Calculator
+// settings); their defaults are in src/lib/defaults.ts (DEFAULT_CALCULATOR).

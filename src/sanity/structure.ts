@@ -18,9 +18,18 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.document().schemaType("aboutContent").documentId("aboutContent")
         ),
+      S.listItem()
+        .title("Calculator settings")
+        .id("calculatorSettings")
+        .child(
+          S.document()
+            .schemaType("calculatorSettings")
+            .documentId("calculatorSettings")
+        ),
       S.divider(),
       S.documentTypeListItem("cluster").title("Clusters"),
       S.documentTypeListItem("line").title("Lines"),
       S.documentTypeListItem("testimonial").title("Testimonials"),
       S.documentTypeListItem("costFigure").title("Cost figures"),
+      S.documentTypeListItem("illnessCost").title("Critical illness costs"),
     ]);

@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 /*
-  Restrained palette anchored to Guardian Group's brand (deep navy + gold),
-  with slate neutrals from Tailwind. Intentional, not templated (spec.md §9).
-  These are placeholders until brand sign-off; easy to retune here.
+  Palette anchored to the Guardian Group brand: deep purple wordmark plus the
+  warm red-orange-yellow swoosh. The logo itself is NOT displayed anywhere
+  (spec.md §12); we only borrow the colours. Retune here in one place.
 */
 @theme {
-  --color-brand: #0a2d52;
-  --color-brand-dark: #061d36;
-  --color-brand-light: #1b4a7e;
-  --color-accent: #f5b301;
-  --color-accent-dark: #d49a00;
+  --color-brand: #582c83;        /* Guardian purple */
+  --color-brand-dark: #3c1d5a;
+  --color-brand-light: #7a4fa8;
+  --color-accent: #f5821f;       /* warm orange from the swoosh */
+  --color-accent-dark: #c25e00;  /* darker orange for text contrast on white */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

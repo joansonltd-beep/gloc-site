@@ -1,15 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { INVESTMENT_ASSUMPTIONS } from "@/lib/costFigures";
 import { futureValueLumpSum, futureValueMonthly } from "@/lib/finance";
 import { formatTTD } from "@/lib/format";
+import type { CalculatorSettings } from "@/lib/defaults";
 import WhatsAppCTA from "./WhatsAppCTA";
 import { ToolFrame, Field, ResultCard, Assumptions } from "./ToolUI";
 
 // Investment growth projector (spec.md §7). Inputs: lump sum and/or monthly
-// contribution + horizon. Output: a projected value range.
-export default function InvestmentGrowthProjector() {
+// contribution + horizon. Output: a projected value range, plus how much is
+// paid in (premiums) vs how much is gained. Rates come from Sanity.
+export default function InvestmentGrowthProjector({
+  settings,
+}: {
+  settings: CalculatorSettings;
+}) {
   const [lump, setLump] = useState("");
   const [monthly, setMonthly] = useState("");
   const [horizon, setHorizon] = useState("");
@@ -19,7 +24,8 @@ export default function InvestmentGrowthProjector() {
   const years = Number(horizon) || 0;
   const ready = (lumpSum > 0 || monthlyContribution > 0) && years > 0;
 
-  const { lowAnnualReturn, highAnnualReturn } = INVESTMENT_ASSUMPTIONS;
+  const lowAnnualReturn = settings.investmentLowReturn;
+  const highAnnualReturn = settings.investmentHighReturn;
 
   const project = (rate: number) =>
     futureValueLumpSum(lumpSum, rate, years) +
@@ -27,13 +33,21 @@ export default function InvestmentGrowthProjector() {
 
   const low = project(lowAnnualReturn);
   const high = project(highAnnualReturn);
-  const invested = lumpSum + monthlyContribution * 12 * years;
+  const invested = lumpSum + monthlyContribution * 12 * years; // premiums paid in
+  const gainLow = Math.max(0, low - invested);
+  const gainHigh = Math.max(0, high - invested);
 
   const message = `Hi, the investment projector estimates ${formatTTD(
     low
-  )}–${formatTTD(high)} over ${years} years from what I put in. I'd like to talk investment options.`;
+  )}–${formatTTD(high)} over ${years} years from ${formatTTD(
+    invested
+  )} paid in. I'd like to talk investment options.`;
 
-  const pct = (n: number) => `${Math.round(n * 100)}%`;
+  // Whole percent, or one decimal when needed (e.g. 2.5%).
+  const pct = (n: number) => {
+    const v = n * 100;
+    return `${Number.isInteger(v) ? v : v.toFixed(1)}%`;
+  };
 
   return (
     <ToolFrame
@@ -66,25 +80,33 @@ export default function InvestmentGrowthProjector() {
               {formatTTD(low)} – {formatTTD(high)}
             </p>
             <p className="mt-1 text-xs text-white/60">
-              From {formatTTD(invested)} invested over the period
+              From {formatTTD(invested)} paid in over the period
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             <ResultCard
-              label="Cautious"
+              label="What you pay in (premiums)"
+              value={formatTTD(invested)}
+              note="Lump sum + all contributions, before any growth"
+            />
+            <ResultCard
+              label="What you'd gain (growth)"
+              value={`${formatTTD(gainLow)} – ${formatTTD(gainHigh)}`}
+              note="Projected value minus what you paid in"
+            />
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ResultCard
+              label="Cautious total"
               value={formatTTD(low)}
               note={`At ~${pct(lowAnnualReturn)}/yr`}
             />
             <ResultCard
-              label="Optimistic"
+              label="Optimistic total"
               value={formatTTD(high)}
               note={`At ~${pct(highAnnualReturn)}/yr`}
-            />
-            <ResultCard
-              label="Total you'd put in"
-              value={formatTTD(invested)}
-              note="Lump sum + contributions, before growth"
             />
           </div>
 
@@ -95,7 +117,7 @@ export default function InvestmentGrowthProjector() {
               lead={{
                 source: "investment-projector",
                 recommended: "Investments / Mutual Funds",
-                figures: { lumpSum, monthlyContribution, years, low, high },
+                figures: { lumpSum, monthlyContribution, years, invested, low, high },
               }}
             />
           </div>
@@ -108,8 +130,8 @@ export default function InvestmentGrowthProjector() {
 
       <Assumptions>
         Monthly compounding across a {pct(lowAnnualReturn)}–{pct(highAnnualReturn)}/yr
-        return range (editable in costFigures.ts). Illustration only. Returns
-        are not guaranteed and funds can fall as well as rise.
+        return range (editable in Studio → Calculator settings). Illustration
+        only. Returns are not guaranteed and funds can fall as well as rise.
       </Assumptions>
     </ToolFrame>
   );

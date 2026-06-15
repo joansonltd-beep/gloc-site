@@ -1,16 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { PENSION_ASSUMPTIONS } from "@/lib/costFigures";
 import { futureValueMonthly, realValue } from "@/lib/finance";
 import { formatTTD } from "@/lib/format";
+import type { CalculatorSettings } from "@/lib/defaults";
 import WhatsAppCTA from "./WhatsAppCTA";
 import { ToolFrame, Field, ResultCard, Assumptions } from "./ToolUI";
 
 // Pension-vs-Inflation projector (spec.md §7). Inputs: current age, monthly
 // contribution, retirement age. Output: savings-only vs structured plan, with
-// TT-dollar erosion shown.
-export default function PensionInflationProjector() {
+// TT-dollar erosion shown. Rates come from Sanity.
+export default function PensionInflationProjector({
+  settings,
+}: {
+  settings: CalculatorSettings;
+}) {
   const [age, setAge] = useState("");
   const [contribution, setContribution] = useState("");
   const [retireAge, setRetireAge] = useState("");
@@ -21,8 +25,9 @@ export default function PensionInflationProjector() {
   const years = retirementAge - currentAge;
   const ready = monthly > 0 && years > 0;
 
-  const { savingsAnnualReturn, structuredAnnualReturn, inflationAnnualRate } =
-    PENSION_ASSUMPTIONS;
+  const savingsAnnualReturn = settings.pensionSavingsReturn;
+  const structuredAnnualReturn = settings.pensionStructuredReturn;
+  const inflationAnnualRate = settings.pensionInflation;
 
   const savingsOnly = futureValueMonthly(monthly, savingsAnnualReturn, years);
   const structured = futureValueMonthly(monthly, structuredAnnualReturn, years);
@@ -34,7 +39,10 @@ export default function PensionInflationProjector() {
     savingsOnly
   )} just saving. I'd like to talk pension options.`;
 
-  const pct = (n: number) => `${Math.round(n * 100)}%`;
+  const pct = (n: number) => {
+    const v = n * 100;
+    return `${Number.isInteger(v) ? v : v.toFixed(1)}%`;
+  };
 
   return (
     <ToolFrame
@@ -114,7 +122,7 @@ export default function PensionInflationProjector() {
       <Assumptions>
         Monthly compounding. Structured plan ~{pct(structuredAnnualReturn)}/yr,
         plain savings ~{pct(savingsAnnualReturn)}/yr, inflation ~
-        {pct(inflationAnnualRate)}/yr (editable in costFigures.ts). Illustration
+        {pct(inflationAnnualRate)}/yr (editable in Studio → Calculator settings). Illustration
         only, not a guarantee of returns.
       </Assumptions>
     </ToolFrame>

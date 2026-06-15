@@ -1,20 +1,25 @@
 /**
- * One-time seed: pushes the bundled default content into Sanity so the agent
- * can edit it in Studio (spec.md §11).
+ * Seed: pushes the bundled default content into Sanity so the agent can edit it
+ * in Studio (spec.md §11).
  *
  * Run after setting NEXT_PUBLIC_SANITY_PROJECT_ID, NEXT_PUBLIC_SANITY_DATASET
  * and SANITY_API_WRITE_TOKEN in .env.local:
  *
  *   npm run seed
  *
- * Idempotent: uses fixed document ids + createOrReplace, so re-running it
- * resets the seeded docs to these defaults (your later Studio edits to OTHER
- * fields are overwritten, so only run it once at setup).
+ * Uses fixed document ids + createIfNotExists, so it only creates documents
+ * that don't exist yet. Re-running is SAFE: it never overwrites edits you've
+ * made in Studio, and it fills in any newly-added content types.
  */
 import { createClient } from "@sanity/client";
 import { CLUSTERS, LINES, TESTIMONIALS, type ClusterKey } from "../src/lib/content";
 import { DEFAULT_COST_FIGURES } from "../src/lib/costFigures";
-import { DEFAULT_SETTINGS, DEFAULT_ABOUT } from "../src/lib/defaults";
+import {
+  DEFAULT_SETTINGS,
+  DEFAULT_ABOUT,
+  DEFAULT_CALCULATOR,
+  DEFAULT_ILLNESS_COSTS,
+} from "../src/lib/defaults";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production";
@@ -35,15 +40,12 @@ const client = createClient({
   useCdn: false,
 });
 
-function clusterId(key: ClusterKey) {
-  return `cluster-${key}`;
-}
+const clusterId = (key: ClusterKey) => `cluster-${key}`;
 
 async function run() {
   const tx = client.transaction();
 
-  // Singletons
-  tx.createOrReplace({
+  tx.createIfNotExists({
     _id: "siteSettings",
     _type: "siteSettings",
     whatsappNumber: DEFAULT_SETTINGS.whatsappNumber,
@@ -56,15 +58,25 @@ async function run() {
     heroSubcopy: DEFAULT_SETTINGS.heroSubcopy,
   });
 
-  tx.createOrReplace({
+  tx.createIfNotExists({
     _id: "aboutContent",
     _type: "aboutContent",
     teaser: DEFAULT_ABOUT.teaser,
   });
 
-  // Clusters
+  // Calculator settings stored as percentages (decimals * 100).
+  tx.createIfNotExists({
+    _id: "calculatorSettings",
+    _type: "calculatorSettings",
+    investmentLowReturn: DEFAULT_CALCULATOR.investmentLowReturn * 100,
+    investmentHighReturn: DEFAULT_CALCULATOR.investmentHighReturn * 100,
+    pensionSavingsReturn: DEFAULT_CALCULATOR.pensionSavingsReturn * 100,
+    pensionStructuredReturn: DEFAULT_CALCULATOR.pensionStructuredReturn * 100,
+    pensionInflation: DEFAULT_CALCULATOR.pensionInflation * 100,
+  });
+
   CLUSTERS.forEach((c, i) => {
-    tx.createOrReplace({
+    tx.createIfNotExists({
       _id: clusterId(c.key),
       _type: "cluster",
       key: c.key,
@@ -75,10 +87,9 @@ async function run() {
     });
   });
 
-  // Lines (reference their cluster)
   (Object.keys(LINES) as ClusterKey[]).forEach((key) => {
     LINES[key].forEach((line, i) => {
-      tx.createOrReplace({
+      tx.createIfNotExists({
         _id: `line-${key}-${i}`,
         _type: "line",
         title: line.title,
@@ -90,9 +101,8 @@ async function run() {
     });
   });
 
-  // Testimonials
   TESTIMONIALS.forEach((t, i) => {
-    tx.createOrReplace({
+    tx.createIfNotExists({
       _id: `testimonial-${i}`,
       _type: "testimonial",
       quote: t.quote,
@@ -102,9 +112,8 @@ async function run() {
     });
   });
 
-  // Cost figures
   DEFAULT_COST_FIGURES.forEach((f) => {
-    tx.createOrReplace({
+    tx.createIfNotExists({
       _id: `costFigure-${f.key}`,
       _type: "costFigure",
       key: f.key,
@@ -115,11 +124,25 @@ async function run() {
     });
   });
 
+  DEFAULT_ILLNESS_COSTS.forEach((c, i) => {
+    tx.createIfNotExists({
+      _id: `illnessCost-${i}`,
+      _type: "illnessCost",
+      condition: c.condition,
+      costLow: c.costLow ?? undefined,
+      costHigh: c.costHigh ?? undefined,
+      unit: c.unit,
+      note: c.note,
+      order: i,
+    });
+  });
+
   await tx.commit();
   console.log(
-    `Seeded: site settings, about, ${CLUSTERS.length} clusters, ${
-      Object.values(LINES).flat().length
-    } lines, ${TESTIMONIALS.length} testimonials, ${DEFAULT_COST_FIGURES.length} cost figures.`
+    `Seed complete (createIfNotExists): settings, about, calculator settings, ` +
+      `${CLUSTERS.length} clusters, ${Object.values(LINES).flat().length} lines, ` +
+      `${TESTIMONIALS.length} testimonials, ${DEFAULT_COST_FIGURES.length} cost figures, ` +
+      `${DEFAULT_ILLNESS_COSTS.length} illness costs.`
   );
 }
 

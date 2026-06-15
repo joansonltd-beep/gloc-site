@@ -11,11 +11,15 @@ import { DEFAULT_COST_FIGURE_VALUES } from "@/lib/costFigures";
 import {
   DEFAULT_SETTINGS,
   DEFAULT_ABOUT,
+  DEFAULT_CALCULATOR,
+  DEFAULT_ILLNESS_COSTS,
   type SiteSettings,
   type AboutData,
+  type CalculatorSettings,
+  type IllnessCost,
 } from "@/lib/defaults";
 
-export type { SiteSettings, AboutData };
+export type { SiteSettings, AboutData, CalculatorSettings, IllnessCost };
 
 // --- normalized types the components consume ---------------------------
 export type ClusterData = {
@@ -67,6 +71,13 @@ const LINES_QUERY = `*[_type == "line"]|order(order asc){title, blurb, icon, "cl
 const TESTIMONIALS_QUERY = `*[_type == "testimonial"]|order(order asc){quote, person, relatedLine}`;
 const COST_FIGURES_QUERY = `*[_type == "costFigure"]{key, value}`;
 const ABOUT_QUERY = `*[_type == "aboutContent"][0]{teaser, story, videoUrl, credentials}`;
+const CALCULATOR_QUERY = `*[_type == "calculatorSettings"][0]{
+  investmentLowReturn, investmentHighReturn,
+  pensionSavingsReturn, pensionStructuredReturn, pensionInflation
+}`;
+const ILLNESS_COSTS_QUERY = `*[_type == "illnessCost"]|order(order asc){
+  condition, costLow, costHigh, unit, note
+}`;
 
 // Cache CMS reads for a minute; edits show up shortly after publishing.
 const fetchOpts = { next: { revalidate: 60 } } as const;
@@ -125,4 +136,21 @@ export async function getCostFigures(): Promise<Record<string, number>> {
 export async function getAbout(): Promise<AboutData> {
   const res = await query<Partial<AboutData>>(ABOUT_QUERY);
   return res ? { ...DEFAULT_ABOUT, ...stripNulls(res) } : DEFAULT_ABOUT;
+}
+
+export async function getCalculatorSettings(): Promise<CalculatorSettings> {
+  const res = await query<Record<string, number | null>>(CALCULATOR_QUERY);
+  if (!res) return DEFAULT_CALCULATOR;
+  // Sanity stores percentages (e.g. 2.5); convert to decimals (0.025).
+  const out = { ...DEFAULT_CALCULATOR };
+  for (const k of Object.keys(out) as (keyof CalculatorSettings)[]) {
+    const v = res[k];
+    if (typeof v === "number") out[k] = v / 100;
+  }
+  return out;
+}
+
+export async function getIllnessCosts(): Promise<IllnessCost[]> {
+  const res = await query<IllnessCost[]>(ILLNESS_COSTS_QUERY);
+  return res?.length ? res : DEFAULT_ILLNESS_COSTS;
 }

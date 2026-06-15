@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
 import PensionInflationProjector from "@/components/tools/PensionInflationProjector";
 import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
-import { getCluster, getLines } from "@/lib/siteData";
+import { getCluster, getLines, getCalculatorSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: "Grow: Pension, Annuities & Investments",
@@ -11,15 +11,16 @@ export const metadata: Metadata = {
 };
 
 export default async function GrowPage() {
-  const [cluster, lines] = await Promise.all([
+  const [cluster, lines, calc] = await Promise.all([
     getCluster("grow"),
     getLines("grow"),
+    getCalculatorSettings(),
   ]);
 
   return (
     <ClusterHub cluster={cluster} lines={lines}>
-      <PensionInflationProjector />
-      <InvestmentGrowthProjector />
+      <PensionInflationProjector settings={calc} />
+      <InvestmentGrowthProjector settings={calc} />
     </ClusterHub>
   );
 }

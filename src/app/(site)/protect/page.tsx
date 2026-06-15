@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
 import ProtectionPlanner from "@/components/tools/ProtectionPlanner";
-import { getCluster, getLines, getCostFigures } from "@/lib/siteData";
+import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
+import { getCluster, getLines, getCostFigures, getIllnessCosts } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: "Protect: Life, Health & Critical Illness",
@@ -10,15 +11,17 @@ export const metadata: Metadata = {
 };
 
 export default async function ProtectPage() {
-  const [cluster, lines, costFigures] = await Promise.all([
+  const [cluster, lines, costFigures, illnessCosts] = await Promise.all([
     getCluster("protect"),
     getLines("protect"),
     getCostFigures(),
+    getIllnessCosts(),
   ]);
 
   return (
     <ClusterHub cluster={cluster} lines={lines}>
       <ProtectionPlanner costFigures={costFigures} />
+      <CriticalIllnessExplorer illnessCosts={illnessCosts} />
     </ClusterHub>
   );
 }

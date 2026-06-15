@@ -35,6 +35,58 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   headshotUrl: null,
 };
 
+// Calculator rates (decimals). Editable in Sanity (entered there as percents).
+export type CalculatorSettings = {
+  investmentLowReturn: number; // "cautious"
+  investmentHighReturn: number; // "optimistic"
+  pensionSavingsReturn: number;
+  pensionStructuredReturn: number;
+  pensionInflation: number;
+};
+
+export const DEFAULT_CALCULATOR: CalculatorSettings = {
+  investmentLowReturn: 0.025, // 2.5%/yr
+  investmentHighReturn: 0.08, // 8%/yr
+  pensionSavingsReturn: 0.01, // 1%/yr
+  pensionStructuredReturn: 0.06, // 6%/yr
+  pensionInflation: 0.04, // 4%/yr
+};
+
+// Critical-illness condition costs, TT$ (spec.md §10 placeholders, verify locally).
+// Conditions without a procedure price are ongoing-care / income-replacement and
+// carry a note instead of a figure.
+export type IllnessCost = {
+  condition: string;
+  costLow: number | null;
+  costHigh: number | null;
+  unit: "total" | "year" | "day";
+  note: string;
+};
+
+export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [
+  { condition: "Cancer", costLow: 70_000, costHigh: 1_360_000, unit: "total", note: "Full chemotherapy / radiation / surgery course; varies by type and stage." },
+  { condition: "Heart Attack", costLow: 475_000, costHigh: 1_360_000, unit: "total", note: "Angioplasty/stent or bypass surgery." },
+  { condition: "Coronary Artery Disease Surgery", costLow: 475_000, costHigh: 1_360_000, unit: "total", note: "Coronary bypass (CABG)." },
+  { condition: "Heart Valve & Structural Surgery", costLow: 540_000, costHigh: 1_360_000, unit: "total", note: "Valve repair or replacement." },
+  { condition: "Aorta Surgery", costLow: 340_000, costHigh: 1_020_000, unit: "total", note: "Aneurysm / aorta repair." },
+  { condition: "Benign Brain Tumor", costLow: 340_000, costHigh: 1_020_000, unit: "total", note: "Craniotomy / removal surgery." },
+  { condition: "Major Organ Transplant", costLow: 100_000, costHigh: 3_000_000, unit: "total", note: "Often performed overseas; cost varies widely by organ and country." },
+  { condition: "Major Burns", costLow: 340_000, costHigh: 1_360_000, unit: "total", note: "Severe burns: ICU, grafts and rehabilitation." },
+  { condition: "Stroke", costLow: 200_000, costHigh: 820_000, unit: "total", note: "Acute treatment plus rehabilitation." },
+  { condition: "Coma", costLow: 20_000, costHigh: 68_000, unit: "day", note: "Prolonged intensive care, charged per day." },
+  { condition: "Deafness", costLow: 200_000, costHigh: 680_000, unit: "total", note: "Cochlear implant, surgery and rehabilitation." },
+  { condition: "Kidney Failure", costLow: 180_000, costHigh: 180_000, unit: "year", note: "Ongoing dialysis (~TT$15,000/month)." },
+  { condition: "Paralysis", costLow: 680_000, costHigh: 680_000, unit: "total", note: "First-year care; lifetime costs are higher." },
+  { condition: "Loss of Limbs", costLow: 34_000, costHigh: 475_000, unit: "total", note: "Surgery plus prosthetics and rehabilitation." },
+  { condition: "Blindness", costLow: null, costHigh: null, unit: "total", note: "Aids, adaptation and income replacement; varies." },
+  { condition: "Loss of Speech", costLow: null, costHigh: null, unit: "total", note: "Therapy and income replacement; varies." },
+  { condition: "Multiple Sclerosis", costLow: null, costHigh: null, unit: "total", note: "Ongoing medication and care over many years; varies." },
+  { condition: "Motor Neuron Disease", costLow: null, costHigh: null, unit: "total", note: "Ongoing care and equipment; varies." },
+  { condition: "Permanent Disablement", costLow: null, costHigh: null, unit: "total", note: "Income replacement based on your earnings." },
+  { condition: "Alzheimer's Disease", costLow: null, costHigh: null, unit: "total", note: "Long-term care over years; varies." },
+  { condition: "Parkinson's Disease", costLow: null, costHigh: null, unit: "total", note: "Ongoing medication and care; varies." },
+];
+
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
     "an independent Guardian Group adviser based in Trinidad & Tobago, helping young professionals and families make good decisions about their money and their cover.",
