@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import NavLink from "@/components/NavLink";
 import { SiteSettingsProvider } from "@/components/SiteSettingsProvider";
@@ -34,7 +36,19 @@ export default async function SiteLayout({
 
       <div className="flex min-h-full flex-col">
         <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
-          <nav className="mx-auto max-w-5xl px-4 py-4">
+          <nav className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-5 gap-y-3 px-4 py-3">
+            {settings.logoUrl ? (
+              <Link href="/" aria-label="Home" className="shrink-0">
+                <Image
+                  src={settings.logoUrl}
+                  alt={settings.agentName}
+                  width={180}
+                  height={90}
+                  priority
+                  className="h-11 w-auto mix-blend-multiply"
+                />
+              </Link>
+            ) : null}
             <ul className="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -51,7 +65,17 @@ export default async function SiteLayout({
 
         <footer className="border-t border-slate-200">
           <div className="mx-auto max-w-5xl space-y-2 px-4 py-8 text-xs text-slate-500">
-            <p className="font-semibold text-slate-600">{settings.agentName}</p>
+            {settings.logoUrl ? (
+              <Image
+                src={settings.logoUrl}
+                alt={settings.agentName}
+                width={240}
+                height={120}
+                className="mb-2 h-16 w-auto mix-blend-multiply"
+              />
+            ) : (
+              <p className="font-semibold text-slate-600">{settings.agentName}</p>
+            )}
             <p>{settings.footerDisclaimer}</p>
             <p className="pt-2 text-slate-400">
               © {year} {settings.agentName}. {settings.glocAffiliationLine}.

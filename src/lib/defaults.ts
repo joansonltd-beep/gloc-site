@@ -11,6 +11,7 @@ export type SiteSettings = {
   heroHeadline: string;
   heroSubcopy: string;
   headshotUrl: string | null;
+  logoUrl: string | null;
 };
 
 export type AboutData = {
@@ -34,6 +35,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   heroSubcopy:
     "Protecting your family, growing your money, insuring what you own, or covering your team. Tell me what you need and I'll help you find the right fit.",
   headshotUrl: null,
+  logoUrl: null,
 };
 
 // Calculator rates (decimals). Editable in Sanity (entered there as percents).

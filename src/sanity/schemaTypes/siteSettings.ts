@@ -44,6 +44,13 @@ export const siteSettings = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "logo",
+      title: "Logo",
+      description:
+        "Shown in the header and footer. A white background is fine; it blends away automatically.",
+      type: "image",
+    }),
+    defineField({
       name: "heroEyebrow",
       title: "Hero eyebrow",
       description: "Small line above the hero headline.",
