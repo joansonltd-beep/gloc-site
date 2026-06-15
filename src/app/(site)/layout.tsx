@@ -39,7 +39,7 @@ export default async function SiteLayout({
               href="/"
               className="rounded font-semibold tracking-tight text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
-              Guardian Agent
+              Home
             </Link>
             <ul className="flex flex-wrap gap-x-4 gap-y-2">
               {navLinks.map((link) => (
