@@ -66,6 +66,12 @@ export const LINES: Record<ClusterKey, Line[]> = {
       blurb:
         "A tax-free lump sum on diagnosis of cancer, heart attack, stroke and more, so you can focus on recovery instead of bills.",
     },
+    {
+      title: "Personal Accident",
+      icon: "🚑",
+      blurb:
+        "A cash benefit if an accident causes injury, disability or death. It pays on top of your other cover, at work, on the road and at play.",
+    },
   ],
   grow: [
     {
