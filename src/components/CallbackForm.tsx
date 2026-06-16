@@ -42,6 +42,8 @@ export default function CallbackForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           source: "callback-form",
+          name,
+          phone,
           message,
           recommended: topic || "General enquiry",
           underwriting, // internal, for the sheet only
