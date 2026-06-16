@@ -44,7 +44,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
           </a>
           <a
             href="#router"
-            className="px-2 py-3 text-sm font-semibold text-accent-dark hover:underline"
+            className="animate-pop rounded-lg border border-accent/40 bg-accent/10 px-5 py-3 text-sm font-semibold text-accent-dark transition hover:bg-accent/20 active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             Or find what fits me ↓
           </a>

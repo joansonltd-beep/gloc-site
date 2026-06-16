@@ -49,3 +49,19 @@ body {
     var(--color-sun)
   );
 }
+
+/* Gentle attention pulse ("pop in and out"). */
+@keyframes pop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.animate-pop {
+  animation: pop 1.8s ease-in-out infinite;
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop {
+    animation: none;
+  }
+}
