@@ -40,10 +40,10 @@ export const metadata: Metadata = {
       "Protect your family, grow your wealth, insure your assets, cover your business. One straightforward conversation away.",
   },
   twitter: { card: "summary_large_image" },
-  // Set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION to verify in Google Search Console.
-  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  // Google Search Console verification (public token, safe to commit).
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "VRywR5Rn38kExZ",
+  },
 };
 
 // Minimal root layout: just html/body. The site chrome lives in (site)/layout
