@@ -13,13 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Google Search Console token. Accepts either a bare token or a full <meta> tag
-// (extracts the content value) so a pasted tag in the env var still works.
-const rawGoogleVerification =
-  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
-  "VRywR5Rn38kExZbiFZyYiKT7a1pt-DENH8-uitRodb0";
-const googleVerification =
-  rawGoogleVerification.match(/content=["']?([^"'\s>]+)/)?.[1] || rawGoogleVerification;
+// Google Search Console token (public, safe to commit). Hardcoded so the
+// Vercel env var can't mangle it.
+const googleVerification = "VRywR5Rn38kExZbiFZyYiKT7a1pt-DENH8-uitRodb0";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
