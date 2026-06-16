@@ -4,6 +4,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import NavLink from "@/components/NavLink";
 import { SiteSettingsProvider } from "@/components/SiteSettingsProvider";
 import { getSiteSettings } from "@/lib/siteData";
+import { SITE_URL } from "@/lib/siteUrl";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -25,8 +26,37 @@ export default async function SiteLayout({
   const settings = await getSiteSettings();
   const year = new Date().getFullYear();
 
+  // Structured data so Google understands the business (helps local search).
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    name: settings.agentName,
+    description:
+      "Independent insurance agent in Trinidad & Tobago: life, health, critical illness, pension, annuities, investments, motor, home, property and group benefits.",
+    url: SITE_URL,
+    image: settings.logoUrl || settings.headshotUrl || undefined,
+    telephone: settings.whatsappNumber ? `+${settings.whatsappNumber.replace(/\D/g, "")}` : undefined,
+    areaServed: { "@type": "Country", name: "Trinidad and Tobago" },
+    knowsAbout: [
+      "Life insurance",
+      "Health insurance",
+      "Critical illness cover",
+      "Personal accident",
+      "Pension and annuities",
+      "Investments and mutual funds",
+      "Motor insurance",
+      "Home insurance",
+      "Property insurance",
+      "Group and employee benefits",
+    ],
+  };
+
   return (
     <SiteSettingsProvider whatsappNumber={settings.whatsappNumber}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
