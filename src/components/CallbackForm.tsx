@@ -4,16 +4,37 @@ import { useState } from "react";
 import { Field, SelectField } from "@/components/tools/ToolUI";
 import { routineRequirements, ageFromDob } from "@/lib/underwriting";
 
+// Things a visitor might want to take care of (customer-facing wording).
+const GOALS = [
+  "Life insurance",
+  "Mortgage protection",
+  "Education funding",
+  "Funeral expenses",
+  "Health insurance",
+  "Critical illness cover",
+  "Accident cover",
+  "Income protection",
+  "Retirement planning",
+  "Savings and investments",
+  "Estate planning",
+  "Tax savings",
+  "Property insurance",
+  "Liability insurance",
+  "Travel insurance",
+  "Business protection",
+  "Key-person cover",
+  "Employee benefits",
+];
+
 // Request-a-callback form. Posts to /api/lead, which forwards to the Google
 // Sheet. An on-site alternative to WhatsApp for visitors who prefer a call.
-// The optional details (date of birth, cover amount, smoker, income) let the
-// agent pre-fill underwriting requirements on the lead sheet — those computed
-// requirements go to the sheet only and are never shown to the visitor.
+// Optional details (date of birth, cover amount, tobacco, income) let the agent
+// pre-fill underwriting requirements on the lead sheet only.
 export default function CallbackForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [bestTime, setBestTime] = useState("Anytime");
-  const [topic, setTopic] = useState("");
+  const [goals, setGoals] = useState<string[]>([]);
   const [dob, setDob] = useState("");
   const [cover, setCover] = useState("");
   const [smoker, setSmoker] = useState("");
@@ -22,6 +43,12 @@ export default function CallbackForm() {
 
   const ready = name.trim().length > 0 && phone.trim().length >= 7;
 
+  function toggleGoal(goal: string) {
+    setGoals((prev) =>
+      prev.includes(goal) ? prev.filter((g) => g !== goal) : [...prev, goal]
+    );
+  }
+
   async function submit() {
     if (!ready || status === "sending") return;
     setStatus("sending");
@@ -29,11 +56,11 @@ export default function CallbackForm() {
     const age = ageFromDob(dob);
     const coverAmount = Number(cover) || undefined;
     const annualIncome = Number(income) || undefined;
-    // Internal: indicated routine underwriting requirements (sheet only).
     const underwriting = routineRequirements(age, coverAmount);
+    const goalsText = goals.join(", ");
 
     const message = `Callback request from ${name} (${phone}). Best time: ${bestTime}.${
-      topic ? ` About: ${topic}` : ""
+      goalsText ? ` Wants to take care of: ${goalsText}.` : ""
     }`;
 
     try {
@@ -45,13 +72,13 @@ export default function CallbackForm() {
           name,
           phone,
           message,
-          recommended: topic || "General enquiry",
+          recommended: goalsText || "General enquiry",
           underwriting, // internal, for the sheet only
           figures: {
             name,
             phone,
             bestTime,
-            topic,
+            goals,
             dateOfBirth: dob || undefined,
             age,
             coverConsidered: coverAmount,
@@ -104,14 +131,39 @@ export default function CallbackForm() {
             { value: "Evening", label: "Evening" },
           ]}
         />
-        <Field
-          label="What's it about? (optional)"
-          value={topic}
-          onChange={setTopic}
-          placeholder="e.g. life insurance"
-          type="text"
-        />
       </div>
+
+      <fieldset className="mt-6">
+        <legend className="text-sm font-medium text-slate-700">
+          What would you like to take care of?
+        </legend>
+        <p className="mt-1 text-xs text-slate-500">
+          Pick anything you&apos;re thinking about. It helps me prepare for our call.
+        </p>
+        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {GOALS.map((goal) => {
+            const checked = goals.includes(goal);
+            return (
+              <label
+                key={goal}
+                className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm transition ${
+                  checked
+                    ? "border-brand bg-brand/5 text-brand"
+                    : "border-slate-200 text-slate-700 hover:border-brand/50"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => toggleGoal(goal)}
+                  className="h-4 w-4 accent-[color:var(--color-brand)]"
+                />
+                {goal}
+              </label>
+            );
+          })}
+        </div>
+      </fieldset>
 
       <p className="mt-6 text-sm font-medium text-slate-700">
         A few optional details to speed up your quote
@@ -146,7 +198,7 @@ export default function CallbackForm() {
         type="button"
         onClick={submit}
         disabled={!ready || status === "sending"}
-        className="mt-5 w-full rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-light active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:w-auto"
+        className="mt-6 w-full rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-light active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:w-auto"
       >
         {status === "sending" ? "Sending…" : "Request my callback"}
       </button>
