@@ -2,14 +2,22 @@
 
 import { useState } from "react";
 import { Field, SelectField } from "@/components/tools/ToolUI";
+import { routineRequirements, ageFromDob } from "@/lib/underwriting";
 
 // Request-a-callback form. Posts to /api/lead, which forwards to the Google
 // Sheet. An on-site alternative to WhatsApp for visitors who prefer a call.
+// The optional details (date of birth, cover amount, smoker, income) let the
+// agent pre-fill underwriting requirements on the lead sheet — those computed
+// requirements go to the sheet only and are never shown to the visitor.
 export default function CallbackForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [bestTime, setBestTime] = useState("Anytime");
   const [topic, setTopic] = useState("");
+  const [dob, setDob] = useState("");
+  const [cover, setCover] = useState("");
+  const [smoker, setSmoker] = useState("");
+  const [income, setIncome] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
 
   const ready = name.trim().length > 0 && phone.trim().length >= 7;
@@ -17,9 +25,17 @@ export default function CallbackForm() {
   async function submit() {
     if (!ready || status === "sending") return;
     setStatus("sending");
+
+    const age = ageFromDob(dob);
+    const coverAmount = Number(cover) || undefined;
+    const annualIncome = Number(income) || undefined;
+    // Internal: indicated routine underwriting requirements (sheet only).
+    const underwriting = routineRequirements(age, coverAmount);
+
     const message = `Callback request from ${name} (${phone}). Best time: ${bestTime}.${
       topic ? ` About: ${topic}` : ""
     }`;
+
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
@@ -28,7 +44,19 @@ export default function CallbackForm() {
           source: "callback-form",
           message,
           recommended: topic || "General enquiry",
-          figures: { name, phone, bestTime, topic },
+          underwriting, // internal, for the sheet only
+          figures: {
+            name,
+            phone,
+            bestTime,
+            topic,
+            dateOfBirth: dob || undefined,
+            age,
+            coverConsidered: coverAmount,
+            annualIncome,
+            smoker: smoker || undefined,
+            underwritingRequirements: underwriting || undefined,
+          },
           page: typeof window !== "undefined" ? window.location.pathname : "",
           submittedAt: new Date().toISOString(),
         }),
@@ -80,6 +108,35 @@ export default function CallbackForm() {
           onChange={setTopic}
           placeholder="e.g. life insurance"
           type="text"
+        />
+      </div>
+
+      <p className="mt-6 text-sm font-medium text-slate-700">
+        A few optional details to speed up your quote
+      </p>
+      <div className="mt-3 grid gap-4 sm:grid-cols-2">
+        <Field label="Date of birth (optional)" value={dob} onChange={setDob} type="date" />
+        <Field
+          label="Cover you're considering, TT$ (optional)"
+          value={cover}
+          onChange={setCover}
+          placeholder="e.g. 1000000"
+        />
+        <SelectField
+          label="Do you use tobacco? (optional)"
+          value={smoker}
+          onChange={setSmoker}
+          options={[
+            { value: "", label: "Prefer not to say" },
+            { value: "No", label: "No" },
+            { value: "Yes", label: "Yes (last 12 months)" },
+          ]}
+        />
+        <Field
+          label="Annual income, TT$ (optional)"
+          value={income}
+          onChange={setIncome}
+          placeholder="e.g. 180000"
         />
       </div>
 

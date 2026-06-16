@@ -4,10 +4,14 @@
  * deploy as a Web app (Execute as: Me, Who has access: Anyone).
  *
  * It appends one row per lead. Columns:
- *   submittedAt | source | page | recommended | message | figures
+ *   submittedAt | source | page | recommended | underwriting | message | figures
+ *
+ * `underwriting` holds the indicated routine UW requirements (from the callback
+ * form's optional age + cover details) for internal use. The same details are
+ * also inside the `figures` JSON.
  */
 
-var HEADERS = ['submittedAt', 'source', 'page', 'recommended', 'message', 'figures'];
+var HEADERS = ['submittedAt', 'source', 'page', 'recommended', 'underwriting', 'message', 'figures'];
 
 function doPost(e) {
   try {
@@ -28,6 +32,7 @@ function doPost(e) {
       data.source || '',
       data.page || '',
       data.recommended || '',
+      data.underwriting || '',
       data.message || '',
       data.figures ? JSON.stringify(data.figures) : ''
     ]);
