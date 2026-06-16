@@ -6,7 +6,7 @@ import { getCluster, getLines } from "@/lib/siteData";
 export const metadata: Metadata = {
   title: "Assets: Motor, Home & Property",
   description:
-    "Insure what you own: motor, home and property cover. Request a quick quote.",
+    "Insure what you own: motor, home and property cover. Send your details and I'll follow up.",
 };
 
 export default async function AssetsPage() {

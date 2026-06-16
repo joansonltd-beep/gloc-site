@@ -166,7 +166,7 @@ export default function CallbackForm() {
       </fieldset>
 
       <p className="mt-6 text-sm font-medium text-slate-700">
-        A few optional details to speed up your quote
+        A few optional details to help me prepare for our conversation
       </p>
       <div className="mt-3 grid gap-4 sm:grid-cols-2">
         <Field label="Date of birth (optional)" value={dob} onChange={setDob} type="date" />

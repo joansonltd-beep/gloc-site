@@ -12,6 +12,7 @@ import PensionInflationProjector from "@/components/tools/PensionInflationProjec
 import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
 import QuickQuoteRequest from "@/components/tools/QuickQuoteRequest";
 import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
+import TermInsuranceForm from "@/components/tools/TermInsuranceForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 
 // Detail page for a single product line: what it is, why it matters, and the
@@ -97,6 +98,8 @@ export default async function LineDetail({
       </div>
 
       {calculator}
+
+      {detail.slug === "life-insurance" ? <TermInsuranceForm /> : null}
 
       <section className="rounded-2xl bg-gradient-to-br from-brand-light via-brand to-brand-dark p-6 text-white sm:p-8">
         <h2 className="text-xl font-semibold">Ready to talk it through?</h2>

@@ -30,14 +30,14 @@ export default function QuickQuoteRequest() {
   const typeLabel =
     ASSET_TYPES.find((a) => a.value === assetType)?.label ?? assetType;
 
-  const message = `Hi, I'd like a quick quote for ${typeLabel.toLowerCase()}. Details: ${details}${
+  const message = `Hi, I'd like to ask about cover for ${typeLabel.toLowerCase()}. Details: ${details}${
     estValue ? `. Estimated value: ${formatTTD(estValue)}` : ""
   }.`;
 
   return (
     <ToolFrame
-      title="Quick-Quote Request"
-      intro="Tell me what you'd like covered and I'll come back with a quote. The button below opens WhatsApp with your details ready to send."
+      title="Quick enquiry"
+      intro="Tell me what you'd like covered and I'll follow up with you. The button below opens WhatsApp with your details ready to send."
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <SelectField
