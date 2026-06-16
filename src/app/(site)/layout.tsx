@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import NavLink from "@/components/NavLink";
+import SocialLinks from "@/components/SocialLinks";
+import MobileCtaBar from "@/components/MobileCtaBar";
 import { SiteSettingsProvider } from "@/components/SiteSettingsProvider";
 import { getSiteSettings } from "@/lib/siteData";
 import { SITE_URL } from "@/lib/siteUrl";
@@ -94,7 +96,7 @@ export default async function SiteLayout({
         </main>
 
         <footer className="border-t border-slate-200">
-          <div className="mx-auto max-w-5xl space-y-2 px-4 py-8 text-xs text-slate-500">
+          <div className="mx-auto max-w-5xl space-y-2 px-4 pt-8 pb-24 text-xs text-slate-500 sm:pb-8">
             {settings.logoUrl ? (
               <Image
                 src={settings.logoUrl}
@@ -107,6 +109,7 @@ export default async function SiteLayout({
               <p className="font-semibold text-slate-600">{settings.agentName}</p>
             )}
             <p>{settings.footerDisclaimer}</p>
+            <SocialLinks settings={settings} className="pt-3" />
             <p className="pt-2 text-slate-400">
               © {year} {settings.agentName}. {settings.glocAffiliationLine}.
             </p>
@@ -114,6 +117,7 @@ export default async function SiteLayout({
         </footer>
 
         <WhatsAppFloat />
+        <MobileCtaBar />
       </div>
     </SiteSettingsProvider>
   );

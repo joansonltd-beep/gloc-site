@@ -51,6 +51,36 @@ export const siteSettings = defineType({
       type: "image",
     }),
     defineField({
+      name: "facebookUrl",
+      title: "Facebook URL",
+      type: "url",
+    }),
+    defineField({
+      name: "instagramUrl",
+      title: "Instagram URL",
+      type: "url",
+    }),
+    defineField({
+      name: "linkedinUrl",
+      title: "LinkedIn URL",
+      type: "url",
+    }),
+    defineField({
+      name: "tiktokUrl",
+      title: "TikTok URL",
+      type: "url",
+    }),
+    defineField({
+      name: "youtubeUrl",
+      title: "YouTube URL",
+      type: "url",
+    }),
+    defineField({
+      name: "xUrl",
+      title: "X (Twitter) URL",
+      type: "url",
+    }),
+    defineField({
       name: "heroEyebrow",
       title: "Hero eyebrow",
       description: "Small line above the hero headline.",

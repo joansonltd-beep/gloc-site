@@ -1,14 +1,23 @@
 import Hero from "@/components/Hero";
 import NeedsRouter from "@/components/NeedsRouter";
 import ClusterCards from "@/components/ClusterCards";
+import WhyWorkWithMe from "@/components/WhyWorkWithMe";
+import HowItWorks from "@/components/HowItWorks";
+import Credibility from "@/components/Credibility";
+import TestimonialBand from "@/components/TestimonialBand";
 import AboutTeaser from "@/components/AboutTeaser";
-import { getSiteSettings, getClusters, getAbout } from "@/lib/siteData";
+import {
+  getSiteSettings,
+  getClusters,
+  getTestimonials,
+  getAbout,
+} from "@/lib/siteData";
 
-// M1 landing page, now sourcing content from Sanity (spec.md §6, §9, §11).
 export default async function Home() {
-  const [settings, clusters, about] = await Promise.all([
+  const [settings, clusters, testimonials, about] = await Promise.all([
     getSiteSettings(),
     getClusters(),
+    getTestimonials(),
     getAbout(),
   ]);
 
@@ -17,6 +26,10 @@ export default async function Home() {
       <Hero settings={settings} />
       <NeedsRouter />
       <ClusterCards clusters={clusters} />
+      <WhyWorkWithMe />
+      <HowItWorks />
+      <Credibility agentName={settings.agentName} />
+      <TestimonialBand testimonials={testimonials} />
       <AboutTeaser
         agentName={settings.agentName}
         teaser={about.teaser}

@@ -30,7 +30,7 @@ export default function AboutTeaser({
       </div>
       <div>
         <h2 className="text-2xl font-semibold tracking-tight text-brand">
-          A local adviser who actually explains things
+          A local agent who actually explains things
         </h2>
         <p className="mt-2 max-w-prose text-slate-600">
           {agentName} is {teaser}

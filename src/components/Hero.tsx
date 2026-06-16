@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { SiteSettings } from "@/lib/siteData";
+import { buildWhatsAppLink } from "@/config/site";
 
 // Agent-led hero (spec.md §9). Compact and text-led so the Needs-Router is
 // reachable quickly; the photo is a supporting element, not the whole screen.
@@ -23,17 +25,28 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <a
-            href="#router"
-            className="rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-light active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+          <Link
+            href="/book"
+            className="rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
-            Find what fits me
-          </a>
+            Book a consultation
+          </Link>
           <a
-            href="/about"
+            href={buildWhatsAppLink(
+              settings.whatsappNumber,
+              "Hi, I'd like to ask about insurance cover."
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-lg border border-slate-300 bg-white/70 px-5 py-3 text-sm font-semibold text-brand transition hover:border-brand active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
-            Meet your agent
+            Message on WhatsApp
+          </a>
+          <a
+            href="#router"
+            className="px-2 py-3 text-sm font-semibold text-accent-dark hover:underline"
+          >
+            Or find what fits me ↓
           </a>
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       onClick={() => captureLead({ source: "float-button", message })}
-      className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 font-semibold text-white shadow-lg transition hover:bg-[#1ebe5b] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]"
+      className="fixed bottom-5 right-5 z-40 hidden items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 font-semibold text-white shadow-lg transition hover:bg-[#1ebe5b] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366] sm:flex"
     >
       <svg
         viewBox="0 0 32 32"

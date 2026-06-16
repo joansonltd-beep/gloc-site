@@ -12,6 +12,12 @@ export type SiteSettings = {
   heroSubcopy: string;
   headshotUrl: string | null;
   logoUrl: string | null;
+  facebookUrl: string | null;
+  instagramUrl: string | null;
+  linkedinUrl: string | null;
+  tiktokUrl: string | null;
+  youtubeUrl: string | null;
+  xUrl: string | null;
 };
 
 export type AboutData = {
@@ -30,12 +36,18 @@ export const DEFAULT_SETTINGS: SiteSettings = {
     "This website is for general information only and is not financial advice. Contact us to discuss cover suited to your needs.",
   agentName: "Joanson Baptiste James",
   agentTagline: "Insurance Agent",
-  heroEyebrow: "Insurance for Trinidad & Tobago",
-  heroHeadline: "Get the right cover before you need it.",
+  heroEyebrow: "Insurance Agent · Trinidad & Tobago",
+  heroHeadline: "Protect what you've built. Plan for what's next.",
   heroSubcopy:
-    "Protecting your family, growing your money, insuring what you own, or covering your team. Tell me what you need and I'll help you find the right fit.",
+    "I help individuals, families and business owners across Trinidad and Tobago protect what they have worked hard for, and plan ahead for the goals still in front of them. Let's look at your options together.",
   headshotUrl: null,
   logoUrl: null,
+  facebookUrl: null,
+  instagramUrl: null,
+  linkedinUrl: null,
+  tiktokUrl: null,
+  youtubeUrl: null,
+  xUrl: null,
 };
 
 // Calculator rates (decimals). Editable in Sanity (entered there as percents).
@@ -99,7 +111,7 @@ export const DEFAULT_ABOUT: AboutData = {
     "Whether you are just starting out, raising a family, or running a business, I am happy to talk it through. Reach out any time and we will figure out the right next step together.",
   ],
   credentials: [
-    "Licensed life and health insurance adviser",
+    "Licensed life and health insurance agent",
     "Authorized Guardian Representative",
     "Based in Trinidad & Tobago",
   ],
