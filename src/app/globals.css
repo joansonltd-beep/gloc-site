@@ -1,38 +1,51 @@
 @import "tailwindcss";
 
 /*
-  Professional blue palette (Facebook-style blue), deliberately away from the
-  navy/gold "AI" look. Restrained and trustworthy. Retune here in one place.
+  Palette anchored to the Guardian Group brand: deep purple wordmark plus the
+  warm red-orange-yellow swoosh. The logo itself is NOT displayed anywhere
+  (spec.md §12); we only borrow the colours. Retune here in one place.
 */
 @theme {
-  --color-brand: #1877f2;        /* primary blue */
-  --color-brand-dark: #0b4fc2;   /* deeper blue for gradients/hover */
-  --color-brand-light: #4f93f7;  /* lighter blue */
-  --color-accent: #0a66c2;       /* accent blue */
-  --color-accent-dark: #084e96;  /* accent for text on white */
-  --color-flame: #0b4fc2;        /* kept for the accent gradient (blue now) */
-  --color-sun: #4f93f7;          /* kept for the accent gradient (blue now) */
+  --color-brand: #582c83;        /* Guardian purple */
+  --color-brand-dark: #3c1d5a;
+  --color-brand-light: #7a4fa8;
+  --color-accent: #f5821f;       /* warm orange from the swoosh */
+  --color-accent-dark: #c25e00;  /* darker orange for text contrast on white */
+  --color-flame: #e2231a;        /* swoosh red */
+  --color-sun: #ffc20e;          /* swoosh yellow */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Calm, professional background: a single soft blue wash at the top, fading to
-   white. Subtle on purpose. */
+/* Bold, warm Caribbean wash: a confident purple + orange + gold sweep across the
+   top of every page, fixed behind the content. */
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(60% 45% at 50% -8%, color-mix(in srgb, var(--color-brand) 12%, transparent), transparent 60%),
+    /* whole-viewport diagonal warm field so colour shows across every page */
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-accent) 24%, transparent) 0%,
+      color-mix(in srgb, var(--color-sun) 16%, transparent) 22%,
+      color-mix(in srgb, var(--color-flame) 10%, transparent) 45%,
+      color-mix(in srgb, var(--color-brand-light) 16%, transparent) 72%,
+      color-mix(in srgb, var(--color-brand) 26%, transparent) 100%
+    ),
+    /* bolder pools at the corners */
+    radial-gradient(70% 55% at 4% -8%, color-mix(in srgb, var(--color-accent) 38%, transparent), transparent 55%),
+    radial-gradient(75% 60% at 100% -10%, color-mix(in srgb, var(--color-brand) 46%, transparent), transparent 55%),
+    radial-gradient(70% 50% at 50% 112%, color-mix(in srgb, var(--color-flame) 24%, transparent), transparent 55%),
     #ffffff;
   background-attachment: fixed;
 }
 
-/* Reusable blue accent gradient (was the swoosh). */
+/* The Guardian swoosh as a reusable gradient (red -> orange -> yellow). */
 .bg-swoosh {
   background-image: linear-gradient(
     90deg,
-    var(--color-brand-dark),
-    var(--color-brand) 55%,
-    var(--color-brand-light)
+    var(--color-flame),
+    var(--color-accent) 55%,
+    var(--color-sun)
   );
 }
