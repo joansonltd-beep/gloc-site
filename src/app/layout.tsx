@@ -13,6 +13,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Google Search Console token. Accepts either a bare token or a full <meta> tag
+// (extracts the content value) so a pasted tag in the env var still works.
+const rawGoogleVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+  "VRywR5Rn38kExZbiFZyYiKT7a1pt-DENH8-uitRodb0";
+const googleVerification =
+  rawGoogleVerification.match(/content=["']?([^"'\s>]+)/)?.[1] || rawGoogleVerification;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
@@ -41,9 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   // Google Search Console verification (public token, safe to commit).
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "VRywR5Rn38kExZ",
-  },
+  verification: { google: googleVerification },
 };
 
 // Minimal root layout: just html/body. The site chrome lives in (site)/layout
