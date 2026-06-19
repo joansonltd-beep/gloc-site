@@ -26,6 +26,7 @@ export type AboutData = {
   credentials: string[];
   videoUrl: string;
   videoFileUrl: string | null; // uploaded video file, preferred over videoUrl
+  photoUrl: string | null; // About-page photo; falls back to the headshot
   story?: unknown[] | null; // Sanity portable text, preferred over storyParagraphs
 };
 
@@ -117,4 +118,5 @@ export const DEFAULT_ABOUT: AboutData = {
   ],
   videoUrl: "",
   videoFileUrl: null,
+  photoUrl: null,
 };

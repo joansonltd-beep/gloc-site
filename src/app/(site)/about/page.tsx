@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export default async function AboutPage() {
   const [about, settings] = await Promise.all([getAbout(), getSiteSettings()]);
   const story = (about.story as PortableTextBlock[] | undefined) ?? null;
+  const aboutPhoto = about.photoUrl ?? settings.headshotUrl;
 
   return (
     <div className="space-y-12">
@@ -31,10 +32,10 @@ export default async function AboutPage() {
           </p>
         </header>
 
-        {settings.headshotUrl ? (
+        {aboutPhoto ? (
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[240px] overflow-hidden rounded-2xl ring-1 ring-slate-200 md:mx-0">
             <Image
-              src={settings.headshotUrl}
+              src={aboutPhoto}
               alt={`${settings.agentName}, ${settings.agentTagline}`}
               fill
               sizes="(max-width: 768px) 240px, 240px"

@@ -7,6 +7,14 @@ export const aboutContent = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "photo",
+      title: "About-page photo",
+      description:
+        "Shown on the About page. Leave empty to reuse the Site-settings headshot.",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "story",
       title: "Story",
       type: "array",

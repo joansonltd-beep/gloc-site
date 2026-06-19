@@ -74,7 +74,8 @@ const TESTIMONIALS_QUERY = `*[_type == "testimonial"]|order(order asc){quote, pe
 const COST_FIGURES_QUERY = `*[_type == "costFigure"]{key, value}`;
 const ABOUT_QUERY = `*[_type == "aboutContent"][0]{
   teaser, story, videoUrl, credentials,
-  "videoFileUrl": videoFile.asset->url
+  "videoFileUrl": videoFile.asset->url,
+  "photoUrl": photo.asset->url
 }`;
 const CALCULATOR_QUERY = `*[_type == "calculatorSettings"][0]{
   investmentLowReturn, investmentHighReturn,
