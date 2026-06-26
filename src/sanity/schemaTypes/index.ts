@@ -8,11 +8,13 @@ import { costFigure } from "./costFigure";
 import { aboutContent } from "./aboutContent";
 import { calculatorSettings } from "./calculatorSettings";
 import { illnessCost } from "./illnessCost";
+import { lineDetail } from "./lineDetail";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   siteSettings,
   cluster,
   line,
+  lineDetail,
   testimonial,
   costFigure,
   aboutContent,

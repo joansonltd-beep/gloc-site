@@ -160,3 +160,30 @@ export async function getIllnessCosts(): Promise<IllnessCost[]> {
   const res = await query<IllnessCost[]>(ILLNESS_COSTS_QUERY);
   return res?.length ? res : DEFAULT_ILLNESS_COSTS;
 }
+
+// Editable copy for a single product page. Returns null (so the caller falls
+// back to the bundled content.ts) when Sanity isn't configured or has no match.
+export type LineDetailContent = {
+  title?: string;
+  tagline?: string;
+  what?: string[];
+  why?: string[];
+};
+const LINE_DETAIL_QUERY = `*[_type == "lineDetail" && clusterKey == $clusterKey && slug.current == $slug][0]{
+  title, tagline, what, why
+}`;
+export async function getLineDetail(
+  clusterKey: string,
+  slug: string
+): Promise<LineDetailContent | null> {
+  if (!isSanityConfigured) return null;
+  try {
+    return await getClient().fetch<LineDetailContent>(
+      LINE_DETAIL_QUERY,
+      { clusterKey, slug },
+      fetchOpts
+    );
+  } catch {
+    return null;
+  }
+}

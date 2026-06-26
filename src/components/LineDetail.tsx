@@ -5,6 +5,7 @@ import {
   getCostFigures,
   getCalculatorSettings,
   getIllnessCosts,
+  getLineDetail,
 } from "@/lib/siteData";
 import ProtectionPlanner from "@/components/tools/ProtectionPlanner";
 import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
@@ -16,7 +17,9 @@ import TermInsuranceForm from "@/components/tools/TermInsuranceForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 
 // Detail page for a single product line: what it is, why it matters, and the
-// relevant calculator.
+// relevant calculator. The text (title/tagline/what/why) is editable in Studio
+// via the "Product page content" (lineDetail) document; the bundled content.ts
+// values are the fallback. The calculator/tool stays mapped in code.
 export default async function LineDetail({
   clusterKey,
   slug,
@@ -30,6 +33,13 @@ export default async function LineDetail({
   if (!detail) notFound();
 
   const cluster = CLUSTERS.find((c) => c.key === clusterKey)!;
+
+  // CMS overrides, falling back to the bundled copy field by field.
+  const override = await getLineDetail(clusterKey, slug);
+  const title = override?.title || detail.title;
+  const tagline = override?.tagline || detail.tagline;
+  const what = override?.what?.length ? override.what : detail.what;
+  const why = override?.why?.length ? override.why : detail.why;
 
   let calculator: React.ReactNode = null;
   switch (detail.calculator) {
@@ -53,7 +63,7 @@ export default async function LineDetail({
       break;
   }
 
-  const message = `Hi, I'd like to know more about ${detail.title}.`;
+  const message = `Hi, I'd like to know more about ${title}.`;
 
   return (
     <div className="space-y-12">
@@ -61,21 +71,21 @@ export default async function LineDetail({
         <Link href={`/${cluster.key}`} className="hover:text-brand">
           {cluster.title}
         </Link>{" "}
-        <span aria-hidden>/</span> <span className="text-slate-700">{detail.title}</span>
+        <span aria-hidden>/</span> <span className="text-slate-700">{title}</span>
       </nav>
 
       <header className="max-w-2xl">
         <span className="block h-1.5 w-24 rounded-full bg-swoosh" />
         <h1 className="mt-4 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
-          {detail.title}
+          {title}
         </h1>
-        <p className="mt-3 text-lg text-slate-600">{detail.tagline}</p>
+        <p className="mt-3 text-lg text-slate-600">{tagline}</p>
       </header>
 
       <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
         <section className="space-y-4">
           <h2 className="text-xl font-semibold text-brand">What it is</h2>
-          {detail.what.map((p, i) => (
+          {what.map((p, i) => (
             <p key={i} className="leading-relaxed text-slate-700">
               {p}
             </p>
@@ -85,7 +95,7 @@ export default async function LineDetail({
         <section className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm">
           <h2 className="text-xl font-semibold text-brand">Why it matters</h2>
           <ul className="mt-3 space-y-2">
-            {detail.why.map((point) => (
+            {why.map((point) => (
               <li key={point} className="flex gap-2 text-sm text-slate-700">
                 <span aria-hidden className="text-accent-dark">
                   ✓
@@ -104,14 +114,14 @@ export default async function LineDetail({
       <section className="rounded-2xl bg-gradient-to-br from-brand-light via-brand to-brand-dark p-6 text-white sm:p-8">
         <h2 className="text-xl font-semibold">Ready to talk it through?</h2>
         <p className="mt-1 text-white/80">
-          I&apos;ll walk you through {detail.title.toLowerCase()} and what fits your
+          I&apos;ll walk you through {title.toLowerCase()} and what fits your
           situation. No pressure.
         </p>
         <div className="mt-4">
           <WhatsAppCTA
             message={message}
             label="Chat on WhatsApp"
-            lead={{ source: `line-${detail.slug}`, recommended: detail.title }}
+            lead={{ source: `line-${detail.slug}`, recommended: title }}
           />
         </div>
       </section>

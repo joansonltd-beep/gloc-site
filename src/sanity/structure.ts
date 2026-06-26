@@ -29,6 +29,7 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem("cluster").title("Clusters"),
       S.documentTypeListItem("line").title("Lines"),
+      S.documentTypeListItem("lineDetail").title("Product page content"),
       S.documentTypeListItem("testimonial").title("Testimonials"),
       S.documentTypeListItem("costFigure").title("Cost figures"),
       S.documentTypeListItem("illnessCost").title("Critical illness costs"),

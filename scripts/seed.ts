@@ -12,7 +12,7 @@
  * made in Studio, and it fills in any newly-added content types.
  */
 import { createClient } from "@sanity/client";
-import { CLUSTERS, LINES, TESTIMONIALS, type ClusterKey } from "../src/lib/content";
+import { CLUSTERS, LINES, TESTIMONIALS, LINE_DETAILS, type ClusterKey } from "../src/lib/content";
 import { DEFAULT_COST_FIGURES } from "../src/lib/costFigures";
 import {
   DEFAULT_SETTINGS,
@@ -101,6 +101,21 @@ async function run() {
     });
   });
 
+  // Product page content (the "what it is / why it matters" copy).
+  LINE_DETAILS.forEach((d, i) => {
+    tx.createIfNotExists({
+      _id: `lineDetail-${d.clusterKey}-${d.slug}`,
+      _type: "lineDetail",
+      title: d.title,
+      slug: { _type: "slug", current: d.slug },
+      clusterKey: d.clusterKey,
+      tagline: d.tagline,
+      what: d.what,
+      why: d.why,
+      order: i,
+    });
+  });
+
   TESTIMONIALS.forEach((t, i) => {
     tx.createIfNotExists({
       _id: `testimonial-${i}`,
@@ -141,6 +156,7 @@ async function run() {
   console.log(
     `Seed complete (createIfNotExists): settings, about, calculator settings, ` +
       `${CLUSTERS.length} clusters, ${Object.values(LINES).flat().length} lines, ` +
+      `${LINE_DETAILS.length} product pages, ` +
       `${TESTIMONIALS.length} testimonials, ${DEFAULT_COST_FIGURES.length} cost figures, ` +
       `${DEFAULT_ILLNESS_COSTS.length} illness costs.`
   );
