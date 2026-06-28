@@ -38,7 +38,19 @@ export default async function SiteLayout({
     url: SITE_URL,
     image: settings.logoUrl || settings.headshotUrl || undefined,
     telephone: settings.whatsappNumber ? `+${settings.whatsappNumber.replace(/\D/g, "")}` : undefined,
+    priceRange: "$$",
+    address: { "@type": "PostalAddress", addressCountry: "TT", addressRegion: "Trinidad and Tobago" },
     areaServed: { "@type": "Country", name: "Trinidad and Tobago" },
+    // Social profiles help Google connect this site to the same business entity.
+    sameAs: [
+      settings.facebookUrl,
+      settings.instagramUrl,
+      settings.linkedinUrl,
+      settings.tiktokUrl,
+      settings.youtubeUrl,
+      settings.xUrl,
+    ].filter(Boolean),
+    founder: settings.agentName ? { "@type": "Person", name: settings.agentName } : undefined,
     knowsAbout: [
       "Life insurance",
       "Health insurance",
