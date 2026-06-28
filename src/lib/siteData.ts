@@ -96,10 +96,20 @@ function stripNulls<T extends object>(obj: T): Partial<T> {
 
 async function query<T>(groq: string): Promise<T | null> {
   if (!isSanityConfigured) return null;
+  // Race the fetch against an 8s timeout so a slow/unreachable Sanity response
+  // can never hang the build or a request; we just fall back to bundled content.
+  let timer: ReturnType<typeof setTimeout> | undefined;
   try {
-    return await getClient().fetch<T>(groq, {}, fetchOpts);
+    return await Promise.race([
+      getClient().fetch<T>(groq, {}, fetchOpts),
+      new Promise<null>((resolve) => {
+        timer = setTimeout(() => resolve(null), 8000);
+      }),
+    ]);
   } catch {
     return null;
+  } finally {
+    if (timer) clearTimeout(timer);
   }
 }
 
