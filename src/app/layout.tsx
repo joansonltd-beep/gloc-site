@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SITE_URL } from "@/lib/siteUrl";
 import { getSiteSettings } from "@/lib/siteData";
+
+// Google Ads / gtag conversion tracking ID.
+const GOOGLE_ADS_ID = "AW-18282133568";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,7 +71,20 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full text-slate-900">{children}</body>
+      <body className="min-h-full text-slate-900">
+        {/* Google tag (gtag.js) — Google Ads conversion tracking */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GOOGLE_ADS_ID}');`}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
