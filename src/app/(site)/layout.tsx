@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/assets", label: "Assets" },
   { href: "/business", label: "Business" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
   { href: "/book", label: "Book" },
 ];
 
@@ -121,6 +122,11 @@ export default async function SiteLayout({
               <p className="font-semibold text-slate-600">{settings.agentName}</p>
             )}
             <p>{settings.footerDisclaimer}</p>
+            <p className="pt-2">
+              <Link href="/contact" className="font-semibold text-brand hover:underline">
+                Contact Us
+              </Link>
+            </p>
             <SocialLinks settings={settings} className="pt-3" />
             <p className="pt-2 text-slate-400">
               © {year} {settings.agentName}. {settings.glocAffiliationLine}.

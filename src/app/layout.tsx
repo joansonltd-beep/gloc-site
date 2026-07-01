@@ -72,12 +72,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full text-slate-900">
-        {/* Google tag (gtag.js) — Google Ads conversion tracking */}
+        {/* Google tag (gtag.js) — Google Ads conversion tracking.
+            beforeInteractive renders it into the document so it's present in the
+            page source (verifiable) and loads early. */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-        <Script id="google-ads-gtag" strategy="afterInteractive">
+        <Script id="google-ads-gtag" strategy="beforeInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
