@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CallbackForm from "@/components/CallbackForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
+import AdsConversion from "@/components/AdsConversion";
 
 export const metadata: Metadata = {
   title: "Book a call",
@@ -15,6 +16,7 @@ export default function BookPage() {
 
   return (
     <div className="mx-auto max-w-2xl">
+      <AdsConversion sendTo="AW-18282133568/QM1DCMyU7sccEMDwzI1E" />
       <div className="text-center">
         <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
           Book a call

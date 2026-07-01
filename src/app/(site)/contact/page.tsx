@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getSiteSettings } from "@/lib/siteData";
+import AdsConversion from "@/components/AdsConversion";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -39,6 +40,7 @@ export default async function ContactPage() {
 
   return (
     <div className="space-y-10">
+      <AdsConversion sendTo="AW-18282133568/QM1DCMyU7sccEMDwzI1E" />
       <header className="max-w-2xl">
         <span className="block h-1.5 w-24 rounded-full bg-swoosh" />
         <h1 className="mt-4 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">Contact us</h1>
