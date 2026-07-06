@@ -133,7 +133,7 @@ function DiscoveryStep({
         <button
           type="button"
           onClick={onCancel}
-          className="font-medium text-slate-400 hover:text-slate-700"
+          className="font-medium text-slate-500 hover:text-slate-700"
         >
           Cancel
         </button>

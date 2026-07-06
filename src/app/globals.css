@@ -1,46 +1,61 @@
 @import "tailwindcss";
 
 /*
-  Palette anchored to the Guardian Group brand: deep purple wordmark plus the
-  warm red-orange-yellow swoosh. The logo itself is NOT displayed anywhere
-  (spec.md §12); we only borrow the colours. Retune here in one place.
+  Palette: trustworthy blues. A deep primary blue with a lighter sky-blue accent.
+
+  NOTE: the original palette was DELIBERATELY anchored to Guardian Group's
+  corporate brand (deep purple + the warm red-orange-yellow swoosh, see
+  spec.md §9). The site owner moved off that on purpose — first to blue + gold,
+  then to this all-blue "trustworthy blues" scheme. The whole palette lives in
+  this one @theme block; every component reads these variables.
+
+  --color-accent (sky blue) is for icons, badges, hover fills and highlights.
+  For accent-coloured *text on a white background* use --color-accent-dark
+  (sky-700), which is contrast-safe.
 */
 @theme {
-  --color-brand: #582c83;        /* Guardian purple */
-  --color-brand-dark: #3c1d5a;
-  --color-brand-light: #7a4fa8;
-  --color-accent: #f5821f;       /* warm orange from the swoosh */
-  --color-accent-dark: #c25e00;  /* darker orange for text contrast on white */
-  --color-flame: #e2231a;        /* swoosh red */
-  --color-sun: #ffc20e;          /* swoosh yellow */
+  --color-brand: #1d4ed8;        /* primary blue (blue-700) */
+  --color-brand-dark: #1e3a8a;   /* deep navy (blue-900) — hovers, gradients */
+  --color-brand-light: #60a5fa;  /* light blue (blue-400) — tints, highlights */
+  --color-accent: #0ea5e9;       /* sky blue — icons/badges/hover/highlights */
+  --color-accent-dark: #0369a1;  /* sky-700 — the accent that IS safe for text on white */
+  --color-flame: #2563eb;        /* mid blue (blue-600) */
+  --color-sun: #38bdf8;          /* light sky (sky-400) */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Bold, warm Caribbean wash: a confident purple + orange + gold sweep across the
-   top of every page, fixed behind the content. */
+/* Soft full-page wash, fixed behind content. Recolours from the vars above. */
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   background:
-    /* whole-viewport diagonal warm field so colour shows across every page */
     linear-gradient(
       135deg,
-      color-mix(in srgb, var(--color-accent) 24%, transparent) 0%,
-      color-mix(in srgb, var(--color-sun) 16%, transparent) 22%,
+      color-mix(in srgb, var(--color-accent) 16%, transparent) 0%,
+      color-mix(in srgb, var(--color-sun) 12%, transparent) 22%,
       color-mix(in srgb, var(--color-flame) 10%, transparent) 45%,
       color-mix(in srgb, var(--color-brand-light) 16%, transparent) 72%,
-      color-mix(in srgb, var(--color-brand) 26%, transparent) 100%
+      color-mix(in srgb, var(--color-brand) 22%, transparent) 100%
     ),
-    /* bolder pools at the corners */
-    radial-gradient(70% 55% at 4% -8%, color-mix(in srgb, var(--color-accent) 38%, transparent), transparent 55%),
-    radial-gradient(75% 60% at 100% -10%, color-mix(in srgb, var(--color-brand) 46%, transparent), transparent 55%),
-    radial-gradient(70% 50% at 50% 112%, color-mix(in srgb, var(--color-flame) 24%, transparent), transparent 55%),
+    radial-gradient(70% 55% at 4% -8%, color-mix(in srgb, var(--color-accent) 28%, transparent), transparent 55%),
+    radial-gradient(75% 60% at 100% -10%, color-mix(in srgb, var(--color-brand) 40%, transparent), transparent 55%),
+    radial-gradient(70% 50% at 50% 112%, color-mix(in srgb, var(--color-brand-light) 20%, transparent), transparent 55%),
     #ffffff;
   background-attachment: fixed;
 }
 
-/* The Guardian swoosh as a reusable gradient (red -> orange -> yellow). */
+/* Hero: bold deep-navy field with a brighter blue glow at the top-right (where the
+   agent photo/shape sits), echoing the Innsure template's saturated hero. White
+   text sits on this, so contrast is high. */
+.bg-hero-split {
+  background:
+    radial-gradient(70% 80% at 88% 8%, color-mix(in srgb, var(--color-brand) 65%, transparent), transparent 60%),
+    radial-gradient(60% 60% at 0% 100%, color-mix(in srgb, var(--color-brand) 30%, transparent), transparent 55%),
+    linear-gradient(150deg, var(--color-brand-dark) 0%, color-mix(in srgb, var(--color-brand-dark) 74%, #0a0f22) 100%);
+}
+
+/* Reusable accent bar (deep blue -> sky) used under headings. */
 .bg-swoosh {
   background-image: linear-gradient(
     90deg,

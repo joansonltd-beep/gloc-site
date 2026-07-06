@@ -99,8 +99,8 @@ export function ResultCard({
 
 export function Assumptions({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mt-5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-400">
-      <span className="font-semibold text-slate-500">Assumptions: </span>
+    <p className="mt-5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-600">
+      <span className="font-semibold text-slate-700">Assumptions: </span>
       {children}
     </p>
   );

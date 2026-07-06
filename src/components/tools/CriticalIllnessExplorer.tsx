@@ -77,8 +77,8 @@ export default function CriticalIllnessExplorer({
         />
       </div>
 
-      <p className="mt-5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-400">
-        <span className="font-semibold text-slate-500">Note: </span>
+      <p className="mt-5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-600">
+        <span className="font-semibold text-slate-700">Note: </span>
         All figures are in TT$ and are indicative estimates only. Critical Illness
         insurance pays a fixed lump sum on diagnosis; it does not reimburse the
         actual bill.
