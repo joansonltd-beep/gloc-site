@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Field, SelectField, ToolFrame } from "./ToolUI";
+import { Check } from "@/components/icons";
 import { routineRequirements, ageFromDob } from "@/lib/underwriting";
 
 // Term insurance request. Gathers the basics so the agent can prepare for a
@@ -70,8 +71,8 @@ export default function TermInsuranceForm() {
     return (
       <ToolFrame title="Term Insurance request" intro="">
         <div className="text-center">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-2xl text-accent-dark">
-            ✓
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent-dark">
+            <Check className="h-6 w-6" />
           </div>
           <p className="font-semibold text-brand">Thanks, {name.split(" ")[0]}.</p>
           <p className="mt-1 text-sm text-slate-600">

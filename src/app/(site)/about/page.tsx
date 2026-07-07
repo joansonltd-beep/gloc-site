@@ -28,7 +28,7 @@ export default async function AboutPage() {
             Meet {settings.agentName}
           </h1>
           <p className="mt-3 max-w-xl text-lg text-slate-600">
-            {settings.agentName} is {about.teaser}
+            {about.teaser}
           </p>
         </header>
 

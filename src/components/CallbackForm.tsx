@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Field, SelectField } from "@/components/tools/ToolUI";
+import { Check } from "@/components/icons";
 import { routineRequirements, ageFromDob } from "@/lib/underwriting";
 
 // Things a visitor might want to take care of (customer-facing wording).
@@ -99,8 +100,8 @@ export default function CallbackForm() {
   if (status === "done") {
     return (
       <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-sm sm:p-8">
-        <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-2xl text-accent-dark">
-          ✓
+        <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent-dark">
+          <Check className="h-6 w-6" />
         </div>
         <h3 className="text-lg font-semibold text-brand">Thanks, {name.split(" ")[0]}.</h3>
         <p className="mt-1 text-slate-600">

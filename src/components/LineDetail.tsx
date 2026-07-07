@@ -15,6 +15,7 @@ import QuickQuoteRequest from "@/components/tools/QuickQuoteRequest";
 import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
 import TermInsuranceForm from "@/components/tools/TermInsuranceForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
+import { Check } from "@/components/icons";
 
 // Detail page for a single product line: what it is, why it matters, and the
 // relevant calculator. The text (title/tagline/what/why) is editable in Studio
@@ -97,9 +98,7 @@ export default async function LineDetail({
           <ul className="mt-3 space-y-2">
             {why.map((point) => (
               <li key={point} className="flex gap-2 text-sm text-slate-700">
-                <span aria-hidden className="text-accent-dark">
-                  ✓
-                </span>
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-dark" />
                 <span>{point}</span>
               </li>
             ))}

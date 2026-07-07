@@ -44,7 +44,8 @@ export const aboutContent = defineType({
     defineField({
       name: "teaser",
       title: "Home-page teaser",
-      description: "Short blurb shown in the About teaser on the landing page.",
+      description:
+        "A complete intro sentence or short paragraph shown on the landing page and under the About heading. Write it as a full sentence (e.g. start with the agent's name), not a fragment.",
       type: "text",
       rows: 3,
     }),

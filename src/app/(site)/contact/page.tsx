@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { getSiteSettings } from "@/lib/siteData";
 import AdsConversion from "@/components/AdsConversion";
+import { Chat, Mobile, Phone, Facebook, Instagram } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -18,9 +20,11 @@ type Method = {
   label: string;
   value: string;
   href: string;
-  icon: string;
+  icon: ReactNode;
   external?: boolean;
 };
+
+const ICON_CLASS = "h-6 w-6";
 
 export default async function ContactPage() {
   const settings = await getSiteSettings();
@@ -29,14 +33,14 @@ export default async function ContactPage() {
   )}`;
 
   const methods: Method[] = [
-    { label: "WhatsApp", value: MOBILE_DISPLAY, href: waLink, icon: "💬", external: true },
-    { label: "Mobile", value: MOBILE_DISPLAY, href: `tel:+${MOBILE_INTL}`, icon: "📱" },
-    { label: "Office (Tel)", value: OFFICE_DISPLAY, href: `tel:+${OFFICE_INTL}`, icon: "☎️" },
+    { label: "WhatsApp", value: MOBILE_DISPLAY, href: waLink, icon: <Chat className={ICON_CLASS} />, external: true },
+    { label: "Mobile", value: MOBILE_DISPLAY, href: `tel:+${MOBILE_INTL}`, icon: <Mobile className={ICON_CLASS} /> },
+    { label: "Office (Tel)", value: OFFICE_DISPLAY, href: `tel:+${OFFICE_INTL}`, icon: <Phone className={ICON_CLASS} /> },
   ];
   if (settings.facebookUrl)
-    methods.push({ label: "Facebook", value: "Message us on Facebook", href: settings.facebookUrl, icon: "f", external: true });
+    methods.push({ label: "Facebook", value: "Message us on Facebook", href: settings.facebookUrl, icon: <Facebook className={ICON_CLASS} />, external: true });
   if (settings.instagramUrl)
-    methods.push({ label: "Instagram", value: "Follow us on Instagram", href: settings.instagramUrl, icon: "◎", external: true });
+    methods.push({ label: "Instagram", value: "Follow us on Instagram", href: settings.instagramUrl, icon: <Instagram className={ICON_CLASS} />, external: true });
 
   return (
     <div className="space-y-10">

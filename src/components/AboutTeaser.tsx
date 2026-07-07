@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { User } from "@/components/icons";
 
 // About teaser. Full story, credentials & HeyGen video live on /about (M5).
 export default function AboutTeaser({
@@ -23,8 +24,8 @@ export default function AboutTeaser({
             className="object-cover"
           />
         ) : (
-          <span className="flex h-full w-full items-center justify-center text-3xl text-white/70">
-            👤
+          <span className="flex h-full w-full items-center justify-center text-white/70">
+            <User className="h-10 w-10" />
           </span>
         )}
       </div>
@@ -33,7 +34,7 @@ export default function AboutTeaser({
           A local agent who actually explains things
         </h2>
         <p className="mt-2 max-w-prose text-slate-600">
-          {agentName} is {teaser}
+          {teaser}
         </p>
         <Link
           href="/about"

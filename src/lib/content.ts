@@ -50,25 +50,25 @@ export const LINES: Record<ClusterKey, Line[]> = {
   protect: [
     {
       title: "Life Insurance",
-      icon: "🛡️",
+      icon: "life-insurance",
       blurb:
         "Replace your income so the people who depend on you keep their home, their plans and their lifestyle if you're not there.",
     },
     {
       title: "Health",
-      icon: "➕",
+      icon: "health",
       blurb:
         "Private treatment in Trinidad & Tobago adds up fast. Health cover closes the gap between public waitlists and the care you'd actually want.",
     },
     {
       title: "Critical Illness",
-      icon: "❤️",
+      icon: "critical-illness",
       blurb:
         "A tax-free lump sum on diagnosis of cancer, heart attack, stroke and more, so you can focus on recovery instead of bills.",
     },
     {
       title: "Personal Accident",
-      icon: "🚑",
+      icon: "personal-accident",
       blurb:
         "A cash benefit if an accident causes injury, disability or death. It pays on top of your other cover, at work, on the road and at play.",
     },
@@ -76,13 +76,13 @@ export const LINES: Record<ClusterKey, Line[]> = {
   grow: [
     {
       title: "Pension / Annuities",
-      icon: "🏖️",
+      icon: "pension-annuities",
       blurb:
         "Turn today's savings into a steady income for retirement, and keep more of it with tax-advantaged contributions.",
     },
     {
       title: "Investments / Mutual Funds",
-      icon: "📈",
+      icon: "investments-mutual-funds",
       blurb:
         "Invest across diversified funds so your money grows ahead of inflation instead of sitting still in an account.",
     },
@@ -90,19 +90,19 @@ export const LINES: Record<ClusterKey, Line[]> = {
   assets: [
     {
       title: "Motor",
-      icon: "🚗",
+      icon: "motor",
       blurb:
         "Comprehensive and third-party cover for your vehicle, with claims handled by people who pick up the phone.",
     },
     {
       title: "Home",
-      icon: "🏠",
+      icon: "home",
       blurb:
         "Protect your house and its contents against fire, flood, storm and theft.",
     },
     {
       title: "Property",
-      icon: "🏢",
+      icon: "property",
       blurb:
         "Cover for landlords and additional properties, from rental units to commercial space.",
     },
@@ -110,7 +110,7 @@ export const LINES: Record<ClusterKey, Line[]> = {
   business: [
     {
       title: "Group / Employee Benefits",
-      icon: "👥",
+      icon: "group-employee-benefits",
       blurb:
         "Group health, life and pension benefits that help you attract and keep good staff, for a team of any size.",
     },
