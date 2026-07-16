@@ -142,6 +142,26 @@ export const Check = ({ className }: IconProps) => (
   </Stroke>
 );
 
+export const FileText = ({ className }: IconProps) => (
+  <Stroke className={className}>
+    <path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-6-6z" />
+    <path d="M13 3v6h6" />
+    <path d="M9 13h6M9 17h4" />
+  </Stroke>
+);
+
+export const ChevronLeft = ({ className }: IconProps) => (
+  <Stroke className={className}>
+    <path d="M14.5 5.5L8 12l6.5 6.5" />
+  </Stroke>
+);
+
+export const ChevronRight = ({ className }: IconProps) => (
+  <Stroke className={className}>
+    <path d="M9.5 5.5L16 12l-6.5 6.5" />
+  </Stroke>
+);
+
 // --- brand marks --------------------------------------------------------
 export const Facebook = ({ className }: IconProps) => (
   <Fill className={className}>

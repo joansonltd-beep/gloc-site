@@ -2,18 +2,56 @@ import Link from "next/link";
 import Image from "next/image";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import NavLink from "@/components/NavLink";
+import NavDropdown from "@/components/NavDropdown";
 import SocialLinks from "@/components/SocialLinks";
 import MobileCtaBar from "@/components/MobileCtaBar";
 import { SiteSettingsProvider } from "@/components/SiteSettingsProvider";
 import { getSiteSettings } from "@/lib/siteData";
 import { SITE_URL } from "@/lib/siteUrl";
 
-const navLinks = [
+// Cluster tabs get a hover dropdown of their product pages; clicking the tab
+// still goes to the hub page.
+const navLinks: {
+  href: string;
+  label: string;
+  items?: { href: string; label: string }[];
+}[] = [
   { href: "/", label: "Home" },
-  { href: "/protect", label: "Protect" },
-  { href: "/grow", label: "Grow" },
-  { href: "/assets", label: "Assets" },
-  { href: "/business", label: "Business" },
+  {
+    href: "/protect",
+    label: "Protect",
+    items: [
+      { href: "/protect/life-insurance", label: "Life Insurance" },
+      { href: "/protect/health", label: "Health" },
+      { href: "/protect/critical-illness", label: "Critical Illness" },
+      { href: "/protect/personal-accident", label: "Personal Accident" },
+    ],
+  },
+  {
+    href: "/grow",
+    label: "Grow",
+    items: [
+      { href: "/grow/pension-annuities", label: "Pension / Annuities" },
+      { href: "/grow/investments-mutual-funds", label: "Investments / Mutual Funds" },
+    ],
+  },
+  {
+    href: "/assets",
+    label: "Assets",
+    items: [
+      { href: "/assets/motor", label: "Motor" },
+      { href: "/assets/home", label: "Home" },
+      { href: "/assets/property", label: "Property" },
+    ],
+  },
+  {
+    href: "/business",
+    label: "Business",
+    items: [
+      { href: "/business/group-employee-benefits", label: "Group / Employee Benefits" },
+    ],
+  },
+  { href: "/brochures", label: "Brochures" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "/book", label: "Book" },
@@ -97,7 +135,11 @@ export default async function SiteLayout({
             <ul className="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <NavLink href={link.href}>{link.label}</NavLink>
+                  {link.items ? (
+                    <NavDropdown href={link.href} label={link.label} items={link.items} />
+                  ) : (
+                    <NavLink href={link.href}>{link.label}</NavLink>
+                  )}
                 </li>
               ))}
             </ul>

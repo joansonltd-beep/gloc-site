@@ -15,6 +15,7 @@ import QuickQuoteRequest from "@/components/tools/QuickQuoteRequest";
 import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
 import TermInsuranceForm from "@/components/tools/TermInsuranceForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
+import BrochureSection from "@/components/BrochureSection";
 import { Check } from "@/components/icons";
 
 // Detail page for a single product line: what it is, why it matters, and the
@@ -105,6 +106,8 @@ export default async function LineDetail({
           </ul>
         </section>
       </div>
+
+      <BrochureSection pageKey={`${clusterKey}/${slug}`} />
 
       {calculator}
 
