@@ -94,13 +94,13 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [
   { condition: "Kidney Failure", costLow: 180_000, costHigh: 180_000, unit: "year", note: "Ongoing dialysis (~TT$15,000/month)." },
   { condition: "Paralysis", costLow: 680_000, costHigh: 680_000, unit: "total", note: "First-year care; lifetime costs are higher." },
   { condition: "Loss of Limbs", costLow: 34_000, costHigh: 475_000, unit: "total", note: "Surgery plus prosthetics and rehabilitation." },
-  { condition: "Blindness", costLow: null, costHigh: null, unit: "total", note: "Aids, adaptation and income replacement; varies." },
-  { condition: "Loss of Speech", costLow: null, costHigh: null, unit: "total", note: "Therapy and income replacement; varies." },
-  { condition: "Multiple Sclerosis", costLow: null, costHigh: null, unit: "total", note: "Ongoing medication and care over many years; varies." },
-  { condition: "Motor Neuron Disease", costLow: null, costHigh: null, unit: "total", note: "Ongoing care and equipment; varies." },
+  { condition: "Blindness", costLow: 112_500, costHigh: 135_000, unit: "year", note: "Aids, adaptation and support after sight loss. Based on a US estimate of about US$16,800 a year, converted at TT$7.5 to US$1." },
+  { condition: "Loss of Speech", costLow: 187_500, costHigh: 232_500, unit: "year", note: "Therapy, care and lost income after loss of speech. Based on a US estimate of about US$30,000 a year, converted at TT$7.5 to US$1." },
+  { condition: "Multiple Sclerosis", costLow: 487_500, costHigh: 660_000, unit: "year", note: "Ongoing disease-modifying therapy and care. Based on US studies of about US$65,000 to US$88,000 a year, converted at TT$7.5 to US$1." },
+  { condition: "Motor Neuron Disease", costLow: 7_500_000, costHigh: 10_755_000, unit: "total", note: "Total cost over the course of the illness. Based on a US estimate of about US$1.4 million, converted at TT$7.5 to US$1." },
   { condition: "Permanent Disablement", costLow: null, costHigh: null, unit: "total", note: "Income replacement based on your earnings." },
-  { condition: "Alzheimer's Disease", costLow: null, costHigh: null, unit: "total", note: "Long-term care over years; varies." },
-  { condition: "Parkinson's Disease", costLow: null, costHigh: null, unit: "total", note: "Ongoing medication and care; varies." },
+  { condition: "Alzheimer's Disease", costLow: 2_625_000, costHigh: 3_037_500, unit: "total", note: "Lifetime cost of care from diagnosis. Based on a US estimate of about US$405,000, converted at TT$7.5 to US$1." },
+  { condition: "Parkinson's Disease", costLow: 165_000, costHigh: 390_000, unit: "year", note: "Ongoing medication and care. Based on US estimates of about US$22,000 to US$52,000 a year, converted at TT$7.5 to US$1." },
 ];
 
 export const DEFAULT_ABOUT: AboutData = {
