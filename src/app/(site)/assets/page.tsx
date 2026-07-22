@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Assets: Motor, Home & Property",
   description:
     "Insure what you own: motor, home and property cover. Send your details and I'll follow up.",
+  alternates: { canonical: "/assets" },
 };
 
 export default async function AssetsPage() {

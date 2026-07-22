@@ -8,7 +8,8 @@ import { getAbout, getSiteSettings } from "@/lib/siteData";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet your independent insurance agent in Trinidad & Tobago: story and a short intro video.",
+    "Meet your insurance agent in Trinidad & Tobago: story and a short intro video.",
+  alternates: { canonical: "/about" },
 };
 
 export default async function AboutPage() {

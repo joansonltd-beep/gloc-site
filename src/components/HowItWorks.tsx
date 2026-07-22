@@ -1,7 +1,7 @@
 // Simple 5-step process so visitors know what to expect.
 export default function HowItWorks() {
   const steps = [
-    { n: 1, title: "Book a consultation", body: "Pick a time, or send a quick message. No cost, no obligation." },
+    { n: 1, title: "Book a meeting", body: "Pick a time, or send a quick message. No cost, no obligation." },
     { n: 2, title: "Discuss your goals", body: "We talk through your situation, what matters to you, and your budget." },
     { n: 3, title: "Review your options", body: "I lay out the cover that fits, in plain language, with the numbers." },
     { n: 4, title: "Put a plan in place", body: "When you're ready, we set up the cover you've chosen." },

@@ -6,12 +6,12 @@ import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer"
 import { getCluster, getLines, getCostFigures, getIllnessCosts } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "How Much Life Insurance Do I Need? Free Calculator (Trinidad & Tobago)",
+  title: "How Much Insurance Coverage Do I Need? Free Calculator (Trinidad & Tobago)",
   description:
-    "Work out how much life insurance you need with a free calculator built for Trinidad & Tobago. See suggested life and critical illness cover based on your income and age.",
+    "Work out how much insurance coverage you need with a free calculator built for Trinidad & Tobago. See suggested life and critical illness cover based on your income and age.",
   alternates: { canonical: "/protect" },
   openGraph: {
-    title: "How Much Life Insurance Do I Need? Free Calculator",
+    title: "How Much Insurance Coverage Do I Need? Free Calculator",
     description:
       "Estimate the life and critical illness cover that would keep your family steady, based on your income and age.",
     url: "/protect",
@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 };
 
 // Q&A shown on the page and mirrored into FAQPage structured data, so the exact
-// question "how much life insurance do I need" is eligible for rich results.
+// question "how much insurance coverage do I need" is eligible for rich results.
 const FAQ = [
   {
-    q: "How much life insurance do I need?",
+    q: "How much insurance coverage do I need?",
     a: "A common approach is to base your cover on a multiple of your yearly income, with the multiple set by your age. Younger people can be covered for a higher multiple because there are more working years to protect, so cover runs from about 30 times income under age 30 down to a lower multiple as you get older. Use the calculator above to get a suggested amount based on your income and age.",
   },
   {
@@ -56,10 +56,7 @@ export default async function ProtectPage() {
 
   return (
     <ClusterHub cluster={cluster} lines={lines} linkLines linesLast>
-      {/* Existing combined planner stays, and leads the page. */}
-      <ProtectionPlanner costFigures={costFigures} />
-
-      {/* Dedicated "how much do I need" calculator + on-page SEO. */}
+      {/* "How much coverage do I need" calculator leads the page + on-page SEO. */}
       <section aria-labelledby="how-much" className="space-y-5">
         <script
           type="application/ld+json"
@@ -70,7 +67,7 @@ export default async function ProtectPage() {
             id="how-much"
             className="text-2xl font-semibold tracking-tight text-brand sm:text-3xl"
           >
-            How much life insurance do I need?
+            How much insurance coverage do I need?
           </h2>
           <p className="mt-2 text-slate-600">
             The right amount of life cover replaces your income and clears what you owe,
@@ -93,6 +90,8 @@ export default async function ProtectPage() {
           </dl>
         </div>
       </section>
+
+      <ProtectionPlanner costFigures={costFigures} />
 
       <CriticalIllnessExplorer illnessCosts={illnessCosts} />
     </ClusterHub>

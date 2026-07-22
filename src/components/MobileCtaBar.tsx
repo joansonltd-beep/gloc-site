@@ -4,7 +4,7 @@ import Link from "next/link";
 import { captureLead } from "@/lib/leadCapture";
 import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 
-// Sticky bottom action bar on phones: Book a consultation + WhatsApp.
+// Sticky bottom action bar on phones: Book a meeting + WhatsApp.
 // Hidden on >= sm, where the WhatsApp float button is shown instead.
 export default function MobileCtaBar() {
   const whatsappLink = useWhatsAppLink();
@@ -16,7 +16,7 @@ export default function MobileCtaBar() {
         href="/book"
         className="flex-1 rounded-lg bg-brand px-4 py-3 text-center text-sm font-semibold text-white"
       >
-        Book a consultation
+        Book a meeting
       </Link>
       <a
         href={whatsappLink(message)}

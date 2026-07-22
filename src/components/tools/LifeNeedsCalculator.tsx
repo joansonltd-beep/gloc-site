@@ -56,7 +56,7 @@ export default function LifeNeedsCalculator() {
 
   return (
     <ToolFrame
-      title="Life insurance needs calculator"
+      title="Insurance coverage calculator"
       intro="Enter your income and age to see a suggested amount of life and critical illness cover. It is a starting estimate based on your yearly income, not a quote."
     >
       {/* Income frequency toggle */}

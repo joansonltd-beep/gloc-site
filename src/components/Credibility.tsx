@@ -7,8 +7,8 @@ export default function Credibility({ agentName }: { agentName: string }) {
       label: "In financial services across the Caribbean, spanning banking, treasury, insurance and customer service.",
     },
     {
-      stat: "Guardian Group",
-      label: "Sales Representative, helping clients match their needs to suitable insurance and savings cover.",
+      stat: "Licensed",
+      label: "Insurance Sales Representative, helping clients match their needs to suitable insurance and savings cover.",
     },
     {
       stat: "RBC · First Citizens · ACB",
@@ -28,8 +28,8 @@ export default function Credibility({ agentName }: { agentName: string }) {
           Experience you can rely on
         </h2>
         <p className="mt-3 text-slate-600">
-          I&apos;m {agentName}, an Insurance Agent and Sales Representative with
-          Guardian Group. I bring more than 13 years of experience across
+          I&apos;m {agentName}, a licensed Insurance Agent and Sales
+          Representative. I bring more than 13 years of experience across
           banking, treasury, insurance and customer service in the Caribbean, so
           you get clear guidance from someone who knows the field.
         </p>

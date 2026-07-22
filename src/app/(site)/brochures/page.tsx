@@ -6,7 +6,9 @@ import { BROCHURES, BROCHURE_CATEGORIES } from "@/lib/brochures";
 export const metadata: Metadata = {
   title: "Product Brochures",
   description:
-    "Download official Guardian Life product brochures: life insurance, health, critical illness, personal accident, pension and investment plans in Trinidad & Tobago.",
+    "Download official product brochures: life insurance, health, critical illness, personal accident, pension and investment plans in Trinidad & Tobago.",
+  // Brochures are for visitors who are already here; keep them out of Google.
+  robots: { index: false, follow: true },
 };
 
 export default function BrochuresPage() {
@@ -18,9 +20,9 @@ export default function BrochuresPage() {
           Product brochures
         </h1>
         <p className="mt-3 text-lg text-slate-600">
-          The official Guardian brochures for the plans I offer. Browse, open the
-          PDF, and when something catches your eye, book a call and we will go
-          through it together.
+          The official brochures for the plans I offer. Browse, open the
+          PDF, and when something catches your eye, book a meeting and we will
+          go through it together.
         </p>
       </header>
 
@@ -67,7 +69,7 @@ export default function BrochuresPage() {
 
       <p className="max-w-2xl text-sm text-slate-500">
         Brochures are a general guide only. Benefits, terms and availability are
-        set by the policy contract. Book a call at{" "}
+        set by the policy contract. Book a meeting at{" "}
         <a href="/book" className="font-semibold text-brand hover:underline">
           joansonbjames.com/book
         </a>{" "}

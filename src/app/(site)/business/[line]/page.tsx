@@ -17,7 +17,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { line } = await params;
   const d = LINE_DETAILS.find((x) => x.clusterKey === CLUSTER && x.slug === line);
-  return d ? { title: d.title, description: d.tagline } : {};
+  return d
+    ? {
+        title: d.title,
+        description: d.tagline,
+        alternates: { canonical: `/${CLUSTER}/${d.slug}` },
+      }
+    : {};
 }
 
 export default async function Page({

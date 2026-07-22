@@ -71,7 +71,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
   const headHighlight = rest.join(" ");
 
   const trust = [
-    { icon: <ShieldCheck className="h-4 w-4" />, label: settings.glocAffiliationLine || "Authorized Guardian Life agent" },
+    { icon: <ShieldCheck className="h-4 w-4" />, label: settings.glocAffiliationLine || "Licensed insurance sales representative" },
     { icon: <BadgeCheck className="h-4 w-4" />, label: "Licensed life & health advisor" },
     { icon: <ChatBubble className="h-4 w-4" />, label: "No-pressure, no-jargon advice" },
   ];
@@ -109,7 +109,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
               href="/book"
               className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand shadow-sm transition hover:bg-blue-50 active:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
-              Book a consultation
+              Book a meeting
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <a

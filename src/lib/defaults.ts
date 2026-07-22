@@ -32,7 +32,7 @@ export type AboutData = {
 
 export const DEFAULT_SETTINGS: SiteSettings = {
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "1868XXXXXXX",
-  glocAffiliationLine: "Guardian Life Sales Representative",
+  glocAffiliationLine: "Licensed Insurance Sales Representative",
   footerDisclaimer:
     "This website is for general information only and is not financial advice. Contact us to discuss cover suited to your needs.",
   agentName: "Joanson Baptiste James",
@@ -105,15 +105,15 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "Joanson Baptiste James is an independent insurance agent based in Trinidad & Tobago, helping young professionals and families make good decisions about their money and their cover.",
+    "Joanson Baptiste James is a licensed insurance agent based in Trinidad & Tobago, helping young professionals and families make good decisions about their money and their cover.",
   storyParagraphs: [
     "I grew up here and I have seen how often good people get caught out by costs they never planned for. A medical bill, a car accident, a parent who outlives their savings. That is what got me into this work.",
-    "I am an insurance agent with Guardian Life of the Caribbean. That means I sit on your side of the table, walk you through the options in plain language, and help you choose cover that fits your life and your budget. No pressure, no jargon.",
+    "I am a licensed insurance agent and sales representative. I sit on your side of the table, walk you through the options in plain language, and help you choose cover that fits your life and your budget. No pressure, no jargon.",
     "Whether you are just starting out, raising a family, or running a business, I am happy to talk it through. Reach out any time and we will figure out the right next step together.",
   ],
   credentials: [
     "Licensed life and health insurance agent",
-    "Authorized Guardian Representative",
+    "Over 13 years in financial services",
     "Based in Trinidad & Tobago",
   ],
   videoUrl: "",

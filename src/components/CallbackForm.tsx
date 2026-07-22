@@ -34,6 +34,9 @@ const GOALS = [
 export default function CallbackForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  // Honeypot: humans never see this field; bots that fill it are dropped.
+  const [website, setWebsite] = useState("");
   const [bestTime, setBestTime] = useState("Anytime");
   const [goals, setGoals] = useState<string[]>([]);
   const [dob, setDob] = useState("");
@@ -72,12 +75,15 @@ export default function CallbackForm() {
           source: "callback-form",
           name,
           phone,
+          email: email.trim() || undefined,
+          website,
           message,
           recommended: goalsText || "General enquiry",
           underwriting, // internal, for the sheet only
           figures: {
             name,
             phone,
+            email: email.trim() || undefined,
             bestTime,
             goals,
             dateOfBirth: dob || undefined,
@@ -112,15 +118,37 @@ export default function CallbackForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-white/60 bg-white/75 p-6 shadow-sm backdrop-blur-sm sm:p-8">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit();
+      }}
+      className="rounded-2xl border border-white/60 bg-white/75 p-6 shadow-sm backdrop-blur-sm sm:p-8"
+    >
       <h3 className="text-xl font-semibold text-brand">Request a callback</h3>
       <p className="mt-1 text-sm text-slate-600">
         Leave your details and I&apos;ll call you back. No obligation.
       </p>
 
+      {/* Honeypot: visually hidden, tabbed past by humans, filled by bots. */}
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Website
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </label>
+      </div>
+
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <Field label="Your name" value={name} onChange={setName} placeholder="Full name" type="text" />
         <Field label="Phone number" value={phone} onChange={setPhone} placeholder="e.g. 868 123 4567" type="tel" />
+        <Field label="Email (optional)" value={email} onChange={setEmail} placeholder="you@example.com" type="email" />
         <SelectField
           label="Best time to call"
           value={bestTime}
@@ -196,8 +224,7 @@ export default function CallbackForm() {
       </div>
 
       <button
-        type="button"
-        onClick={submit}
+        type="submit"
         disabled={!ready || status === "sending"}
         className="mt-6 w-full rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-light active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:w-auto"
       >
@@ -209,6 +236,15 @@ export default function CallbackForm() {
           Something went wrong. Please try again, or message on WhatsApp below.
         </p>
       ) : null}
-    </div>
+
+      <p className="mt-4 text-xs text-slate-500">
+        By submitting, you agree that we may use these details to contact you
+        about your enquiry. See our{" "}
+        <a href="/privacy" className="font-semibold text-brand hover:underline">
+          Privacy Policy
+        </a>
+        .
+      </p>
+    </form>
   );
 }

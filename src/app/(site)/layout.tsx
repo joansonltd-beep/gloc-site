@@ -54,7 +54,7 @@ const navLinks: {
   { href: "/brochures", label: "Brochures" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-  { href: "/book", label: "Sign Up" },
+  { href: "/book", label: "Book a Meeting" },
 ];
 
 // Site chrome: header, footer, WhatsApp float. Async so it can pull settings
@@ -73,7 +73,7 @@ export default async function SiteLayout({
     "@type": "InsuranceAgency",
     name: settings.agentName,
     description:
-      "Independent insurance agent in Trinidad & Tobago: life, health, critical illness, pension, annuities, investments, motor, home, property and group benefits.",
+      "Insurance agent in Trinidad & Tobago: life, health, critical illness, pension, annuities, investments, motor, home, property and group benefits.",
     url: SITE_URL,
     image: settings.logoUrl || settings.headshotUrl || undefined,
     telephone: settings.whatsappNumber ? `+${settings.whatsappNumber.replace(/\D/g, "")}` : undefined,
@@ -164,9 +164,12 @@ export default async function SiteLayout({
               <p className="font-semibold text-slate-600">{settings.agentName}</p>
             )}
             <p>{settings.footerDisclaimer}</p>
-            <p className="pt-2">
+            <p className="flex gap-4 pt-2">
               <Link href="/contact" className="font-semibold text-brand hover:underline">
                 Contact Us
+              </Link>
+              <Link href="/privacy" className="font-semibold text-brand hover:underline">
+                Privacy Policy
               </Link>
             </p>
             <SocialLinks settings={settings} className="pt-3" />

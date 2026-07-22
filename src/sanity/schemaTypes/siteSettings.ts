@@ -17,7 +17,7 @@ export const siteSettings = defineType({
     defineField({
       name: "glocAffiliationLine",
       title: "GLOC affiliation line",
-      description: "e.g. Authorized Guardian Representative.",
+      description: "e.g. Licensed Insurance Sales Representative.",
       type: "string",
     }),
     defineField({

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Business: Group & Employee Benefits",
   description:
     "Cover your team with group health, life and pension benefits. Send an enquiry.",
+  alternates: { canonical: "/business" },
 };
 
 export default async function BusinessPage() {

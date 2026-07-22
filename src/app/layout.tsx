@@ -30,10 +30,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = `${name} | Insurance Agent in Trinidad & Tobago`;
   const description =
     s.heroSubcopy ||
-    "Independent insurance agent in Trinidad & Tobago for life, health, critical illness, pension, motor and home insurance. Friendly, no-pressure advice.";
+    "Licensed insurance agent in Trinidad & Tobago for life, health, critical illness, pension, motor and home insurance. Friendly, no-pressure advice.";
   return {
     metadataBase: new URL(SITE_URL),
-    alternates: { canonical: "/" },
+    // No global canonical: each page sets its own so search engines index
+    // every page, not just the homepage.
     title: { default: title, template: `%s | ${name}` },
     description,
     keywords: [
@@ -45,7 +46,6 @@ export async function generateMetadata(): Promise<Metadata> {
       "critical illness cover Trinidad",
       "pension annuity Trinidad",
       "motor home insurance Trinidad",
-      "Guardian Life Trinidad",
     ],
     openGraph: {
       type: "website",
@@ -73,13 +73,13 @@ export default function RootLayout({
     >
       <body className="min-h-full text-slate-900">
         {/* Google tag (gtag.js) — Google Ads conversion tracking.
-            beforeInteractive renders it into the document so it's present in the
-            page source (verifiable) and loads early. */}
+            afterInteractive keeps the tag out of the critical rendering path
+            so it doesn't slow first paint. */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
-        <Script id="google-ads-gtag" strategy="beforeInteractive">
+        <Script id="google-ads-gtag" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());

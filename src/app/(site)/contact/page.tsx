@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact Joanson Baptiste James, insurance agent in Trinidad & Tobago. WhatsApp, mobile, office phone, Facebook and Instagram.",
+  alternates: { canonical: "/contact" },
 };
 
 // Confirmed with the agent.

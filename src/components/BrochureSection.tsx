@@ -11,7 +11,7 @@ export default function BrochureSection({ pageKey }: { pageKey: string }) {
     <section aria-label="Product brochures">
       <h2 className="text-xl font-semibold text-brand">Product brochures</h2>
       <p className="mt-1 text-sm text-slate-600">
-        Official Guardian brochures for plans in this line. Click to open the PDF.
+        Official product brochures for plans in this line. Click to open the PDF.
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((b) => (

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Grow: Pension, Annuities & Investments",
   description:
     "Build wealth and beat inflation with pensions, annuities and investments. Try the projectors.",
+  alternates: { canonical: "/grow" },
 };
 
 export default async function GrowPage() {
