@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 // Google Calendar appointment schedule. The embed URL (gv=true) renders the
 // booking calendar directly on the page; the short link is the fallback.
 const BOOKING_EMBED_URL =
-  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2ZbBd9S3O9dRFKwFRL1zyjKkrjLP2HQpJADSqUd9V-hHmW4gy080RvusjDlC3hiK4kWSAq4Zng?gv=true";
-const BOOKING_LINK = "https://calendar.app.google/3DtkDC6QQGak5UGB6";
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0TjoKDCzfn9hhNjys85YBZHe4ZG9DgHvLMXTvb_m4e7nZHpSoprNkaXpYzXWQCsm7AcL6TYj5K?gv=true";
+const BOOKING_LINK = "https://calendar.app.google/3wqF6ZAHwCmSmpZJ7";
 
 export default function BookPage() {
   const message = "Hi, I'd like to book a meeting to talk through my options.";
