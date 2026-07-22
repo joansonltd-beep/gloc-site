@@ -4,7 +4,7 @@ import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 import AdsConversion from "@/components/AdsConversion";
 
 export const metadata: Metadata = {
-  title: "Book a call",
+  title: "Sign Up",
   description:
     "Book a no-pressure call with your insurance agent in Trinidad & Tobago.",
 };
@@ -19,7 +19,7 @@ export default function BookPage() {
       <AdsConversion sendTo="AW-18282133568/QM1DCMyU7sccEMDwzI1E" />
       <div className="text-center">
         <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
-          Book a call
+          Sign Up
         </p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
           Let&apos;s find a time to talk

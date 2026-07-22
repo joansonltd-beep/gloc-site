@@ -54,7 +54,7 @@ const navLinks: {
   { href: "/brochures", label: "Brochures" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-  { href: "/book", label: "Book" },
+  { href: "/book", label: "Sign Up" },
 ];
 
 // Site chrome: header, footer, WhatsApp float. Async so it can pull settings
