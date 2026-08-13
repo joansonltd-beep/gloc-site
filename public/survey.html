@@ -11,11 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#E9EDE6; --card:#FBFCFA; --ink:#15251E;
-  --forest:#1D4A3C; --forest-deep:#123027; --forest-soft:#A9C1B5;
-  --amber:#C98A15; --amber-soft:#F5E8C6;
-  --muted:#697C73; --line:#CBD5CC; --radius:3px;
-  --shadow:0 1px 0 rgba(21,37,30,.06), 0 12px 32px -20px rgba(21,37,30,.35);
+  --paper:#EAF1F8; --card:#FFFFFF; --ink:#333333;
+  --forest:#0A3C6E; --forest-deep:#072A4F; --forest-soft:#9DC4DE;
+  --amber:#1783C1; --amber-soft:#DCEBF5;
+  --muted:#5E7488; --line:#D5E0EA; --radius:3px;
+  --shadow:0 1px 0 rgba(10,60,110,.06), 0 12px 32px -20px rgba(10,60,110,.35);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -75,8 +75,8 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--forest);outline-
 
 /* income readout */
 .readout{margin-top:16px;border:1px solid var(--amber);background:var(--amber-soft);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.readout small{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#7A5406;font-weight:700}
-.readout strong{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.25rem;color:#4A3303}
+.readout small{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#0A3C6E;font-weight:700}
+.readout strong{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.25rem;color:#072A4F}
 
 .refblock{border:1px solid var(--line);border-radius:var(--radius);padding:14px 15px;margin-bottom:10px;background:#fff}
 .refblock h3{margin:0 0 10px;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
@@ -329,8 +329,9 @@ const FLOW = [
 
   { id:"contact", kind:"fields", sec:"E", eyebrow:"Staying in touch",
     q:"How do I reach you?",
+    hint:"All optional. Only leave a number if you would like me to follow up.",
     fields:[
-      {f:"phone", label:"WhatsApp number", type:"tel", req:true, col:"two", ph:"868 000 0000"},
+      {f:"phone", label:"WhatsApp number", type:"tel", col:"two", opt:true, ph:"868 000 0000"},
       {f:"email", label:"Email", type:"email", col:"two", opt:true},
       {f:"bestTime", label:"Best time to reach you", type:"select", options:["Mornings","Afternoons","Evenings","Weekends"]}
     ] },
@@ -383,7 +384,7 @@ function paintReadout(){
   const t = annualText();
   host.innerHTML = t
     ? `<small>${t.small}</small><strong>${t.big}</strong>`
-    : `<small>A year, roughly</small><strong style="color:#7A5406;font-size:.95rem;font-family:'Public Sans',sans-serif">Pick a band or type an amount</strong>`;
+    : `<small>A year, roughly</small><strong style="color:#0A3C6E;font-size:.95rem;font-family:'Public Sans',sans-serif">Pick a band or type an amount</strong>`;
 }
 
 /* ---------- capture ---------- */
@@ -491,20 +492,32 @@ function render(){
       ["Referrals given", String((state.refs||[]).filter(r => r && (r.name||"").trim()).length)]
     ].filter(r => r[1]);
     body = rows.map(r => `<div class="review-row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join("")
-      + `<label class="consent"><input type="checkbox" id="i-consent" ${state.consent?"checked":""}>
-           <span>I am happy for Joanson Baptiste James to hold these answers and to contact me about them.</span></label>
+      + `<h3 style="margin:22px 0 10px;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600">Your data, your choice</h3>
+         <div class="opts">
+           <button type="button" class="opt round ${state.keepData==="yes"?"on":""}" data-keep="yes">
+             <span class="box"></span><span>Yes, you may keep my answers and contact me about them.</span></button>
+           <button type="button" class="opt round ${state.keepData==="no"?"on":""}" data-keep="no">
+             <span class="box"></span><span>No, use my answers anonymously. Do not keep my name or contact details.</span></button>
+         </div>
          <p class="err" id="err"></p>`;
   }
 
   if (step.kind === "done"){
+    const anon = state.keepData === "no";
     card.className = "card anim done";
+    let line;
+    if (anon){
+      line = "Your views have been recorded anonymously. I have not kept your name or contact details.";
+    } else if (state.invite === "No"){
+      line = "You said you are not looking at anything right now, so I will leave it there.";
+    } else {
+      line = "I will reach out on WhatsApp at " + (state.bestTime||"a good time").toLowerCase() + ".";
+    }
     card.innerHTML = `
       <p class="eyebrow">Sent</p>
-      <h1 class="q">Thanks, ${state.name ? state.name.split(" ")[0] : "and appreciated"}.</h1>
-      <p>Your answers are in. ${state.invite === "No"
-        ? "You said you are not looking at anything right now, so I will leave it there."
-        : "I will reach out on WhatsApp at " + (state.bestTime||"a good time").toLowerCase() + "."}</p>
-      <div class="fallback">Prefer to send it across yourself? <a href="${waLink()}" target="_blank" rel="noopener">Message it to me directly</a>.</div>`;
+      <h1 class="q">Thanks, ${!anon && state.name ? state.name.split(" ")[0] : "and appreciated"}.</h1>
+      <p>Your answers are in. ${line}</p>
+      ${anon ? `` : `<div class="fallback">Prefer to send it across yourself? <a href="${waLink()}" target="_blank" rel="noopener">Message it to me directly</a>.</div>`}`;
     return;
   }
 
@@ -564,6 +577,10 @@ function bind(step){
     };
   });
 
+  card.querySelectorAll(".opt[data-keep]").forEach(btn => {
+    btn.onclick = () => { state.keepData = btn.dataset.keep; render(); };
+  });
+
   const exact = document.getElementById("i-exact");
   if (exact) exact.oninput = () => { state.incomeExact = exact.value; paintReadout(); };
 }
@@ -582,15 +599,11 @@ function advance(step){
   if (step.kind === "fields"){
     const missing = (step.fields||[]).find(f => f.req && !String(state[f.f]||"").trim());
     if (missing){ err.textContent = `${missing.label} is needed to go on.`; return; }
-    if (step.id === "contact" && String(state.phone||"").replace(/\D/g,"").length < 7){
-      err.textContent = "Add a number I can reach you on."; return;
-    }
   }
   if (step.kind === "single" && !state[step.id]) return;
   if (step.kind === "multi" && !(state[step.id]||[]).length) return;
   if (step.kind === "review"){
-    state.consent = document.getElementById("i-consent").checked;
-    if (!state.consent){ err.textContent = "Tick the box so I am allowed to hold this."; return; }
+    if (!state.keepData){ err.textContent = "Choose one of the two options above so I know your preference."; return; }
     return send();
   }
   go(1);
@@ -614,7 +627,7 @@ function flags(){
 
 function payload(){
   const a = annualText();
-  return {
+  const p = {
     submittedAt:new Date().toISOString(),
     name:state.name||"", area:state.area||"", ageBand:state.ageBand||"",
     marital:state.marital||"", occupation:state.occupation||"",
@@ -639,8 +652,18 @@ function payload(){
     bestTime:state.bestTime||"Mornings",
     referral1:refStr(0), referral2:refStr(1), referral3:refStr(2),
     nameUse:state.nameUse||"", adviceForMe:state.adviceForMe||"",
-    flags:flags(), source:location.href
+    flags:flags(), source:location.href,
+    dataRetention: state.keepData === "no" ? "Opted out — anonymous" : "Consented"
   };
+
+  // If the respondent opted out of data retention, strip everything that could
+  // identify them before it leaves the browser. Only the anonymous opinions go.
+  if (state.keepData === "no"){
+    p.name = ""; p.phone = ""; p.email = ""; p.occupation = "";
+    p.referral1 = ""; p.referral2 = ""; p.referral3 = ""; p.nameUse = "";
+    p.bestTime = ""; p.invite = "";
+  }
+  return p;
 }
 function refStr(i){
   const r = (state.refs||[])[i] || {};

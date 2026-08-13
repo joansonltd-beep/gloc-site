@@ -31,7 +31,11 @@ export default function BookPage() {
         </h1>
         <p className="mt-3 text-lg text-slate-600">
           Pick a time on the calendar below, request a callback, or message on
-          WhatsApp. No pressure, no obligation.
+          WhatsApp. No pressure, no obligation. Not ready to book?{" "}
+          <a href="/survey" className="font-semibold text-brand hover:underline">
+            Take my 5-minute market survey
+          </a>{" "}
+          instead.
         </p>
       </div>
 
