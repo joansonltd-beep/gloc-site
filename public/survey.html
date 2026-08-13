@@ -166,6 +166,30 @@ const BANDS = [
 
 const money = n => "TT$" + Math.round(n).toLocaleString("en-US");
 
+/* Exchange rates fetched 13 Aug 2026 (TTD per 1 unit of currency). Used only
+   to normalise income to TT$ behind the scenes — the rate is never shown. */
+const CURRENCIES = {
+  TTD: { name:"Trinidad & Tobago dollar (TT$)", symbol:"TT$", rate:1 },
+  USD: { name:"US dollar (US$)",                 symbol:"US$", rate:6.7533 },
+  GBP: { name:"British pound (£)",           symbol:"£", rate:9.3734 },
+  EUR: { name:"Euro (€)",                    symbol:"€", rate:8.1168 },
+  CAD: { name:"Canadian dollar (CA$)",            symbol:"CA$", rate:4.8619 }
+};
+const cur = () => CURRENCIES[state.currency || "TTD"];
+const moneyC = n => cur().symbol + Math.round(n).toLocaleString("en-US");
+function fmtAmt(ttd){
+  const c = cur();
+  const amt = ttd / c.rate;
+  const rounded = c.rate === 1 ? Math.round(amt) : Math.round(amt/100)*100;
+  return c.symbol + rounded.toLocaleString("en-US");
+}
+function bandLabel(b){
+  if (b.lo === null) return b.label;               // "Prefer not to say"
+  if (b.lo === 0)    return `${fmtAmt(0)} to ${fmtAmt(b.hi)}`;
+  if (b.hi === null) return `${fmtAmt(b.lo)} and up`;
+  return `${fmtAmt(b.lo)} to ${fmtAmt(b.hi)}`;
+}
+
 const FLOW = [
 
   { id:"intro", kind:"intro", sec:"A" },
@@ -331,7 +355,7 @@ const FLOW = [
     q:"How do I reach you?",
     hint:"All optional. Only leave a number if you would like me to follow up.",
     fields:[
-      {f:"phone", label:"WhatsApp number", type:"tel", col:"two", opt:true, ph:"868 000 0000"},
+      {f:"phone", label:"Phone number", type:"tel", col:"two", opt:true, ph:"868 000 0000"},
       {f:"email", label:"Email", type:"email", col:"two", opt:true},
       {f:"bestTime", label:"Best time to reach you", type:"select", options:["Mornings","Afternoons","Evenings","Weekends"]}
     ] },
@@ -353,7 +377,7 @@ const FLOW = [
   { id:"review", kind:"review", sec:"F", eyebrow:"Before you send", q:"Quick check." }
 ];
 
-const state = { refs:[{},{},{}] };
+const state = { refs:[{},{},{}], currency:"TTD" };
 let cursor = 0, sending = false;
 const card = document.getElementById("card");
 
@@ -369,14 +393,30 @@ function paintRail(step){
 
 /* ---------- income helpers ---------- */
 function annualText(){
+  const c = cur();
   const exact = parseFloat(String(state.incomeExact||"").replace(/[^0-9.]/g,""));
   if (!isNaN(exact) && exact > 0){
-    return { small:"A year, roughly", big:`${money(exact)} a month is about ${money(exact*12)}` };
+    return { small:"A year, roughly", big:`${moneyC(exact)} a month is about ${moneyC(exact*12)}` };
   }
   const b = BANDS.find(x => x.label === state.incomeBand);
   if (!b || b.lo === null) return null;
-  if (b.hi === null) return { small:"A year, roughly", big:`${money(b.lo*12)} and up` };
-  return { small:"A year, roughly", big:`${money(b.lo*12)} to ${money(b.hi*12)}` };
+  const loC = b.lo / c.rate, hiC = b.hi === null ? null : b.hi / c.rate;
+  if (hiC === null) return { small:"A year, roughly", big:`${moneyC(loC*12)} and up` };
+  return { small:"A year, roughly", big:`${moneyC(loC*12)} to ${moneyC(hiC*12)}` };
+}
+
+/* Income normalised to TT$ for the sheet (rate applied silently). */
+function incomeTTD(){
+  const c = cur();
+  const exact = parseFloat(String(state.incomeExact||"").replace(/[^0-9.]/g,""));
+  if (!isNaN(exact) && exact > 0){
+    const m = exact * c.rate;
+    return { monthly: String(Math.round(m)), annual: String(Math.round(m*12)) };
+  }
+  const b = BANDS.find(x => x.label === state.incomeBand);
+  if (!b || b.lo === null) return { monthly:"", annual:"" };
+  const aLo = b.lo * 12, aHi = b.hi === null ? null : b.hi * 12;
+  return { monthly:"", annual: aHi === null ? `${aLo}+` : `${aLo}-${aHi}` };
 }
 function paintReadout(){
   const host = document.getElementById("readout");
@@ -454,14 +494,24 @@ function render(){
   }
 
   if (step.kind === "income"){
-    body = `<div class="opts">` + BANDS.map((b,i) =>
+    body = `
+      <div class="fields" style="margin-bottom:16px">
+        <div>
+          <label for="i-cur">Currency</label>
+          <select id="i-cur">
+            ${Object.keys(CURRENCIES).map(k =>
+              `<option value="${k}" ${(state.currency||"TTD")===k?"selected":""}>${CURRENCIES[k].name}</option>`).join("")}
+          </select>
+        </div>
+      </div>
+      <div class="opts">` + BANDS.map((b,i) =>
       `<button type="button" class="opt round ${state.incomeBand===b.label?"on":""}" data-band="${i}">
-         <span class="box"></span><span>${b.label}</span></button>`).join("") + `</div>
+         <span class="box"></span><span>${bandLabel(b)}</span></button>`).join("") + `</div>
       <div class="fields" style="margin-top:16px">
         <div>
           <label for="i-exact">Or give the exact figure <span class="optional">optional</span></label>
           <input id="i-exact" type="number" inputmode="numeric" min="0" step="100" data-f="incomeExact"
-                 value="${state.incomeExact||""}" placeholder="Monthly, in TT dollars">
+                 value="${state.incomeExact||""}" placeholder="Monthly, in ${cur().symbol}">
         </div>
       </div>
       <div class="readout" id="readout"></div>`;
@@ -511,7 +561,7 @@ function render(){
     } else if (state.invite === "No"){
       line = "You said you are not looking at anything right now, so I will leave it there.";
     } else {
-      line = "I will reach out on WhatsApp at " + (state.bestTime||"a good time").toLowerCase() + ".";
+      line = "I will reach out at " + (state.bestTime||"a good time").toLowerCase() + ".";
     }
     card.innerHTML = `
       <p class="eyebrow">Sent</p>
@@ -583,6 +633,9 @@ function bind(step){
 
   const exact = document.getElementById("i-exact");
   if (exact) exact.oninput = () => { state.incomeExact = exact.value; paintReadout(); };
+
+  const curSel = document.getElementById("i-cur");
+  if (curSel) curSel.onchange = () => { state.currency = curSel.value; render(); };
 }
 
 function go(d){
@@ -634,8 +687,10 @@ function payload(){
     work:state.work||"", workCover:state.workCover||"", bizIncome:state.bizIncome||"",
     retiredIncome:state.retiredIncome||"",
     hasDeps:state.hasDeps||"", depCount:state.depCount||"", depSchool:state.depSchool||"",
+    incomeCurrency:state.currency||"TTD",
     incomeBand:state.incomeBand||"", incomeExactMonthly:state.incomeExact||"",
-    incomeAnnualShown:a ? a.big : "",
+    incomeExactMonthlyTTD:incomeTTD().monthly,
+    incomeAnnualShown:a ? a.big : "", incomeAnnualTTD:incomeTTD().annual,
     ownsAny:state.ownsAny||"", types:(state.types||[]).join("; "),
     howLong:state.howLong||"", whyBought:state.whyBought||"", whyOtherText:state.whyOtherText||"",
     knowsPayout:state.knowsPayout||"", hasAgent:state.hasAgent||"", agentSat:state.agentSat||"",
