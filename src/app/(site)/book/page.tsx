@@ -79,6 +79,26 @@ export default function BookPage() {
           />
         </div>
       </div>
+
+      {/* Market survey funnel — its own standalone page. */}
+      <a
+        href="/survey"
+        className="mt-10 block rounded-2xl border border-slate-200 bg-white/70 p-6 text-center shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+      >
+        <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
+          Not ready to book?
+        </p>
+        <p className="mt-1 text-lg font-semibold text-brand">
+          Take my 5-minute market survey
+        </p>
+        <p className="mt-1 text-sm text-slate-600">
+          A few quick questions about insurance in Trinidad &amp; Tobago. No
+          selling, and I use it to understand what people really want.
+        </p>
+        <span className="mt-3 inline-block text-sm font-semibold text-brand">
+          Start the survey →
+        </span>
+      </a>
     </div>
   );
 }

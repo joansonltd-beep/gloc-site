@@ -14,7 +14,7 @@ import { SITE_URL } from "@/lib/siteUrl";
 const navLinks: {
   href: string;
   label: string;
-  items?: { href: string; label: string }[];
+  items?: { href: string; label: string; external?: boolean }[];
 }[] = [
   { href: "/", label: "Home" },
   {
@@ -54,7 +54,14 @@ const navLinks: {
   { href: "/brochures", label: "Brochures" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-  { href: "/book", label: "Book a Meeting" },
+  {
+    href: "/book",
+    label: "Book a Meeting",
+    items: [
+      { href: "/book", label: "Book a meeting" },
+      { href: "/survey", label: "Market survey", external: true },
+    ],
+  },
 ];
 
 // Site chrome: header, footer, WhatsApp float. Async so it can pull settings

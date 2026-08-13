@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Joanson Baptiste James">
+<meta name="description" content="A short opinion survey on insurance in Trinidad and Tobago, run by Joanson Baptiste James, Sales Representative, Guardian Life of the Caribbean Limited.">
+<title>Market Survey · Joanson Baptiste James</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9EDE6; --card:#FBFCFA; --ink:#15251E;
+  --forest:#1D4A3C; --forest-deep:#123027; --forest-soft:#A9C1B5;
+  --amber:#C98A15; --amber-soft:#F5E8C6;
+  --muted:#697C73; --line:#CBD5CC; --radius:3px;
+  --shadow:0 1px 0 rgba(21,37,30,.06), 0 12px 32px -20px rgba(21,37,30,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:20px 18px 56px}
+
+.masthead{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.mark{font-family:"Instrument Serif",Georgia,serif;font-size:1.35rem}
+.mark span{color:var(--forest)}
+.masthead p{margin:0;font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+
+.stage{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
+@media(min-width:880px){.stage{grid-template-columns:212px 1fr;gap:36px}.wrap{padding-top:34px}}
+
+/* section rail */
+.rail h2{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;gap:5px;overflow:hidden}
+@media(min-width:880px){.rail ol{flex-direction:column;gap:0}}
+.rail li{flex:1;font-size:.74rem;color:var(--muted);border-top:2px solid var(--line);padding:7px 0 0;transition:color .3s ease,border-color .3s ease}
+@media(min-width:880px){
+  .rail li{border-top:none;border-left:2px solid var(--line);padding:7px 0 7px 12px}
+}
+.rail li b{display:block;font-size:.62rem;letter-spacing:.12em;color:var(--forest-soft);font-weight:700}
+.rail li.past{border-color:var(--forest-soft)}
+.rail li.now{border-color:var(--forest);color:var(--ink);font-weight:600}
+.rail li.now b{color:var(--forest)}
+.rail li span{display:none}
+@media(min-width:880px){.rail li span{display:inline}}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 20px 20px}
+@media(min-width:880px){.card{padding:34px 36px 26px}}
+.eyebrow{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--forest);font-weight:600;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+.q{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.6rem;line-height:1.18;margin:0 0 6px}
+@media(min-width:880px){.q{font-size:2rem}}
+.hint{margin:0 0 20px;color:var(--muted);font-size:.86rem}
+.anim{animation:rise .36s cubic-bezier(.2,.7,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:var(--radius);padding:12px 15px;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--forest);background:#F2F6F2}
+.opt:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
+.opt .box{flex:0 0 16px;height:16px;border:1px solid var(--muted);border-radius:2px;position:relative;transition:background .15s,border-color .15s}
+.opt.round .box{border-radius:50%}
+.opt.on{border-color:var(--forest);background:#EEF4EF}
+.opt.on .box{background:var(--forest);border-color:var(--forest)}
+.opt.on .box::after{content:"";position:absolute;inset:0;margin:auto;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+
+.fields{display:grid;gap:14px}
+@media(min-width:640px){.fields.two{grid-template-columns:1fr 1fr}.fields.three{grid-template-columns:1.4fr 1fr 1fr}}
+label{display:block;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:5px}
+input[type=text],input[type=tel],input[type=email],input[type=number],select,textarea{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:11px 12px}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--forest);outline-offset:1px;border-color:var(--forest)}
+.optional{text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted);font-size:.72rem}
+
+/* income readout */
+.readout{margin-top:16px;border:1px solid var(--amber);background:var(--amber-soft);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.readout small{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#7A5406;font-weight:700}
+.readout strong{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.25rem;color:#4A3303}
+
+.refblock{border:1px solid var(--line);border-radius:var(--radius);padding:14px 15px;margin-bottom:10px;background:#fff}
+.refblock h3{margin:0 0 10px;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+.review-row{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px dotted var(--line);font-size:.86rem}
+.review-row span:first-child{color:var(--muted);flex:0 0 44%}
+.review-row span:last-child{text-align:right;font-weight:500}
+.consent{display:flex;gap:11px;align-items:flex-start;margin:20px 0 4px;font-size:.82rem;color:var(--muted);line-height:1.5}
+.consent input{margin-top:3px;flex:0 0 auto;accent-color:var(--forest);width:16px;height:16px}
+.err{color:#9C3320;font-size:.8rem;margin:10px 0 0;min-height:1.2em}
+
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+.btn{font:inherit;font-weight:600;border-radius:var(--radius);padding:12px 22px;cursor:pointer;border:1px solid var(--forest);transition:background .15s,opacity .15s}
+.btn.primary{background:var(--forest);color:#F4F8F5}
+.btn.primary:hover{background:var(--forest-deep)}
+.btn.ghost{background:transparent;color:var(--forest);border-color:transparent;padding-left:0}
+.btn.ghost:hover{text-decoration:underline}
+.btn.link{background:transparent;color:var(--muted);border-color:transparent;font-weight:400;font-size:.84rem;padding:12px 0}
+.btn.link:hover{color:var(--forest);text-decoration:underline}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
+.count{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+.intro p{max-width:56ch;color:#33463D}
+.intro ul{max-width:56ch;color:var(--muted);font-size:.9rem;padding-left:18px}
+.done p{color:var(--muted);max-width:54ch}
+.fallback{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.85rem}
+.fallback a{color:var(--forest);font-weight:600}
+
+.disclosure{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:.73rem;line-height:1.6;color:var(--muted);max-width:78ch}
+.disclosure strong{color:var(--ink);font-weight:600}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mark">Joanson <span>B James</span></div>
+    <p>Market survey</p>
+  </header>
+
+  <div class="stage">
+    <aside class="rail" aria-label="Sections">
+      <h2>Sections</h2>
+      <ol id="rail"></ol>
+    </aside>
+
+    <main>
+      <div class="card" id="card" aria-live="polite"></div>
+      <p class="disclosure">
+        <strong>Joanson Baptiste James, Sales Representative, Guardian Life of the Caribbean Limited.</strong>
+        I am a tied insurance intermediary and represent Guardian Life of the Caribbean Limited only.
+        This is an opinion survey. It is not an application for insurance, an offer of cover, or a
+        recommendation of any product. Nothing here obliges you to buy anything. Your answers are used
+        only by me, to understand what people in Trinidad and Tobago actually want from this industry,
+        and are not sold or passed to third parties.
+      </p>
+    </main>
+  </div>
+</div>
+
+<script>
+/* ==========================================================
+   SETTINGS — edit these two lines.
+   ========================================================== */
+const SHEET_ENDPOINT  = "https://script.google.com/macros/s/AKfycbzSRX-KQsy5e8Qp1q1BK11ACwunTLEli11nxwJmKCZedPQlBKKZDQaCz1NwDTx29gxirg/exec";
+const WHATSAPP_NUMBER = "18687236644"; // country code + number, digits only
+/* ========================================================== */
+
+const SECTIONS = [
+  {key:"A", label:"About you"},
+  {key:"B", label:"What you have"},
+  {key:"C", label:"Your views"},
+  {key:"D", label:"Where you stand"},
+  {key:"E", label:"Staying in touch"},
+  {key:"F", label:"Referrals"}
+];
+
+const BANDS = [
+  {label:"$0 to $7,000",        lo:0,     hi:7000},
+  {label:"$7,001 to $15,000",   lo:7001,  hi:15000},
+  {label:"$15,001 to $30,000",  lo:15001, hi:30000},
+  {label:"$30,001 and up",      lo:30001, hi:null},
+  {label:"Prefer not to say",   lo:null,  hi:null}
+];
+
+const money = n => "TT$" + Math.round(n).toLocaleString("en-US");
+
+const FLOW = [
+
+  { id:"intro", kind:"intro", sec:"A" },
+
+  { id:"about", kind:"fields", sec:"A", eyebrow:"About you", q:"Let us start with the basics.",
+    hint:"Only your name is needed. The rest helps me read the results properly.",
+    fields:[
+      {f:"name",     label:"Name",           type:"text", req:true, col:"two"},
+      {f:"area",     label:"Where you live", type:"text", col:"two", ph:"Town or district"},
+      {f:"ageBand",  label:"Age",            type:"select", col:"two", options:["","25 and under","26 to 35","36 to 45","46 to 55","56 and over"]},
+      {f:"marital",  label:"Marital status", type:"select", col:"two", options:["","Single","Married or living with partner","Separated or divorced","Widowed"]},
+      {f:"occupation", label:"Occupation",   type:"text"}
+    ] },
+
+  { id:"work", kind:"single", sec:"A", eyebrow:"About you",
+    q:"How do you earn right now?",
+    options:["Employed with a company","Self-employed or own a business","Contract, gig or commission work","Retired or between jobs"] },
+
+  { id:"workCover", kind:"single", sec:"A", eyebrow:"About you",
+    when:s => s.work === "Employed with a company",
+    q:"Does the job come with any cover?",
+    options:["Yes, and it covers my family","Yes, but only the basics","No cover through work","I am not sure"] },
+
+  { id:"bizIncome", kind:"single", sec:"A", eyebrow:"About you",
+    when:s => s.work === "Self-employed or own a business" || s.work === "Contract, gig or commission work",
+    q:"If you could not work for three months, what happens to the income?",
+    options:["It stops completely","It drops sharply","It keeps coming without me","I have never worked that out"] },
+
+  { id:"retiredIncome", kind:"single", sec:"A", eyebrow:"About you",
+    when:s => s.work === "Retired or between jobs",
+    q:"How steady is the income now?",
+    options:["A fixed pension","It varies month to month","Family supports me"] },
+
+  { id:"hasDeps", kind:"single", sec:"A", eyebrow:"About you",
+    q:"Is anybody depending on you financially?",
+    options:["Yes","No"] },
+
+  { id:"depsDetail", kind:"fields", sec:"A", eyebrow:"About you",
+    when:s => s.hasDeps === "Yes",
+    q:"Tell me a bit about them.",
+    fields:[
+      {f:"depCount",  label:"How many", type:"number", col:"two", ph:"e.g. 3"},
+      {f:"depSchool", label:"Any still in school", type:"select", col:"two", options:["","Yes","No"]}
+    ] },
+
+  { id:"income", kind:"income", sec:"A", eyebrow:"About you",
+    q:"Roughly what comes into the household each month?",
+    hint:"Trinidad and Tobago dollars, before deductions. This question can be skipped." },
+
+  { id:"ownsAny", kind:"single", sec:"B", eyebrow:"What you have",
+    q:"Do you own any insurance at all?",
+    options:["Yes","No"] },
+
+  { id:"types", kind:"multi", sec:"B", eyebrow:"What you have",
+    when:s => s.ownsAny === "Yes",
+    q:"Which of these do you have?",
+    hint:"Choose all that apply.",
+    options:["Life","Health","Critical illness","Personal accident","Motor","Home or property","Pension or annuity","Group cover through work"] },
+
+  { id:"howLong", kind:"single", sec:"B", eyebrow:"What you have",
+    when:s => s.ownsAny === "Yes",
+    q:"How long have you had the main one?",
+    options:["Under 2 years","2 to 5 years","5 to 10 years","Over 10 years"] },
+
+  { id:"whyBought", kind:"single", sec:"B", eyebrow:"What you have",
+    when:s => s.ownsAny === "Yes",
+    q:"Why did you take out your last policy?",
+    options:["Family protection","Required for a mortgage or loan","Retirement","Savings or cash build-up","Education fund","The employer arranged it","Somebody asked me and I agreed","Other"] },
+
+  { id:"whyOther", kind:"fields", sec:"B", eyebrow:"What you have",
+    when:s => s.whyBought === "Other",
+    q:"What was the reason?",
+    fields:[{f:"whyOtherText", label:"Reason", type:"text"}] },
+
+  { id:"knowsPayout", kind:"single", sec:"B", eyebrow:"What you have",
+    when:s => s.ownsAny === "Yes",
+    q:"Do you know what it actually pays out if a claim is made?",
+    options:["I know clearly","Roughly","Not really"] },
+
+  { id:"hasAgent", kind:"single", sec:"B", eyebrow:"What you have",
+    when:s => s.ownsAny === "Yes",
+    q:"Do you have a personal agent you could call today?",
+    options:["Yes","No"] },
+
+  { id:"agentSat", kind:"single", sec:"B", eyebrow:"What you have",
+    when:s => s.hasAgent === "Yes",
+    q:"Were you satisfied with the service you got?",
+    options:["Very satisfied","Somewhat satisfied","Not really"] },
+
+  { id:"agentWhy", kind:"longtext", sec:"B", eyebrow:"What you have",
+    when:s => s.hasAgent === "Yes",
+    q:"What made it so?",
+    hint:"Optional, but this is the part I learn most from.",
+    ph:"Good or bad, say it plain." },
+
+  { id:"noAgentWhy", kind:"single", sec:"B", eyebrow:"What you have",
+    when:s => s.hasAgent === "No",
+    q:"What happened there?",
+    options:["Never had one","The person left the company","Bought it through a bank or online","Not sure"] },
+
+  { id:"neverWhy", kind:"multi", sec:"B", eyebrow:"What you have",
+    when:s => s.ownsAny === "No",
+    q:"What has kept you from taking any?",
+    hint:"Choose all that apply.",
+    options:["Cost","Never got round to it","I do not trust the industry","I do not see the need","Nobody ever explained it properly","A bad experience before","Other"] },
+
+  { id:"firstThought", kind:"longtext", sec:"C", eyebrow:"Your views",
+    q:"When somebody says \u201cinsurance agent,\u201d what is the first thing that comes to mind?",
+    hint:"Optional. Be as blunt as you like, it is more useful that way.",
+    ph:"First thing that comes to mind." },
+
+  { id:"agentMust", kind:"multi", sec:"C", eyebrow:"Your views",
+    q:"What does an agent need to have for you to deal with them?",
+    hint:"Choose all that apply.",
+    options:["Explains things plainly","Does not push","Answers when you call","Knows the products properly","Honest about what is not covered","Follows up after the sale","Local and easy to reach"] },
+
+  { id:"agentTurnoff", kind:"multi", sec:"C", eyebrow:"Your views",
+    q:"What would turn you off fastest?",
+    hint:"Choose all that apply.",
+    options:["Pushy","Hard to reach after the sale","Talks over your head","Only appears at renewal","Hides the fine print","Sells you more than you need"] },
+
+  { id:"agentShould", kind:"longtext", sec:"C", eyebrow:"Your views",
+    q:"In your view, what should an agent actually be doing for a client?",
+    hint:"Optional.",
+    ph:"What would earn your business and keep it." },
+
+  { id:"pricedFairly", kind:"single", sec:"C", eyebrow:"Your views",
+    q:"Do you think insurance here is priced fairly for what it gives?",
+    options:["Yes","No","Depends on the product","Cannot say"] },
+
+  { id:"everClaimed", kind:"single", sec:"C", eyebrow:"Your views",
+    q:"Have you or somebody close to you ever made a claim?",
+    options:["Yes","No"] },
+
+  { id:"claimWent", kind:"single", sec:"C", eyebrow:"Your views",
+    when:s => s.everClaimed === "Yes",
+    q:"How did it go?",
+    options:["Paid without trouble","Paid but slow","Ran into problems","It was refused"] },
+
+  { id:"heaviest", kind:"single", sec:"D", eyebrow:"Where you stand",
+    q:"Which of these sits heaviest on your mind right now?",
+    options:["Income if I cannot work","My family if something happens to me","Medical bills","School fees","Something for retirement","Protecting the business or vehicle","Nothing pressing"] },
+
+  { id:"runway", kind:"single", sec:"D", eyebrow:"Where you stand",
+    q:"If you could not work for six months, how long could the household hold out?",
+    options:["Under a month","1 to 3 months","3 to 6 months","Longer than that","Never worked it out"] },
+
+  { id:"changing", kind:"single", sec:"D", eyebrow:"Where you stand",
+    q:"Are you thinking of changing or adding to your cover?",
+    options:["Yes","Maybe","No"] },
+
+  { id:"changingWhat", kind:"fields", sec:"D", eyebrow:"Where you stand",
+    when:s => s.changing === "Yes" || s.changing === "Maybe",
+    q:"What kind of thing?",
+    fields:[{f:"changingText", label:"What you have in mind", type:"text", ph:"A sentence is enough"}] },
+
+  { id:"invite", kind:"single", sec:"E", eyebrow:"Staying in touch",
+    q:"Based on what you have said here, would you look at something I put together for you?",
+    hint:"A straight no is a fine answer and does not affect the rest of this.",
+    options:["Yes","Maybe","No"] },
+
+  { id:"contact", kind:"fields", sec:"E", eyebrow:"Staying in touch",
+    q:"How do I reach you?",
+    fields:[
+      {f:"phone", label:"WhatsApp number", type:"tel", req:true, col:"two", ph:"868 000 0000"},
+      {f:"email", label:"Email", type:"email", col:"two", opt:true},
+      {f:"bestTime", label:"Best time to reach you", type:"select", options:["Mornings","Afternoons","Evenings","Weekends"]}
+    ] },
+
+  { id:"referrals", kind:"referrals", sec:"F", eyebrow:"Referrals",
+    q:"Who else would give an honest opinion on this?",
+    hint:"Optional. Two or three names of people I do not already know." },
+
+  { id:"nameUse", kind:"single", sec:"F", eyebrow:"Referrals",
+    when:s => (s.refs||[]).some(r => r && (r.name||"").trim()),
+    q:"When I reach out to them, may I mention your name?",
+    options:["Yes","No"] },
+
+  { id:"adviceForMe", kind:"longtext", sec:"F", eyebrow:"Referrals",
+    q:"Anything you would want an agent to know before approaching somebody like you?",
+    hint:"Optional. Last question.",
+    ph:"Advice, warnings, anything." },
+
+  { id:"review", kind:"review", sec:"F", eyebrow:"Before you send", q:"Quick check." }
+];
+
+const state = { refs:[{},{},{}] };
+let cursor = 0, sending = false;
+const card = document.getElementById("card");
+
+const visible = () => FLOW.filter(s => !s.when || s.when(state));
+
+/* ---------- section rail ---------- */
+function paintRail(step){
+  const at = SECTIONS.findIndex(s => s.key === (step.sec || "A"));
+  document.getElementById("rail").innerHTML = SECTIONS.map((s,i) =>
+    `<li class="${i<at?"past":i===at?"now":""}"><b>${s.key}</b><span>${s.label}</span></li>`
+  ).join("");
+}
+
+/* ---------- income helpers ---------- */
+function annualText(){
+  const exact = parseFloat(String(state.incomeExact||"").replace(/[^0-9.]/g,""));
+  if (!isNaN(exact) && exact > 0){
+    return { small:"A year, roughly", big:`${money(exact)} a month is about ${money(exact*12)}` };
+  }
+  const b = BANDS.find(x => x.label === state.incomeBand);
+  if (!b || b.lo === null) return null;
+  if (b.hi === null) return { small:"A year, roughly", big:`${money(b.lo*12)} and up` };
+  return { small:"A year, roughly", big:`${money(b.lo*12)} to ${money(b.hi*12)}` };
+}
+function paintReadout(){
+  const host = document.getElementById("readout");
+  if (!host) return;
+  const t = annualText();
+  host.innerHTML = t
+    ? `<small>${t.small}</small><strong>${t.big}</strong>`
+    : `<small>A year, roughly</small><strong style="color:#7A5406;font-size:.95rem;font-family:'Public Sans',sans-serif">Pick a band or type an amount</strong>`;
+}
+
+/* ---------- capture ---------- */
+function capture(){
+  card.querySelectorAll("[data-f]").forEach(el => {
+    state[el.dataset.f] = el.value;
+  });
+  card.querySelectorAll("[data-ref]").forEach(el => {
+    const [i,k] = el.dataset.ref.split(":");
+    state.refs[+i] = state.refs[+i] || {};
+    state.refs[+i][k] = el.value;
+  });
+}
+
+/* ---------- render ---------- */
+function render(){
+  const list = visible();
+  if (cursor > list.length-1) cursor = list.length-1;
+  const step = list[cursor];
+  let body = "", nav = true;
+
+  if (step.kind === "intro"){
+    nav = false;
+    card.className = "card anim intro";
+    card.innerHTML = `
+      <p class="eyebrow">Market survey</p>
+      <h1 class="q">I am asking people what they really think about insurance.</h1>
+      <p>I sell life and health cover in Trinidad and Tobago. A lot of what this industry believes about
+         what people want is out of date, and the only way to find out is to ask people who are not in the business.</p>
+      <ul>
+        <li>Around five minutes, and questions you do not want to answer can be skipped.</li>
+        <li>Nothing is being sold here. There is one question near the end asking whether you would look at something, and no is a fine answer.</li>
+        <li>Your answers stay with me and are not passed on to anybody.</li>
+      </ul>
+      <div class="nav"><span></span><button type="button" class="btn primary" id="next">Start</button></div>`;
+    document.getElementById("next").onclick = () => go(1);
+    paintRail(step);
+    return;
+  }
+
+  if (step.kind === "single" || step.kind === "multi"){
+    const chosen = step.kind === "multi" ? (state[step.id]||[]) : [state[step.id]];
+    body = `<div class="opts">` + step.options.map((o,i) =>
+      `<button type="button" class="opt ${step.kind==="single"?"round":""} ${chosen.includes(o)?"on":""}" data-i="${i}">
+         <span class="box"></span><span>${o}</span></button>`).join("") + `</div>`;
+  }
+
+  if (step.kind === "fields"){
+    const groups = {};
+    step.fields.forEach(f => { (groups[f.col||"one"] = groups[f.col||"one"] || []).push(f); });
+    body = Object.keys(groups).map(col =>
+      `<div class="fields ${col==="two"?"two":""}" style="margin-bottom:14px">` +
+      groups[col].map(f => {
+        const lab = `<label for="i-${f.f}">${f.label}${f.opt?` <span class="optional">optional</span>`:``}</label>`;
+        if (f.type === "select"){
+          return `<div>${lab}<select id="i-${f.f}" data-f="${f.f}">` +
+            f.options.map(o => `<option value="${o}" ${state[f.f]===o?"selected":""}>${o||"Select"}</option>`).join("") +
+            `</select></div>`;
+        }
+        return `<div>${lab}<input id="i-${f.f}" type="${f.type}" data-f="${f.f}" value="${state[f.f]||""}" placeholder="${f.ph||""}"></div>`;
+      }).join("") + `</div>`).join("");
+    body += `<p class="err" id="err"></p>`;
+  }
+
+  if (step.kind === "longtext"){
+    body = `<div class="fields"><textarea id="i-${step.id}" data-f="${step.id}" placeholder="${step.ph||""}">${state[step.id]||""}</textarea></div>`;
+  }
+
+  if (step.kind === "income"){
+    body = `<div class="opts">` + BANDS.map((b,i) =>
+      `<button type="button" class="opt round ${state.incomeBand===b.label?"on":""}" data-band="${i}">
+         <span class="box"></span><span>${b.label}</span></button>`).join("") + `</div>
+      <div class="fields" style="margin-top:16px">
+        <div>
+          <label for="i-exact">Or give the exact figure <span class="optional">optional</span></label>
+          <input id="i-exact" type="number" inputmode="numeric" min="0" step="100" data-f="incomeExact"
+                 value="${state.incomeExact||""}" placeholder="Monthly, in TT dollars">
+        </div>
+      </div>
+      <div class="readout" id="readout"></div>`;
+  }
+
+  if (step.kind === "referrals"){
+    body = [0,1,2].map(i => {
+      const r = state.refs[i] || {};
+      return `<div class="refblock">
+        <h3>Person ${i+1}</h3>
+        <div class="fields three">
+          <div><label for="r${i}n">Name</label><input id="r${i}n" type="text" data-ref="${i}:name" value="${r.name||""}"></div>
+          <div><label for="r${i}c">Contact</label><input id="r${i}c" type="text" data-ref="${i}:contact" value="${r.contact||""}" placeholder="Number or email"></div>
+          <div><label for="r${i}h">How you know them</label><input id="r${i}h" type="text" data-ref="${i}:how" value="${r.how||""}" placeholder="Work, family, church"></div>
+        </div></div>`;
+    }).join("");
+  }
+
+  if (step.kind === "review"){
+    const rows = [
+      ["Name", state.name],
+      ["Work", state.work],
+      ["Owns insurance", state.ownsAny],
+      ["Has a personal agent", state.hasAgent],
+      ["Heaviest on mind", state.heaviest],
+      ["Would look at something", state.invite],
+      ["Reach on", [state.phone, state.bestTime].filter(Boolean).join(" · ")],
+      ["Referrals given", String((state.refs||[]).filter(r => r && (r.name||"").trim()).length)]
+    ].filter(r => r[1]);
+    body = rows.map(r => `<div class="review-row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join("")
+      + `<label class="consent"><input type="checkbox" id="i-consent" ${state.consent?"checked":""}>
+           <span>I am happy for Joanson Baptiste James to hold these answers and to contact me about them.</span></label>
+         <p class="err" id="err"></p>`;
+  }
+
+  if (step.kind === "done"){
+    card.className = "card anim done";
+    card.innerHTML = `
+      <p class="eyebrow">Sent</p>
+      <h1 class="q">Thanks, ${state.name ? state.name.split(" ")[0] : "and appreciated"}.</h1>
+      <p>Your answers are in. ${state.invite === "No"
+        ? "You said you are not looking at anything right now, so I will leave it there."
+        : "I will reach out on WhatsApp at " + (state.bestTime||"a good time").toLowerCase() + "."}</p>
+      <div class="fallback">Prefer to send it across yourself? <a href="${waLink()}" target="_blank" rel="noopener">Message it to me directly</a>.</div>`;
+    return;
+  }
+
+  card.className = "card anim";
+  card.innerHTML = `
+    <p class="eyebrow">${step.eyebrow}</p>
+    <h1 class="q">${step.q}</h1>
+    ${step.hint ? `<p class="hint">${step.hint}</p>` : ``}
+    ${body}
+    ${nav ? `<div class="nav">
+      <button type="button" class="btn ghost" id="back" ${cursor===0?"disabled":""}>Back</button>
+      ${optionalSkip(step)}
+      <button type="button" class="btn primary" id="next">${step.kind==="review"?"Send":"Continue"}</button>
+    </div>` : ``}`;
+
+  bind(step);
+  paintRail(step);
+  if (step.kind === "income") paintReadout();
+}
+
+function optionalSkip(step){
+  const skippable = ["longtext","referrals","income"].includes(step.kind);
+  return skippable
+    ? `<button type="button" class="btn link" id="skip">Skip</button>`
+    : `<span class="count">${cursor+1} of ${visible().length}</span>`;
+}
+
+function bind(step){
+  const back = document.getElementById("back");
+  if (back) back.onclick = () => { capture(); go(-1); };
+  const skip = document.getElementById("skip");
+  if (skip) skip.onclick = () => { capture(); go(1); };
+  const next = document.getElementById("next");
+  if (next) next.onclick = () => advance(step);
+
+  card.querySelectorAll(".opt[data-i]").forEach(btn => {
+    btn.onclick = () => {
+      const v = step.options[+btn.dataset.i];
+      if (step.kind === "single"){
+        state[step.id] = v;
+        setTimeout(() => go(1), 130);
+      } else {
+        let p = state[step.id] || [];
+        p = p.includes(v) ? p.filter(x => x !== v) : p.concat(v);
+        state[step.id] = p;
+        render();
+      }
+    };
+  });
+
+  card.querySelectorAll(".opt[data-band]").forEach(btn => {
+    btn.onclick = () => {
+      const b = BANDS[+btn.dataset.band];
+      state.incomeBand = b.label;
+      if (b.lo === null) state.incomeExact = "";
+      render();
+    };
+  });
+
+  const exact = document.getElementById("i-exact");
+  if (exact) exact.oninput = () => { state.incomeExact = exact.value; paintReadout(); };
+}
+
+function go(d){
+  const list = visible();
+  cursor = Math.max(0, Math.min(list.length-1, cursor + d));
+  render();
+  window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+function advance(step){
+  capture();
+  const err = document.getElementById("err");
+
+  if (step.kind === "fields"){
+    const missing = (step.fields||[]).find(f => f.req && !String(state[f.f]||"").trim());
+    if (missing){ err.textContent = `${missing.label} is needed to go on.`; return; }
+    if (step.id === "contact" && String(state.phone||"").replace(/\D/g,"").length < 7){
+      err.textContent = "Add a number I can reach you on."; return;
+    }
+  }
+  if (step.kind === "single" && !state[step.id]) return;
+  if (step.kind === "multi" && !(state[step.id]||[]).length) return;
+  if (step.kind === "review"){
+    state.consent = document.getElementById("i-consent").checked;
+    if (!state.consent){ err.textContent = "Tick the box so I am allowed to hold this."; return; }
+    return send();
+  }
+  go(1);
+}
+
+/* ---------- payload ---------- */
+function flags(){
+  const t = state.types || [];
+  const out = [];
+  if (state.hasDeps === "Yes" && !t.includes("Life")) out.push("Dependants, no life cover");
+  if (state.ownsAny === "No") out.push("No cover at all");
+  if (state.hasAgent === "No") out.push("No personal agent");
+  if (state.agentSat === "Not really") out.push("Unhappy with current agent");
+  if (state.runway === "Under a month") out.push("Runway under a month");
+  if (state.bizIncome === "It stops completely") out.push("Self-employed, income stops");
+  if (state.workCover === "No cover through work") out.push("No cover through work");
+  if (!t.includes("Health") && state.ownsAny === "Yes") out.push("No health plan");
+  if (state.knowsPayout === "Not really") out.push("Does not know own payout");
+  return out.join("; ");
+}
+
+function payload(){
+  const a = annualText();
+  return {
+    submittedAt:new Date().toISOString(),
+    name:state.name||"", area:state.area||"", ageBand:state.ageBand||"",
+    marital:state.marital||"", occupation:state.occupation||"",
+    work:state.work||"", workCover:state.workCover||"", bizIncome:state.bizIncome||"",
+    retiredIncome:state.retiredIncome||"",
+    hasDeps:state.hasDeps||"", depCount:state.depCount||"", depSchool:state.depSchool||"",
+    incomeBand:state.incomeBand||"", incomeExactMonthly:state.incomeExact||"",
+    incomeAnnualShown:a ? a.big : "",
+    ownsAny:state.ownsAny||"", types:(state.types||[]).join("; "),
+    howLong:state.howLong||"", whyBought:state.whyBought||"", whyOtherText:state.whyOtherText||"",
+    knowsPayout:state.knowsPayout||"", hasAgent:state.hasAgent||"", agentSat:state.agentSat||"",
+    agentWhy:state.agentWhy||"", noAgentWhy:state.noAgentWhy||"",
+    neverWhy:(state.neverWhy||[]).join("; "),
+    firstThought:state.firstThought||"",
+    agentMust:(state.agentMust||[]).join("; "),
+    agentTurnoff:(state.agentTurnoff||[]).join("; "),
+    agentShould:state.agentShould||"", pricedFairly:state.pricedFairly||"",
+    everClaimed:state.everClaimed||"", claimWent:state.claimWent||"",
+    heaviest:state.heaviest||"", runway:state.runway||"",
+    changing:state.changing||"", changingText:state.changingText||"",
+    invite:state.invite||"", phone:state.phone||"", email:state.email||"",
+    bestTime:state.bestTime||"Mornings",
+    referral1:refStr(0), referral2:refStr(1), referral3:refStr(2),
+    nameUse:state.nameUse||"", adviceForMe:state.adviceForMe||"",
+    flags:flags(), source:location.href
+  };
+}
+function refStr(i){
+  const r = (state.refs||[])[i] || {};
+  if (!(r.name||"").trim()) return "";
+  return [r.name, r.contact, r.how].filter(Boolean).join(" | ");
+}
+
+function waLink(){
+  const d = payload();
+  const text =
+`Market survey from ${d.name}
+Phone: ${d.phone}
+Work: ${d.work}
+Owns insurance: ${d.ownsAny}
+Has agent: ${d.hasAgent}
+Heaviest: ${d.heaviest}
+Would look at something: ${d.invite}
+Flags: ${d.flags || "none"}
+Best time: ${d.bestTime}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+async function send(){
+  if (sending) return;
+  sending = true;
+  const b = document.getElementById("next");
+  b.disabled = true; b.textContent = "Sending";
+  try{
+    await fetch(SHEET_ENDPOINT, { method:"POST", mode:"no-cors", body:JSON.stringify(payload()) });
+  }catch(e){ console.error("Sheet delivery failed", e); }
+  sending = false;
+  FLOW.push({ id:"done", kind:"done", sec:"F" });
+  cursor = visible().length - 1;
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
