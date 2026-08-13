@@ -173,7 +173,8 @@ const CURRENCIES = {
   USD: { name:"US dollar (US$)",                 symbol:"US$", rate:6.7533 },
   GBP: { name:"British pound (£)",           symbol:"£", rate:9.3734 },
   EUR: { name:"Euro (€)",                    symbol:"€", rate:8.1168 },
-  CAD: { name:"Canadian dollar (CA$)",            symbol:"CA$", rate:4.8619 }
+  CAD: { name:"Canadian dollar (CA$)",            symbol:"CA$", rate:4.8619 },
+  XCD: { name:"Eastern Caribbean dollar (EC$)",    symbol:"EC$", rate:2.5013 }
 };
 const cur = () => CURRENCIES[state.currency || "TTD"];
 const moneyC = n => cur().symbol + Math.round(n).toLocaleString("en-US");
