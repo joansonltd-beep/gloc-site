@@ -492,7 +492,7 @@ function render(){
     ].filter(r => r[1]);
     body = rows.map(r => `<div class="review-row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join("")
       + `<label class="consent"><input type="checkbox" id="i-consent" ${state.consent?"checked":""}>
-           <span>I am happy for Joanson Baptiste James to hold these answers and to contact me about them.</span></label>
+           <span>I consent to Joanson Baptiste James receiving these answers.</span></label>
          <p class="err" id="err"></p>`;
   }
 
