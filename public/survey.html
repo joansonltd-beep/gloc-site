@@ -348,7 +348,9 @@ const FLOW = [
     fields:[{f:"changingText", label:"What you have in mind", type:"text", ph:"A sentence is enough"}] },
 
   { id:"invite", kind:"single", sec:"E", eyebrow:"Staying in touch",
-    q:"Based on what you have said here, would you look at something I put together for you?",
+    q:s => s.ownsAny === "Yes"
+      ? "Would you be open to me reviewing your portfolio?"
+      : "Would you be willing to meet for us to discuss your risks and financial needs?",
     hint:"A straight no is a fine answer and does not affect the rest of this.",
     options:["Yes","Maybe","No"] },
 
@@ -575,7 +577,7 @@ function render(){
   card.className = "card anim";
   card.innerHTML = `
     <p class="eyebrow">${step.eyebrow}</p>
-    <h1 class="q">${step.q}</h1>
+    <h1 class="q">${typeof step.q === "function" ? step.q(state) : step.q}</h1>
     ${step.hint ? `<p class="hint">${step.hint}</p>` : ``}
     ${body}
     ${nav ? `<div class="nav">
