@@ -344,7 +344,7 @@ const FLOW = [
 
   { id:"changingWhat", kind:"fields", sec:"D", eyebrow:"Where you stand",
     when:s => s.changing === "Yes" || s.changing === "Maybe",
-    q:"What kind of thing?",
+    q:"What are you thinking of adding or changing?",
     fields:[{f:"changingText", label:"What you have in mind", type:"text", ph:"A sentence is enough"}] },
 
   { id:"invite", kind:"single", sec:"E", eyebrow:"Staying in touch",
