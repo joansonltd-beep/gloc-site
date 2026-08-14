@@ -545,22 +545,21 @@ function render(){
       ["Referrals given", String((state.refs||[]).filter(r => r && (r.name||"").trim()).length)]
     ].filter(r => r[1]);
     body = rows.map(r => `<div class="review-row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join("")
-      + `<h3 style="margin:22px 0 10px;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600">Your data, your choice</h3>
+      + `<h3 style="margin:22px 0 10px;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600">Can I contact you about this?</h3>
          <div class="opts">
-           <button type="button" class="opt round ${state.keepData==="yes"?"on":""}" data-keep="yes">
-             <span class="box"></span><span>Yes, you may keep my answers and contact me about them.</span></button>
-           <button type="button" class="opt round ${state.keepData==="no"?"on":""}" data-keep="no">
-             <span class="box"></span><span>No, use my answers anonymously. Do not keep my name or contact details.</span></button>
+           <button type="button" class="opt round ${state.okToContact==="yes"?"on":""}" data-contact="yes">
+             <span class="box"></span><span>Yes, you may contact me about this.</span></button>
+           <button type="button" class="opt round ${state.okToContact==="no"?"on":""}" data-contact="no">
+             <span class="box"></span><span>No, please do not contact me.</span></button>
          </div>
          <p class="err" id="err"></p>`;
   }
 
   if (step.kind === "done"){
-    const anon = state.keepData === "no";
     card.className = "card anim done";
     let line;
-    if (anon){
-      line = "Your views have been recorded anonymously. I have not kept your name or contact details.";
+    if (state.okToContact === "no"){
+      line = "I will not reach out. You are welcome to contact me any time if that changes.";
     } else if (state.invite === "No"){
       line = "You said you are not looking at anything right now, so I will leave it there.";
     } else {
@@ -568,9 +567,9 @@ function render(){
     }
     card.innerHTML = `
       <p class="eyebrow">Sent</p>
-      <h1 class="q">Thanks, ${!anon && state.name ? state.name.split(" ")[0] : "and appreciated"}.</h1>
+      <h1 class="q">Thanks, ${state.name ? state.name.split(" ")[0] : "and appreciated"}.</h1>
       <p>Your answers are in. ${line}</p>
-      ${anon ? `` : `<div class="fallback">Prefer to send it across yourself? <a href="${waLink()}" target="_blank" rel="noopener">Message it to me directly</a>.</div>`}`;
+      <div class="fallback">Prefer to send it across yourself? <a href="${waLink()}" target="_blank" rel="noopener">Message it to me directly</a>.</div>`;
     return;
   }
 
@@ -630,8 +629,8 @@ function bind(step){
     };
   });
 
-  card.querySelectorAll(".opt[data-keep]").forEach(btn => {
-    btn.onclick = () => { state.keepData = btn.dataset.keep; render(); };
+  card.querySelectorAll(".opt[data-contact]").forEach(btn => {
+    btn.onclick = () => { state.okToContact = btn.dataset.contact; render(); };
   });
 
   const exact = document.getElementById("i-exact");
@@ -659,7 +658,7 @@ function advance(step){
   if (step.kind === "single" && !state[step.id]) return;
   if (step.kind === "multi" && !(state[step.id]||[]).length) return;
   if (step.kind === "review"){
-    if (!state.keepData){ err.textContent = "Choose one of the two options above so I know your preference."; return; }
+    if (!state.okToContact){ err.textContent = "Choose one of the two options above so I know your preference."; return; }
     return send();
   }
   go(1);
@@ -711,16 +710,8 @@ function payload(){
     referral1:refStr(0), referral2:refStr(1), referral3:refStr(2),
     nameUse:state.nameUse||"", adviceForMe:state.adviceForMe||"",
     flags:flags(), source:location.href,
-    dataRetention: state.keepData === "no" ? "Opted out — anonymous" : "Consented"
+    okToContact: state.okToContact === "yes" ? "Yes" : "No"
   };
-
-  // If the respondent opted out of data retention, strip everything that could
-  // identify them before it leaves the browser. Only the anonymous opinions go.
-  if (state.keepData === "no"){
-    p.name = ""; p.phone = ""; p.email = ""; p.occupation = "";
-    p.referral1 = ""; p.referral2 = ""; p.referral3 = ""; p.nameUse = "";
-    p.bestTime = ""; p.invite = "";
-  }
   return p;
 }
 function refStr(i){
