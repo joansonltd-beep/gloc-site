@@ -560,9 +560,8 @@ function render(){
     let line;
     if (state.okToContact === "no"){
       line = "I will not reach out. You are welcome to contact me any time if that changes.";
-    } else if (state.invite === "No"){
-      line = "You said you are not looking at anything right now, so I will leave it there.";
     } else {
+      // A "yes" here is the final word, even if an earlier answer was "no".
       line = "I will reach out at " + (state.bestTime||"a good time").toLowerCase() + ".";
     }
     card.innerHTML = `
