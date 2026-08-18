@@ -246,11 +246,16 @@ const FLOW = [
     q:"Do you own any insurance at all?",
     options:["Yes","No"] },
 
+  { id:"coverContext", kind:"single", sec:"B", eyebrow:"What you have",
+    when:s => s.ownsAny === "Yes",
+    q:"Is this personal, through work, or both?",
+    options:["Personal","Work","Personal and work cover"] },
+
   { id:"types", kind:"multi", sec:"B", eyebrow:"What you have",
     when:s => s.ownsAny === "Yes",
     q:"Which of these do you have?",
     hint:"Choose all that apply.",
-    options:["Life","Health","Critical illness","Personal accident","Motor","Home or property","Pension or annuity","Group cover through work"] },
+    options:["Life","Health","Critical illness","Personal accident","Motor","Home or property","Pension or annuity","Group Life Cover","Group Health Cover","Group Pension"] },
 
   { id:"howLong", kind:"single", sec:"B", eyebrow:"What you have",
     when:s => s.ownsAny === "Yes",
@@ -690,7 +695,7 @@ function payload(){
     incomeBand:state.incomeBand||"", incomeExactMonthly:state.incomeExact||"",
     incomeExactMonthlyTTD:incomeTTD().monthly,
     incomeAnnualShown:a ? a.big : "", incomeAnnualTTD:incomeTTD().annual,
-    ownsAny:state.ownsAny||"", types:(state.types||[]).join("; "),
+    ownsAny:state.ownsAny||"", coverContext:state.coverContext||"", types:(state.types||[]).join("; "),
     howLong:state.howLong||"", whyBought:state.whyBought||"", whyOtherText:state.whyOtherText||"",
     knowsPayout:state.knowsPayout||"", hasAgent:state.hasAgent||"", agentSat:state.agentSat||"",
     agentWhy:state.agentWhy||"", noAgentWhy:state.noAgentWhy||"",
