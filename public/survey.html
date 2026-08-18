@@ -19,7 +19,13 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{
+  color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  background:
+    url("/survey-bg.svg") bottom center / 100% auto no-repeat fixed,
+    linear-gradient(180deg, #EAF1F8 0%, #E9EEF6 45%, #F7E8D2 78%, #F6D9AE 92%, #EFC98C 100%) fixed;
+}
 .wrap{max-width:1040px;margin:0 auto;padding:20px 18px 56px}
 
 .masthead{display:flex;justify-content:center;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:22px}
@@ -28,7 +34,8 @@ body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-u
 .stage{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
 @media(min-width:880px){.stage{grid-template-columns:212px 1fr;gap:36px}.wrap{padding-top:34px}}
 
-/* section rail */
+/* section rail — translucent backing keeps it legible over the background scene */
+.rail{background:rgba(255,255,255,.62);border-radius:var(--radius);padding:12px 14px}
 .rail h2{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
 .rail ol{list-style:none;margin:0;padding:0;display:flex;gap:5px;overflow:hidden}
 @media(min-width:880px){.rail ol{flex-direction:column;gap:0}}
@@ -104,7 +111,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--forest);outline-
 .fallback{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.85rem}
 .fallback a{color:var(--forest);font-weight:600}
 
-.disclosure{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:.73rem;line-height:1.6;color:var(--muted);max-width:78ch}
+.disclosure{margin-top:26px;padding:16px;border-top:1px solid var(--line);font-size:.73rem;line-height:1.6;color:var(--muted);max-width:78ch;background:rgba(255,255,255,.62);border-radius:var(--radius)}
 .disclosure strong{color:var(--ink);font-weight:600}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <g id="palm">
+      <path d="M0 130 C-3 95 2 60 10 20" stroke="#072A4F" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M10 20 C-25 8 -55 5 -85 12" stroke="#072A4F" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M10 20 C-15 -5 -35 -25 -50 -45" stroke="#072A4F" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M10 20 C10 -12 15 -35 20 -58" stroke="#072A4F" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M10 20 C30 0 55 -12 80 -18" stroke="#072A4F" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M10 20 C35 15 65 20 90 30" stroke="#072A4F" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </g>
+    <g id="bird">
+      <path d="M0 0 C6 -6 14 -6 20 0 C14 -3 6 -3 0 0 Z" fill="#072A4F"/>
+      <path d="M20 0 C26 -6 34 -6 40 0 C34 -3 26 -3 20 0 Z" fill="#072A4F"/>
+    </g>
+  </defs>
+
+  <!-- distant Savannah-esque hill line -->
+  <path d="M0 170 Q120 140 240 158 T480 150 T720 162 T960 145 T1200 158 T1440 150 L1440 260 L0 260 Z" fill="#0A3C6E" fill-opacity="0.16"/>
+
+  <!-- carnival sparkle -->
+  <g opacity="0.55">
+    <circle cx="90" cy="40" r="4" fill="#F0B429"/>
+    <circle cx="180" cy="70" r="3" fill="#1783C1"/>
+    <circle cx="330" cy="30" r="3.5" fill="#F0B429"/>
+    <circle cx="520" cy="60" r="3" fill="#1783C1"/>
+    <circle cx="700" cy="25" r="4" fill="#F0B429"/>
+    <circle cx="860" cy="55" r="3" fill="#1783C1"/>
+    <circle cx="1020" cy="35" r="3.5" fill="#F0B429"/>
+    <circle cx="1180" cy="65" r="3" fill="#1783C1"/>
+    <circle cx="1320" cy="30" r="4" fill="#F0B429"/>
+  </g>
+
+  <!-- palms along the hill line -->
+  <use href="#palm" transform="translate(140 205) scale(1.15)" opacity="0.5"/>
+  <use href="#palm" transform="translate(430 200) scale(0.85)" opacity="0.42"/>
+  <use href="#palm" transform="translate(880 208) scale(1.3)" opacity="0.55"/>
+  <use href="#palm" transform="translate(1180 202) scale(0.95)" opacity="0.45"/>
+  <use href="#palm" transform="translate(1340 210) scale(0.7)" opacity="0.4"/>
+
+  <!-- hummingbirds -->
+  <use href="#bird" transform="translate(260 45) rotate(-10)" opacity="0.4"/>
+  <use href="#bird" transform="translate(1030 75) rotate(8) scale(0.8)" opacity="0.35"/>
+</svg>
