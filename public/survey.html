@@ -187,6 +187,18 @@ function bandLabel(b){
   return `${fmtAmt(b.lo)} to ${fmtAmt(b.hi)}`;
 }
 
+/* Age, computed from date of birth — no separate age question needed. */
+function ageFromDob(dobStr){
+  if (!dobStr) return null;
+  const d = new Date(dobStr);
+  if (isNaN(d.getTime())) return null;
+  const today = new Date();
+  let age = today.getFullYear() - d.getFullYear();
+  const m = today.getMonth() - d.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < d.getDate())) age--;
+  return age >= 0 && age < 130 ? age : null;
+}
+
 const FLOW = [
 
   { id:"intro", kind:"intro", sec:"A" },
@@ -197,11 +209,15 @@ const FLOW = [
       {f:"name",     label:"Name",           type:"text", req:true, col:"two"},
       {f:"phone",    label:"Phone number",   type:"tel",  col:"two", opt:true, ph:"868 000 0000"},
       {f:"dob",      label:"Date of birth",  type:"date", req:true, col:"two"},
-      {f:"area",     label:"Where you live", type:"text", col:"two", ph:"Town or district"},
-      {f:"ageBand",  label:"Age",            type:"select", col:"two", options:["","25 and under","26 to 35","36 to 45","46 to 55","56 and over"]},
+      {f:"area",     label:"Where you live", type:"select", col:"two",
+        options:["","Port of Spain","San Fernando","Arima","Chaguanas","Point Fortin",
+          "Diego Martin","San Juan/Laventille","Tunapuna/Piarco","Couva/Tabaquite/Talparo",
+          "Princes Town","Mayaro/Rio Claro","Penal/Debe","Siparia","Sangre Grande",
+          "Tobago","Other / overseas"]},
       {f:"marital",  label:"Marital status", type:"select", col:"two", options:["","Single","Married or living with partner","Separated or divorced","Widowed"]},
       {f:"email",    label:"Email",          type:"email", col:"two", opt:true},
-      {f:"occupation", label:"Occupation",   type:"text"}
+      {f:"occupation", label:"Occupation",   type:"select", col:"two",
+        options:["","Permanently Employed","Contract","Self Employed","Pensioner/Retired","Unemployed"]}
     ] },
 
   { id:"work", kind:"single", sec:"A", eyebrow:"About you",
@@ -487,6 +503,11 @@ function render(){
             f.options.map(o => `<option value="${o}" ${state[f.f]===o?"selected":""}>${o||"Select"}</option>`).join("") +
             `</select></div>`;
         }
+        if (f.f === "dob"){
+          const age = ageFromDob(state.dob);
+          return `<div>${lab}<input id="i-dob" type="date" data-f="dob" value="${state.dob||""}">
+            <p id="dobAge" style="margin:6px 0 0;font-size:.78rem;color:var(--muted)">${age!==null?"Age: "+age:""}</p></div>`;
+        }
         return `<div>${lab}<input id="i-${f.f}" type="${f.type}" data-f="${f.f}" value="${state[f.f]||""}" placeholder="${f.ph||""}"></div>`;
       }).join("") + `</div>`).join("");
     body += `<p class="err" id="err"></p>`;
@@ -637,6 +658,15 @@ function bind(step){
 
   const curSel = document.getElementById("i-cur");
   if (curSel) curSel.onchange = () => { state.currency = curSel.value; render(); };
+
+  const dobInput = document.getElementById("i-dob");
+  if (dobInput) dobInput.oninput = () => {
+    state.dob = dobInput.value;
+    const age = ageFromDob(state.dob);
+    state.age = age === null ? "" : String(age);
+    const r = document.getElementById("dobAge");
+    if (r) r.textContent = age !== null ? "Age: " + age : "";
+  };
 }
 
 function go(d){
@@ -683,7 +713,7 @@ function payload(){
   const a = annualText();
   const p = {
     submittedAt:new Date().toISOString(),
-    name:state.name||"", dob:state.dob||"", area:state.area||"", ageBand:state.ageBand||"",
+    name:state.name||"", dob:state.dob||"", age:state.age||"", area:state.area||"",
     marital:state.marital||"", occupation:state.occupation||"",
     work:state.work||"", workCover:state.workCover||"", bizIncome:state.bizIncome||"",
     retiredIncome:state.retiredIncome||"",
