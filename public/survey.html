@@ -68,7 +68,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Public Sans",system-u
 .fields{display:grid;gap:14px}
 @media(min-width:640px){.fields.two{grid-template-columns:1fr 1fr}.fields.three{grid-template-columns:1.4fr 1fr 1fr}}
 label{display:block;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:5px}
-input[type=text],input[type=tel],input[type=email],input[type=number],select,textarea{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:11px 12px}
+input[type=text],input[type=tel],input[type=email],input[type=number],input[type=date],select,textarea{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:11px 12px}
 textarea{min-height:96px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--forest);outline-offset:1px;border-color:var(--forest)}
 .optional{text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted);font-size:.72rem}
@@ -152,7 +152,6 @@ const SECTIONS = [
   {key:"B", label:"What you have"},
   {key:"C", label:"Your views"},
   {key:"D", label:"Where you stand"},
-  {key:"E", label:"Staying in touch"},
   {key:"F", label:"Referrals"}
 ];
 
@@ -196,12 +195,15 @@ const FLOW = [
   { id:"intro", kind:"intro", sec:"A" },
 
   { id:"about", kind:"fields", sec:"A", eyebrow:"About you", q:"Let us start with the basics.",
-    hint:"Only your name is needed. The rest helps me read the results properly.",
+    hint:"Name and date of birth are needed. The rest helps me read the results properly.",
     fields:[
       {f:"name",     label:"Name",           type:"text", req:true, col:"two"},
+      {f:"phone",    label:"Phone number",   type:"tel",  col:"two", opt:true, ph:"868 000 0000"},
+      {f:"dob",      label:"Date of birth",  type:"date", req:true, col:"two"},
       {f:"area",     label:"Where you live", type:"text", col:"two", ph:"Town or district"},
       {f:"ageBand",  label:"Age",            type:"select", col:"two", options:["","25 and under","26 to 35","36 to 45","46 to 55","56 and over"]},
       {f:"marital",  label:"Marital status", type:"select", col:"two", options:["","Single","Married or living with partner","Separated or divorced","Widowed"]},
+      {f:"email",    label:"Email",          type:"email", col:"two", opt:true},
       {f:"occupation", label:"Occupation",   type:"text"}
     ] },
 
@@ -347,21 +349,17 @@ const FLOW = [
     q:"What are you thinking of adding or changing?",
     fields:[{f:"changingText", label:"What you have in mind", type:"text", ph:"A sentence is enough"}] },
 
-  { id:"invite", kind:"single", sec:"E", eyebrow:"Staying in touch",
-    q:s => s.ownsAny === "Yes"
-      ? "Would you be open to me reviewing your portfolio?"
-      : "Would you be willing to meet for us to discuss your risks and financial needs?",
+  { id:"invite", kind:"single", sec:"D", eyebrow:"Where you stand",
+    q:s => {
+      if (s.ownsAny === "Yes") {
+        return s.hasAgent === "Yes"
+          ? "Would you be open to another agent reviewing your portfolio?"
+          : "Would you be open to an agent reviewing your portfolio?";
+      }
+      return "Would you be open to an agent looking at your situation with you?";
+    },
     hint:"A straight no is a fine answer and does not affect the rest of this.",
     options:["Yes","Maybe","No"] },
-
-  { id:"contact", kind:"fields", sec:"E", eyebrow:"Staying in touch",
-    q:"How do I reach you?",
-    hint:"All optional. Only leave a number if you would like me to follow up.",
-    fields:[
-      {f:"phone", label:"Phone number", type:"tel", col:"two", opt:true, ph:"868 000 0000"},
-      {f:"email", label:"Email", type:"email", col:"two", opt:true},
-      {f:"bestTime", label:"Best time to reach you", type:"select", options:["Mornings","Afternoons","Evenings","Weekends"]}
-    ] },
 
   { id:"referrals", kind:"referrals", sec:"F", eyebrow:"Referrals",
     q:"Who else would give an honest opinion on this?",
@@ -540,8 +538,8 @@ function render(){
       ["Owns insurance", state.ownsAny],
       ["Has a personal agent", state.hasAgent],
       ["Heaviest on mind", state.heaviest],
-      ["Would look at something", state.invite],
-      ["Reach on", [state.phone, state.bestTime].filter(Boolean).join(" · ")],
+      ["Open to a review", state.invite],
+      ["Reach on", state.phone || state.email || ""],
       ["Referrals given", String((state.refs||[]).filter(r => r && (r.name||"").trim()).length)]
     ].filter(r => r[1]);
     body = rows.map(r => `<div class="review-row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join("")
@@ -562,7 +560,7 @@ function render(){
       line = "I will not reach out. You are welcome to contact me any time if that changes.";
     } else {
       // A "yes" here is the final word, even if an earlier answer was "no".
-      line = "I will reach out at " + (state.bestTime||"a good time").toLowerCase() + ".";
+      line = "I will reach out to you.";
     }
     card.innerHTML = `
       <p class="eyebrow">Sent</p>
@@ -683,7 +681,7 @@ function payload(){
   const a = annualText();
   const p = {
     submittedAt:new Date().toISOString(),
-    name:state.name||"", area:state.area||"", ageBand:state.ageBand||"",
+    name:state.name||"", dob:state.dob||"", area:state.area||"", ageBand:state.ageBand||"",
     marital:state.marital||"", occupation:state.occupation||"",
     work:state.work||"", workCover:state.workCover||"", bizIncome:state.bizIncome||"",
     retiredIncome:state.retiredIncome||"",
@@ -705,7 +703,6 @@ function payload(){
     heaviest:state.heaviest||"", runway:state.runway||"",
     changing:state.changing||"", changingText:state.changingText||"",
     invite:state.invite||"", phone:state.phone||"", email:state.email||"",
-    bestTime:state.bestTime||"Mornings",
     referral1:refStr(0), referral2:refStr(1), referral3:refStr(2),
     nameUse:state.nameUse||"", adviceForMe:state.adviceForMe||"",
     flags:flags(), source:location.href,
@@ -724,13 +721,13 @@ function waLink(){
   const text =
 `Market survey from ${d.name}
 Phone: ${d.phone}
+Date of birth: ${d.dob}
 Work: ${d.work}
 Owns insurance: ${d.ownsAny}
 Has agent: ${d.hasAgent}
 Heaviest: ${d.heaviest}
-Would look at something: ${d.invite}
-Flags: ${d.flags || "none"}
-Best time: ${d.bestTime}`;
+Open to a review: ${d.invite}
+Flags: ${d.flags || "none"}`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
