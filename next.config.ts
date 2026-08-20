@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
       // clean URL. It has its own self-contained design, so it lives outside
       // the site layout.
       { source: "/survey", destination: "/survey.html" },
+      // "Waiting for food?" QR splash (public/wait.html). Deliberately not
+      // linked from anywhere on the site — reachable only via a direct link
+      // (e.g. a printed QR code), so it's also kept out of the sitemap and
+      // blocked from indexing in robots.ts.
+      { source: "/wait", destination: "/wait.html" },
     ];
   },
 };
