@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import CallbackForm from "@/components/CallbackForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 import AdsConversion from "@/components/AdsConversion";
+import { getSiteSettings } from "@/lib/siteData";
+import { buildWhatsAppLink } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Book a Meeting",
@@ -16,8 +18,10 @@ const BOOKING_EMBED_URL =
   "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0TjoKDCzfn9hhNjys85YBZHe4ZG9DgHvLMXTvb_m4e7nZHpSoprNkaXpYzXWQCsm7AcL6TYj5K?gv=true";
 const BOOKING_LINK = "https://calendar.app.google/3wqF6ZAHwCmSmpZJ7";
 
-export default function BookPage() {
+export default async function BookPage() {
   const message = "Hi, I'd like to book a meeting to talk through my options.";
+  const settings = await getSiteSettings();
+  const whatsappLink = buildWhatsAppLink(settings.whatsappNumber, message);
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -30,8 +34,16 @@ export default function BookPage() {
           Let&apos;s find a time to talk
         </h1>
         <p className="mt-3 text-lg text-slate-600">
-          Pick a time on the calendar below, request a callback, or message on
-          WhatsApp. No pressure, no obligation. Not ready to book?{" "}
+          Pick a time on the calendar below, request a callback, or{" "}
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-brand hover:underline"
+          >
+            message on WhatsApp
+          </a>
+          . No pressure, no obligation. Not ready to book?{" "}
           <a href="/survey" className="font-semibold text-brand hover:underline">
             Take my 5-minute market survey
           </a>{" "}
