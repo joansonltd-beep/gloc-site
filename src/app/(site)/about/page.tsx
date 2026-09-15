@@ -32,7 +32,7 @@ export default async function AboutPage() {
         </header>
 
         {aboutPhoto ? (
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[240px] overflow-hidden rounded-2xl ring-1 ring-slate-200 md:mx-0">
+          <div className="relative mx-auto aspect-[4/5] w-60 overflow-hidden rounded-2xl ring-1 ring-slate-200 md:mx-0">
             <Image
               src={aboutPhoto}
               alt={`${settings.agentName}, ${settings.agentTagline}`}
