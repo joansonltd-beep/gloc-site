@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
-import VideoEmbed from "@/components/VideoEmbed";
 import LearnMore from "@/components/LearnMore";
 import { getAbout, getSiteSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Meet your insurance agent in Trinidad & Tobago: story and a short intro video.",
+  description: "Meet your insurance agent in Trinidad & Tobago.",
   alternates: { canonical: "/about" },
 };
 
@@ -62,14 +60,6 @@ export default async function AboutPage() {
             </div>
           )}
         </LearnMore>
-      </div>
-
-      <div className="max-w-2xl">
-        <VideoEmbed
-          fileUrl={about.videoFileUrl}
-          url={about.videoUrl}
-          title={`Intro from ${settings.agentName}`}
-        />
       </div>
     </div>
   );
