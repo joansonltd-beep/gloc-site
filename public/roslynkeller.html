@@ -58,6 +58,11 @@ body { margin: 0; }
 .file-btn { position: relative; overflow: hidden; display: inline-block; }
 .file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 .file-btn:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+#app { display: contents; }
+.gate { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: grid; gap: 14px; max-width: 460px; }
+.gate p { margin: 0; }
+.gate input[type="password"] { width: 100%; }
+.check { display: flex; gap: 8px; align-items: center; font-weight: 500; color: var(--ink); }
 .confirm { border-left: 4px solid var(--warn); background: var(--warn-soft); padding: 12px 14px; border-radius: 0 8px 8px 0; display: grid; gap: 10px; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
 .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 64px; display: grid; gap: 28px; }
@@ -118,7 +123,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .entry { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 14px; }
 .entry-top { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; justify-content: space-between; }
 label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
-input[type="date"], input[type="number"], input[type="text"], select, textarea {
+input[type="date"], input[type="number"], input[type="text"], input[type="password"], select, textarea {
   font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px;
 }
 .field { display: grid; gap: 4px; }
@@ -205,10 +210,27 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
       <span class="range num" id="week-range"></span>
       <button class="btn" id="next-week" type="button" aria-label="Next week">Next &rarr;</button>
       <button class="btn" id="this-week" type="button">This week</button>
+      <button class="btn" id="lock" type="button" hidden>Lock</button>
     </nav>
   </header>
 
   <div id="notice" class="notice" hidden></div>
+
+  <form class="gate" id="gate" hidden novalidate>
+    <h2>Enter the passcode</h2>
+    <p class="muted">Your entries are saved on the site and protected by a passcode.</p>
+    <div class="field">
+      <label for="gate-pass">Passcode</label>
+      <input type="password" id="gate-pass" autocomplete="current-password" required>
+    </div>
+    <label class="check"><input type="checkbox" id="gate-remember" checked> Remember on this device</label>
+    <div class="actions">
+      <button class="btn btn-primary" id="gate-go" type="submit">Unlock</button>
+      <span class="status" id="gate-status" role="status"></span>
+    </div>
+  </form>
+
+  <div id="app">
 
   <section class="glance" aria-labelledby="glance-h">
     <div class="glance-head">
@@ -293,7 +315,14 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
 
   <section class="panel data-box" aria-labelledby="data-h">
     <h2 id="data-h">Your data</h2>
-    <p class="muted">Entries are saved in this browser only. Nothing is sent to a server, so clearing your browser data or using another device starts you from empty. Download a backup now and then, and restore it on another device to bring your numbers with you.</p>
+    <p class="muted" id="data-copy">Entries are saved in this browser only. Nothing is sent to a server, so clearing your browser data or using another device starts you from empty. Download a backup now and then, and restore it on another device to bring your numbers with you.</p>
+    <div class="confirm" id="migrate" hidden>
+      <span id="migrate-text"></span>
+      <div class="actions">
+        <button class="btn btn-primary" id="migrate-yes" type="button">Add them to the site</button>
+        <button class="btn" id="migrate-no" type="button">Not now</button>
+      </div>
+    </div>
     <div class="actions">
       <button class="btn" id="backup-download" type="button">Download backup</button>
       <span class="btn file-btn">Restore from backup<input type="file" id="backup-file" accept="application/json,.json" aria-label="Restore from backup"></span>
@@ -307,6 +336,7 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
       </div>
     </div>
   </section>
+  </div>
 </div>
 
 <script>
@@ -342,6 +372,8 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
     selected: ymd(new Date()),
     loaded: null,
     saving: false,
+    remote: false,
+    passcode: "",
     trendKey: "calls"
   };
 
@@ -663,6 +695,9 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
 
   function friendlyError(e) {
     var code = e && e.code;
+    if (code === "passcode") return "The passcode has changed. Enter the new one to keep saving.";
+    if (code === "bad_request") return "The site didn\u2019t accept that entry. Check the numbers and try again.";
+    if (code === "too_large") return "That\u2019s too much to send at once. Try a smaller backup file.";
     if (code === "storage_blocked") return "This browser is blocking saved data, so nothing can be saved. Open the page in a normal (not private) window.";
     if (code === "storage_full") return "This browser’s storage for this site is full. Download a backup, then clear some old days.";
     if (code === "invalid_argument" || code === "not_granted") return "You can view this tracker but not change it. Ask the owner for edit access.";
@@ -882,7 +917,7 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
     renderAll();
   }
 
-  function connect() {
+  function connectLocal() {
     var s = readStore();
     if (!s) {
       showNotice("This browser is blocking saved data, for example in private browsing, so entries can’t be kept here. Open the page in a normal window to use the tracker.", true);
@@ -895,19 +930,195 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
     setEditable(true);
     setStatus("save-status", "", "");
     window.addEventListener("storage", function (e) {
-      if (e.key !== STORE_KEY) return;
+      if (e.key !== STORE_KEY || state.remote) return;
       var fresh = readStore();
       if (fresh) loadFromStore(fresh);
     });
+  }
+
+  // ---------- Site storage (when /api/tracker is set up) ----------
+
+  var PASS_KEY = "rk-activity-tracker-passcode";
+  var pendingMigration = null;
+
+  function getSavedPass() { try { return window.localStorage.getItem(PASS_KEY) || ""; } catch (e) { return ""; } }
+  function savePass(p) { try { if (p) window.localStorage.setItem(PASS_KEY, p); else window.localStorage.removeItem(PASS_KEY); } catch (e) { /* not remembered */ } }
+
+  async function api(method, payload) {
+    var res;
+    var headers = { "x-tracker-passcode": state.passcode };
+    if (method === "POST") headers["content-type"] = "application/json";
+    try {
+      res = await fetch("/api/tracker", { method: method, cache: "no-store", headers: headers, body: method === "POST" ? JSON.stringify(payload) : undefined });
+    } catch (e) {
+      throw { code: "unavailable" };
+    }
+    if (res.status === 401) throw { code: "passcode" };
+    if (res.status === 413) throw { code: "too_large" };
+    if (res.status === 400) throw { code: "bad_request" };
+    if (!res.ok) throw { code: "unavailable" };
+    return res.json();
+  }
+
+  async function remoteWrite(payload) {
+    try { return await api("POST", payload); }
+    catch (e) {
+      if (e && e.code === "passcode") lockOut("The passcode has changed. Enter the new one to keep saving.");
+      throw e;
+    }
+  }
+
+  var remoteDb = {
+    collection: function () {
+      return {
+        doc: function (id) {
+          return {
+            set: function (body) { return remoteWrite({ op: "setDay", id: id, data: body }); },
+            delete: function () { return remoteWrite({ op: "deleteDay", id: id }); }
+          };
+        }
+      };
+    },
+    doc: function () {
+      return { set: function (body) { return remoteWrite({ op: "setGoals", data: body }); } };
+    }
+  };
+
+  function showGate(msg) {
+    $("gate").hidden = false;
+    $("app").hidden = true;
+    document.querySelector(".weeknav").hidden = true;
+    $("lock").hidden = true;
+    $("gate-pass").value = "";
+    setStatus("gate-status", msg || "", msg ? "err" : "");
+    setTimeout(function () { $("gate-pass").focus(); }, 0);
+  }
+
+  function lockOut(msg) {
+    state.passcode = "";
+    state.db = null;
+    state.remote = false;
+    state.days = {};
+    savePass("");
+    setEditable(false);
+    renderAll();
+    showGate(msg || "");
+  }
+
+  async function unlock(pass, remember, fromSaved) {
+    state.passcode = pass;
+    $("gate-go").disabled = true;
+    setStatus("gate-status", "Checking…", "");
+    try {
+      var data = await api("GET");
+      if (remember) savePass(pass); else savePass("");
+      state.db = remoteDb;
+      state.remote = true;
+      state.connected = true;
+      $("gate").hidden = true;
+      $("app").hidden = false;
+      document.querySelector(".weeknav").hidden = false;
+      $("lock").hidden = false;
+      $("data-copy").textContent = "Entries are saved on the site, so they’re here on any device once you enter the passcode. You can still download a backup for your own records.";
+      state.loaded = null;
+      loadFromStore({ days: data.days || {}, goals: data.goals || null });
+      setEditable(true);
+      setStatus("save-status", "", "");
+      showNotice("", false);
+      offerMigration();
+    } catch (e) {
+      state.passcode = "";
+      if (e && e.code === "passcode") {
+        savePass("");
+        showGate(fromSaved ? "" : "That passcode isn’t right. Try again.");
+      } else {
+        showGate("Couldn’t reach the site. Check your connection and try again.");
+      }
+    } finally {
+      $("gate-go").disabled = false;
+    }
+  }
+
+  async function refreshRemote() {
+    if (!state.remote || state.saving) return;
+    try {
+      var data = await api("GET");
+      loadFromStore({ days: data.days || {}, goals: data.goals || null });
+    } catch (e) {
+      if (e && e.code === "passcode") lockOut("The passcode has changed. Enter the new one to keep saving.");
+    }
+  }
+
+  function offerMigration() {
+    var s = readStore();
+    if (!s) return;
+    var extra = {};
+    Object.keys(s.days).forEach(function (id) {
+      if (state.days[id]) return;
+      var d = cleanDay(id, s.days[id]);
+      if (d) extra[id] = d;
+    });
+    var n = Object.keys(extra).length;
+    if (!n) return;
+    pendingMigration = { days: extra, goals: s.goals || null };
+    $("migrate-text").textContent = "This browser has " + n + (n === 1 ? " day" : " days") + " saved from before the tracker moved onto the site. " + (n === 1 ? "It isn’t" : "They aren’t") + " on the site yet.";
+    $("migrate").hidden = false;
+  }
+
+  async function applyMigration() {
+    if (!pendingMigration) return;
+    var n = Object.keys(pendingMigration.days).length;
+    $("migrate-yes").disabled = true;
+    try {
+      await remoteWrite({ op: "import", mode: "merge", days: pendingMigration.days, goals: pendingMigration.goals });
+      try { window.localStorage.removeItem(STORE_KEY); } catch (e) { /* already gone */ }
+      pendingMigration = null;
+      $("migrate").hidden = true;
+      await refreshRemote();
+      setStatus("backup-status", "Added " + n + (n === 1 ? " day" : " days") + " to the site.", "ok");
+    } catch (e) {
+      setStatus("backup-status", friendlyError(e), "err");
+    } finally {
+      $("migrate-yes").disabled = false;
+    }
+  }
+
+  async function connect() {
+    var probe = null;
+    try {
+      var r = await fetch("/api/tracker?probe=1", { cache: "no-store" });
+      if (r.ok) probe = await r.json();
+    } catch (e) {
+      probe = null;
+    }
+    if (probe && probe.configured) {
+      setStatus("save-status", "", "");
+      var saved = getSavedPass();
+      if (saved) await unlock(saved, true, true);
+      else showGate("");
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible") refreshRemote();
+      });
+      return;
+    }
+    if (!probe) {
+      showNotice("Couldn’t reach the site to load your entries. Check your connection and reload the page.", true);
+      setStatus("save-status", "", "");
+      return;
+    }
+    connectLocal();
   }
 
   // ---------- Backup ----------
 
   var pendingRestore = null;
 
+  function goalsForExport() {
+    return state.goals.custom ? { targets: state.goals.targets, workdays: state.goals.workdays, currency: state.goals.currency } : null;
+  }
+
   function downloadBackup() {
-    var s = readStore() || { days: {}, goals: null };
-    var payload = { app: "roslyn-keller-activity-tracker", version: 1, exportedAt: new Date().toISOString(), days: s.days, goals: s.goals || null };
+    var payload = { app: "roslyn-keller-activity-tracker", version: 1, exportedAt: new Date().toISOString(), days: state.days, goals: goalsForExport() };
     var blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
@@ -917,7 +1128,7 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
     a.click();
     a.remove();
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-    var n = Object.keys(s.days).length;
+    var n = Object.keys(state.days).length;
     setStatus("backup-status", "Downloaded a backup of " + n + (n === 1 ? " day." : " days."), "ok");
   }
 
@@ -939,7 +1150,7 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
       var goals = data.goals && typeof data.goals === "object" ? data.goals : null;
       pendingRestore = { days: days, goals: goals };
       var cur = Object.keys(state.days).length, incoming = Object.keys(days).length;
-      $("restore-text").textContent = "This replaces the " + cur + (cur === 1 ? " day" : " days") + " saved in this browser with the " + incoming + (incoming === 1 ? " day" : " days") + " in the backup" + (goals ? ", and its weekly targets." : ".");
+      $("restore-text").textContent = "This replaces the " + cur + (cur === 1 ? " day" : " days") + " saved " + (state.remote ? "on the site" : "in this browser") + " with the " + incoming + (incoming === 1 ? " day" : " days") + " in the backup" + (goals ? ", and its weekly targets." : ".");
       $("restore-confirm").hidden = false;
       setStatus("backup-status", "", "");
     };
@@ -947,19 +1158,29 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
     reader.readAsText(file);
   }
 
-  function applyRestore() {
+  async function applyRestore() {
     if (!pendingRestore) return;
+    var restore = pendingRestore;
+    var n = Object.keys(restore.days).length;
+    $("restore-yes").disabled = true;
     try {
-      writeStore(pendingRestore);
-      var n = Object.keys(pendingRestore.days).length;
+      if (state.remote) {
+        await remoteWrite({ op: "import", mode: "replace", days: restore.days, goals: restore.goals });
+        state.loaded = null;
+        await refreshRemote();
+      } else {
+        writeStore(restore);
+        state.loaded = null;
+        loadFromStore(readStore() || { days: {}, goals: null });
+      }
       pendingRestore = null;
       $("restore-confirm").hidden = true;
       $("backup-file").value = "";
-      state.loaded = null;
-      loadFromStore(readStore() || { days: {}, goals: null });
       setStatus("backup-status", "Restored " + n + (n === 1 ? " day." : " days."), "ok");
     } catch (e) {
       setStatus("backup-status", friendlyError(e), "err");
+    } finally {
+      $("restore-yes").disabled = false;
     }
   }
 
@@ -973,6 +1194,15 @@ details.targets summary { cursor: pointer; font-family: var(--display); font-wei
       $("backup-file").value = "";
       setStatus("backup-status", "Restore cancelled. Nothing changed.", "");
     });
+    $("migrate-yes").addEventListener("click", applyMigration);
+    $("migrate-no").addEventListener("click", function () { $("migrate").hidden = true; });
+    $("gate").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var p = $("gate-pass").value.trim();
+      if (!p) { setStatus("gate-status", "Enter the passcode.", "err"); return; }
+      unlock(p, $("gate-remember").checked, false);
+    });
+    $("lock").addEventListener("click", function () { lockOut(""); });
   }
 
   // ---------- Boot ----------
