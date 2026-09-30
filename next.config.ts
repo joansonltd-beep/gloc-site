@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
       // (e.g. a printed QR code), so it's also kept out of the sitemap and
       // blocked from indexing in robots.ts.
       { source: "/wait", destination: "/wait.html" },
+      // Roslyn Keller's activity tracker (public/roslynkeller.html). Public,
+      // unlisted and noindexed; entries stay in each visitor's own browser.
+      { source: "/roslynkeller", destination: "/roslynkeller.html" },
     ];
   },
 };

@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Daily and weekly insurance activity tracker for Roslyn Keller.">
+<title>Roslyn Keller Activity Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: an agent's weekly production sheet. Summary of pace first, then the day log, then the by-day ledger. */
+:root {
+  --bg: #f3f6f8;
+  --surface: #ffffff;
+  --ink: #15202b;
+  --muted: #566473;
+  --line: #dbe2e8;
+  --accent: #1d5c87;
+  --accent-ink: #ffffff;
+  --accent-soft: #e2edf5;
+  --track: #e6ebef;
+  --good: #1c7449;
+  --good-soft: #e1f2e8;
+  --warn: #9a5b00;
+  --warn-soft: #fbf0dc;
+  --bad: #b0271f;
+  --bad-soft: #fbe5e3;
+  --today: #fff7e0;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e141a; --surface: #161f28; --ink: #e5ebf0; --muted: #9aa8b5; --line: #2a3643;
+    --accent: #72b3df; --accent-ink: #0e141a; --accent-soft: #1a3346; --track: #223040;
+    --good: #5cc693; --good-soft: #163427; --warn: #e5a94f; --warn-soft: #3a2c14;
+    --bad: #f08a80; --bad-soft: #3d1e1c; --today: #2a2615;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e141a; --surface: #161f28; --ink: #e5ebf0; --muted: #9aa8b5; --line: #2a3643;
+  --accent: #72b3df; --accent-ink: #0e141a; --accent-soft: #1a3346; --track: #223040;
+  --good: #5cc693; --good-soft: #163427; --warn: #e5a94f; --warn-soft: #3a2c14;
+  --bad: #f08a80; --bad-soft: #3d1e1c; --today: #2a2615;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+.data-box { display: grid; gap: 12px; }
+.data-box p { margin: 0; max-width: 68ch; }
+.file-btn { position: relative; overflow: hidden; display: inline-block; }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.file-btn:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.confirm { border-left: 4px solid var(--warn); background: var(--warn-soft); padding: 12px 14px; border-radius: 0 8px 8px 0; display: grid; gap: 10px; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 64px; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.25rem; font-weight: 600; }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+button { font: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible, th button:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 8px; padding: 8px 14px; font-weight: 500; }
+.btn:hover:not(:disabled) { border-color: var(--accent); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Header */
+.top { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: end; justify-content: space-between; }
+.top-title { display: grid; gap: 4px; min-width: 0; }
+.weeknav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.weeknav .range { font-weight: 600; min-width: 13ch; text-align: center; }
+.notice { border-left: 4px solid var(--warn); background: var(--warn-soft); padding: 10px 14px; border-radius: 0 8px 8px 0; }
+.notice.bad { border-left-color: var(--bad); background: var(--bad-soft); }
+
+/* Glance */
+.glance { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 16px; }
+.glance-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; align-items: baseline; }
+.short-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.short-chip { background: var(--bad-soft); color: var(--bad); border-radius: 999px; padding: 3px 10px; font-size: 0.85rem; font-weight: 600; }
+.short-chip.warn { background: var(--warn-soft); color: var(--warn); }
+.all-good { color: var(--good); font-weight: 600; }
+.prog { display: grid; gap: 2px; }
+.prow { display: grid; grid-template-columns: minmax(150px, 1.1fr) minmax(120px, 2fr) minmax(120px, auto) 118px; gap: 14px; align-items: center; padding-block: 9px; border-top: 1px solid var(--line); }
+.prow:first-child { border-top: 0; }
+.plabel { font-weight: 500; min-width: 0; }
+.bar { position: relative; height: 12px; background: var(--track); border-radius: 6px; }
+.bar-fill { position: absolute; inset: 0 auto 0 0; border-radius: 6px; background: var(--accent); max-width: 100%; }
+.bar-fill.good { background: var(--good); }
+.bar-fill.warn { background: var(--warn); }
+.bar-fill.bad { background: var(--bad); }
+.pace-tick { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); border-radius: 1px; }
+.pnums { text-align: right; white-space: nowrap; }
+.pnums .of { color: var(--muted); }
+.pill { justify-self: end; font-size: 0.78rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+.pill.met { background: var(--good-soft); color: var(--good); }
+.pill.on { background: var(--accent-soft); color: var(--accent); }
+.pill.slight { background: var(--warn-soft); color: var(--warn); }
+.pill.behind { background: var(--bad-soft); color: var(--bad); }
+.pill.idle { background: var(--track); color: var(--muted); }
+.legend { font-size: 0.82rem; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.legend .tick { display: inline-block; width: 2px; height: 12px; background: var(--ink); }
+
+/* Two column */
+.cols { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.panel { display: grid; gap: 14px; min-width: 0; }
+.entry { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 14px; }
+.entry-top { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; justify-content: space-between; }
+label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+input[type="date"], input[type="number"], input[type="text"], select, textarea {
+  font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px;
+}
+.field { display: grid; gap: 4px; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; }
+.stepper { display: grid; grid-template-columns: 38px minmax(0, 1fr) 38px; }
+.stepper button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-weight: 600; font-size: 1.05rem; }
+.stepper button:first-child { border-radius: 8px 0 0 8px; }
+.stepper button:last-child { border-radius: 0 8px 8px 0; }
+.stepper button:hover:not(:disabled) { background: var(--accent-soft); }
+.stepper input { border-radius: 0; border-left: 0; border-right: 0; text-align: center; min-width: 0; width: 100%; font-family: var(--mono); }
+.money { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+.money span { padding: 7px 10px; border: 1px solid var(--line); border-right: 0; border-radius: 8px 0 0 8px; background: var(--surface); font-family: var(--mono); color: var(--muted); }
+.money input { border-radius: 0 8px 8px 0; font-family: var(--mono); min-width: 0; width: 100%; }
+input.invalid { border-color: var(--bad); background: var(--bad-soft); }
+textarea { resize: vertical; min-height: 64px; width: 100%; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.status { font-size: 0.88rem; color: var(--muted); }
+.status.ok { color: var(--good); }
+.status.err { color: var(--bad); }
+.dirty { font-size: 0.78rem; font-weight: 600; color: var(--warn); background: var(--warn-soft); padding: 2px 8px; border-radius: 999px; }
+
+.ratios { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.ratio { padding: 12px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.ratio:nth-child(odd) { padding-right: 12px; }
+.ratio:nth-child(even) { padding-left: 12px; border-left: 1px solid var(--line); }
+.ratio .v { font-family: var(--mono); font-size: 1.35rem; font-weight: 500; }
+.ratio .k { font-size: 0.85rem; font-weight: 600; }
+.ratio .d { font-size: 0.8rem; color: var(--muted); }
+
+.trend-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.trend svg { width: 100%; height: auto; display: block; }
+
+/* Ledger */
+.ledger-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+table { border-collapse: collapse; width: 100%; min-width: 760px; }
+th, td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; position: sticky; left: 0; background: var(--surface); }
+thead th { font-size: 0.78rem; font-weight: 600; color: var(--muted); vertical-align: bottom; }
+th button { border: 0; background: none; color: inherit; padding: 2px 4px; border-radius: 6px; text-align: right; line-height: 1.25; }
+th button:hover { color: var(--accent); }
+th button .d { display: block; font-family: var(--display); font-size: 0.95rem; color: var(--ink); }
+td { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td.zero { color: var(--muted); opacity: 0.55; }
+.is-today { background: var(--today); }
+.is-selected { box-shadow: inset 0 -3px 0 var(--accent); }
+.col-total { font-weight: 600; border-left: 1px solid var(--line); }
+tbody tr:last-child td { border-bottom: 0; }
+.note-dot { display: inline-block; width: 6px; height: 6px; border-radius: 3px; background: var(--accent); margin-left: 4px; vertical-align: middle; }
+
+/* Targets */
+details.targets { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 20px; }
+details.targets summary { cursor: pointer; font-family: var(--display); font-weight: 600; font-size: 1.1rem; }
+.targets-body { display: grid; gap: 14px; padding-top: 14px; }
+.tfields { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 16px; }
+.tfields input { width: 100%; font-family: var(--mono); }
+
+.empty { color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 860px) {
+  .cols { grid-template-columns: minmax(0, 1fr); }
+  .tfields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .prow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "l p" "b b" "n n"; gap: 6px 10px; }
+  .plabel { grid-area: l; } .bar { grid-area: b; } .pnums { grid-area: n; text-align: left; } .pill { grid-area: p; }
+  .fields { grid-template-columns: minmax(0, 1fr); }
+  .glance, .entry { padding: 16px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bar-fill { transition: width 0.35s ease; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="top-title">
+      <span class="eyebrow">Weekly activity · Roslyn Keller</span>
+      <h1 id="week-title">This week</h1>
+    </div>
+    <nav class="weeknav" aria-label="Choose week">
+      <button class="btn" id="prev-week" type="button" aria-label="Previous week">&larr; Prev</button>
+      <span class="range num" id="week-range"></span>
+      <button class="btn" id="next-week" type="button" aria-label="Next week">Next &rarr;</button>
+      <button class="btn" id="this-week" type="button">This week</button>
+    </nav>
+  </header>
+
+  <div id="notice" class="notice" hidden></div>
+
+  <section class="glance" aria-labelledby="glance-h">
+    <div class="glance-head">
+      <h2 id="glance-h">Progress against weekly targets</h2>
+      <span class="legend"><span class="tick"></span> where you should be by today</span>
+    </div>
+    <div id="short" aria-live="polite"></div>
+    <div class="prog" id="progress"></div>
+  </section>
+
+  <div class="cols">
+    <section class="panel" aria-labelledby="entry-h">
+      <form class="entry" id="entry" novalidate>
+        <div class="entry-top">
+          <div class="field">
+            <h2 id="entry-h">Log a day</h2>
+            <span class="status" id="entry-sub">Enter the totals for one day, then save.</span>
+          </div>
+          <div class="field">
+            <label for="entry-date">Date</label>
+            <input type="date" id="entry-date" required>
+          </div>
+        </div>
+        <div class="fields" id="fields"></div>
+        <div class="field">
+          <label for="f-notes">Notes (optional)</label>
+          <textarea id="f-notes" maxlength="2000" placeholder="Who you met, follow-ups, anything to remember."></textarea>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="save-day" type="submit">Save day</button>
+          <button class="btn" id="revert-day" type="button">Undo changes</button>
+          <span class="dirty" id="dirty" hidden>Unsaved changes</span>
+          <span class="status" id="save-status" role="status"></span>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="ratio-h">
+      <h2 id="ratio-h">Conversion this week</h2>
+      <div class="ratios" id="ratios"></div>
+      <div class="trend">
+        <div class="trend-head">
+          <h2 id="trend-h">Last 8 weeks</h2>
+          <select id="trend-metric" aria-label="Activity to chart"></select>
+        </div>
+        <div id="trend-chart"></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="panel" aria-labelledby="ledger-h">
+    <h2 id="ledger-h">By day</h2>
+    <p class="muted" style="margin:0">Select a day's heading to edit it in the form above.</p>
+    <div class="ledger-wrap"><table id="ledger"></table></div>
+  </section>
+
+  <details class="targets" id="targets">
+    <summary>Weekly targets</summary>
+    <div class="targets-body">
+      <p class="muted" style="margin:0" id="targets-note">These are starting numbers. Change them to match your own goals.</p>
+      <div class="tfields" id="tfields"></div>
+      <div class="tfields">
+        <div class="field">
+          <label for="t-workdays">Working days a week</label>
+          <select id="t-workdays">
+            <option value="5">5 (Mon to Fri)</option>
+            <option value="6">6 (Mon to Sat)</option>
+            <option value="7">7 (every day)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="t-currency">Currency symbol</label>
+          <input type="text" id="t-currency" maxlength="4">
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="save-targets" type="button">Save targets</button>
+        <span class="status" id="targets-status" role="status"></span>
+      </div>
+    </div>
+  </details>
+
+  <section class="panel data-box" aria-labelledby="data-h">
+    <h2 id="data-h">Your data</h2>
+    <p class="muted">Entries are saved in this browser only. Nothing is sent to a server, so clearing your browser data or using another device starts you from empty. Download a backup now and then, and restore it on another device to bring your numbers with you.</p>
+    <div class="actions">
+      <button class="btn" id="backup-download" type="button">Download backup</button>
+      <span class="btn file-btn">Restore from backup<input type="file" id="backup-file" accept="application/json,.json" aria-label="Restore from backup"></span>
+      <span class="status" id="backup-status" role="status"></span>
+    </div>
+    <div class="confirm" id="restore-confirm" hidden>
+      <span id="restore-text"></span>
+      <div class="actions">
+        <button class="btn btn-primary" id="restore-yes" type="button">Replace my data</button>
+        <button class="btn" id="restore-no" type="button">Cancel</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var METRICS = [
+    { key: "prospects", label: "Prospects" },
+    { key: "calls", label: "Calls made" },
+    { key: "apptsSet", label: "Appointments set" },
+    { key: "apptsHeld", label: "Appointments held" },
+    { key: "closes", label: "Closes" },
+    { key: "apps", label: "Applications submitted" },
+    { key: "premium", label: "Premium written", money: true },
+    { key: "referrals", label: "Referrals" }
+  ];
+  var DEFAULT_GOALS = {
+    targets: { prospects: 20, calls: 100, apptsSet: 12, apptsHeld: 8, closes: 3, apps: 3, premium: 2500, referrals: 6 },
+    workdays: 5,
+    currency: "$",
+    custom: false
+  };
+  var DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  var state = {
+    db: null,
+    connected: false,
+    readOnly: false,
+    days: {},
+    goals: clone(DEFAULT_GOALS),
+    weekStart: mondayOf(new Date()),
+    selected: ymd(new Date()),
+    loaded: null,
+    saving: false,
+    trendKey: "calls"
+  };
+
+  function $(id) { return document.getElementById(id); }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function ymd(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function parseYmd(s) { var p = s.split("-").map(Number); return new Date(p[0], p[1] - 1, p[2]); }
+  function addDays(d, n) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() + n); return x; }
+  function mondayOf(d) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; }
+  function shortDate(d) { return MONTHS[d.getMonth()] + " " + d.getDate(); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function isValidYmd(s) { return /^\d{4}-\d{2}-\d{2}$/.test(s) && ymd(parseYmd(s)) === s; }
+
+  function fmt(m, v) {
+    if (m.money) {
+      var n = Number(v || 0);
+      var cents = Math.round(n * 100) % 100 !== 0;
+      return esc(state.goals.currency) + n.toLocaleString(undefined, { minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: 2 });
+    }
+    return Number(v || 0).toLocaleString();
+  }
+  function metric(key) { for (var i = 0; i < METRICS.length; i++) if (METRICS[i].key === key) return METRICS[i]; }
+
+  function dayValues(id) {
+    var d = state.days[id];
+    var out = {};
+    METRICS.forEach(function (m) { var v = d ? Number(d[m.key]) : 0; out[m.key] = isFinite(v) && v > 0 ? v : 0; });
+    return out;
+  }
+
+  function weekTotals(start) {
+    var t = {};
+    METRICS.forEach(function (m) { t[m.key] = 0; });
+    for (var i = 0; i < 7; i++) {
+      var v = dayValues(ymd(addDays(start, i)));
+      METRICS.forEach(function (m) { t[m.key] += v[m.key]; });
+    }
+    METRICS.forEach(function (m) { if (m.money) t[m.key] = Math.round(t[m.key] * 100) / 100; });
+    return t;
+  }
+
+  // Share of the week's target you should have reached by the end of today.
+  function paceFraction(start) {
+    var wd = state.goals.workdays;
+    var today = new Date();
+    var todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    if (start > todayStart) return 0;
+    var elapsed = 0;
+    for (var i = 0; i < wd; i++) if (addDays(start, i) <= todayStart) elapsed++;
+    return elapsed / wd;
+  }
+
+  function statusFor(total, target, pace) {
+    if (!(target > 0)) return { cls: "idle", text: "No target" };
+    if (total >= target) return { cls: "met", text: "Target met" };
+    if (pace === 0) return { cls: "idle", text: "Not started" };
+    var expected = target * pace;
+    if (total >= expected) return { cls: "on", text: "On pace" };
+    if (total >= expected * 0.75) return { cls: "slight", text: "Slightly behind" };
+    return { cls: "behind", text: "Behind" };
+  }
+
+  // ---------- Rendering ----------
+
+  function renderHeader() {
+    var start = state.weekStart;
+    var end = addDays(start, 6);
+    var thisMonday = mondayOf(new Date());
+    var diff = Math.round((start - thisMonday) / 86400000 / 7);
+    $("week-title").textContent = diff === 0 ? "This week" : diff === -1 ? "Last week" : diff === 1 ? "Next week" : "Week of " + shortDate(start);
+    $("week-range").textContent = shortDate(start) + " to " + shortDate(end);
+    $("this-week").disabled = diff === 0;
+  }
+
+  function renderProgress() {
+    var totals = weekTotals(state.weekStart);
+    var pace = paceFraction(state.weekStart);
+    var rows = [];
+    var short = [];
+    METRICS.forEach(function (m) {
+      var target = Number(state.goals.targets[m.key]) || 0;
+      var total = totals[m.key];
+      var st = statusFor(total, target, pace);
+      var pct = target > 0 ? Math.min(100, (total / target) * 100) : 0;
+      var fillCls = st.cls === "met" ? "good" : st.cls === "slight" ? "warn" : st.cls === "behind" ? "bad" : "";
+      var tick = target > 0 && pace > 0 && pace < 1 ? '<span class="pace-tick" style="left:calc(' + (pace * 100).toFixed(2) + '% - 1px)"></span>' : "";
+      var gap = "";
+      if (target > 0 && total < target) {
+        var left = target - total;
+        gap = m.money ? fmt(m, left) + " to go" : left.toLocaleString() + " to go";
+      }
+      if (st.cls === "behind" || st.cls === "slight") {
+        var behindBy = target * pace - total;
+        short.push({ m: m, cls: st.cls, by: behindBy, ratio: total / (target * pace) });
+      }
+      rows.push(
+        '<div class="prow" data-metric="' + m.key + '">' +
+          '<span class="plabel">' + esc(m.label) + '</span>' +
+          '<span class="bar" role="img" aria-label="' + esc(m.label) + ': ' + Math.round(pct) + ' percent of target"><span class="bar-fill ' + fillCls + '" style="width:' + pct.toFixed(1) + '%"></span>' + tick + '</span>' +
+          '<span class="pnums"><span class="num">' + fmt(m, total) + '</span> <span class="of num">/ ' + fmt(m, target) + '</span>' +
+            (gap ? '<br><span class="muted" style="font-size:0.8rem">' + gap + '</span>' : '') + '</span>' +
+          '<span class="pill ' + st.cls + '">' + st.text + '</span>' +
+        '</div>'
+      );
+    });
+    $("progress").innerHTML = rows.join("");
+
+    var shortEl = $("short");
+    var anyLogged = false;
+    for (var i = 0; i < 7; i++) if (state.days[ymd(addDays(state.weekStart, i))]) anyLogged = true;
+    if (pace === 0) {
+      shortEl.innerHTML = '<span class="muted">This week hasn’t started yet.</span>';
+    } else if (!anyLogged) {
+      shortEl.innerHTML = '<span class="muted">Nothing logged for this week yet. Enter a day’s numbers in <strong>Log a day</strong> below and the progress bars fill in.</span>';
+    } else if (short.length === 0) {
+      shortEl.innerHTML = '<span class="all-good">Every activity is on pace or ahead for this point in the week.</span>';
+    } else {
+      short.sort(function (a, b) { return a.ratio - b.ratio; });
+      shortEl.innerHTML = '<div class="short-list"><span class="muted" style="font-weight:600">Falling short:</span>' +
+        short.map(function (s) {
+          var by = s.m.money ? fmt(s.m, Math.ceil(s.by)) : Math.ceil(s.by).toLocaleString();
+          return '<span class="short-chip ' + (s.cls === "slight" ? "warn" : "") + '">' + esc(s.m.label) + ', ' + by + ' behind pace</span>';
+        }).join("") + '</div>';
+    }
+  }
+
+  function ratio(a, b) { return b > 0 ? a / b : null; }
+  function pctText(r) { return r === null ? "n/a" : Math.round(r * 100) + "%"; }
+
+  function renderRatios() {
+    var t = weekTotals(state.weekStart);
+    var prem = metric("premium");
+    var items = [
+      { k: "Set rate", v: pctText(ratio(t.apptsSet, t.calls)), d: "Appointments set per call" },
+      { k: "Show rate", v: pctText(ratio(t.apptsHeld, t.apptsSet)), d: "Appointments held per appointment set" },
+      { k: "Close rate", v: pctText(ratio(t.closes, t.apptsHeld)), d: "Closes per appointment held" },
+      { k: "Premium per application", v: t.apps > 0 ? fmt(prem, Math.round((t.premium / t.apps) * 100) / 100) : "n/a", d: "Average premium on each application" },
+      { k: "Calls per close", v: t.closes > 0 ? (Math.round((t.calls / t.closes) * 10) / 10).toLocaleString() : "n/a", d: "How many calls one close takes" },
+      { k: "Referrals per close", v: t.closes > 0 ? (Math.round((t.referrals / t.closes) * 10) / 10).toLocaleString() : "n/a", d: "Referrals asked for and received" }
+    ];
+    $("ratios").innerHTML = items.map(function (i) {
+      return '<div class="ratio"><span class="k">' + i.k + '</span><span class="v">' + i.v + '</span><span class="d">' + i.d + '</span></div>';
+    }).join("");
+  }
+
+  function renderTrend() {
+    var m = metric(state.trendKey);
+    var weeks = [];
+    for (var i = 7; i >= 0; i--) {
+      var s = addDays(state.weekStart, -7 * i);
+      weeks.push({ start: s, value: weekTotals(s)[m.key] });
+    }
+    var target = Number(state.goals.targets[m.key]) || 0;
+    var max = Math.max(target, Math.max.apply(null, weeks.map(function (w) { return w.value; })), 1);
+    var W = 560, H = 210, padL = 12, padR = 12, padT = 26, padB = 30;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var slot = plotW / weeks.length, bw = Math.min(40, slot * 0.6);
+    var y = function (v) { return padT + plotH - (v / max) * plotH; };
+    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(m.label) + ' for the last 8 weeks">';
+    svg += '<line x1="' + padL + '" x2="' + (W - padR) + '" y1="' + (padT + plotH) + '" y2="' + (padT + plotH) + '" stroke="var(--line)" stroke-width="1"/>';
+    weeks.forEach(function (w, idx) {
+      var x = padL + slot * idx + (slot - bw) / 2;
+      var h = Math.max(0, (w.value / max) * plotH);
+      var current = idx === weeks.length - 1;
+      var met = target > 0 && w.value >= target;
+      var fill = met ? "var(--good)" : "var(--accent)";
+      svg += '<rect x="' + x.toFixed(1) + '" y="' + (padT + plotH - h).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" rx="3" fill="' + fill + '" opacity="' + (current ? 1 : 0.55) + '"/>';
+      var label = m.money ? fmt(m, Math.round(w.value)) : w.value.toLocaleString();
+      svg += '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (padT + plotH - h - 6).toFixed(1) + '" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, monospace" fill="var(--ink)">' + label + '</text>';
+      svg += '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle" font-size="11" fill="var(--muted)"' + (current ? ' font-weight="700"' : '') + '>' + shortDate(w.start) + '</text>';
+    });
+    if (target > 0) {
+      var ty = y(target).toFixed(1);
+      svg += '<line x1="' + padL + '" x2="' + (W - padR) + '" y1="' + ty + '" y2="' + ty + '" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4"/>';
+      svg += '<text x="' + (W - padR) + '" y="' + (Number(ty) - 5) + '" text-anchor="end" font-size="11" fill="var(--muted)">Target ' + (m.money ? fmt(m, target) : target.toLocaleString()) + '</text>';
+    }
+    svg += '</svg>';
+    $("trend-chart").innerHTML = svg;
+  }
+
+  function renderLedger() {
+    var today = ymd(new Date());
+    var head = '<thead><tr><th scope="col">Activity</th>';
+    for (var i = 0; i < 7; i++) {
+      var d = addDays(state.weekStart, i);
+      var id = ymd(d);
+      var cls = (id === today ? "is-today " : "") + (id === state.selected ? "is-selected" : "");
+      var note = state.days[id] && state.days[id].notes ? '<span class="note-dot" title="Has notes"></span>' : "";
+      head += '<th scope="col" class="' + cls + '"><button type="button" data-date="' + id + '" aria-label="Edit ' + DAY_NAMES[i] + ' ' + shortDate(d) + '">' + DAY_NAMES[i] + note + '<span class="d">' + d.getDate() + '</span></button></th>';
+    }
+    head += '<th scope="col" class="col-total">Week</th><th scope="col">Target</th></tr></thead>';
+    var totals = weekTotals(state.weekStart);
+    var body = "<tbody>";
+    METRICS.forEach(function (m) {
+      body += '<tr><th scope="row" style="font-weight:500">' + esc(m.label) + '</th>';
+      for (var i = 0; i < 7; i++) {
+        var id = ymd(addDays(state.weekStart, i));
+        var v = dayValues(id)[m.key];
+        var cls = (v === 0 ? "zero " : "") + (id === today ? "is-today" : "");
+        body += '<td class="' + cls + '">' + fmt(m, v) + '</td>';
+      }
+      body += '<td class="col-total">' + fmt(m, totals[m.key]) + '</td><td class="muted">' + fmt(m, state.goals.targets[m.key]) + '</td></tr>';
+    });
+    body += "</tbody>";
+    $("ledger").innerHTML = head + body;
+  }
+
+  function renderTrendOptions() {
+    var sel = $("trend-metric");
+    if (sel.options.length) return;
+    METRICS.forEach(function (m) {
+      var o = document.createElement("option");
+      o.value = m.key; o.textContent = m.label;
+      sel.appendChild(o);
+    });
+    sel.value = state.trendKey;
+  }
+
+  function renderAll() {
+    renderHeader();
+    renderProgress();
+    renderRatios();
+    renderTrend();
+    renderLedger();
+  }
+
+  // ---------- Day form ----------
+
+  function buildFields() {
+    $("fields").innerHTML = METRICS.map(function (m) {
+      var id = "f-" + m.key;
+      if (m.money) {
+        return '<div class="field"><label for="' + id + '">' + esc(m.label) + '</label>' +
+          '<div class="money"><span id="cur-sym">' + esc(state.goals.currency) + '</span><input type="number" id="' + id + '" data-key="' + m.key + '" min="0" step="0.01" inputmode="decimal"></div></div>';
+      }
+      return '<div class="field"><label for="' + id + '">' + esc(m.label) + '</label>' +
+        '<div class="stepper"><button type="button" data-step="-1" data-key="' + m.key + '" aria-label="One fewer ' + esc(m.label.toLowerCase()) + '">&minus;</button>' +
+        '<input type="number" id="' + id + '" data-key="' + m.key + '" min="0" step="1" inputmode="numeric">' +
+        '<button type="button" data-step="1" data-key="' + m.key + '" aria-label="One more ' + esc(m.label.toLowerCase()) + '">+</button></div></div>';
+    }).join("");
+  }
+
+  function readForm() {
+    var values = {}, errors = [];
+    METRICS.forEach(function (m) {
+      var el = $("f-" + m.key);
+      var raw = el.value.trim();
+      el.classList.remove("invalid");
+      if (raw === "") { values[m.key] = 0; return; }
+      var n = Number(raw);
+      var ok = isFinite(n) && n >= 0 && (m.money ? Math.round(n * 100) === Math.round(n * 100 * 1e6) / 1e6 : Number.isInteger(n)) && n <= (m.money ? 100000000 : 100000);
+      if (!ok) {
+        el.classList.add("invalid");
+        errors.push(m.money ? m.label + " must be a positive amount with at most 2 decimal places." : m.label + " must be a whole number, 0 or more.");
+        values[m.key] = 0;
+      } else {
+        values[m.key] = m.money ? Math.round(n * 100) / 100 : n;
+      }
+    });
+    return { values: values, notes: $("f-notes").value.trim(), errors: errors };
+  }
+
+  function snapshotOfForm() {
+    var r = readForm();
+    var o = {};
+    METRICS.forEach(function (m) { o[m.key] = r.values[m.key]; });
+    o.notes = r.notes;
+    return JSON.stringify(o);
+  }
+
+  function loadForm(id) {
+    var d = state.days[id] || {};
+    var v = dayValues(id);
+    METRICS.forEach(function (m) {
+      var el = $("f-" + m.key);
+      el.value = v[m.key] ? String(v[m.key]) : "0";
+      el.classList.remove("invalid");
+    });
+    $("f-notes").value = typeof d.notes === "string" ? d.notes : "";
+    state.loaded = snapshotOfForm();
+    var date = parseYmd(id);
+    $("entry-sub").textContent = (state.days[id] ? "Editing saved totals for " : "Nothing saved yet for ") + DAY_NAMES[(date.getDay() + 6) % 7] + ", " + shortDate(date) + ".";
+    updateDirty();
+  }
+
+  function isDirty() { return state.loaded !== null && snapshotOfForm() !== state.loaded; }
+  function updateDirty() { $("dirty").hidden = !isDirty(); }
+
+  function setEditable(on) {
+    var controls = document.querySelectorAll("#entry input, #entry textarea, #entry button, #targets input, #targets select, #save-targets");
+    controls.forEach(function (c) { c.disabled = !on; });
+    $("entry-date").disabled = false;
+  }
+
+  function selectDate(id, opts) {
+    if (!isValidYmd(id)) return false;
+    if (id !== state.selected && isDirty()) {
+      $("entry-date").value = state.selected;
+      var cur = parseYmd(state.selected);
+      setStatus("save-status", "Save or undo your changes to " + DAY_NAMES[(cur.getDay() + 6) % 7] + " " + shortDate(cur) + " before switching days.", "err");
+      return false;
+    }
+    state.selected = id;
+    $("entry-date").value = id;
+    var monday = mondayOf(parseYmd(id));
+    if (!(opts && opts.keepWeek) && ymd(monday) !== ymd(state.weekStart)) state.weekStart = monday;
+    loadForm(id);
+    setStatus("save-status", "", "");
+    renderAll();
+    return true;
+  }
+
+  function setStatus(elId, text, kind) {
+    var el = $(elId);
+    el.textContent = text;
+    el.className = "status" + (kind ? " " + kind : "");
+  }
+
+  function friendlyError(e) {
+    var code = e && e.code;
+    if (code === "storage_blocked") return "This browser is blocking saved data, so nothing can be saved. Open the page in a normal (not private) window.";
+    if (code === "storage_full") return "This browser’s storage for this site is full. Download a backup, then clear some old days.";
+    if (code === "invalid_argument" || code === "not_granted") return "You can view this tracker but not change it. Ask the owner for edit access.";
+    if (code === "quota_exceeded") return "Storage is full, so nothing new can be saved. Delete old days to make room.";
+    if (code === "resource_exhausted") return "Too many saves in a short time. Wait a few seconds and save again.";
+    if (code === "revoked") return "Access to this tracker changed. Reload the page.";
+    return "Couldn’t save. Check your connection and try again.";
+  }
+
+  async function withRetry(fn) {
+    try { return await fn(); }
+    catch (e) {
+      if (e && e.code === "unavailable") {
+        await new Promise(function (r) { setTimeout(r, 600 + Math.random() * 800); });
+        return await fn();
+      }
+      throw e;
+    }
+  }
+
+  async function saveDay(ev) {
+    if (ev) ev.preventDefault();
+    if (!state.db || state.saving) return;
+    var id = $("entry-date").value;
+    if (!isValidYmd(id)) { setStatus("save-status", "Pick a date first.", "err"); return; }
+    var r = readForm();
+    if (r.errors.length) { setStatus("save-status", r.errors[0], "err"); return; }
+    var empty = METRICS.every(function (m) { return r.values[m.key] === 0; }) && !r.notes;
+    var ref = state.db.collection("days").doc(id);
+    state.saving = true;
+    $("save-day").disabled = true;
+    setStatus("save-status", "Saving…", "");
+    try {
+      if (empty) {
+        await withRetry(function () { return ref.delete(); });
+        delete state.days[id];
+      } else {
+        var body = { date: id, notes: r.notes, updatedAt: new Date().toISOString() };
+        METRICS.forEach(function (m) { body[m.key] = r.values[m.key]; });
+        await withRetry(function () { return ref.set(body); });
+        state.days[id] = body;
+      }
+      loadForm(id);
+      renderAll();
+      var d = parseYmd(id);
+      setStatus("save-status", (empty ? "Cleared " : "Saved ") + DAY_NAMES[(d.getDay() + 6) % 7] + " " + shortDate(d) + ".", "ok");
+    } catch (e) {
+      setStatus("save-status", friendlyError(e), "err");
+      if (e && (e.code === "invalid_argument" || e.code === "not_granted")) { state.readOnly = true; setEditable(false); }
+    } finally {
+      state.saving = false;
+      if (!state.readOnly) $("save-day").disabled = false;
+    }
+  }
+
+  // ---------- Targets ----------
+
+  function buildTargetFields() {
+    $("tfields").innerHTML = METRICS.map(function (m) {
+      return '<div class="field"><label for="t-' + m.key + '">' + esc(m.label) + (m.money ? " (" + '<span class="t-cur">' + esc(state.goals.currency) + '</span>)' : "") + '</label>' +
+        '<input type="number" id="t-' + m.key + '" min="0" step="' + (m.money ? "0.01" : "1") + '"></div>';
+    }).join("");
+  }
+
+  function loadTargets() {
+    METRICS.forEach(function (m) { $("t-" + m.key).value = state.goals.targets[m.key]; $("t-" + m.key).classList.remove("invalid"); });
+    $("t-workdays").value = String(state.goals.workdays);
+    $("t-currency").value = state.goals.currency;
+    $("targets-note").textContent = state.goals.custom
+      ? "Weekly targets. The daily pace marker spreads each one evenly across your working days."
+      : "These are starting numbers. Change them to match your own goals.";
+    document.querySelectorAll(".t-cur").forEach(function (el) { el.textContent = state.goals.currency; });
+    var sym = $("cur-sym"); if (sym) sym.textContent = state.goals.currency;
+  }
+
+  async function saveTargets() {
+    if (!state.db) return;
+    var targets = {}, bad = null;
+    METRICS.forEach(function (m) {
+      var el = $("t-" + m.key);
+      var n = Number(el.value);
+      el.classList.remove("invalid");
+      if (el.value.trim() === "" || !isFinite(n) || n < 0 || (!m.money && !Number.isInteger(n))) { el.classList.add("invalid"); bad = bad || m.label; }
+      else targets[m.key] = m.money ? Math.round(n * 100) / 100 : n;
+    });
+    if (bad) { setStatus("targets-status", bad + " needs a number, 0 or more" + (metric("premium").label === bad ? "." : " (whole numbers only)."), "err"); return; }
+    var currency = $("t-currency").value.trim() || "$";
+    var workdays = Number($("t-workdays").value);
+    var body = { targets: targets, workdays: workdays, currency: currency, custom: true, updatedAt: new Date().toISOString() };
+    $("save-targets").disabled = true;
+    setStatus("targets-status", "Saving…", "");
+    try {
+      await withRetry(function () { return state.db.doc("settings/goals").set(body); });
+      state.goals = { targets: targets, workdays: workdays, currency: currency, custom: true };
+      loadTargets();
+      renderAll();
+      setStatus("targets-status", "Targets saved.", "ok");
+    } catch (e) {
+      setStatus("targets-status", friendlyError(e), "err");
+    } finally {
+      if (!state.readOnly) $("save-targets").disabled = false;
+    }
+  }
+
+  function applyGoals(data) {
+    var g = clone(DEFAULT_GOALS);
+    if (data) {
+      if (data.targets && typeof data.targets === "object") {
+        METRICS.forEach(function (m) { var v = Number(data.targets[m.key]); if (isFinite(v) && v >= 0) g.targets[m.key] = v; });
+      }
+      if ([5, 6, 7].indexOf(Number(data.workdays)) !== -1) g.workdays = Number(data.workdays);
+      if (typeof data.currency === "string" && data.currency.trim()) g.currency = data.currency.trim().slice(0, 4);
+      g.custom = true;
+    }
+    state.goals = g;
+  }
+
+  // ---------- Events ----------
+
+  function wire() {
+    $("prev-week").addEventListener("click", function () { state.weekStart = addDays(state.weekStart, -7); renderAll(); });
+    $("next-week").addEventListener("click", function () { state.weekStart = addDays(state.weekStart, 7); renderAll(); });
+    $("this-week").addEventListener("click", function () { state.weekStart = mondayOf(new Date()); renderAll(); });
+    $("entry").addEventListener("submit", saveDay);
+    $("entry").addEventListener("input", updateDirty);
+    $("entry-date").addEventListener("change", function (e) {
+      if (isValidYmd(e.target.value)) selectDate(e.target.value);
+    });
+    $("fields").addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-step]");
+      if (!b) return;
+      var el = $("f-" + b.getAttribute("data-key"));
+      var n = parseInt(el.value, 10);
+      if (!isFinite(n) || n < 0) n = 0;
+      el.value = String(Math.max(0, n + Number(b.getAttribute("data-step"))));
+      el.classList.remove("invalid");
+      updateDirty();
+    });
+    $("revert-day").addEventListener("click", function () { loadForm(state.selected); setStatus("save-status", "", ""); });
+    $("ledger").addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-date]");
+      if (b && selectDate(b.getAttribute("data-date"), { keepWeek: true })) $("entry-date").focus();
+    });
+    $("trend-metric").addEventListener("change", function (e) { state.trendKey = e.target.value; renderTrend(); });
+    $("save-targets").addEventListener("click", saveTargets);
+  }
+
+  // ---------- Data ----------
+
+  function showNotice(text, bad) {
+    var n = $("notice");
+    n.textContent = text;
+    n.className = "notice" + (bad ? " bad" : "");
+    n.hidden = !text;
+  }
+
+  // Everything is kept in this browser's localStorage under one key.
+  var STORE_KEY = "rk-activity-tracker-v1";
+
+  function readStore() {
+    try {
+      var raw = window.localStorage.getItem(STORE_KEY);
+      var o = raw ? JSON.parse(raw) : null;
+      if (!o || typeof o !== "object" || typeof o.days !== "object" || !o.days) o = { days: {}, goals: null };
+      return o;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeStore(o) {
+    try { window.localStorage.setItem(STORE_KEY, JSON.stringify(o)); }
+    catch (e) { throw { code: "storage_full" }; }
+  }
+
+  function mutate(fn) {
+    var s = readStore();
+    if (!s) throw { code: "storage_blocked" };
+    fn(s);
+    writeStore(s);
+  }
+
+  var localDb = {
+    collection: function () {
+      return {
+        doc: function (id) {
+          return {
+            set: async function (body) { mutate(function (s) { s.days[id] = body; }); },
+            delete: async function () { mutate(function (s) { delete s.days[id]; }); }
+          };
+        }
+      };
+    },
+    doc: function () {
+      return { set: async function (body) { mutate(function (s) { s.goals = body; }); } };
+    }
+  };
+
+  function cleanDay(id, d) {
+    if (!isValidYmd(id) || !d || typeof d !== "object") return null;
+    var out = { date: id, notes: typeof d.notes === "string" ? d.notes.slice(0, 2000) : "", updatedAt: typeof d.updatedAt === "string" ? d.updatedAt : "" };
+    METRICS.forEach(function (m) {
+      var v = Number(d[m.key]);
+      out[m.key] = isFinite(v) && v > 0 ? (m.money ? Math.round(v * 100) / 100 : Math.round(v)) : 0;
+    });
+    return out;
+  }
+
+  function loadFromStore(s) {
+    var next = {};
+    Object.keys(s.days).forEach(function (id) { var d = cleanDay(id, s.days[id]); if (d) next[id] = d; });
+    state.days = next;
+    applyGoals(s.goals || null);
+    var active = document.activeElement && document.activeElement.closest && document.activeElement.closest("#targets");
+    if (!active) loadTargets();
+    if (!isDirty() && !state.saving) loadForm(state.selected);
+    renderAll();
+  }
+
+  function connect() {
+    var s = readStore();
+    if (!s) {
+      showNotice("This browser is blocking saved data, for example in private browsing, so entries can’t be kept here. Open the page in a normal window to use the tracker.", true);
+      setStatus("save-status", "", "");
+      return;
+    }
+    state.db = localDb;
+    state.connected = true;
+    loadFromStore(s);
+    setEditable(true);
+    setStatus("save-status", "", "");
+    window.addEventListener("storage", function (e) {
+      if (e.key !== STORE_KEY) return;
+      var fresh = readStore();
+      if (fresh) loadFromStore(fresh);
+    });
+  }
+
+  // ---------- Backup ----------
+
+  var pendingRestore = null;
+
+  function downloadBackup() {
+    var s = readStore() || { days: {}, goals: null };
+    var payload = { app: "roslyn-keller-activity-tracker", version: 1, exportedAt: new Date().toISOString(), days: s.days, goals: s.goals || null };
+    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "activity-backup-" + ymd(new Date()) + ".json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    var n = Object.keys(s.days).length;
+    setStatus("backup-status", "Downloaded a backup of " + n + (n === 1 ? " day." : " days."), "ok");
+  }
+
+  function readBackupFile(file) {
+    $("restore-confirm").hidden = true;
+    pendingRestore = null;
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) { setStatus("backup-status", "That file is too large to be a tracker backup.", "err"); return; }
+    var reader = new FileReader();
+    reader.onload = function () {
+      var data;
+      try { data = JSON.parse(String(reader.result)); } catch (e) { data = null; }
+      if (!data || typeof data !== "object" || !data.days || typeof data.days !== "object") {
+        setStatus("backup-status", "That file isn’t a tracker backup. Choose a file downloaded with Download backup.", "err");
+        return;
+      }
+      var days = {};
+      Object.keys(data.days).forEach(function (id) { var d = cleanDay(id, data.days[id]); if (d) days[id] = d; });
+      var goals = data.goals && typeof data.goals === "object" ? data.goals : null;
+      pendingRestore = { days: days, goals: goals };
+      var cur = Object.keys(state.days).length, incoming = Object.keys(days).length;
+      $("restore-text").textContent = "This replaces the " + cur + (cur === 1 ? " day" : " days") + " saved in this browser with the " + incoming + (incoming === 1 ? " day" : " days") + " in the backup" + (goals ? ", and its weekly targets." : ".");
+      $("restore-confirm").hidden = false;
+      setStatus("backup-status", "", "");
+    };
+    reader.onerror = function () { setStatus("backup-status", "Couldn’t read that file. Try choosing it again.", "err"); };
+    reader.readAsText(file);
+  }
+
+  function applyRestore() {
+    if (!pendingRestore) return;
+    try {
+      writeStore(pendingRestore);
+      var n = Object.keys(pendingRestore.days).length;
+      pendingRestore = null;
+      $("restore-confirm").hidden = true;
+      $("backup-file").value = "";
+      state.loaded = null;
+      loadFromStore(readStore() || { days: {}, goals: null });
+      setStatus("backup-status", "Restored " + n + (n === 1 ? " day." : " days."), "ok");
+    } catch (e) {
+      setStatus("backup-status", friendlyError(e), "err");
+    }
+  }
+
+  function wireBackup() {
+    $("backup-download").addEventListener("click", downloadBackup);
+    $("backup-file").addEventListener("change", function (e) { readBackupFile(e.target.files && e.target.files[0]); });
+    $("restore-yes").addEventListener("click", applyRestore);
+    $("restore-no").addEventListener("click", function () {
+      pendingRestore = null;
+      $("restore-confirm").hidden = true;
+      $("backup-file").value = "";
+      setStatus("backup-status", "Restore cancelled. Nothing changed.", "");
+    });
+  }
+
+  // ---------- Boot ----------
+
+  buildFields();
+  buildTargetFields();
+  renderTrendOptions();
+  wire();
+  wireBackup();
+  $("entry-date").value = state.selected;
+  loadForm(state.selected);
+  loadTargets();
+  renderAll();
+  setEditable(false);
+  setStatus("save-status", "Loading saved activity…", "");
+  connect();
+})();
+</script>
+</body>
+</html>
