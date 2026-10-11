@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Script from "next/script";
+const GOOGLE_ADS_ID="AW-18282133568";
 import { buildWhatsAppLink } from "@/config/site";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import SocialLinks from "@/components/SocialLinks";
@@ -31,6 +33,17 @@ export default async function SiteLayout({
   };
   return (
     <SiteSettingsProvider whatsappNumber={settings.whatsappNumber}>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GOOGLE_ADS_ID}');`}
+        </Script>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

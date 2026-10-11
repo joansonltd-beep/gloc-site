@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import ts from 'typescript';import {readFileSync} from 'node:fs';
+const load=async path=>import('data:text/javascript;base64,'+Buffer.from(ts.transpileModule(readFileSync(path,'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText).toString('base64'));
+const {issueSession,validSession,passwordMatches}=await load('src/lib/dashboard/session.ts');
+const password='test-only-secret-12345',host='dashboard.test',now=100000;
+const token=issueSession(password,host,now);
+assert(validSession(token,password,host,now));assert(!validSession(token,password,'other.test',now));assert(!validSession(token,password,host,now+8*3600000));assert(!validSession(token+'x',password,host,now));assert(!validSession(token,'changed-password',host,now));assert(!validSession('bad',password,host,now));assert(passwordMatches(password,password));assert(!passwordMatches('incorrect',password));
+const {applyRecord}=await load('src/lib/dashboard/records.ts');
+const record={kind:'activity',key:'2026-10-11',version:0,data:{calls:20}};
+const first=applyRecord({},record,record);assert.equal(first.version,1);
+assert.equal(applyRecord(first.value,record,record),null);
+const update=applyRecord(first.value,{...record,version:1},{...record,data:{calls:25}});assert.equal(update.version,2);assert.equal(update.value['activity:2026-10-11'].record.data.calls,25);
+assert.equal(applyRecord(update.value,{...record,version:1},record),null);
+const deleted=applyRecord(update.value,{...record,version:2},null);assert.equal(deleted.version,3);assert.equal(deleted.value['activity:2026-10-11'].record,null);
+const restored=applyRecord(deleted.value,record,record);assert.equal(restored.version,4);assert.equal(applyRecord(restored.value,{...record,version:2},record),null);
+console.log('Passed session signatures, expiry, host binding, password rotation, malformed tokens, replacement totals and stale-edit/delete protection.');

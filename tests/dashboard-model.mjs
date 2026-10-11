@@ -1,0 +1,10 @@
+import fs from 'node:fs';import ts from 'typescript';import assert from 'node:assert/strict';
+const compiled=ts.transpileModule(fs.readFileSync('src/lib/dashboard/model.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const m=await import('data:text/javascript;base64,'+Buffer.from(compiled).toString('base64'));
+assert.equal(m.monday('2026-10-11'),'2026-10-05');assert.equal(m.monday('2027-01-01'),'2026-12-28');assert.equal(m.shift('2024-02-28',1),'2024-02-29');assert.equal(m.dateValid('2026-02-30'),false);
+const first={kind:'activity',key:'2026-10-05',version:0,data:{...m.emptyNumbers(),calls:20,prospects:4,premium:12500.50,notes:''}},second={...first,key:'2026-10-06',data:{...m.emptyNumbers(),calls:10,premium:8000,notes:''}};
+assert(m.validateRecord(first));assert.equal(m.sum([first,second],'2026-10-05','2026-10-11').calls,30);assert.equal(m.sum([first,second],'2026-10-05','2026-10-11').premium,20500.50);assert.equal(m.sum([first,second],'2026-10-06','2026-10-06').calls,10);assert.equal(m.sum([first,second],'2026-10-12','2026-10-18').calls,0);
+assert.equal(m.validateRecord({...first,data:{...first.data,calls:-1}}),null);assert.equal(m.validateRecord({...first,data:{...first.data,closes:1.5}}),null);assert.equal(m.validateRecord({...first,key:'2026-02-30'}),null);assert.equal(m.validateRecord({kind:'goals',key:'weekly',version:0,data:{...m.emptyNumbers(),workingDays:0}}),null);
+assert.equal(m.progress(20,40),50);assert.equal(m.progress(60,40),100);assert.equal(m.progress(20,0),0);
+const prospect={kind:'prospect',key:'00000000-0000-4000-8000-000000000001',version:0,data:{name:'Example',phone:'',product:'Life insurance',stage:'New',nextDate:'2026-10-12',added:'2026-10-11',notes:''}};assert(m.validateRecord(prospect));assert.equal(m.validateRecord({...prospect,data:{...prospect.data,stage:'Invented'}}),null);
+console.log('Passed 17 model checks: daily and weekly totals, JMD precision, week boundaries, dates, invalid counts, targets and prospect validation.');
