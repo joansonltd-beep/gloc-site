@@ -8,7 +8,7 @@ import { buildWhatsAppLink } from "@/config/site";
 export const metadata: Metadata = {
   title: "Book a Meeting",
   description:
-    "Book a no-pressure meeting with your insurance agent in Trinidad & Tobago, or request a callback.",
+    "Book a no-pressure meeting with Joanson Baptiste James for your planning questions in Jamaica, or request a callback.",
   alternates: { canonical: "/book" },
 };
 
@@ -44,8 +44,11 @@ export default async function BookPage() {
             message on WhatsApp
           </a>
           . No pressure, no obligation. Not ready to book?{" "}
-          <a href="/survey" className="font-semibold text-brand hover:underline">
-            Take my 5-minute market survey
+          <a
+            href="/survey"
+            className="font-semibold text-brand hover:underline"
+          >
+            Take my short market survey
           </a>{" "}
           instead.
         </p>
@@ -96,7 +99,7 @@ export default async function BookPage() {
         </div>
       </div>
 
-      {/* Market survey funnel — its own standalone page. */}
+      {/* Market survey funnel ,  its own standalone page. */}
       <a
         href="/survey"
         className="mt-10 block rounded-2xl border border-slate-200 bg-white/70 p-6 text-center shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
@@ -105,11 +108,11 @@ export default async function BookPage() {
           Not ready to book?
         </p>
         <p className="mt-1 text-lg font-semibold text-brand">
-          Take my 5-minute market survey
+          Take my short market survey
         </p>
         <p className="mt-1 text-sm text-slate-600">
-          A few quick questions about insurance in Trinidad &amp; Tobago. No
-          selling, and I use it to understand what people really want.
+          A few quick questions about insurance in Jamaica. No selling, and I
+          use it to understand what people really want.
         </p>
         <span className="mt-3 inline-block text-sm font-semibold text-brand">
           Start the survey →

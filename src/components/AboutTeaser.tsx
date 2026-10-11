@@ -31,11 +31,9 @@ export default function AboutTeaser({
       </div>
       <div>
         <h2 className="text-2xl font-semibold tracking-tight text-brand">
-          A local agent who actually explains things
+          Meet Joanson
         </h2>
-        <p className="mt-2 max-w-prose text-slate-600">
-          {teaser}
-        </p>
+        <p className="mt-2 max-w-prose text-slate-600">{teaser}</p>
         <Link
           href="/about"
           className="mt-4 inline-block text-sm font-semibold text-brand hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"

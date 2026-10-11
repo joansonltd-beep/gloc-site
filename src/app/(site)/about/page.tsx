@@ -6,7 +6,8 @@ import { getAbout, getSiteSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Meet your insurance agent in Trinidad & Tobago.",
+  description:
+    "Meet Joanson Baptiste James and his approach to insurance and financial planning questions in Jamaica.",
   alternates: { canonical: "/about" },
 };
 
@@ -26,9 +27,7 @@ export default async function AboutPage() {
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
             Meet {settings.agentName}
           </h1>
-          <p className="mt-3 max-w-xl text-lg text-slate-600">
-            {about.teaser}
-          </p>
+          <p className="mt-3 max-w-xl text-lg text-slate-600">{about.teaser}</p>
         </header>
 
         {aboutPhoto ? (

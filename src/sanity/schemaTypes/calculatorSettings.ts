@@ -8,32 +8,40 @@ export const calculatorSettings = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "contentEdition",
+      title: "Content edition",
+      description:
+        "Select Jamaica only after reviewing this document for the current market and business details.",
+      type: "string",
+      options: { list: [{ title: "Jamaica", value: "jamaica-v1" }] },
+    }),
+    defineField({
       name: "investmentLowReturn",
-      title: "Investment — cautious return (% per year)",
+      title: "Investment ,  cautious return (% per year)",
       type: "number",
       description: "Lower end of the projected range. e.g. 2.5",
     }),
     defineField({
       name: "investmentHighReturn",
-      title: "Investment — optimistic return (% per year)",
+      title: "Investment ,  optimistic return (% per year)",
       type: "number",
       description: "Upper end of the projected range. e.g. 8",
     }),
     defineField({
       name: "pensionSavingsReturn",
-      title: "Pension — plain savings return (% per year)",
+      title: "Pension ,  plain savings return (% per year)",
       type: "number",
       description: "e.g. 1",
     }),
     defineField({
       name: "pensionStructuredReturn",
-      title: "Pension — structured plan return (% per year)",
+      title: "Pension ,  structured plan return (% per year)",
       type: "number",
       description: "e.g. 6",
     }),
     defineField({
       name: "pensionInflation",
-      title: "Pension — assumed inflation (% per year)",
+      title: "Pension ,  assumed inflation (% per year)",
       type: "number",
       description: "Used to show TT-dollar erosion. e.g. 4",
     }),

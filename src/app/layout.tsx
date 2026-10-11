@@ -27,10 +27,10 @@ const googleVerification = "VRywR5Rn38kExZbiFZyYiKT7a1pt-DENH8-uitRodb0";
 export async function generateMetadata(): Promise<Metadata> {
   const s = await getSiteSettings();
   const name = s.agentName || "Insurance Agent";
-  const title = `${name} | Insurance Agent in Trinidad & Tobago`;
+  const title = `${name} | Insurance & Financial Planning Questions in Jamaica`;
   const description =
     s.heroSubcopy ||
-    "Licensed insurance agent in Trinidad & Tobago for life, health, critical illness, pension, motor and home insurance. Friendly, no-pressure advice.";
+    "Insurance and financial planning questions for your life in Jamaica. Family, retirement, home and business guides from Joanson Baptiste James.";
   return {
     metadataBase: new URL(SITE_URL),
     // No global canonical: each page sets its own so search engines index
@@ -38,18 +38,18 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { default: title, template: `%s | ${name}` },
     description,
     keywords: [
-      "insurance agent Trinidad",
-      "insurance agent Trinidad and Tobago",
+      "insurance planning Jamaica",
+      "insurance agent Jamaica",
       name,
-      "life insurance Trinidad and Tobago",
-      "health insurance Trinidad",
-      "critical illness cover Trinidad",
-      "pension annuity Trinidad",
-      "motor home insurance Trinidad",
+      "life insurance Jamaica",
+      "health insurance Jamaica",
+      "critical illness Jamaica",
+      "retirement planning Jamaica",
+      "home motor insurance Jamaica",
     ],
     openGraph: {
       type: "website",
-      locale: "en_TT",
+      locale: "en_JM",
       siteName: name,
       url: SITE_URL,
       title,
@@ -72,7 +72,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full text-slate-900">
-        {/* Google tag (gtag.js) — Google Ads conversion tracking.
+        {/* Google tag (gtag.js) ,  Google Ads conversion tracking.
             afterInteractive keeps the tag out of the critical rendering path
             so it doesn't slow first paint. */}
         <Script

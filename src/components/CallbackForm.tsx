@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Field, SelectField } from "@/components/tools/ToolUI";
 import { Check } from "@/components/icons";
-import { routineRequirements, ageFromDob } from "@/lib/underwriting";
+import { ageFromDob } from "@/lib/underwriting";
 
 // Things a visitor might want to take care of (customer-facing wording).
 const GOALS = [
@@ -43,13 +43,15 @@ export default function CallbackForm() {
   const [cover, setCover] = useState("");
   const [smoker, setSmoker] = useState("");
   const [income, setIncome] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">(
+    "idle",
+  );
 
   const ready = name.trim().length > 0 && phone.trim().length >= 7;
 
   function toggleGoal(goal: string) {
     setGoals((prev) =>
-      prev.includes(goal) ? prev.filter((g) => g !== goal) : [...prev, goal]
+      prev.includes(goal) ? prev.filter((g) => g !== goal) : [...prev, goal],
     );
   }
 
@@ -60,7 +62,6 @@ export default function CallbackForm() {
     const age = ageFromDob(dob);
     const coverAmount = Number(cover) || undefined;
     const annualIncome = Number(income) || undefined;
-    const underwriting = routineRequirements(age, coverAmount);
     const goalsText = goals.join(", ");
 
     const message = `Callback request from ${name} (${phone}). Best time: ${bestTime}.${
@@ -79,7 +80,7 @@ export default function CallbackForm() {
           website,
           message,
           recommended: goalsText || "General enquiry",
-          underwriting, // internal, for the sheet only
+
           figures: {
             name,
             phone,
@@ -91,13 +92,13 @@ export default function CallbackForm() {
             coverConsidered: coverAmount,
             annualIncome,
             smoker: smoker || undefined,
-            underwritingRequirements: underwriting || undefined,
           },
           page: typeof window !== "undefined" ? window.location.pathname : "",
           submittedAt: new Date().toISOString(),
         }),
       });
-      setStatus(res.ok ? "done" : "error");
+      const result = await res.json();
+      setStatus(res.ok && result.forwarded ? "done" : "error");
     } catch {
       setStatus("error");
     }
@@ -109,9 +110,12 @@ export default function CallbackForm() {
         <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent-dark">
           <Check className="h-6 w-6" />
         </div>
-        <h3 className="text-lg font-semibold text-brand">Thanks, {name.split(" ")[0]}.</h3>
+        <h3 className="text-lg font-semibold text-brand">
+          Thanks, {name.split(" ")[0]}.
+        </h3>
         <p className="mt-1 text-slate-600">
-          Your request is in. I&apos;ll reach out at the number you gave, {bestTime.toLowerCase()}.
+          Your request is in. I&apos;ll reach out at the number you gave,{" "}
+          {bestTime.toLowerCase()}.
         </p>
       </div>
     );
@@ -146,9 +150,27 @@ export default function CallbackForm() {
       </div>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <Field label="Your name" value={name} onChange={setName} placeholder="Full name" type="text" />
-        <Field label="Phone number" value={phone} onChange={setPhone} placeholder="e.g. 868 123 4567" type="tel" />
-        <Field label="Email (optional)" value={email} onChange={setEmail} placeholder="you@example.com" type="email" />
+        <Field
+          label="Your name"
+          value={name}
+          onChange={setName}
+          placeholder="Full name"
+          type="text"
+        />
+        <Field
+          label="Phone number"
+          value={phone}
+          onChange={setPhone}
+          placeholder="Your number with country code"
+          type="tel"
+        />
+        <Field
+          label="Email (optional)"
+          value={email}
+          onChange={setEmail}
+          placeholder="you@example.com"
+          type="email"
+        />
         <SelectField
           label="Best time to call"
           value={bestTime}
@@ -167,7 +189,8 @@ export default function CallbackForm() {
           What would you like to take care of?
         </legend>
         <p className="mt-1 text-xs text-slate-500">
-          Pick anything you&apos;re thinking about. It helps me prepare for our call.
+          Pick anything you&apos;re thinking about. It helps me prepare for our
+          call.
         </p>
         <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {GOALS.map((goal) => {
@@ -198,9 +221,14 @@ export default function CallbackForm() {
         A few optional details to help me prepare for our conversation
       </p>
       <div className="mt-3 grid gap-4 sm:grid-cols-2">
-        <Field label="Date of birth (optional)" value={dob} onChange={setDob} type="date" />
         <Field
-          label="Cover you're considering, TT$ (optional)"
+          label="Date of birth (optional)"
+          value={dob}
+          onChange={setDob}
+          type="date"
+        />
+        <Field
+          label="Cover you're considering, J$ (optional)"
           value={cover}
           onChange={setCover}
           placeholder="e.g. 1000000"
@@ -216,7 +244,7 @@ export default function CallbackForm() {
           ]}
         />
         <Field
-          label="Annual income, TT$ (optional)"
+          label="Annual income, J$ (optional)"
           value={income}
           onChange={setIncome}
           placeholder="e.g. 180000"
@@ -239,7 +267,7 @@ export default function CallbackForm() {
 
       <p className="mt-4 text-xs text-slate-500">
         By submitting, you agree that we may use these details to contact you
-        about your enquiry. See our{" "}
+        about your enquiry. All amounts entered are in JMD. See our{" "}
         <a href="/privacy" className="font-semibold text-brand hover:underline">
           Privacy Policy
         </a>

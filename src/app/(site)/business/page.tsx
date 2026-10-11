@@ -4,9 +4,9 @@ import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
 import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "Business: Group & Employee Benefits",
+  title: "Group Coverage (Life/Health/Pensions)",
   description:
-    "Cover your team with group health, life and pension benefits. Send an enquiry.",
+    "Discuss group life, health and pension coverage for your employees in Jamaica.",
   alternates: { canonical: "/business" },
 };
 

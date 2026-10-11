@@ -8,7 +8,20 @@ export const lineDetail = defineType({
   title: "Product page content",
   type: "document",
   fields: [
-    defineField({ name: "title", title: "Title", type: "string", validation: (r) => r.required() }),
+    defineField({
+      name: "contentEdition",
+      title: "Content edition",
+      description:
+        "Select Jamaica only after reviewing this document for the current market and business details.",
+      type: "string",
+      options: { list: [{ title: "Jamaica", value: "jamaica-v1" }] },
+    }),
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      validation: (r) => r.required(),
+    }),
     defineField({
       name: "slug",
       title: "Slug (page URL)",
@@ -45,8 +58,19 @@ export const lineDetail = defineType({
       type: "array",
       of: [{ type: "string" }],
     }),
-    defineField({ name: "order", title: "Order", type: "number", initialValue: 0 }),
+    defineField({
+      name: "order",
+      title: "Order",
+      type: "number",
+      initialValue: 0,
+    }),
   ],
-  orderings: [{ title: "Order", name: "orderAsc", by: [{ field: "order", direction: "asc" }] }],
+  orderings: [
+    {
+      title: "Order",
+      name: "orderAsc",
+      by: [{ field: "order", direction: "asc" }],
+    },
+  ],
   preview: { select: { title: "title", subtitle: "clusterKey" } },
 });

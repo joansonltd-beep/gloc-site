@@ -14,31 +14,31 @@ export type Cluster = {
 export const CLUSTERS: Cluster[] = [
   {
     key: "protect",
-    title: "Protect",
+    title: "Family & health",
     href: "/protect",
-    lines: "Life · Health · Critical Illness",
-    intent: "Keep my family safe",
+    lines: "Life, health and critical illness",
+    intent: "Look after the people who depend on you.",
   },
   {
     key: "grow",
-    title: "Grow",
+    title: "Your future",
     href: "/grow",
-    lines: "Pension/Annuities · Investments",
-    intent: "Build wealth, beat inflation",
+    lines: "Retirement, savings and investments",
+    intent: "Make room for the years ahead.",
   },
   {
     key: "assets",
-    title: "Assets",
+    title: "Home & motor",
     href: "/assets",
-    lines: "Motor · Home · Property",
-    intent: "Insure what I own",
+    lines: "Your home, vehicle and property",
+    intent: "Think through what you own and use.",
   },
   {
     key: "business",
-    title: "Business",
+    title: "Group Coverage",
     href: "/business",
-    lines: "Group / employee benefits",
-    intent: "Cover my team",
+    lines: "Life / Health / Pensions",
+    intent: "Plan for the people who work with you.",
   },
 ];
 
@@ -51,68 +51,58 @@ export const LINES: Record<ClusterKey, Line[]> = {
     {
       title: "Life Insurance",
       icon: "life-insurance",
-      blurb:
-        "Replace your income so the people who depend on you keep their home, their plans and their lifestyle if you're not there.",
+      blurb: "Plan for the people who depend on your income.",
     },
     {
       title: "Health",
       icon: "health",
-      blurb:
-        "Private treatment in Trinidad & Tobago adds up fast. Health cover closes the gap between public waitlists and the care you'd actually want.",
+      blurb: "Understand what a health policy would cover.",
     },
     {
       title: "Critical Illness",
       icon: "critical-illness",
-      blurb:
-        "A tax-free lump sum on diagnosis of cancer, heart attack, stroke and more, so you can focus on recovery instead of bills.",
+      blurb: "Prepare questions about a serious illness.",
     },
     {
       title: "Personal Accident",
       icon: "personal-accident",
-      blurb:
-        "A cash benefit if an accident causes injury, disability or death. It pays on top of your other cover, at work, on the road and at play.",
+      blurb: "Understand the financial impact of an accident.",
     },
   ],
   grow: [
     {
       title: "Pension / Annuities",
       icon: "pension-annuities",
-      blurb:
-        "Turn today's savings into a steady income for retirement, and keep more of it with tax-advantaged contributions.",
+      blurb: "Think about income for the years after work.",
     },
     {
       title: "Investments / Mutual Funds",
       icon: "investments-mutual-funds",
-      blurb:
-        "Invest across diversified funds so your money grows ahead of inflation instead of sitting still in an account.",
+      blurb: "Connect your savings to your goals.",
     },
   ],
   assets: [
     {
       title: "Motor",
       icon: "motor",
-      blurb:
-        "Comprehensive and third-party cover for your vehicle, with claims handled by people who pick up the phone.",
+      blurb: "Understand the cover for your vehicle.",
     },
     {
       title: "Home",
       icon: "home",
-      blurb:
-        "Protect your house and its contents against fire, flood, storm and theft.",
+      blurb: "Think through your home and belongings.",
     },
     {
       title: "Property",
       icon: "property",
-      blurb:
-        "Cover for landlords and additional properties, from rental units to commercial space.",
+      blurb: "Consider the risks around rental or commercial property.",
     },
   ],
   business: [
     {
-      title: "Group / Employee Benefits",
+      title: "Group Coverage",
       icon: "group-employee-benefits",
-      blurb:
-        "Group health, life and pension benefits that help you attract and keep good staff, for a team of any size.",
+      blurb: "Discuss life, health and pension coverage for your employees.",
     },
   ],
 };
@@ -126,11 +116,31 @@ export type RouterCard = {
 };
 
 export const ROUTER_CARDS: RouterCard[] = [
-  { title: "Protect my family", subtitle: "Life, health & critical illness", href: "/protect" },
-  { title: "Plan retirement & grow my money", subtitle: "Pension, annuities & investments", href: "/grow" },
-  { title: "Insure my car, home or property", subtitle: "Motor, home & property cover", href: "/assets" },
-  { title: "Cover my business & staff", subtitle: "Group & employee benefits", href: "/business" },
-  { title: "Not sure? Help me figure it out", subtitle: "Answer 4 quick questions", discovery: true },
+  {
+    title: "Protect my family",
+    subtitle: "Life, health & critical illness",
+    href: "/protect",
+  },
+  {
+    title: "Plan retirement & grow my money",
+    subtitle: "Pension, annuities & investments",
+    href: "/grow",
+  },
+  {
+    title: "Insure my car, home or property",
+    subtitle: "Motor, home & property cover",
+    href: "/assets",
+  },
+  {
+    title: "Group Coverage",
+    subtitle: "Life / Health / Pensions",
+    href: "/business",
+  },
+  {
+    title: "Not sure? Help me figure it out",
+    subtitle: "Answer 4 quick questions",
+    discovery: true,
+  },
 ];
 
 // --- Discovery flow (4 questions) ---------------------------------------
@@ -193,7 +203,7 @@ export type Recommendation = {
   why: string;
 };
 
-// Returns 2–3 recommended lines, each with a one-line reason (spec.md §6).
+// Returns 2 to 3 recommended lines, each with a one-line reason (spec.md §6).
 export function recommend(a: DiscoveryAnswers): Recommendation[] {
   const scored: (Recommendation & { weight: number })[] = [];
 
@@ -203,14 +213,14 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
       line: "Life Insurance",
       cluster: "protect",
       href: "/protect",
-      why: "Your dependents would keep their lifestyle if your income stopped.",
+      why: "Think through the commitments your family would need to meet.",
     });
     scored.push({
       weight: 7,
       line: "Critical Illness",
       cluster: "protect",
       href: "/protect",
-      why: "A lump sum covers treatment and bills if a major illness hits.",
+      why: "Review how a serious illness could affect your household budget.",
     });
   }
 
@@ -220,7 +230,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
       line: "Pension / Annuities",
       cluster: "grow",
       href: "/grow",
-      why: "Turn your savings into a steady income that outlasts inflation.",
+      why: "Explore retirement income and the assumptions behind it.",
     });
   }
 
@@ -247,7 +257,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
   if (a.business === "yes") {
     scored.push({
       weight: 8,
-      line: "Group / Employee Benefits",
+      line: "Group Coverage",
       cluster: "business",
       href: "/business",
       why: "Attract and keep good staff with cover that scales with your team.",
@@ -282,26 +292,8 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
 // --- Dummy testimonials (move to Sanity in M4) ---------------------------
 export type Testimonial = { quote: string; person: string; line: string };
 
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "I always thought insurance was for ‘later.’ She showed me what a plan actually costs at my age, and I signed up the same week.",
-    person: "Kerry-Ann, 29 · Port of Spain",
-    line: "Life + Critical Illness",
-  },
-  {
-    quote:
-      "We just bought our first home. Getting life and property cover sorted in one conversation took the stress right off.",
-    person: "Marlon & Aaliyah, 33 · San Fernando",
-    line: "Home + Life",
-  },
-  {
-    quote:
-      "He set up group benefits for my eight staff without the usual runaround. My team noticed straight away.",
-    person: "Devon, 41 · Chaguanas",
-    line: "Group Benefits",
-  },
-];
+export const TESTIMONIALS: { quote: string; person: string; line: string }[] =
+  [];
 
 // --- Line detail pages (spec.md §4) ------------------------------------
 // Each product line gets its own page explaining what it is and why it matters,
@@ -338,16 +330,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "life-insurance",
     clusterKey: "protect",
     title: "Life Insurance",
-    tagline: "Replace your income so your family keeps going if you can't.",
+    tagline: "Plan for the people who depend on your income.",
     what: [
-      "Life insurance pays a lump sum to the people you choose if you pass away. It replaces the income they relied on, so the mortgage still gets paid, the children stay in school and daily life carries on.",
-      "You choose the amount of cover and how long it runs. Term plans cover a set number of years at a lower cost; whole-life plans last for life and can build cash value over time.",
+      "Life insurance can provide a benefit to your chosen beneficiaries when you die, subject to the policy terms.",
+      "Start with the commitments you would want covered: household bills, debts, education and care for family members.",
     ],
     why: [
-      "Your family keeps their home and lifestyle instead of facing forced changes.",
-      "It clears debts like a mortgage or car loan so they aren't left behind.",
-      "It costs less the younger and healthier you are when you start.",
-      "The payout is generally tax-free in Trinidad & Tobago.",
+      "Review who depends on your income.",
+      "Consider the cover you already have.",
+      "Ask about premiums, exclusions and how long the cover lasts.",
     ],
     calculator: "protection",
   },
@@ -355,16 +346,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "health",
     clusterKey: "protect",
     title: "Health",
-    tagline: "Get the care you want without the public waitlist.",
+    tagline: "Understand what a health policy would cover.",
     what: [
-      "Health insurance covers the cost of private medical care: doctor visits, tests, surgery, hospital stays and more. It closes the gap between the public system and the timing and comfort of private treatment.",
-      "Plans range from basic hospital cover to full plans that include specialists, prescriptions and overseas treatment.",
+      "Health insurance can help with eligible medical expenses. The covered services, limits and your share of the bill depend on the policy.",
+      "Ask about hospital treatment, outpatient care, prescriptions, waiting periods and any provider requirements.",
     ],
     why: [
-      "Private treatment in Trinidad & Tobago is expensive to pay for out of pocket.",
-      "You skip long waitlists for surgery and specialist care.",
-      "It protects your savings from a sudden medical bill.",
-      "Premiums are lower while you are young and healthy.",
+      "Read the exclusions as well as the benefits.",
+      "Check deductibles and annual limits.",
+      "Compare with any benefits available through your employer.",
     ],
     calculator: "protection",
   },
@@ -372,16 +362,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "critical-illness",
     clusterKey: "protect",
     title: "Critical Illness",
-    tagline: "A cash lump sum on diagnosis, so you can focus on getting better.",
+    tagline: "Prepare questions about a serious illness.",
     what: [
-      "Critical illness cover pays a tax-free lump sum if you are diagnosed with one of the covered conditions, such as cancer, heart attack or stroke. The money is yours to use however you need: treatment, bills, time off work or care.",
-      "It pays out on diagnosis and is separate from health insurance, which only covers medical costs.",
+      "Critical illness cover can provide a benefit when a condition meets the policy definition. A diagnosis alone may not meet every requirement.",
+      "Consider how time away from work, care and household expenses would affect your family.",
     ],
     why: [
-      "Treating a major illness can cost hundreds of thousands of dollars.",
-      "It replaces your income while you are unable to work.",
-      "It covers costs health insurance will not, like home help or travel for treatment.",
-      "Many of us will face a serious illness at some point in our lives.",
+      "Check the exact definitions of covered conditions.",
+      "Ask about waiting and survival periods.",
+      "Understand how the benefit fits with existing health cover.",
     ],
     calculator: "critical-illness",
   },
@@ -389,16 +378,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "personal-accident",
     clusterKey: "protect",
     title: "Personal Accident",
-    tagline: "A cash benefit if an accident injures or disables you.",
+    tagline: "Understand the financial impact of an accident.",
     what: [
-      "Personal accident cover pays out if an accident causes injury, disability or death. It is straightforward, affordable cover that sits on top of your other policies.",
-      "Benefits can include a lump sum for permanent disability, a weekly income while you recover, and cover for medical expenses.",
+      "Personal accident policies may provide benefits for specified injuries, disability or death caused by an accident.",
+      "The events covered, benefit amounts and exclusions vary by contract. Review the wording for work, travel and other activities.",
     ],
     why: [
-      "Accidents happen at work, on the road and at home.",
-      "It pays on top of any health or life cover you already have.",
-      "It is affordable, with cover that starts quickly and little paperwork.",
-      "It gives you an income cushion while you recover.",
+      "Ask which activities are excluded.",
+      "Check how benefits are calculated.",
+      "Review overlap with any existing policies.",
     ],
     calculator: null,
   },
@@ -406,17 +394,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "pension-annuities",
     clusterKey: "grow",
     title: "Pension / Annuities",
-    tagline: "Turn today's savings into a steady income for retirement.",
+    tagline: "Think about income for the years after work.",
     what: [
-      "A pension or annuity plan helps you build a pot of money during your working years, then turns it into a regular income when you retire.",
-      "Certain plans, registered as deferred annuities with the Board of Inland Revenue, come with real tax breaks. You can claim a yearly tax deduction on the premiums you pay, up to TT$60,000 a year. That limit covers all of your pension contributions together, including your NIS payments.",
-      "When you reach your chosen retirement age, you can take up to 25% of your built-up fund as a tax-free lump sum, with the rest paid to you as a regular income. That is a welcome cash boost right when retirement begins.",
+      "Retirement planning starts with the income you may need and the savings and benefits already in place.",
+      "Pensions and annuities have different contribution rules, access conditions and income arrangements. Confirm the terms of any option you consider.",
     ],
     why: [
-      "The state pension alone rarely covers the lifestyle you want.",
-      "Claim up to TT$60,000 a year in tax deductions on your contributions.",
-      "Take up to 25% of your fund as a tax-free lump sum at retirement.",
-      "Starting early lets compounding do most of the work, ahead of inflation.",
+      "Include your household and care commitments.",
+      "Ask about fees and access to your money.",
+      "Confirm tax treatment with an appropriately qualified professional.",
     ],
     calculator: "pension",
   },
@@ -424,16 +410,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "investments-mutual-funds",
     clusterKey: "grow",
     title: "Investments / Mutual Funds",
-    tagline: "Grow your money ahead of inflation.",
+    tagline: "Connect your savings to your goals.",
     what: [
-      "Investing puts your money into a mix of assets through mutual funds so it can grow over time. A fund spreads your money across many investments, which lowers the risk of any single one.",
-      "You can invest a lump sum, contribute monthly, or both, and choose a fund that matches how much risk you are comfortable with.",
+      "An investment fund pools money to invest according to a defined strategy. Returns and the value of your investment can change.",
+      "Your goals, time period, tolerance for losses and need for access to your money all matter when considering an investment.",
     ],
     why: [
-      "Money left in a regular account loses value to inflation.",
-      "Diversified funds spread the risk for you.",
-      "You can start with a small monthly amount and build over time.",
-      "Your money stays accessible compared with locked-in savings.",
+      "Read the fund documents and fees.",
+      "Understand that investment values can fall.",
+      "Keep short-term commitments in mind before investing.",
     ],
     calculator: "investment",
   },
@@ -441,16 +426,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "motor",
     clusterKey: "assets",
     title: "Motor",
-    tagline: "Cover your vehicle, with claims handled properly.",
+    tagline: "Understand the cover for your vehicle.",
     what: [
-      "Motor insurance covers your vehicle against accidents, theft and damage, and covers your liability to others. Third-party is the legal minimum; comprehensive also covers your own vehicle.",
-      "Your premium depends on the vehicle, how you use it and your driving history.",
+      "Motor policies differ in the liability and vehicle damage they cover. Review the type of cover and the conditions attached to it.",
+      "Ask how vehicle use, named drivers, excesses and the claims process affect your policy.",
     ],
     why: [
-      "Third-party cover is required by law to drive in Trinidad & Tobago.",
-      "Comprehensive protects the cost of repairing or replacing your own vehicle.",
-      "It covers you if you injure someone or damage their property.",
-      "A good agent makes claims faster and less stressful.",
+      "Check what happens after an accident or theft.",
+      "Confirm the excess you would need to pay.",
+      "Read any restrictions on drivers or vehicle use.",
     ],
     calculator: "quick-quote",
   },
@@ -458,16 +442,15 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "home",
     clusterKey: "assets",
     title: "Home",
-    tagline: "Protect your home and everything in it.",
+    tagline: "Think through your home and belongings.",
     what: [
-      "Home insurance covers your house and its contents against risks like fire, flood, storm and theft. You can cover the building, the contents, or both.",
-      "Cover is based on the cost to rebuild and replace, not the market price of the property.",
+      "Home cover can address risks to a building, its contents or both. The events insured and the exclusions depend on the policy.",
+      "Ask how rebuilding costs, contents values and any limits or excesses are assessed.",
     ],
     why: [
-      "Your home is likely the biggest thing you own.",
-      "Local risks like flooding and storms are real and costly.",
-      "It covers your belongings, not just the structure.",
-      "It is often required if you have a mortgage.",
+      "Check the terms for storm and flood damage.",
+      "Review how contents need to be listed or valued.",
+      "Ask about any mortgage-related requirements.",
     ],
     calculator: "quick-quote",
   },
@@ -475,33 +458,31 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "property",
     clusterKey: "assets",
     title: "Property",
-    tagline: "Cover for landlords and additional properties.",
+    tagline: "Consider the risks around rental or commercial property.",
     what: [
-      "Property cover protects buildings you own beyond your main home, such as rental units or commercial space.",
-      "It can include the building, loss of rental income, and your liability to tenants or visitors.",
+      "Property cover can address a building used for rental or business purposes. Some policies may include liability or loss of rental income.",
+      "Confirm how occupancy, use and maintenance affect the cover before choosing a policy.",
     ],
     why: [
-      "It protects an income-producing asset.",
-      "It covers loss of rent if the property becomes uninhabitable.",
-      "It covers your liability as a landlord.",
-      "It keeps your investment safe from fire, flood and storm.",
+      "Describe how the property is used.",
+      "Ask about periods when a property is empty.",
+      "Check whether liability and rental income are included.",
     ],
     calculator: "quick-quote",
   },
   {
     slug: "group-employee-benefits",
     clusterKey: "business",
-    title: "Group / Employee Benefits",
-    tagline: "Look after your team with cover that scales.",
+    title: "Group Coverage",
+    tagline: "Life / Health / Pensions for your employees.",
     what: [
-      "Group benefits provide health, life and pension cover for your employees under one plan. They are usually cheaper per person than individual cover and easier to manage.",
-      "You choose the mix of benefits and how much the company contributes.",
+      "Employee benefit arrangements may include health, life or retirement benefits. Eligibility and available terms depend on the arrangement.",
+      "Start with your team, the benefits they already have and a budget your business can maintain.",
     ],
     why: [
-      "Good benefits help you attract and keep strong staff.",
-      "Group rates are typically lower than individual cover.",
-      "It shows your team you are invested in them.",
-      "It scales as your business grows.",
+      "Ask who can join and when cover begins.",
+      "Understand employer and employee contributions.",
+      "Review what happens when someone leaves the team.",
     ],
     calculator: "group",
   },

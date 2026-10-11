@@ -5,7 +5,7 @@
 export function futureValueLumpSum(
   principal: number,
   annualRate: number,
-  years: number
+  years: number,
 ): number {
   const r = annualRate / 12;
   const n = years * 12;
@@ -16,7 +16,7 @@ export function futureValueLumpSum(
 export function futureValueMonthly(
   monthlyContribution: number,
   annualRate: number,
-  years: number
+  years: number,
 ): number {
   const r = annualRate / 12;
   const n = years * 12;
@@ -24,11 +24,11 @@ export function futureValueMonthly(
   return monthlyContribution * ((Math.pow(1 + r, n) - 1) / r);
 }
 
-// Express a future nominal amount in today's TT dollars (inflation erosion).
+// Express a future nominal amount in today's purchasing power (inflation erosion).
 export function realValue(
   nominal: number,
   inflationAnnualRate: number,
-  years: number
+  years: number,
 ): number {
   return nominal / Math.pow(1 + inflationAnnualRate, years);
 }

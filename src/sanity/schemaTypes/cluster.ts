@@ -7,9 +7,18 @@ export const cluster = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "contentEdition",
+      title: "Content edition",
+      description:
+        "Select Jamaica only after reviewing this document for the current market and business details.",
+      type: "string",
+      options: { list: [{ title: "Jamaica", value: "jamaica-v1" }] },
+    }),
+    defineField({
       name: "key",
       title: "Key",
-      description: "Stable id used by the code: protect, grow, assets or business.",
+      description:
+        "Stable id used by the code: protect, grow, assets or business.",
       type: "string",
       options: {
         list: [
@@ -36,7 +45,8 @@ export const cluster = defineType({
     defineField({
       name: "lines",
       title: "Lines summary",
-      description: 'Short list shown on cards, e.g. "Life · Health · Critical Illness".',
+      description:
+        'Short list shown on cards, e.g. "Life · Health · Critical Illness".',
       type: "string",
     }),
     defineField({

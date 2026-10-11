@@ -3,7 +3,7 @@
 
 export type SiteSettings = {
   whatsappNumber: string;
-  glocAffiliationLine: string;
+  professionalDescription: string;
   footerDisclaimer: string;
   agentName: string;
   agentTagline: string;
@@ -31,21 +31,22 @@ export type AboutData = {
 };
 
 export const DEFAULT_SETTINGS: SiteSettings = {
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "1868XXXXXXX",
-  glocAffiliationLine: "Licensed Insurance Sales Representative",
+  whatsappNumber: "18762109898",
+  professionalDescription: "",
   footerDisclaimer:
     "This website is for general information only and is not financial advice. Contact us to discuss cover suited to your needs.",
   agentName: "Joanson Baptiste James",
-  agentTagline: "Insurance Agent",
-  heroEyebrow: "Insurance Agent · Trinidad & Tobago",
-  heroHeadline: "Protect what you've built. Plan for what's next.",
+  agentTagline: "Life. Family. Future.",
+  heroEyebrow: "A conversation for your life in Jamaica",
+  heroHeadline: "Life moves forward. Plan for it.",
   heroSubcopy:
-    "I help individuals, families and business owners across Trinidad and Tobago protect what they have worked hard for, and plan ahead for the goals still in front of them. Let's look at your options together.",
-  headshotUrl: null,
+    "For your family, your home and the years ahead. Let's make sense of your insurance and financial planning questions, one conversation at a time.",
+  headshotUrl:
+    "https://cdn.sanity.io/images/83r56hq8/production/70ccac5f33bb6fad5624099bce88930b1918396f-3222x4585.jpg",
   logoUrl: null,
-  facebookUrl: null,
-  instagramUrl: null,
-  linkedinUrl: null,
+  facebookUrl: "https://www.facebook.com/JoansonBJames",
+  instagramUrl: "https://www.instagram.com/joansonbjames/",
+  linkedinUrl: "https://www.linkedin.com/in/joanson-baptiste-james-146400137/",
   tiktokUrl: null,
   youtubeUrl: null,
   xUrl: null,
@@ -68,7 +69,7 @@ export const DEFAULT_CALCULATOR: CalculatorSettings = {
   pensionInflation: 0.04, // 4%/yr
 };
 
-// Critical-illness condition costs, TT$ (spec.md §10 placeholders, verify locally).
+// Critical-illness condition costs, J$ (spec.md §10 placeholders, verify locally).
 // Conditions without a procedure price are ongoing-care / income-replacement and
 // carry a note instead of a figure.
 export type IllnessCost = {
@@ -79,43 +80,17 @@ export type IllnessCost = {
   note: string;
 };
 
-export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [
-  { condition: "Cancer", costLow: 70_000, costHigh: 1_360_000, unit: "total", note: "Full chemotherapy / radiation / surgery course; varies by type and stage." },
-  { condition: "Heart Attack", costLow: 475_000, costHigh: 1_360_000, unit: "total", note: "Angioplasty/stent or bypass surgery." },
-  { condition: "Coronary Artery Disease Surgery", costLow: 475_000, costHigh: 1_360_000, unit: "total", note: "Coronary bypass (CABG)." },
-  { condition: "Heart Valve & Structural Surgery", costLow: 540_000, costHigh: 1_360_000, unit: "total", note: "Valve repair or replacement." },
-  { condition: "Aorta Surgery", costLow: 340_000, costHigh: 1_020_000, unit: "total", note: "Aneurysm / aorta repair." },
-  { condition: "Benign Brain Tumor", costLow: 340_000, costHigh: 1_020_000, unit: "total", note: "Craniotomy / removal surgery." },
-  { condition: "Major Organ Transplant", costLow: 100_000, costHigh: 3_000_000, unit: "total", note: "Often performed overseas; cost varies widely by organ and country." },
-  { condition: "Major Burns", costLow: 340_000, costHigh: 1_360_000, unit: "total", note: "Severe burns: ICU, grafts and rehabilitation." },
-  { condition: "Stroke", costLow: 200_000, costHigh: 820_000, unit: "total", note: "Acute treatment plus rehabilitation." },
-  { condition: "Coma", costLow: 20_000, costHigh: 68_000, unit: "day", note: "Prolonged intensive care, charged per day." },
-  { condition: "Deafness", costLow: 200_000, costHigh: 680_000, unit: "total", note: "Cochlear implant, surgery and rehabilitation." },
-  { condition: "Kidney Failure", costLow: 180_000, costHigh: 180_000, unit: "year", note: "Ongoing dialysis (~TT$15,000/month)." },
-  { condition: "Paralysis", costLow: 680_000, costHigh: 680_000, unit: "total", note: "First-year care; lifetime costs are higher." },
-  { condition: "Loss of Limbs", costLow: 34_000, costHigh: 475_000, unit: "total", note: "Surgery plus prosthetics and rehabilitation." },
-  { condition: "Blindness", costLow: 112_500, costHigh: 135_000, unit: "year", note: "Aids, adaptation and support after sight loss. Based on a US estimate of about US$16,800 a year, converted at TT$7.5 to US$1." },
-  { condition: "Loss of Speech", costLow: 187_500, costHigh: 232_500, unit: "year", note: "Therapy, care and lost income after loss of speech. Based on a US estimate of about US$30,000 a year, converted at TT$7.5 to US$1." },
-  { condition: "Multiple Sclerosis", costLow: 487_500, costHigh: 660_000, unit: "year", note: "Ongoing disease-modifying therapy and care. Based on US studies of about US$65,000 to US$88,000 a year, converted at TT$7.5 to US$1." },
-  { condition: "Motor Neuron Disease", costLow: 7_500_000, costHigh: 10_755_000, unit: "total", note: "Total cost over the course of the illness. Based on a US estimate of about US$1.4 million, converted at TT$7.5 to US$1." },
-  { condition: "Permanent Disablement", costLow: null, costHigh: null, unit: "total", note: "Income replacement based on your earnings." },
-  { condition: "Alzheimer's Disease", costLow: 2_625_000, costHigh: 3_037_500, unit: "total", note: "Lifetime cost of care from diagnosis. Based on a US estimate of about US$405,000, converted at TT$7.5 to US$1." },
-  { condition: "Parkinson's Disease", costLow: 165_000, costHigh: 390_000, unit: "year", note: "Ongoing medication and care. Based on US estimates of about US$22,000 to US$52,000 a year, converted at TT$7.5 to US$1." },
-];
+export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [];
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "Joanson Baptiste James is a licensed insurance agent based in Trinidad & Tobago, helping young professionals and families make good decisions about their money and their cover.",
+    "I am Joanson Baptiste James. I help you think through the questions that connect your money, your family and your future.",
   storyParagraphs: [
-    "I grew up here and I have seen how often good people get caught out by costs they never planned for. A medical bill, a car accident, a parent who outlives their savings. That is what got me into this work.",
-    "I am a licensed insurance agent and sales representative. I sit on your side of the table, walk you through the options in plain language, and help you choose cover that fits your life and your budget. No pressure, no jargon.",
-    "Whether you are just starting out, raising a family, or running a business, I am happy to talk it through. Reach out any time and we will figure out the right next step together.",
+    "Your plans start with the people and commitments in your life. Family expenses, education, a home and retirement all deserve a place in the conversation.",
+    "My approach is to listen first. We talk about what matters to you, what you already have in place and the questions you need answered before deciding on a next step.",
+    "This website is a starting point for people in Jamaica. Explore the guides, try the planning tools, or book a conversation. We can discuss availability and the appropriate next steps for your situation.",
   ],
-  credentials: [
-    "Licensed life and health insurance agent",
-    "Over 13 years in financial services",
-    "Based in Trinidad & Tobago",
-  ],
+  credentials: [],
   videoUrl: "",
   videoFileUrl: null,
   photoUrl: null,

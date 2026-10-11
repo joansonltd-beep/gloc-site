@@ -8,6 +8,14 @@ export const costFigure = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "contentEdition",
+      title: "Content edition",
+      description:
+        "Select Jamaica only after reviewing this document for the current market and business details.",
+      type: "string",
+      options: { list: [{ title: "Jamaica", value: "jamaica-v1" }] },
+    }),
+    defineField({
       name: "key",
       title: "Key",
       description:
@@ -18,20 +26,22 @@ export const costFigure = defineType({
     defineField({
       name: "label",
       title: "Label",
-      description: "Human-readable scenario, e.g. Major orthopedic surgery (high).",
+      description:
+        "Human-readable scenario, e.g. Major orthopedic surgery (high).",
       type: "string",
       validation: (r) => r.required(),
     }),
     defineField({
       name: "value",
-      title: "Value (TT$)",
+      title: "Value (J$)",
       type: "number",
       validation: (r) => r.required(),
     }),
     defineField({
       name: "note",
       title: "Note",
-      description: "Optional context, e.g. dated figure, re-quote before launch.",
+      description:
+        "Optional context, e.g. dated figure, re-quote before launch.",
       type: "string",
     }),
     defineField({
@@ -45,7 +55,7 @@ export const costFigure = defineType({
     select: { title: "label", subtitle: "key", value: "value" },
     prepare: ({ title, subtitle, value }) => ({
       title: title || subtitle,
-      subtitle: value != null ? `TT$${value.toLocaleString()}` : subtitle,
+      subtitle: value != null ? `J$${value.toLocaleString()}` : subtitle,
     }),
   },
 });

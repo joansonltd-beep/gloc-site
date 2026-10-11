@@ -50,9 +50,9 @@ const DEFAULT_CLUSTERS: ClusterData[] = CLUSTERS.map((c) => ({
   lines: c.lines,
 }));
 
-const DEFAULT_LINES: LineData[] = (
-  Object.keys(LINES) as ClusterKey[]
-).flatMap((k) => LINES[k].map((l) => ({ ...l, clusterKey: k })));
+const DEFAULT_LINES: LineData[] = (Object.keys(LINES) as ClusterKey[]).flatMap(
+  (k) => LINES[k].map((l) => ({ ...l, clusterKey: k })),
+);
 
 const DEFAULT_TESTIMONIALS: TestimonialData[] = TESTIMONIALS.map((t) => ({
   quote: t.quote,
@@ -62,26 +62,26 @@ const DEFAULT_TESTIMONIALS: TestimonialData[] = TESTIMONIALS.map((t) => ({
 
 // --- GROQ ---------------------------------------------------------------
 const SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
-  whatsappNumber, glocAffiliationLine, footerDisclaimer,
+  contentEdition, whatsappNumber, professionalDescription, footerDisclaimer,
   agentName, agentTagline, heroEyebrow, heroHeadline, heroSubcopy,
   "headshotUrl": headshot.asset->url,
   "logoUrl": logo.asset->url,
   facebookUrl, instagramUrl, linkedinUrl, tiktokUrl, youtubeUrl, xUrl
 }`;
-const CLUSTERS_QUERY = `*[_type == "cluster"]|order(order asc){key, title, intent, lines}`;
-const LINES_QUERY = `*[_type == "line"]|order(order asc){title, blurb, icon, "clusterKey": cluster->key}`;
-const TESTIMONIALS_QUERY = `*[_type == "testimonial"]|order(order asc){quote, person, relatedLine}`;
-const COST_FIGURES_QUERY = `*[_type == "costFigure"]{key, value}`;
-const ABOUT_QUERY = `*[_type == "aboutContent"][0]{
+const CLUSTERS_QUERY = `*[_type == "cluster" && contentEdition == "jamaica-v1"]|order(order asc){key, title, intent, lines}`;
+const LINES_QUERY = `*[_type == "line" && contentEdition == "jamaica-v1"]|order(order asc){title, blurb, icon, "clusterKey": cluster->key}`;
+const TESTIMONIALS_QUERY = `*[_type == "testimonial" && contentEdition == "jamaica-v1"]|order(order asc){quote, person, relatedLine}`;
+const COST_FIGURES_QUERY = `*[_type == "costFigure" && contentEdition == "jamaica-v1"]{key, value}`;
+const ABOUT_QUERY = `*[_type == "aboutContent" && contentEdition == "jamaica-v1"][0]{
   teaser, story, videoUrl, credentials,
   "videoFileUrl": videoFile.asset->url,
   "photoUrl": photo.asset->url
 }`;
-const CALCULATOR_QUERY = `*[_type == "calculatorSettings"][0]{
+const CALCULATOR_QUERY = `*[_type == "calculatorSettings" && contentEdition == "jamaica-v1"][0]{
   investmentLowReturn, investmentHighReturn,
   pensionSavingsReturn, pensionStructuredReturn, pensionInflation
 }`;
-const ILLNESS_COSTS_QUERY = `*[_type == "illnessCost"]|order(order asc){
+const ILLNESS_COSTS_QUERY = `*[_type == "illnessCost" && contentEdition == "jamaica-v1"]|order(order asc){
   condition, costLow, costHigh, unit, note
 }`;
 
@@ -90,7 +90,7 @@ const fetchOpts = { next: { revalidate: 60 } } as const;
 
 function stripNulls<T extends object>(obj: T): Partial<T> {
   return Object.fromEntries(
-    Object.entries(obj).filter(([, v]) => v != null && v !== "")
+    Object.entries(obj).filter(([, v]) => v != null && v !== ""),
   ) as Partial<T>;
 }
 
@@ -115,8 +115,40 @@ async function query<T>(groq: string): Promise<T | null> {
 
 // --- public fetchers ----------------------------------------------------
 export async function getSiteSettings(): Promise<SiteSettings> {
-  const res = await query<Partial<SiteSettings>>(SETTINGS_QUERY);
-  return res ? { ...DEFAULT_SETTINGS, ...stripNulls(res) } : DEFAULT_SETTINGS;
+  const res = await query<Partial<SiteSettings> & { contentEdition?: string }>(
+    SETTINGS_QUERY,
+  );
+  if (!res) return DEFAULT_SETTINGS;
+  if (res.contentEdition === "jamaica-v1")
+    return {
+      ...DEFAULT_SETTINGS,
+      ...stripNulls(res),
+      whatsappNumber: DEFAULT_SETTINGS.whatsappNumber,
+    };
+  // The owner-confirmed phone is bundled until CMS contact data is updated.
+  // Retain existing social channels and personal photo. Legacy
+  // market copy and unreviewed logo assets must not appear on the new site.
+  const {
+    headshotUrl,
+    facebookUrl,
+    instagramUrl,
+    linkedinUrl,
+    tiktokUrl,
+    youtubeUrl,
+    xUrl,
+  } = res;
+  return {
+    ...DEFAULT_SETTINGS,
+    ...stripNulls({
+      headshotUrl,
+      facebookUrl,
+      instagramUrl,
+      linkedinUrl,
+      tiktokUrl,
+      youtubeUrl,
+      xUrl,
+    }),
+  };
 }
 
 export async function getClusters(): Promise<ClusterData[]> {
@@ -126,7 +158,10 @@ export async function getClusters(): Promise<ClusterData[]> {
 
 export async function getCluster(key: ClusterKey): Promise<ClusterData> {
   const all = await getClusters();
-  return all.find((c) => c.key === key) ?? DEFAULT_CLUSTERS.find((c) => c.key === key)!;
+  return (
+    all.find((c) => c.key === key) ??
+    DEFAULT_CLUSTERS.find((c) => c.key === key)!
+  );
 }
 
 export async function getLines(clusterKey?: ClusterKey): Promise<LineData[]> {
@@ -145,7 +180,8 @@ export async function getCostFigures(): Promise<Record<string, number>> {
   if (!res?.length) return DEFAULT_COST_FIGURE_VALUES;
   // Start from defaults so a missing row never breaks a tool.
   const map = { ...DEFAULT_COST_FIGURE_VALUES };
-  for (const f of res) if (f.key && typeof f.value === "number") map[f.key] = f.value;
+  for (const f of res)
+    if (f.key && typeof f.value === "number") map[f.key] = f.value;
   return map;
 }
 
@@ -179,19 +215,19 @@ export type LineDetailContent = {
   what?: string[];
   why?: string[];
 };
-const LINE_DETAIL_QUERY = `*[_type == "lineDetail" && clusterKey == $clusterKey && slug.current == $slug][0]{
+const LINE_DETAIL_QUERY = `*[_type == "lineDetail" && contentEdition == "jamaica-v1" && clusterKey == $clusterKey && slug.current == $slug][0]{
   title, tagline, what, why
 }`;
 export async function getLineDetail(
   clusterKey: string,
-  slug: string
+  slug: string,
 ): Promise<LineDetailContent | null> {
   if (!isSanityConfigured) return null;
   try {
     return await getClient().fetch<LineDetailContent>(
       LINE_DETAIL_QUERY,
       { clusterKey, slug },
-      fetchOpts
+      fetchOpts,
     );
   } catch {
     return null;

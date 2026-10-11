@@ -9,10 +9,13 @@ import { structure } from "./src/sanity/structure";
 // Embedded Studio config. Served at /studio (see src/app/studio).
 export default defineConfig({
   name: "default",
-  title: "Guardian Agent Site",
+  title: "Joanson B. James",
   basePath: "/studio",
   projectId,
   dataset,
-  plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: apiVersion })],
+  plugins: [
+    structureTool({ structure }),
+    visionTool({ defaultApiVersion: apiVersion }),
+  ],
   schema: { types: schemaTypes },
 });

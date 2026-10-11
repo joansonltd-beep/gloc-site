@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Field, SelectField, ToolFrame } from "./ToolUI";
 import { Check } from "@/components/icons";
-import { routineRequirements, ageFromDob } from "@/lib/underwriting";
+import { ageFromDob } from "@/lib/underwriting";
 
 // Term insurance request. Gathers the basics so the agent can prepare for a
 // consultation. Posts to /api/lead -> Google Sheet.
@@ -14,7 +14,9 @@ export default function TermInsuranceForm() {
   const [purpose, setPurpose] = useState("");
   const [method, setMethod] = useState("Phone");
   const [contact, setContact] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">(
+    "idle",
+  );
 
   const ready =
     name.trim().length > 0 &&
@@ -28,11 +30,10 @@ export default function TermInsuranceForm() {
 
     const age = ageFromDob(dob);
     const amountRequired = Number(amount) || undefined;
-    const underwriting = routineRequirements(age, amountRequired);
 
     const message = `Term insurance request from ${name}. DOB ${dob}${
       age != null ? ` (age ${age})` : ""
-    }. Amount: TT$${amountRequired?.toLocaleString() ?? ""}. Purpose: ${
+    }. Amount: J$${amountRequired?.toLocaleString() ?? ""}. Purpose: ${
       purpose || "not stated"
     }. Contact by ${method}: ${contact}.`;
 
@@ -46,7 +47,7 @@ export default function TermInsuranceForm() {
           phone: method === "Phone" ? contact : "",
           message,
           recommended: "Term insurance",
-          underwriting, // internal, sheet only
+
           figures: {
             name,
             dateOfBirth: dob,
@@ -55,13 +56,13 @@ export default function TermInsuranceForm() {
             purpose: purpose || undefined,
             contactMethod: method,
             contact,
-            underwritingRequirements: underwriting || undefined,
           },
           page: typeof window !== "undefined" ? window.location.pathname : "",
           submittedAt: new Date().toISOString(),
         }),
       });
-      setStatus(res.ok ? "done" : "error");
+      const result = await res.json();
+      setStatus(res.ok && result.forwarded ? "done" : "error");
     } catch {
       setStatus("error");
     }
@@ -74,9 +75,12 @@ export default function TermInsuranceForm() {
           <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent-dark">
             <Check className="h-6 w-6" />
           </div>
-          <p className="font-semibold text-brand">Thanks, {name.split(" ")[0]}.</p>
+          <p className="font-semibold text-brand">
+            Thanks, {name.split(" ")[0]}.
+          </p>
           <p className="mt-1 text-sm text-slate-600">
-            I have your request and I&apos;ll be in touch by {method.toLowerCase()} to set up a time to talk.
+            I have your request and I&apos;ll be in touch by{" "}
+            {method.toLowerCase()} to set up a time to talk.
           </p>
         </div>
       </ToolFrame>
@@ -89,10 +93,21 @@ export default function TermInsuranceForm() {
       intro="Term insurance is straightforward cover for a set number of years, often used to protect a mortgage or a young family. Send these details and I'll be in touch to talk it through."
     >
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Your name" value={name} onChange={setName} placeholder="Full name" type="text" />
-        <Field label="Date of birth" value={dob} onChange={setDob} type="date" />
         <Field
-          label="Amount required (TT$)"
+          label="Your name"
+          value={name}
+          onChange={setName}
+          placeholder="Full name"
+          type="text"
+        />
+        <Field
+          label="Date of birth"
+          value={dob}
+          onChange={setDob}
+          type="date"
+        />
+        <Field
+          label="Amount required (J$)"
           value={amount}
           onChange={setAmount}
           placeholder="e.g. 1000000"
@@ -117,7 +132,11 @@ export default function TermInsuranceForm() {
           label={method === "Email" ? "Email address" : "Phone number"}
           value={contact}
           onChange={setContact}
-          placeholder={method === "Email" ? "you@example.com" : "e.g. 868 123 4567"}
+          placeholder={
+            method === "Email"
+              ? "you@example.com"
+              : "Your number with country code"
+          }
           type={method === "Email" ? "email" : "tel"}
         />
       </div>
@@ -132,7 +151,9 @@ export default function TermInsuranceForm() {
       </button>
 
       {status === "error" ? (
-        <p className="mt-3 text-sm text-flame">Something went wrong. Please try again.</p>
+        <p className="mt-3 text-sm text-flame">
+          Something went wrong. Please try again.
+        </p>
       ) : null}
     </ToolFrame>
   );

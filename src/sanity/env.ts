@@ -1,7 +1,7 @@
 // Sanity environment config.
 // projectId/dataset come from env so nothing is hardcoded (spec.md §3, §11).
 // Values are trimmed and validated so a blank or malformed env var (e.g. an
-// empty dataset pasted into Vercel) can never crash the build — we just fall
+// empty dataset pasted into Vercel) can never crash the build ,  we just fall
 // back to the bundled default content.
 
 const rawProjectId = (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "").trim();

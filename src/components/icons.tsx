@@ -2,11 +2,15 @@
 // consistent outline glyphs in currentColor; brand icons are filled. Used across
 // the product hubs, contact page, about teaser and form success states.
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 type IconProps = { className?: string };
 
 // Outline base: 24x24, currentColor stroke, rounded joins.
-function Stroke({ className = "", children }: IconProps & { children: ReactNode }) {
+function Stroke({
+  className = "",
+  children,
+}: IconProps & { children: ReactNode }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -24,9 +28,17 @@ function Stroke({ className = "", children }: IconProps & { children: ReactNode 
 }
 
 // Filled base for brand marks.
-function Fill({ className = "", children }: IconProps & { children: ReactNode }) {
+function Fill({
+  className = "",
+  children,
+}: IconProps & { children: ReactNode }) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
       {children}
     </svg>
   );
@@ -178,20 +190,36 @@ export const Instagram = ({ className }: IconProps) => (
 // --- lookups ------------------------------------------------------------
 // Map a product-line slug to its icon so rendering never depends on an emoji
 // string in the content/CMS data.
-const LINE_ICONS: Record<string, (p: IconProps) => ReactNode> = {
-  "life-insurance": Shield,
-  health: Health,
-  "critical-illness": Heart,
-  "personal-accident": LifeBuoy,
-  "pension-annuities": Umbrella,
-  "investments-mutual-funds": ChartUp,
-  motor: Car,
-  home: HomeIcon,
-  property: Building,
-  "group-employee-benefits": Users,
+const SERVICE_IMAGES: Record<string, string> = {
+  "life-insurance": "life",
+  health: "health",
+  "critical-illness": "illness",
+  "personal-accident": "accident",
+  "pension-annuities": "retirement",
+  "investments-mutual-funds": "savings",
+  motor: "motor",
+  home: "home",
+  property: "property",
+  "group-employee-benefits": "team",
 };
 
-export function LineIcon({ slug, className }: { slug: string; className?: string }) {
-  const Icon = LINE_ICONS[slug] ?? Shield;
-  return <Icon className={className} />;
+export function LineIcon({
+  slug,
+  className,
+}: {
+  slug: string;
+  className?: string;
+}) {
+  const image = SERVICE_IMAGES[slug] ?? "life";
+  return (
+    <Image
+      src={`/images/services/${image}-photo.png`}
+      alt=""
+      aria-hidden="true"
+      width={640}
+      height={480}
+      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 33vw"
+      className={`rounded-lg object-cover ${className ?? ""}`}
+    />
+  );
 }

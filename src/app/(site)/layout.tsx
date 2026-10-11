@@ -1,191 +1,95 @@
 import Link from "next/link";
-import Image from "next/image";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import NavLink from "@/components/NavLink";
-import NavDropdown from "@/components/NavDropdown";
 import SocialLinks from "@/components/SocialLinks";
 import MobileCtaBar from "@/components/MobileCtaBar";
+import SiteNav from "@/components/SiteNav";
 import { SiteSettingsProvider } from "@/components/SiteSettingsProvider";
 import { getSiteSettings } from "@/lib/siteData";
 import { SITE_URL } from "@/lib/siteUrl";
-
-// Cluster tabs get a hover dropdown of their product pages; clicking the tab
-// still goes to the hub page.
-const navLinks: {
-  href: string;
-  label: string;
-  items?: { href: string; label: string; external?: boolean }[];
-}[] = [
-  { href: "/", label: "Home" },
-  {
-    href: "/protect",
-    label: "Protect",
-    items: [
-      { href: "/protect/life-insurance", label: "Life Insurance" },
-      { href: "/protect/health", label: "Health" },
-      { href: "/protect/critical-illness", label: "Critical Illness" },
-      { href: "/protect/personal-accident", label: "Personal Accident" },
-    ],
-  },
-  {
-    href: "/grow",
-    label: "Grow",
-    items: [
-      { href: "/grow/pension-annuities", label: "Pension / Annuities" },
-      { href: "/grow/investments-mutual-funds", label: "Investments / Mutual Funds" },
-    ],
-  },
-  {
-    href: "/assets",
-    label: "Assets",
-    items: [
-      { href: "/assets/motor", label: "Motor" },
-      { href: "/assets/home", label: "Home" },
-      { href: "/assets/property", label: "Property" },
-    ],
-  },
-  {
-    href: "/business",
-    label: "Business",
-    items: [
-      { href: "/business/group-employee-benefits", label: "Group / Employee Benefits" },
-    ],
-  },
-  { href: "/brochures", label: "Brochures" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-  {
-    href: "/book",
-    label: "Book a Meeting",
-    items: [
-      { href: "/book", label: "Book a meeting" },
-      { href: "/survey", label: "Market survey", external: true },
-    ],
-  },
-];
-
-// Site chrome: header, footer, WhatsApp float. Async so it can pull settings
-// (WhatsApp number + footer disclaimer) from Sanity.
 export default async function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const settings = await getSiteSettings();
-  const year = new Date().getFullYear();
-
-  // Structured data so Google understands the business (helps local search).
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "InsuranceAgency",
+    "@type": "Person",
     name: settings.agentName,
-    description:
-      "Insurance agent in Trinidad & Tobago: life, health, critical illness, pension, annuities, investments, motor, home, property and group benefits.",
     url: SITE_URL,
-    image: settings.logoUrl || settings.headshotUrl || undefined,
-    telephone: settings.whatsappNumber ? `+${settings.whatsappNumber.replace(/\D/g, "")}` : undefined,
-    priceRange: "$$",
-    address: { "@type": "PostalAddress", addressCountry: "TT", addressRegion: "Trinidad and Tobago" },
-    areaServed: { "@type": "Country", name: "Trinidad and Tobago" },
-    // Social profiles help Google connect this site to the same business entity.
+    image: settings.headshotUrl || undefined,
     sameAs: [
       settings.facebookUrl,
       settings.instagramUrl,
       settings.linkedinUrl,
-      settings.tiktokUrl,
-      settings.youtubeUrl,
-      settings.xUrl,
     ].filter(Boolean),
-    founder: settings.agentName ? { "@type": "Person", name: settings.agentName } : undefined,
-    knowsAbout: [
-      "Life insurance",
-      "Health insurance",
-      "Critical illness cover",
-      "Personal accident",
-      "Pension and annuities",
-      "Investments and mutual funds",
-      "Motor insurance",
-      "Home insurance",
-      "Property insurance",
-      "Group and employee benefits",
-    ],
   };
-
   return (
     <SiteSettingsProvider whatsappNumber={settings.whatsappNumber}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
-      >
+      <a href="#main" className="skip-link">
         Skip to content
       </a>
-
-      <div className="flex min-h-full flex-col">
-        <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
-          <nav className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-5 gap-y-3 px-4 py-3">
-            {settings.logoUrl ? (
-              <Link href="/" aria-label="Home" className="shrink-0">
-                <Image
-                  src={settings.logoUrl}
-                  alt={settings.agentName}
-                  width={180}
-                  height={90}
-                  priority
-                  className="h-11 w-auto mix-blend-multiply"
-                />
-              </Link>
-            ) : null}
-            <ul className="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  {link.items ? (
-                    <NavDropdown href={link.href} label={link.label} items={link.items} />
-                  ) : (
-                    <NavLink href={link.href}>{link.label}</NavLink>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
+      <div className="site-shell">
+        <header className="site-header">
+          <div className="header-inner">
+            <Link
+              href="/"
+              className="brand-lockup"
+              aria-label={`${settings.agentName}, home`}
+            >
+              <span className="brand-mark" aria-hidden>
+                J.
+              </span>
+              <span>
+                <strong>{settings.agentName}</strong>
+                <small>Life. Family. Future.</small>
+              </span>
+            </Link>
+            <SiteNav />
+          </div>
         </header>
-
-        <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-4 py-12 pb-24">
+        <main id="main" className="site-main">
           {children}
         </main>
-
-        <footer className="border-t border-slate-200">
-          <div className="mx-auto max-w-5xl space-y-2 px-4 pt-8 pb-24 text-xs text-slate-500 sm:pb-8">
-            {settings.logoUrl ? (
-              <Image
-                src={settings.logoUrl}
-                alt={settings.agentName}
-                width={240}
-                height={120}
-                className="mb-2 h-16 w-auto mix-blend-multiply"
-              />
-            ) : (
-              <p className="font-semibold text-slate-600">{settings.agentName}</p>
-            )}
+        <footer className="site-footer">
+          <div className="footer-top">
+            <div>
+              <Link href="/" className="footer-brand">
+                {settings.agentName}
+              </Link>
+              <p>
+                Thoughtful conversations for
+                <br />
+                your life in Jamaica.
+              </p>
+            </div>
+            <div className="footer-links">
+              <Link href="/protect">Family &amp; health</Link>
+              <Link href="/grow">Retirement &amp; savings</Link>
+              <Link href="/assets">Home &amp; motor</Link>
+              <Link href="/business">Group Coverage</Link>
+            </div>
+            <div className="footer-links">
+              <Link href="/about">About Joanson</Link>
+              <Link href="/book">Book a conversation</Link>
+              <Link href="/contact">Get in touch</Link>
+              <Link href="/privacy">Privacy policy</Link>
+              <SocialLinks settings={settings} />
+            </div>
+          </div>
+          <div className="footer-bottom">
             <p>{settings.footerDisclaimer}</p>
-            <p className="flex gap-4 pt-2">
-              <Link href="/contact" className="font-semibold text-brand hover:underline">
-                Contact Us
-              </Link>
-              <Link href="/privacy" className="font-semibold text-brand hover:underline">
-                Privacy Policy
-              </Link>
-            </p>
-            <SocialLinks settings={settings} className="pt-3" />
-            <p className="pt-2 text-slate-400">
-              © {year} {settings.agentName}. {settings.glocAffiliationLine}.
-            </p>
+            <span>
+              © {new Date().getFullYear()} {settings.agentName}.
+            </span>
           </div>
         </footer>
-
         <WhatsAppFloat />
         <MobileCtaBar />
       </div>

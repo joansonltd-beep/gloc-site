@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-// A critical-illness condition and the indicative cost of treating it (TT$).
+// A critical-illness condition and the indicative cost of treating it (J$).
 // Feeds the Critical Illness cost explorer on /protect. Placeholders, verify
 // against local quotes (spec.md §10).
 export const illnessCost = defineType({
@@ -9,6 +9,14 @@ export const illnessCost = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "contentEdition",
+      title: "Content edition",
+      description:
+        "Select Jamaica only after reviewing this document for the current market and business details.",
+      type: "string",
+      options: { list: [{ title: "Jamaica", value: "jamaica-v1" }] },
+    }),
+    defineField({
       name: "condition",
       title: "Condition",
       type: "string",
@@ -16,13 +24,13 @@ export const illnessCost = defineType({
     }),
     defineField({
       name: "costLow",
-      title: "Cost — low (TT$)",
+      title: "Cost ,  low (J$)",
       type: "number",
       description: "Leave blank for conditions that are ongoing-care / varies.",
     }),
     defineField({
       name: "costHigh",
-      title: "Cost — high (TT$)",
+      title: "Cost ,  high (J$)",
       type: "number",
     }),
     defineField({
@@ -58,7 +66,7 @@ export const illnessCost = defineType({
       title,
       subtitle:
         low != null || high != null
-          ? `TT$${(low ?? 0).toLocaleString()} - ${(high ?? 0).toLocaleString()}`
+          ? `J$${(low ?? 0).toLocaleString()} - ${(high ?? 0).toLocaleString()}`
           : "varies",
     }),
   },

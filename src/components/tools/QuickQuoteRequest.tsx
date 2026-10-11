@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { formatTTD } from "@/lib/format";
+import { formatJMD } from "@/lib/format";
 import WhatsAppCTA from "./WhatsAppCTA";
 import { ToolFrame, Field, SelectField } from "./ToolUI";
 
@@ -31,7 +31,7 @@ export default function QuickQuoteRequest() {
     ASSET_TYPES.find((a) => a.value === assetType)?.label ?? assetType;
 
   const message = `Hi, I'd like to ask about cover for ${typeLabel.toLowerCase()}. Details: ${details}${
-    estValue ? `. Estimated value: ${formatTTD(estValue)}` : ""
+    estValue ? `. Estimated value: ${formatJMD(estValue)}` : ""
   }.`;
 
   return (
@@ -54,7 +54,7 @@ export default function QuickQuoteRequest() {
           type="text"
         />
         <Field
-          label="Estimated value (TT$)"
+          label="Estimated value (J$)"
           value={value}
           onChange={setValue}
           placeholder="optional"

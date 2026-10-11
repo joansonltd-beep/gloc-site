@@ -1,4 +1,4 @@
-# Reusable build prompt — small-business website (any country, any sector)
+# Reusable build prompt ,  small-business website (any country, any sector)
 
 How to use this:
 1. Create an empty folder and point Claude Code at it.
@@ -19,10 +19,10 @@ location, currency, or sector. Use what the brief says.
 - **Type of business / industry:** … (e.g. salon, plumber, bakery, insurance agent, gym)
 - **What they do (one plain sentence):** …
 - **Country:** … (e.g. Grenada)
-- **Currency:** … (code + symbol, e.g. XCD / EC$, TTD / TT$, USD / $)
+- **Currency:** … (code + symbol, e.g. XCD / EC$, JMD / J$, USD / $)
 - **Area served:** … (town/region/country)
 - **Target customers:** …
-- **Services or offerings** (3–6, each with a one-line description): …
+- **Services or offerings** (3 to 6, each with a one-line description): …
 - **Sell products online?** yes / no. If yes, list product types and the
   preferred checkout (see the E-commerce section).
 - **Brand colours:** … (hex codes, or "pick a tasteful professional palette")

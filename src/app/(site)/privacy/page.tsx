@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         </h1>
         <p className="mt-3 text-lg text-slate-600">
           The short version: the details you share here are used to respond to
-          your enquiry, and nothing else.
+          your enquiry or understand the planning needs shared in a survey.
         </p>
       </header>
 
@@ -39,10 +39,10 @@ export default function PrivacyPage() {
       <section className="space-y-3 text-slate-700">
         <h2 className="text-xl font-semibold text-brand">How we use it</h2>
         <p>
-          Your details are used to contact you about your enquiry and to prepare
-          for our conversation. They are stored in a private lead sheet that
-          only the agent can access. We do not sell or share your information
-          with third parties for their own marketing.
+          Survey responses help us understand planning needs. Enquiry details
+          are used to contact you and to prepare for our conversation. They are
+          sent to the configured lead-capture service. We do not sell or share
+          your information with third parties for their own marketing.
         </p>
       </section>
 
@@ -55,7 +55,9 @@ export default function PrivacyPage() {
       </section>
 
       <section className="space-y-3 text-slate-700">
-        <h2 className="text-xl font-semibold text-brand">Cookies and analytics</h2>
+        <h2 className="text-xl font-semibold text-brand">
+          Cookies and analytics
+        </h2>
         <p>
           This site uses the Google tag to measure how visitors find the site
           and whether our advertising works. This may set cookies in your
@@ -69,7 +71,10 @@ export default function PrivacyPage() {
         <p>
           You can ask at any time to see the details we hold about you, have
           them corrected, or have them deleted.{" "}
-          <Link href="/contact" className="font-semibold text-brand hover:underline">
+          <Link
+            href="/contact"
+            className="font-semibold text-brand hover:underline"
+          >
             Contact us
           </Link>{" "}
           and we will sort it out.

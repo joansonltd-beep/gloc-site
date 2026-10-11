@@ -1,87 +1,26 @@
-"use client";
-
-import { useState } from "react";
-import { formatTTD } from "@/lib/format";
-import type { IllnessCost } from "@/lib/defaults";
-import WhatsAppCTA from "./WhatsAppCTA";
-import { ToolFrame, SelectField } from "./ToolUI";
-
-// Critical Illness cost explorer (separate from the Protection Planner).
-// Pick a covered condition and see the indicative TT$ cost of treating it.
-// Figures come from Sanity (Studio → Critical illness costs).
-const UNIT_LABEL: Record<IllnessCost["unit"], string> = {
-  total: "",
-  year: " per year",
-  day: " per day",
-};
-
-export default function CriticalIllnessExplorer({
-  illnessCosts,
-}: {
-  illnessCosts: IllnessCost[];
-}) {
-  const [selected, setSelected] = useState(illnessCosts[0]?.condition ?? "");
-  const item = illnessCosts.find((c) => c.condition === selected) ?? illnessCosts[0];
-
-  if (!item) return null;
-
-  const hasFigure = item.costLow != null || item.costHigh != null;
-  const low = item.costLow ?? item.costHigh ?? 0;
-  const high = item.costHigh ?? item.costLow ?? 0;
-  const unit = UNIT_LABEL[item.unit];
-
-  const figureText = !hasFigure
-    ? "Varies"
-    : low === high
-      ? `${formatTTD(low)}${unit}`
-      : `${formatTTD(low)} – ${formatTTD(high)}${unit}`;
-
-  const message = `Hi, I was looking at Critical Illness cover and the cost of treating ${item.condition}. I'd like to understand my options.`;
-
+import { ToolFrame } from "./ToolUI";
+export default function CriticalIllnessExplorer() {
   return (
     <ToolFrame
-      title="Critical Illness: what treatment can cost"
-      intro="Critical Illness cover pays you a tax-free lump sum on diagnosis. Pick a covered condition to see the indicative cost of treating it, so you can see why the cover matters."
+      title="Questions about critical illness cover"
+      intro="Start with the policy wording. Benefits and eligibility depend on the specific contract."
     >
-      <div className="grid gap-4 sm:max-w-sm">
-        <SelectField
-          label="Choose a covered condition"
-          value={selected}
-          onChange={setSelected}
-          options={illnessCosts.map((c) => ({
-            value: c.condition,
-            label: c.condition,
-          }))}
-        />
-      </div>
-
-      <div className="mt-6 space-y-4">
-        <div className="rounded-xl bg-brand p-5 text-white">
-          <p className="text-sm text-white/70">
-            Indicative cost of treating {item.condition}
-          </p>
-          <p className="mt-1 text-3xl font-semibold">{figureText}</p>
-          {item.note ? (
-            <p className="mt-1 text-xs text-white/60">{item.note}</p>
-          ) : null}
-        </div>
-
-        <WhatsAppCTA
-          message={message}
-          label="Talk about Critical Illness cover"
-          lead={{
-            source: "critical-illness-explorer",
-            recommended: "Critical Illness",
-            figures: { condition: item.condition },
-          }}
-        />
-      </div>
-
-      <p className="mt-5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-600">
-        <span className="font-semibold text-slate-700">Note: </span>
-        All figures are in TT$ and are indicative estimates only. Critical Illness
-        insurance pays a fixed lump sum on diagnosis; it does not reimburse the
-        actual bill.
+      <ul className="list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-700">
+        <li>
+          Which conditions are covered, and how does the policy define them?
+        </li>
+        <li>Are there waiting periods, survival periods or exclusions?</li>
+        <li>
+          What would you need for treatment, time away from work and household
+          expenses?
+        </li>
+        <li>
+          How does this fit with any health or life cover you already have?
+        </li>
+      </ul>
+      <p className="mt-5 text-sm text-slate-600">
+        Treatment costs vary. Ask your healthcare provider for a current
+        estimate before entering a cost into a plan.
       </p>
     </ToolFrame>
   );

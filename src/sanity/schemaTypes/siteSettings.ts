@@ -7,17 +7,25 @@ export const siteSettings = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "contentEdition",
+      title: "Content edition",
+      description:
+        "Select Jamaica only after reviewing this document for the current market and business details.",
+      type: "string",
+      options: { list: [{ title: "Jamaica", value: "jamaica-v1" }] },
+    }),
+    defineField({
       name: "whatsappNumber",
       title: "WhatsApp number",
       description:
-        "Full international form, digits only, e.g. 18681234567. Powers every WhatsApp link.",
+        "Full international form, digits only, include the country code. Powers every WhatsApp link.",
       type: "string",
       validation: (r) => r.required(),
     }),
     defineField({
-      name: "glocAffiliationLine",
-      title: "GLOC affiliation line",
-      description: "e.g. Licensed Insurance Sales Representative.",
+      name: "professionalDescription",
+      title: "Professional description",
+      description: "Use only a current, confirmed professional description.",
       type: "string",
     }),
     defineField({
@@ -39,7 +47,8 @@ export const siteSettings = defineType({
     defineField({
       name: "headshot",
       title: "Agent headshot / photo",
-      description: "Used in the hero, the About page, and the home-page teaser.",
+      description:
+        "Used in the hero, the About page, and the home-page teaser.",
       type: "image",
       options: { hotspot: true },
     }),

@@ -12,7 +12,13 @@
  * made in Studio, and it fills in any newly-added content types.
  */
 import { createClient } from "@sanity/client";
-import { CLUSTERS, LINES, TESTIMONIALS, LINE_DETAILS, type ClusterKey } from "../src/lib/content";
+import {
+  CLUSTERS,
+  LINES,
+  TESTIMONIALS,
+  LINE_DETAILS,
+  type ClusterKey,
+} from "../src/lib/content";
 import { DEFAULT_COST_FIGURES } from "../src/lib/costFigures";
 import {
   DEFAULT_SETTINGS,
@@ -27,7 +33,7 @@ const token = process.env.SANITY_API_WRITE_TOKEN;
 
 if (!projectId || !token) {
   console.error(
-    "Missing env. Set NEXT_PUBLIC_SANITY_PROJECT_ID and SANITY_API_WRITE_TOKEN in .env.local."
+    "Missing env. Set NEXT_PUBLIC_SANITY_PROJECT_ID and SANITY_API_WRITE_TOKEN in .env.local.",
   );
   process.exit(1);
 }
@@ -48,8 +54,9 @@ async function run() {
   tx.createIfNotExists({
     _id: "siteSettings",
     _type: "siteSettings",
+    contentEdition: "jamaica-v1",
     whatsappNumber: DEFAULT_SETTINGS.whatsappNumber,
-    glocAffiliationLine: DEFAULT_SETTINGS.glocAffiliationLine,
+    professionalDescription: DEFAULT_SETTINGS.professionalDescription,
     footerDisclaimer: DEFAULT_SETTINGS.footerDisclaimer,
     agentName: DEFAULT_SETTINGS.agentName,
     agentTagline: DEFAULT_SETTINGS.agentTagline,
@@ -61,6 +68,7 @@ async function run() {
   tx.createIfNotExists({
     _id: "aboutContent",
     _type: "aboutContent",
+    contentEdition: "jamaica-v1",
     teaser: DEFAULT_ABOUT.teaser,
   });
 
@@ -68,6 +76,7 @@ async function run() {
   tx.createIfNotExists({
     _id: "calculatorSettings",
     _type: "calculatorSettings",
+    contentEdition: "jamaica-v1",
     investmentLowReturn: DEFAULT_CALCULATOR.investmentLowReturn * 100,
     investmentHighReturn: DEFAULT_CALCULATOR.investmentHighReturn * 100,
     pensionSavingsReturn: DEFAULT_CALCULATOR.pensionSavingsReturn * 100,
@@ -79,6 +88,7 @@ async function run() {
     tx.createIfNotExists({
       _id: clusterId(c.key),
       _type: "cluster",
+      contentEdition: "jamaica-v1",
       key: c.key,
       title: c.title,
       intent: c.intent,
@@ -92,6 +102,7 @@ async function run() {
       tx.createIfNotExists({
         _id: `line-${key}-${i}`,
         _type: "line",
+        contentEdition: "jamaica-v1",
         title: line.title,
         blurb: line.blurb,
         icon: line.icon,
@@ -106,6 +117,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `lineDetail-${d.clusterKey}-${d.slug}`,
       _type: "lineDetail",
+      contentEdition: "jamaica-v1",
       title: d.title,
       slug: { _type: "slug", current: d.slug },
       clusterKey: d.clusterKey,
@@ -120,6 +132,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `testimonial-${i}`,
       _type: "testimonial",
+      contentEdition: "jamaica-v1",
       quote: t.quote,
       person: t.person,
       relatedLine: t.line,
@@ -131,6 +144,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `costFigure-${f.key}`,
       _type: "costFigure",
+      contentEdition: "jamaica-v1",
       key: f.key,
       label: f.label,
       value: f.value,
@@ -143,6 +157,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `illnessCost-${i}`,
       _type: "illnessCost",
+      contentEdition: "jamaica-v1",
       condition: c.condition,
       costLow: c.costLow ?? undefined,
       costHigh: c.costHigh ?? undefined,
@@ -158,7 +173,7 @@ async function run() {
       `${CLUSTERS.length} clusters, ${Object.values(LINES).flat().length} lines, ` +
       `${LINE_DETAILS.length} product pages, ` +
       `${TESTIMONIALS.length} testimonials, ${DEFAULT_COST_FIGURES.length} cost figures, ` +
-      `${DEFAULT_ILLNESS_COSTS.length} illness costs.`
+      `${DEFAULT_ILLNESS_COSTS.length} illness costs.`,
   );
 }
 

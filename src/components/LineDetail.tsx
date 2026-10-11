@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LINE_DETAILS, CLUSTERS, type ClusterKey } from "@/lib/content";
-import {
-  getCostFigures,
-  getCalculatorSettings,
-  getIllnessCosts,
-  getLineDetail,
-} from "@/lib/siteData";
+import { getLineDetail } from "@/lib/siteData";
 import ProtectionPlanner from "@/components/tools/ProtectionPlanner";
 import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
 import PensionInflationProjector from "@/components/tools/PensionInflationProjector";
@@ -30,7 +25,7 @@ export default async function LineDetail({
   slug: string;
 }) {
   const detail = LINE_DETAILS.find(
-    (d) => d.clusterKey === clusterKey && d.slug === slug
+    (d) => d.clusterKey === clusterKey && d.slug === slug,
   );
   if (!detail) notFound();
 
@@ -46,16 +41,16 @@ export default async function LineDetail({
   let calculator: React.ReactNode = null;
   switch (detail.calculator) {
     case "protection":
-      calculator = <ProtectionPlanner costFigures={await getCostFigures()} />;
+      calculator = <ProtectionPlanner />;
       break;
     case "critical-illness":
-      calculator = <CriticalIllnessExplorer illnessCosts={await getIllnessCosts()} />;
+      calculator = <CriticalIllnessExplorer />;
       break;
     case "pension":
-      calculator = <PensionInflationProjector settings={await getCalculatorSettings()} />;
+      calculator = <PensionInflationProjector />;
       break;
     case "investment":
-      calculator = <InvestmentGrowthProjector settings={await getCalculatorSettings()} />;
+      calculator = <InvestmentGrowthProjector />;
       break;
     case "quick-quote":
       calculator = <QuickQuoteRequest />;
@@ -73,7 +68,8 @@ export default async function LineDetail({
         <Link href={`/${cluster.key}`} className="hover:text-brand">
           {cluster.title}
         </Link>{" "}
-        <span aria-hidden>/</span> <span className="text-slate-700">{title}</span>
+        <span aria-hidden>/</span>{" "}
+        <span className="text-slate-700">{title}</span>
       </nav>
 
       <header className="max-w-2xl">
@@ -116,8 +112,8 @@ export default async function LineDetail({
       <section className="rounded-2xl bg-gradient-to-br from-brand-light via-brand to-brand-dark p-6 text-white sm:p-8">
         <h2 className="text-xl font-semibold">Ready to talk it through?</h2>
         <p className="mt-1 text-white/80">
-          I&apos;ll walk you through {title.toLowerCase()} and what fits your
-          situation. No pressure.
+          Bring your questions about {title.toLowerCase()}. We can discuss your
+          priorities and the next steps for your situation.
         </p>
         <div className="mt-4">
           <WhatsAppCTA

@@ -1,14 +1,13 @@
 /**
- * Google Apps Script web app for capturing GLOC site leads into a Sheet.
+ * Google Apps Script web app for capturing Joanson site leads into a Sheet.
  * Paste this into Extensions -> Apps Script on your leads spreadsheet, then
  * deploy as a Web app (Execute as: Me, Who has access: Anyone).
  *
  * It appends one row per lead. Columns:
  *   submittedAt | source | name | phone | page | recommended | underwriting | message | figures
  *
- * `underwriting` holds the indicated routine UW requirements (from the callback
- * form's optional age + cover details) for internal use. The same details are
- * also inside the `figures` JSON.
+ * The legacy underwriting column is retained for sheet compatibility.
+ * Current enquiry forms leave it blank.
  */
 
 var HEADERS = ['submittedAt', 'source', 'name', 'phone', 'page', 'recommended', 'underwriting', 'message', 'figures'];
@@ -52,6 +51,6 @@ function doPost(e) {
 // Lets you confirm the deployment is live by visiting the /exec URL in a browser.
 function doGet() {
   return ContentService
-    .createTextOutput(JSON.stringify({ ok: true, note: 'GLOC lead webhook is live' }))
+    .createTextOutput(JSON.stringify({ ok: true, note: 'Joanson lead webhook is live' }))
     .setMimeType(ContentService.MimeType.JSON);
 }

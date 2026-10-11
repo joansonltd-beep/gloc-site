@@ -8,7 +8,7 @@ import { buildWhatsAppLink } from "@/config/site";
 type ClientSettings = { whatsappNumber: string };
 
 const SettingsContext = createContext<ClientSettings>({
-  whatsappNumber: "1868XXXXXXX",
+  whatsappNumber: "",
 });
 
 export function SiteSettingsProvider({

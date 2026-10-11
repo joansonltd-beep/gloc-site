@@ -24,13 +24,18 @@ export default function ClusterHub({
       {lines.map((line) => (
         <Link
           key={line.title}
-          href={`/${cluster.key}/${slugify(line.title)}`}
+          href={`/${cluster.key}/${line.icon || slugify(line.title)}`}
           className="group flex flex-col rounded-xl border border-white/60 bg-white/70 p-5 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
         >
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
-            <LineIcon slug={slugify(line.title)} className="h-6 w-6" />
+          <span className="block w-full">
+            <LineIcon
+              slug={line.icon || slugify(line.title)}
+              className="aspect-[4/3] h-auto w-full"
+            />
           </span>
-          <h2 className="mt-3 text-lg font-semibold text-brand">{line.title}</h2>
+          <h2 className="mt-3 text-lg font-semibold text-brand">
+            {line.title}
+          </h2>
           <p className="mt-1 flex-1 text-sm text-slate-600">{line.blurb}</p>
           <span className="mt-3 text-sm font-medium text-brand">
             Learn more{" "}
@@ -57,10 +62,13 @@ export default function ClusterHub({
             {lines.map((line, i) => (
               <span key={line.title}>
                 {i > 0 ? (
-                  <span aria-hidden className="text-slate-300"> · </span>
+                  <span aria-hidden className="text-slate-300">
+                    {" "}
+                    ·{" "}
+                  </span>
                 ) : null}
                 <Link
-                  href={`/${cluster.key}/${slugify(line.title)}`}
+                  href={`/${cluster.key}/${line.icon || slugify(line.title)}`}
                   className="font-medium text-brand hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded"
                 >
                   {line.title}

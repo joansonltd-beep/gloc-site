@@ -19,14 +19,14 @@ export default function GroupBenefitsEnquiry() {
       ? "We have some cover already and want to review it"
       : "We don't have group cover yet";
 
-  const message = `Hi, I'd like to look at group/employee benefits for a team of ${team}${
+  const message = `Hi, I'd like to look at group coverage (life, health and pensions) for a team of ${team}${
     company ? ` at ${company}` : ""
   }. ${coverLine}.`;
 
   return (
     <ToolFrame
-      title="Group Benefits Enquiry"
-      intro="A few details about your team and I'll put together options for group health, life and pension benefits."
+      title="Group Coverage Enquiry"
+      intro="Share a few details about your employees to discuss life, health and pension coverage."
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <Field
@@ -64,7 +64,7 @@ export default function GroupBenefitsEnquiry() {
             label="Enquire on WhatsApp"
             lead={{
               source: "group-benefits",
-              recommended: "Group / Employee Benefits",
+              recommended: "Group Coverage",
               figures: { headcount: team, hasExistingCover: hasCover },
             }}
           />

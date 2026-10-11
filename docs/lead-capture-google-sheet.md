@@ -10,7 +10,7 @@ no CORS issues and "Anyone" access is fine.
 ## 1. Create the sheet
 
 1. Go to https://sheets.google.com and create a new blank spreadsheet.
-2. Name it something like "GLOC site leads".
+2. Name it something like "Joanson site leads".
 3. In row 1, add these headers (the script also creates them automatically if
    the sheet is empty, but setting them is tidy):
 

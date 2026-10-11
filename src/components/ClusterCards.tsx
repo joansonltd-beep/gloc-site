@@ -1,40 +1,48 @@
 import Link from "next/link";
+import { LineIcon } from "@/components/icons";
 import type { ClusterData } from "@/lib/siteData";
-
-// Four need-clusters, equal weight, no single "anchor" product (spec.md §4).
-export default function ClusterCards({ clusters }: { clusters: ClusterData[] }) {
+const icons: Record<string, string> = {
+  protect: "life-insurance",
+  grow: "pension-annuities",
+  assets: "home",
+  business: "group-employee-benefits",
+};
+export default function ClusterCards({
+  clusters,
+}: {
+  clusters: ClusterData[];
+}) {
   return (
-    <section>
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-brand">
-          The full portfolio
-        </h2>
-        <p className="mt-1 text-slate-600">
-          Four ways I can help. Pick the one that matches where you are.
+    <section
+      id="explore"
+      className="home-section scroll-mt-28"
+      aria-labelledby="explore-title"
+    >
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">Start with what matters</p>
+          <h2 id="explore-title">What are you planning for?</h2>
+        </div>
+        <p>
+          A family to look after. A home to protect.
+          <br />A future you want to prepare for.
         </p>
       </div>
-
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {clusters.map((c) => (
-          <Link
-            key={c.key}
-            href={`/${c.key}`}
-            className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 p-5 transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-          >
-            {/* Swoosh accent that brightens on hover. */}
-            <span className="absolute inset-x-0 top-0 h-1 bg-swoosh opacity-60 transition group-hover:opacity-100" />
-            <span className="mt-1 text-xs font-medium uppercase tracking-wide text-accent-dark">
-              {c.intent}
-            </span>
-            <span className="mt-2 text-lg font-semibold text-brand">
-              {c.title}
-            </span>
-            <span className="mt-1 flex-1 text-sm text-slate-600">{c.lines}</span>
-            <span className="mt-4 text-sm font-medium text-brand">
-              Explore {c.title}{" "}
-              <span className="inline-block transition group-hover:translate-x-0.5">
-                →
-              </span>
+      <div className="planning-grid">
+        {clusters.map((c, i) => (
+          <Link key={c.key} href={`/${c.key}`} className="planning-card">
+            <div className="planning-card-top">
+              <LineIcon
+                slug={icons[c.key]}
+                className="aspect-[4/3] h-auto w-full"
+              />
+              <span>0{i + 1}</span>
+            </div>
+            <h3>{c.title}</h3>
+            <p>{c.intent}</p>
+            <span className="planning-card-lines">{c.lines}</span>
+            <span className="planning-card-arrow" aria-hidden>
+              ↗
             </span>
           </Link>
         ))}
