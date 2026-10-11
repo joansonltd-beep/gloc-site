@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 import { usePathname } from "next/navigation";
 const links = [
   { href: "/protect", label: "Family & health" },
@@ -10,6 +11,7 @@ const links = [
   { href: "/about", label: "About" },
 ];
 export default function SiteNav() {
+  const whatsappLink = useWhatsAppLink();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   return (
@@ -46,8 +48,9 @@ export default function SiteNav() {
             </li>
           ))}
         </ul>
+        <a href={whatsappLink( "Hi, I would like to discuss my insurance options.")} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>WhatsApp</a>
         <Link href="/book" className="nav-book" onClick={() => setOpen(false)}>
-          Let&apos;s talk <span aria-hidden>↗</span>
+          Book a consultation <span aria-hidden>↗</span>
         </Link>
       </nav>
     </>

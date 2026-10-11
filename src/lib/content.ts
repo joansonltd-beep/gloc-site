@@ -17,28 +17,28 @@ export const CLUSTERS: Cluster[] = [
     title: "Family & health",
     href: "/protect",
     lines: "Life, health and critical illness",
-    intent: "Look after the people who depend on you.",
+    intent: "Compare cover for the people who depend on you.",
   },
   {
     key: "grow",
     title: "Your future",
     href: "/grow",
     lines: "Retirement, savings and investments",
-    intent: "Make room for the years ahead.",
+    intent: "Review retirement and savings options in Jamaica.",
   },
   {
     key: "assets",
     title: "Home & motor",
     href: "/assets",
     lines: "Your home, vehicle and property",
-    intent: "Think through what you own and use.",
+    intent: "Compare cover for your home, vehicle and property.",
   },
   {
     key: "business",
     title: "Group Coverage",
     href: "/business",
     lines: "Life / Health / Pensions",
-    intent: "Plan for the people who work with you.",
+    intent: "Compare life, health and pension benefits for your team.",
   },
 ];
 
@@ -270,7 +270,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
     line: "Health Cover",
     cluster: "protect",
     href: "/protect",
-    why: "Private treatment in T&T adds up fast. Lock in cover while premiums are low.",
+    why: "Compare health cover in Jamaica against your needs, budget and existing benefits.",
   });
 
   const ranked = scored.sort((x, y) => y.weight - x.weight);
@@ -330,11 +330,8 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "life-insurance",
     clusterKey: "protect",
     title: "Life Insurance",
-    tagline: "Plan for the people who depend on your income.",
-    what: [
-      "Life insurance can provide a benefit to your chosen beneficiaries when you die, subject to the policy terms.",
-      "Start with the commitments you would want covered: household bills, debts, education and care for family members.",
-    ],
+    tagline: "Help your family meet everyday commitments, education costs and debts if you die. Compare life insurance options in Jamaica with independent guidance from Bulwark.",
+    what: ["Life cover can provide a payment to your chosen beneficiaries if the policy conditions are met. We help you compare cover amounts, policy duration, exclusions and premiums across insurer options."],
     why: [
       "Review who depends on your income.",
       "Consider the cover you already have.",
@@ -345,12 +342,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "health",
     clusterKey: "protect",
-    title: "Health",
-    tagline: "Understand what a health policy would cover.",
-    what: [
-      "Health insurance can help with eligible medical expenses. The covered services, limits and your share of the bill depend on the policy.",
-      "Ask about hospital treatment, outpatient care, prescriptions, waiting periods and any provider requirements.",
-    ],
+    title: "Health Insurance",
+    tagline: "Understand your medical cover and compare health insurance options in Jamaica, including benefits, limits and your share of the costs.",
+    what: ["Health insurance can help with eligible medical expenses. We help you compare hospital and outpatient benefits, prescriptions, provider arrangements and exclusions alongside any employer cover."],
     why: [
       "Read the exclusions as well as the benefits.",
       "Check deductibles and annual limits.",
@@ -361,12 +355,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "critical-illness",
     clusterKey: "protect",
-    title: "Critical Illness",
-    tagline: "Prepare questions about a serious illness.",
-    what: [
-      "Critical illness cover can provide a benefit when a condition meets the policy definition. A diagnosis alone may not meet every requirement.",
-      "Consider how time away from work, care and household expenses would affect your family.",
-    ],
+    title: "Critical Illness Insurance",
+    tagline: "Compare critical illness insurance in Jamaica to help plan for household expenses and recovery after a covered serious illness.",
+    what: ["Critical illness cover may pay a benefit when an illness meets the policy definition. We help you compare covered conditions, benefit amounts, waiting periods and how it works with life and health cover."],
     why: [
       "Check the exact definitions of covered conditions.",
       "Ask about waiting and survival periods.",
@@ -377,12 +368,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "personal-accident",
     clusterKey: "protect",
-    title: "Personal Accident",
-    tagline: "Understand the financial impact of an accident.",
-    what: [
-      "Personal accident policies may provide benefits for specified injuries, disability or death caused by an accident.",
-      "The events covered, benefit amounts and exclusions vary by contract. Review the wording for work, travel and other activities.",
-    ],
+    title: "Personal Accident Insurance",
+    tagline: "Compare personal accident cover in Jamaica for specified injuries, disability or accidental death, with practical guidance on benefits and exclusions.",
+    what: ["Personal accident insurance may provide benefits for specified accidental injuries, disability or death. We help you understand the benefit schedule, occupation requirements and how it complements your existing cover."],
     why: [
       "Ask which activities are excluded.",
       "Check how benefits are calculated.",
@@ -393,12 +381,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "pension-annuities",
     clusterKey: "grow",
-    title: "Pension / Annuities",
-    tagline: "Think about income for the years after work.",
-    what: [
-      "Retirement planning starts with the income you may need and the savings and benefits already in place.",
-      "Pensions and annuities have different contribution rules, access conditions and income arrangements. Confirm the terms of any option you consider.",
-    ],
+    title: "Pensions and Annuities",
+    tagline: "Review retirement planning options in Jamaica. Compare pension and annuity arrangements, contributions, fees and access to your money.",
+    what: ["Retirement planning connects your future income needs with the savings and benefits already in place. We help you compare pension and annuity options, including contribution arrangements and income choices."],
     why: [
       "Include your household and care commitments.",
       "Ask about fees and access to your money.",
@@ -409,12 +394,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "investments-mutual-funds",
     clusterKey: "grow",
-    title: "Investments / Mutual Funds",
-    tagline: "Connect your savings to your goals.",
-    what: [
-      "An investment fund pools money to invest according to a defined strategy. Returns and the value of your investment can change.",
-      "Your goals, time period, tolerance for losses and need for access to your money all matter when considering an investment.",
-    ],
+    title: "Investments and Mutual Funds",
+    tagline: "Compare investment and mutual fund options in Jamaica around your goals, time horizon, fees, access needs and tolerance for risk.",
+    what: ["Investment funds pool money under a defined strategy. We help you understand options, costs and risk so you can assess how they fit your goals alongside emergency savings and other commitments."],
     why: [
       "Read the fund documents and fees.",
       "Understand that investment values can fall.",
@@ -425,12 +407,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "motor",
     clusterKey: "assets",
-    title: "Motor",
-    tagline: "Understand the cover for your vehicle.",
-    what: [
-      "Motor policies differ in the liability and vehicle damage they cover. Review the type of cover and the conditions attached to it.",
-      "Ask how vehicle use, named drivers, excesses and the claims process affect your policy.",
-    ],
+    title: "Motor Insurance",
+    tagline: "Compare motor insurance in Jamaica for your vehicle and its use. Understand liability, vehicle damage, excesses and driver restrictions.",
+    what: ["Motor insurance options differ in the liability and vehicle damage they cover. We help you compare terms for your vehicle, drivers and intended use, with clear explanations of excesses and exclusions."],
     why: [
       "Check what happens after an accident or theft.",
       "Confirm the excess you would need to pay.",
@@ -441,12 +420,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "home",
     clusterKey: "assets",
-    title: "Home",
-    tagline: "Think through your home and belongings.",
-    what: [
-      "Home cover can address risks to a building, its contents or both. The events insured and the exclusions depend on the policy.",
-      "Ask how rebuilding costs, contents values and any limits or excesses are assessed.",
-    ],
+    title: "Home Insurance",
+    tagline: "Compare home insurance in Jamaica to help protect your building and belongings. Understand rebuilding values, insured events, exclusions and excesses.",
+    what: ["Home insurance can cover a building, its contents or both against specified events. We help you compare insurer options around your home, belongings and mortgage requirements."],
     why: [
       "Check the terms for storm and flood damage.",
       "Review how contents need to be listed or valued.",
@@ -457,12 +433,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "property",
     clusterKey: "assets",
-    title: "Property",
-    tagline: "Consider the risks around rental or commercial property.",
-    what: [
-      "Property cover can address a building used for rental or business purposes. Some policies may include liability or loss of rental income.",
-      "Confirm how occupancy, use and maintenance affect the cover before choosing a policy.",
-    ],
+    title: "Property Insurance",
+    tagline: "Compare rental and commercial property insurance in Jamaica. Review building protection, liability and any options for loss of rental income.",
+    what: ["Rental and commercial property have different risks from an owner-occupied home. We help you compare cover based on use, occupancy and building details, including any liability or rental income benefits."],
     why: [
       "Describe how the property is used.",
       "Ask about periods when a property is empty.",
@@ -474,11 +447,8 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "group-employee-benefits",
     clusterKey: "business",
     title: "Group Coverage",
-    tagline: "Life / Health / Pensions for your employees.",
-    what: [
-      "Employee benefit arrangements may include health, life or retirement benefits. Eligibility and available terms depend on the arrangement.",
-      "Start with your team, the benefits they already have and a budget your business can maintain.",
-    ],
+    tagline: "Compare group life, health and pension options in Jamaica. Build employee benefits around your team’s needs and a budget your business can maintain.",
+    what: ["Group Coverage brings life, health and pension benefits into your employee planning. Bulwark helps business owners compare insurer options, eligibility, contributions and administration requirements."],
     why: [
       "Ask who can join and when cover begins.",
       "Understand employer and employee contributions.",

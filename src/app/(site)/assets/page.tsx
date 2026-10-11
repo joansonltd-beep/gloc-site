@@ -4,9 +4,8 @@ import QuickQuoteRequest from "@/components/tools/QuickQuoteRequest";
 import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "Assets: Motor, Home & Property",
-  description:
-    "Insure what you own: motor, home and property cover. Send your details and I'll follow up.",
+  title: "Motor, Home and Property Insurance Jamaica",
+  description: "Compare motor, home and property insurance in Jamaica with Bulwark. Understand policy limits, exclusions and costs.",
   alternates: { canonical: "/assets" },
 };
 

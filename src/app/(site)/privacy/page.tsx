@@ -27,10 +27,9 @@ export default function PrivacyPage() {
       <section className="space-y-3 text-slate-700">
         <h2 className="text-xl font-semibold text-brand">What we collect</h2>
         <p>
-          When you request a callback or book a meeting, we collect the details
+          Bulwark Insurance Agency Ltd uses the details you provide when you request a consultation or book a meeting. We collect the details
           you choose to give: your name, phone number, and any optional
-          information you add, such as your email address, date of birth, the
-          cover you are considering, tobacco use or income. The interactive
+          information you add, such as your preferred contact time, insurance needs or message. Other enquiry forms may request information relevant to the cover you are considering. The interactive
           calculators run in your browser; the numbers you enter there are only
           sent to us if you choose to continue on WhatsApp or submit a form.
         </p>

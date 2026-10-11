@@ -203,6 +203,8 @@ const SERVICE_IMAGES: Record<string, string> = {
   "group-employee-benefits": "team",
 };
 
+const SERVICE_PHOTO_ALT: Record<string, string> = {"life": "Illustrative family spending time together in Jamaica", "health": "Illustrative Jamaican family discussing health care", "illness": "Illustrative person supported by family during recovery", "accident": "Illustrative everyday activity in Jamaica", "retirement": "Illustrative couple planning their future in Jamaica", "savings": "Illustrative person reviewing savings plans", "motor": "Illustrative driver beside a vehicle in Jamaica", "home": "Illustrative family outside a home in Jamaica", "property": "Illustrative property in Jamaica", "team": "Illustrative employees wearing matching Vostra uniforms"};
+
 export function LineIcon({
   slug,
   className,
@@ -214,8 +216,7 @@ export function LineIcon({
   return (
     <Image
       src={`/images/services/${image}-photo.png`}
-      alt=""
-      aria-hidden="true"
+      alt={SERVICE_PHOTO_ALT[image]}
       width={640}
       height={480}
       sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 33vw"

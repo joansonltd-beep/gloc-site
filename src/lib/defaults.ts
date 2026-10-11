@@ -32,15 +32,15 @@ export type AboutData = {
 
 export const DEFAULT_SETTINGS: SiteSettings = {
   whatsappNumber: "18762109898",
-  professionalDescription: "",
+  professionalDescription: "Independent Insurance Agency in Jamaica",
   footerDisclaimer:
-    "This website is for general information only and is not financial advice. Contact us to discuss cover suited to your needs.",
+    "Information on this website is general in nature and does not constitute financial, legal or tax advice. Insurance products, eligibility, terms and pricing vary by insurer and individual circumstances.",
   agentName: "Joanson Baptiste James",
-  agentTagline: "Life. Family. Future.",
-  heroEyebrow: "A conversation for your life in Jamaica",
-  heroHeadline: "Life moves forward. Plan for it.",
+  agentTagline: "Founder and lead advisor, Bulwark Insurance Agency Ltd",
+  heroEyebrow: "Independent Insurance Agency in Jamaica",
+  heroHeadline: "Protect what you’ve built. Plan for what’s next.",
   heroSubcopy:
-    "For your family, your home and the years ahead. Let's make sense of your insurance and financial planning questions, one conversation at a time.",
+    "I help individuals, families and business owners across Jamaica understand their insurance options and choose coverage that fits their needs.",
   headshotUrl:
     "https://cdn.sanity.io/images/83r56hq8/production/70ccac5f33bb6fad5624099bce88930b1918396f-3222x4585.jpg",
   logoUrl: null,
@@ -84,11 +84,11 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [];
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "I am Joanson Baptiste James. I help you think through the questions that connect your money, your family and your future.",
+    "I am Joanson Baptiste James, founder and lead advisor of Bulwark Insurance Agency Ltd, an independent insurance agency serving clients across Jamaica.",
   storyParagraphs: [
-    "Your plans start with the people and commitments in your life. Family expenses, education, a home and retirement all deserve a place in the conversation.",
-    "My approach is to listen first. We talk about what matters to you, what you already have in place and the questions you need answered before deciding on a next step.",
-    "This website is a starting point for people in Jamaica. Explore the guides, try the planning tools, or book a conversation. We can discuss availability and the appropriate next steps for your situation.",
+    "Bulwark brings independent, client-first guidance to individuals, families and business owners throughout Jamaica. We help you compare options from multiple insurers and understand how each fits your priorities and budget.",
+    "My experience in Caribbean financial services shapes a practical approach: listen first, explain clearly and give you room to decide. We review what you already have and discuss benefits, exclusions and costs without unnecessary jargon.",
+    "Your needs lead the conversation. Whether you are protecting your family, reviewing retirement options or arranging group benefits, we help you make an informed decision without pressure. Book a consultation or message me on WhatsApp to get started.",
   ],
   credentials: [],
   videoUrl: "",

@@ -38,7 +38,7 @@ export default function ClusterHub({
           </h2>
           <p className="mt-1 flex-1 text-sm text-slate-600">{line.blurb}</p>
           <span className="mt-3 text-sm font-medium text-brand">
-            Learn more{" "}
+            Compare your options{" "}
             <span className="inline-block transition group-hover:translate-x-0.5">
               →
             </span>
@@ -55,7 +55,7 @@ export default function ClusterHub({
           {cluster.intent}
         </p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
-          {cluster.title}
+          {cluster.title} in Jamaica
         </h1>
         {linkLines ? (
           <p className="mt-2 text-slate-600">
@@ -81,11 +81,13 @@ export default function ClusterHub({
         )}
       </header>
 
+      <p className="max-w-2xl text-slate-600">Bulwark Insurance Agency Ltd helps you understand and compare options from multiple insurers across Jamaica. We explain benefits, exclusions and costs so you can choose with confidence.</p>
       {!linesLast && lineCards}
 
       <section className="space-y-12">{children}</section>
 
       {linesLast && lineCards}
+      <section className="rounded-2xl bg-brand p-6 text-white"><h2 className="text-xl font-semibold">Not sure where to start? Book a no-pressure consultation.</h2><Link href="/book" className="button-gold mt-4">Book a consultation</Link></section>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export const calculatorSettings = defineType({
       description:
         "Select Jamaica only after reviewing this document for the current market and business details.",
       type: "string",
-      options: { list: [{ title: "Jamaica", value: "jamaica-v1" }] },
+      options: { list: [{ title: "Bulwark, Jamaica", value: "bulwark-v1" }] },
     }),
     defineField({
       name: "investmentLowReturn",

@@ -4,9 +4,8 @@ import PensionInflationProjector from "@/components/tools/PensionInflationProjec
 import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
 import { getCluster, getLines } from "@/lib/siteData";
 export const metadata: Metadata = {
-  title: "Retirement & Savings in Jamaica",
-  description:
-    "Think through your retirement and savings goals. Explore illustrations in Jamaican dollars using your own assumptions.",
+  title: "Retirement Planning Jamaica",
+  description: "Review pension, annuity and investment options in Jamaica with Bulwark. Understand costs, access and risk before deciding.",
   alternates: { canonical: "/grow" },
 };
 export default async function GrowPage() {

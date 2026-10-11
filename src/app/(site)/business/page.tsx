@@ -4,9 +4,8 @@ import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
 import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "Group Coverage (Life/Health/Pensions)",
-  description:
-    "Discuss group life, health and pension coverage for your employees in Jamaica.",
+  title: "Group Coverage in Jamaica (Life/Health/Pensions)",
+  description: "Compare group life, health and pension options for your employees in Jamaica with independent guidance from Bulwark Insurance Agency Ltd.",
   alternates: { canonical: "/business" },
 };
 

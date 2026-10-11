@@ -1,278 +1,48 @@
 "use client";
-
 import { useState } from "react";
+import Link from "next/link";
 import { Field, SelectField } from "@/components/tools/ToolUI";
-import { Check } from "@/components/icons";
-import { ageFromDob } from "@/lib/underwriting";
-
-// Things a visitor might want to take care of (customer-facing wording).
-const GOALS = [
-  "Life insurance",
-  "Mortgage protection",
-  "Education funding",
-  "Funeral expenses",
-  "Health insurance",
-  "Critical illness cover",
-  "Accident cover",
-  "Income protection",
-  "Retirement planning",
-  "Savings and investments",
-  "Estate planning",
-  "Tax savings",
-  "Property insurance",
-  "Liability insurance",
-  "Travel insurance",
-  "Business protection",
-  "Key-person cover",
-  "Employee benefits",
-];
-
-// Request-a-callback form. Posts to /api/lead, which forwards to the Google
-// Sheet. An on-site alternative to WhatsApp for visitors who prefer a call.
-// Optional details (date of birth, cover amount, tobacco, income) let the agent
-// pre-fill underwriting requirements on the lead sheet only.
+import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
+const TYPES = ["Not sure yet", "Life insurance", "Health insurance", "Critical illness", "Personal accident", "Motor insurance", "Home or property insurance", "Pensions and annuities", "Investments", "Group Coverage (Life/Health/Pensions)"];
 export default function CallbackForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  // Honeypot: humans never see this field; bots that fill it are dropped.
-  const [website, setWebsite] = useState("");
+  const [type, setType] = useState(TYPES[0]);
   const [bestTime, setBestTime] = useState("Anytime");
-  const [goals, setGoals] = useState<string[]>([]);
-  const [dob, setDob] = useState("");
-  const [cover, setCover] = useState("");
-  const [smoker, setSmoker] = useState("");
-  const [income, setIncome] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">(
-    "idle",
-  );
-
-  const ready = name.trim().length > 0 && phone.trim().length >= 7;
-
-  function toggleGoal(goal: string) {
-    setGoals((prev) =>
-      prev.includes(goal) ? prev.filter((g) => g !== goal) : [...prev, goal],
-    );
-  }
-
+  const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const whatsappLink = useWhatsAppLink();
+  const ready = name.trim().length > 0 && phone.replace(/\D/g, "").length >= 7;
   async function submit() {
     if (!ready || status === "sending") return;
     setStatus("sending");
-
-    const age = ageFromDob(dob);
-    const coverAmount = Number(cover) || undefined;
-    const annualIncome = Number(income) || undefined;
-    const goalsText = goals.join(", ");
-
-    const message = `Callback request from ${name} (${phone}). Best time: ${bestTime}.${
-      goalsText ? ` Wants to take care of: ${goalsText}.` : ""
-    }`;
-
     try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: "callback-form",
-          name,
-          phone,
-          email: email.trim() || undefined,
-          website,
-          message,
-          recommended: goalsText || "General enquiry",
-
-          figures: {
-            name,
-            phone,
-            email: email.trim() || undefined,
-            bestTime,
-            goals,
-            dateOfBirth: dob || undefined,
-            age,
-            coverConsidered: coverAmount,
-            annualIncome,
-            smoker: smoker || undefined,
-          },
-          page: typeof window !== "undefined" ? window.location.pathname : "",
-          submittedAt: new Date().toISOString(),
-        }),
+      const response = await fetch("/api/lead", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "callback-form", name: name.trim(), phone: phone.trim(), website,
+          message: `Consultation request. Insurance: ${type}. Preferred contact time: ${bestTime}. ${message.trim()}`,
+          recommended: type, figures: { name: name.trim(), phone: phone.trim(), bestTime, goals: [type], message: message.trim() },
+          page: window.location.pathname, submittedAt: new Date().toISOString() }),
       });
-      const result = await res.json();
-      setStatus(res.ok && result.forwarded ? "done" : "error");
-    } catch {
-      setStatus("error");
-    }
+      const result = await response.json();
+      setStatus(response.ok && result.forwarded ? "done" : "error");
+    } catch { setStatus("error"); }
   }
-
-  if (status === "done") {
-    return (
-      <div className="rounded-2xl border border-white/60 bg-white/80 p-6 text-center shadow-sm backdrop-blur-sm sm:p-8">
-        <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent-dark">
-          <Check className="h-6 w-6" />
-        </div>
-        <h3 className="text-lg font-semibold text-brand">
-          Thanks, {name.split(" ")[0]}.
-        </h3>
-        <p className="mt-1 text-slate-600">
-          Your request is in. I&apos;ll reach out at the number you gave,{" "}
-          {bestTime.toLowerCase()}.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        submit();
-      }}
-      className="rounded-2xl border border-white/60 bg-white/75 p-6 shadow-sm backdrop-blur-sm sm:p-8"
-    >
-      <h3 className="text-xl font-semibold text-brand">Request a callback</h3>
-      <p className="mt-1 text-sm text-slate-600">
-        Leave your details and I&apos;ll call you back. No obligation.
-      </p>
-
-      {/* Honeypot: visually hidden, tabbed past by humans, filled by bots. */}
-      <div className="hidden" aria-hidden="true">
-        <label>
-          Website
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
-        </label>
-      </div>
-
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <Field
-          label="Your name"
-          value={name}
-          onChange={setName}
-          placeholder="Full name"
-          type="text"
-        />
-        <Field
-          label="Phone number"
-          value={phone}
-          onChange={setPhone}
-          placeholder="Your number with country code"
-          type="tel"
-        />
-        <Field
-          label="Email (optional)"
-          value={email}
-          onChange={setEmail}
-          placeholder="you@example.com"
-          type="email"
-        />
-        <SelectField
-          label="Best time to call"
-          value={bestTime}
-          onChange={setBestTime}
-          options={[
-            { value: "Anytime", label: "Anytime" },
-            { value: "Morning", label: "Morning" },
-            { value: "Afternoon", label: "Afternoon" },
-            { value: "Evening", label: "Evening" },
-          ]}
-        />
-      </div>
-
-      <fieldset className="mt-6">
-        <legend className="text-sm font-medium text-slate-700">
-          What would you like to take care of?
-        </legend>
-        <p className="mt-1 text-xs text-slate-500">
-          Pick anything you&apos;re thinking about. It helps me prepare for our
-          call.
-        </p>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {GOALS.map((goal) => {
-            const checked = goals.includes(goal);
-            return (
-              <label
-                key={goal}
-                className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm transition ${
-                  checked
-                    ? "border-brand bg-brand/5 text-brand"
-                    : "border-slate-200 text-slate-700 hover:border-brand/50"
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  onChange={() => toggleGoal(goal)}
-                  className="h-4 w-4 accent-[color:var(--color-brand)]"
-                />
-                {goal}
-              </label>
-            );
-          })}
-        </div>
-      </fieldset>
-
-      <p className="mt-6 text-sm font-medium text-slate-700">
-        A few optional details to help me prepare for our conversation
-      </p>
-      <div className="mt-3 grid gap-4 sm:grid-cols-2">
-        <Field
-          label="Date of birth (optional)"
-          value={dob}
-          onChange={setDob}
-          type="date"
-        />
-        <Field
-          label="Cover you're considering, J$ (optional)"
-          value={cover}
-          onChange={setCover}
-          placeholder="e.g. 1000000"
-        />
-        <SelectField
-          label="Do you use tobacco? (optional)"
-          value={smoker}
-          onChange={setSmoker}
-          options={[
-            { value: "", label: "Prefer not to say" },
-            { value: "No", label: "No" },
-            { value: "Yes", label: "Yes (last 12 months)" },
-          ]}
-        />
-        <Field
-          label="Annual income, J$ (optional)"
-          value={income}
-          onChange={setIncome}
-          placeholder="e.g. 180000"
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={!ready || status === "sending"}
-        className="mt-6 w-full rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-light active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:w-auto"
-      >
-        {status === "sending" ? "Sending…" : "Request my callback"}
-      </button>
-
-      {status === "error" ? (
-        <p className="mt-3 text-sm text-flame">
-          Something went wrong. Please try again, or message on WhatsApp below.
-        </p>
-      ) : null}
-
-      <p className="mt-4 text-xs text-slate-500">
-        By submitting, you agree that we may use these details to contact you
-        about your enquiry. All amounts entered are in JMD. See our{" "}
-        <a href="/privacy" className="font-semibold text-brand hover:underline">
-          Privacy Policy
-        </a>
-        .
-      </p>
-    </form>
-  );
+  if (status === "done") return <section className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="text-xl font-semibold text-brand">Thank you, {name.split(" ")[0]}.</h2><p className="mt-2 text-slate-600">Your consultation request has been received. We will contact you using the details provided to arrange the next step.</p></section>;
+  return <form onSubmit={e => { e.preventDefault(); void submit(); }} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <h2 className="text-xl font-semibold text-brand">Request a consultation</h2>
+    <p className="mt-2 text-sm text-slate-600">Tell us what you need and when you prefer to hear from us. No pressure, no obligation.</p>
+    <div className="hidden" aria-hidden="true"><label>Website<input name="website" value={website} onChange={e=>setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" /></label></div>
+    <div className="mt-5 grid gap-4 sm:grid-cols-2">
+      <Field label="Full name" type="text" value={name} onChange={setName} placeholder="Full name" />
+      <Field label="WhatsApp number" type="tel" value={phone} onChange={setPhone} placeholder="Your number with country code" />
+      <SelectField label="Type of insurance needed" value={type} onChange={setType} options={TYPES.map(value=>({value,label:value}))} />
+      <SelectField label="Preferred contact time" value={bestTime} onChange={setBestTime} options={["Anytime","Morning","Afternoon","Evening"].map(value=>({value,label:value}))} />
+    </div>
+    <label className="mt-4 block text-sm font-medium text-slate-700">Message (optional)<textarea value={message} onChange={e=>setMessage(e.target.value)} rows={3} maxLength={2000} className="mt-1 w-full rounded-lg border border-slate-300 p-3 focus:outline-none focus:ring-2 focus:ring-brand/30" /></label>
+    <button type="submit" disabled={!ready || status === "sending"} className="button-primary mt-5 disabled:opacity-50">{status === "sending" ? "Sending..." : "Request a consultation"}</button>
+    {status === "error" && <p role="alert" className="mt-3 text-sm text-flame">Your request could not be sent. Please try again or <a className="underline" href={whatsappLink("Hi, I would like to request a consultation.")} target="_blank" rel="noopener noreferrer">message on WhatsApp</a>.</p>}
+    <p className="mt-4 text-xs text-slate-500">By submitting, you agree that Bulwark Insurance Agency Ltd may use these details to contact you about your enquiry. <Link href="/privacy" className="underline">Privacy policy</Link>.</p>
+  </form>;
 }

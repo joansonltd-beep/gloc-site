@@ -6,9 +6,9 @@ import { getSiteSettings } from "@/lib/siteData";
 import { buildWhatsAppLink } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Book a Meeting",
+  title: "Book a consultation",
   description:
-    "Book a no-pressure meeting with Joanson Baptiste James for your planning questions in Jamaica, or request a callback.",
+    "Book a no-pressure consultation with Bulwark Insurance Agency Ltd to compare insurance options in Jamaica, or request contact at a time that suits you.",
   alternates: { canonical: "/book" },
 };
 
@@ -28,7 +28,7 @@ export default async function BookPage() {
       <AdsConversion sendTo="AW-18282133568/QM1DCMyU7sccEMDwzI1E" />
       <div className="text-center">
         <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
-          Book a Meeting
+          Book a consultation
         </p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
           Let&apos;s find a time to talk

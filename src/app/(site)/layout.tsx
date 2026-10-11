@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { buildWhatsAppLink } from "@/config/site";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import SocialLinks from "@/components/SocialLinks";
 import MobileCtaBar from "@/components/MobileCtaBar";
@@ -14,8 +15,12 @@ export default async function SiteLayout({
   const settings = await getSiteSettings();
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: settings.agentName,
+    "@type": "InsuranceAgency",
+    name: "Bulwark Insurance Agency Ltd",
+    description: "Independent insurance guidance and comparison across multiple insurers in Jamaica.",
+    areaServed: { "@type": "Country", name: "Jamaica" },
+    telephone: `+${settings.whatsappNumber}`,
+    founder: { "@type": "Person", name: settings.agentName },
     url: SITE_URL,
     image: settings.headshotUrl || undefined,
     sameAs: [
@@ -47,8 +52,8 @@ export default async function SiteLayout({
                 J.
               </span>
               <span>
-                <strong>{settings.agentName}</strong>
-                <small>Life. Family. Future.</small>
+                <strong>Bulwark Insurance Agency Ltd</strong>
+                <small>Independent insurance agency · Jamaica</small>
               </span>
             </Link>
             <SiteNav />
@@ -61,10 +66,10 @@ export default async function SiteLayout({
           <div className="footer-top">
             <div>
               <Link href="/" className="footer-brand">
-                {settings.agentName}
+                Bulwark Insurance Agency Ltd
               </Link>
               <p>
-                Thoughtful conversations for
+                Independent insurance guidance for
                 <br />
                 your life in Jamaica.
               </p>
@@ -77,8 +82,9 @@ export default async function SiteLayout({
             </div>
             <div className="footer-links">
               <Link href="/about">About Joanson</Link>
-              <Link href="/book">Book a conversation</Link>
+              <Link href="/book">Book a consultation</Link>
               <Link href="/contact">Get in touch</Link>
+              <a href={buildWhatsAppLink(settings.whatsappNumber, "Hi, I would like to discuss my insurance options.")} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
               <Link href="/privacy">Privacy policy</Link>
               <SocialLinks settings={settings} />
             </div>
@@ -86,7 +92,7 @@ export default async function SiteLayout({
           <div className="footer-bottom">
             <p>{settings.footerDisclaimer}</p>
             <span>
-              © {new Date().getFullYear()} {settings.agentName}.
+              © {new Date().getFullYear()} Bulwark Insurance Agency Ltd.
             </span>
           </div>
         </footer>

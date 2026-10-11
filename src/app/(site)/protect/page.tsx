@@ -4,9 +4,8 @@ import LifeNeedsCalculator from "@/components/tools/LifeNeedsCalculator";
 import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
 import { getCluster, getLines } from "@/lib/siteData";
 export const metadata: Metadata = {
-  title: "Family & Health Planning in Jamaica",
-  description:
-    "Explore life, health and critical illness questions, with a family cover planning tool in Jamaican dollars.",
+  title: "Life and Health Insurance Jamaica",
+  description: "Compare life, health, critical illness and personal accident insurance with independent guidance from Bulwark Insurance Agency Ltd in Jamaica.",
   alternates: { canonical: "/protect" },
 };
 export default async function ProtectPage() {

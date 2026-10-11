@@ -19,8 +19,8 @@ export async function generateMetadata({
   const d = LINE_DETAILS.find((x) => x.clusterKey === CLUSTER && x.slug === line);
   return d
     ? {
-        title: d.title,
-        description: d.tagline,
+        title: `${d.title} Jamaica`,
+        description: `Compare ${d.title.toLowerCase()} options in Jamaica with Bulwark Insurance Agency Ltd. Understand benefits, costs and terms. Book a consultation.`,
         alternates: { canonical: `/${CLUSTER}/${d.slug}` },
       }
     : {};

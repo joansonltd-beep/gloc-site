@@ -15,10 +15,10 @@ export default async function Home() {
     <div className="homepage">
       <Hero settings={settings} />
       <div className="home-principles">
-        <p>Built around real life</p>
-        <span>Family &amp; everyday commitments</span>
-        <span>Plans for the years ahead</span>
-        <span>Clear questions. Informed decisions.</span>
+        <p>Bulwark Insurance Agency Ltd</p>
+        <span>Independent agency</span>
+        <span>Multiple insurer options</span>
+        <span>Jamaica-based service</span>
       </div>
       <ClusterCards clusters={clusters} />
       <section className="personal-section">
@@ -37,8 +37,9 @@ export default async function Home() {
             every day.
           </p>
           <p>
-            I&apos;m {settings.agentName}. Let&apos;s talk about what matters to
-            you and put your questions into perspective, one step at a time.
+            I&apos;m {settings.agentName}, founder of Bulwark Insurance Agency Ltd.
+            I help you compare insurance options from multiple insurers, with
+            clear explanations and your needs at the centre of the conversation.
           </p>
           <Link href="/about" className="button-text">
             More about my approach <span aria-hidden>↗</span>
@@ -58,7 +59,7 @@ export default async function Home() {
         </h2>
         <p>Bring your questions. We can start there.</p>
         <Link href="/book" className="button-gold">
-          Find a time to talk <span aria-hidden>↗</span>
+          Book a consultation <span aria-hidden>↗</span>
         </Link>
       </section>
     </div>

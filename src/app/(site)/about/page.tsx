@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
 import LearnMore from "@/components/LearnMore";
 import { getAbout, getSiteSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Bulwark and Joanson | Insurance Advisor Jamaica",
   description:
-    "Meet Joanson Baptiste James and his approach to insurance and financial planning questions in Jamaica.",
+    "Meet Joanson Baptiste James, founder of Bulwark Insurance Agency Ltd. Independent guidance and comparison across multiple insurers, serving all of Jamaica.",
   alternates: { canonical: "/about" },
 };
 
@@ -60,6 +61,7 @@ export default async function AboutPage() {
           )}
         </LearnMore>
       </div>
+      <Link href="/book" className="button-primary">Book a consultation</Link>
     </div>
   );
 }

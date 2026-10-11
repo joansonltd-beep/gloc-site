@@ -54,7 +54,7 @@ async function run() {
   tx.createIfNotExists({
     _id: "siteSettings",
     _type: "siteSettings",
-    contentEdition: "jamaica-v1",
+    contentEdition: "bulwark-v1",
     whatsappNumber: DEFAULT_SETTINGS.whatsappNumber,
     professionalDescription: DEFAULT_SETTINGS.professionalDescription,
     footerDisclaimer: DEFAULT_SETTINGS.footerDisclaimer,
@@ -68,7 +68,7 @@ async function run() {
   tx.createIfNotExists({
     _id: "aboutContent",
     _type: "aboutContent",
-    contentEdition: "jamaica-v1",
+    contentEdition: "bulwark-v1",
     teaser: DEFAULT_ABOUT.teaser,
   });
 
@@ -76,7 +76,7 @@ async function run() {
   tx.createIfNotExists({
     _id: "calculatorSettings",
     _type: "calculatorSettings",
-    contentEdition: "jamaica-v1",
+    contentEdition: "bulwark-v1",
     investmentLowReturn: DEFAULT_CALCULATOR.investmentLowReturn * 100,
     investmentHighReturn: DEFAULT_CALCULATOR.investmentHighReturn * 100,
     pensionSavingsReturn: DEFAULT_CALCULATOR.pensionSavingsReturn * 100,
@@ -88,7 +88,7 @@ async function run() {
     tx.createIfNotExists({
       _id: clusterId(c.key),
       _type: "cluster",
-      contentEdition: "jamaica-v1",
+      contentEdition: "bulwark-v1",
       key: c.key,
       title: c.title,
       intent: c.intent,
@@ -102,7 +102,7 @@ async function run() {
       tx.createIfNotExists({
         _id: `line-${key}-${i}`,
         _type: "line",
-        contentEdition: "jamaica-v1",
+        contentEdition: "bulwark-v1",
         title: line.title,
         blurb: line.blurb,
         icon: line.icon,
@@ -117,7 +117,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `lineDetail-${d.clusterKey}-${d.slug}`,
       _type: "lineDetail",
-      contentEdition: "jamaica-v1",
+      contentEdition: "bulwark-v1",
       title: d.title,
       slug: { _type: "slug", current: d.slug },
       clusterKey: d.clusterKey,
@@ -132,7 +132,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `testimonial-${i}`,
       _type: "testimonial",
-      contentEdition: "jamaica-v1",
+      contentEdition: "bulwark-v1",
       quote: t.quote,
       person: t.person,
       relatedLine: t.line,
@@ -144,7 +144,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `costFigure-${f.key}`,
       _type: "costFigure",
-      contentEdition: "jamaica-v1",
+      contentEdition: "bulwark-v1",
       key: f.key,
       label: f.label,
       value: f.value,
@@ -157,7 +157,7 @@ async function run() {
     tx.createIfNotExists({
       _id: `illnessCost-${i}`,
       _type: "illnessCost",
-      contentEdition: "jamaica-v1",
+      contentEdition: "bulwark-v1",
       condition: c.condition,
       costLow: c.costLow ?? undefined,
       costHigh: c.costHigh ?? undefined,

@@ -880,3 +880,14 @@ textarea {
     transition: none !important;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1250px) {
+ .header-inner { flex-wrap: wrap; gap: 1rem; padding-block: 1rem; }
+ .site-nav { margin-left: auto; }
+}
+@media (max-width: 767px) {
+ .brand-lockup { min-width: 0; flex-shrink: 1; }
+ .brand-lockup > span:last-child { min-width: 0; }
+ .brand-lockup small { white-space: normal; letter-spacing: 1px; line-height: 1.5; }
+ .menu-toggle { flex-shrink: 0; }
+}

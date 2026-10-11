@@ -4,9 +4,9 @@ import { buildWhatsAppLink } from "@/config/site";
 import { getSiteSettings } from "@/lib/siteData";
 import { Chat, Mobile, Facebook, Instagram } from "@/components/icons";
 export const metadata: Metadata = {
-  title: "Contact Joanson",
+  title: "Contact Bulwark | Insurance Agency Jamaica",
   description:
-    "Get in touch with Joanson Baptiste James to discuss your insurance and financial planning questions in Jamaica.",
+    "Contact Bulwark Insurance Agency Ltd for independent insurance guidance across Jamaica. Call, message on WhatsApp or book a consultation.",
   alternates: { canonical: "/contact" },
 };
 export default async function ContactPage() {
@@ -56,7 +56,7 @@ export default async function ContactPage() {
       <header>
         <p className="eyebrow">Get in touch</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-tight text-brand">
-          Bring your questions.
+          Insurance guidance across Jamaica.
         </h1>
         <p className="mt-4 max-w-xl leading-relaxed text-slate-600">
           Message or call me to start a conversation. If you prefer to choose a
@@ -83,7 +83,7 @@ export default async function ContactPage() {
         ))}
       </div>
       <Link href="/book" className="button-primary">
-        Book a conversation <span aria-hidden>↗</span>
+        Book a consultation <span aria-hidden>↗</span>
       </Link>
     </div>
   );
