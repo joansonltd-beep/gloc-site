@@ -1,0 +1,2167 @@
+{
+  "checked": "2026-10-16",
+  "scope": "Jamaican life, health, group and retirement products, with separate offshore references.",
+  "limitations": [
+    "Carrier listing confirms a published reference, not current new-business availability or agency distribution authority.",
+    "All brochure editions, rates, waiting periods and policy terms need carrier confirmation before quotation.",
+    "Media coverage corroborates announcements; contributed or quoted carrier statements are not independent policy verification.",
+    "Catalogue entries, legacy policy families and group arrangements are not a count of separately purchasable policies.",
+    "International broker partnerships remain unnamed and pending confirmation."
+  ],
+  "products": [
+    {
+      "id": "guardian-life-guardian-lifesaver",
+      "carrier": "Guardian Life",
+      "name": "Guardian Lifesaver",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-lifesaver"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-assure-plan",
+      "carrier": "Guardian Life",
+      "name": "Guardian Assure Plan",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-assure"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-full-century",
+      "carrier": "Guardian Life",
+      "name": "Full Century",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-instant-coverage",
+      "carrier": "Guardian Life",
+      "name": "Guardian Instant Coverage",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-instant"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-flexi-term-special",
+      "carrier": "Guardian Life",
+      "name": "Guardian Flexi-Term Special",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-flexi"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-life-evolution",
+      "carrier": "Guardian Life",
+      "name": "Guardian Life Evolution",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-evolution"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-5-for-life",
+      "carrier": "Guardian Life",
+      "name": "5 for Life",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog",
+        "g-five-media"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-extendable-term-special",
+      "carrier": "Guardian Life",
+      "name": "Guardian Extendable-Term Special",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-angel",
+      "carrier": "Guardian Life",
+      "name": "Guardian Angel",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-fama-plan",
+      "carrier": "Guardian Life",
+      "name": "FAMA Plan",
+      "category": "Specialist scheme",
+      "status": "Carrier listed",
+      "summary": "Specialist scheme reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog",
+        "g-fama"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-care-plus",
+      "carrier": "Guardian Life",
+      "name": "Guardian Care Plus",
+      "category": "Critical illness",
+      "status": "Carrier listed",
+      "summary": "Critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-care"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-life-s-new-ultimate-provider",
+      "carrier": "Guardian Life",
+      "name": "Guardian Life's New Ultimate Provider",
+      "category": "Critical illness",
+      "status": "Carrier listed",
+      "summary": "Critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-new-life-plus",
+      "carrier": "Guardian Life",
+      "name": "Guardian New Life Plus",
+      "category": "Critical illness",
+      "status": "Carrier listed",
+      "summary": "Critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-investor",
+      "carrier": "Guardian Life",
+      "name": "Guardian Investor",
+      "category": "Investment-linked",
+      "status": "Carrier listed",
+      "summary": "Investment-linked reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-investor"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-achiever",
+      "carrier": "Guardian Life",
+      "name": "Guardian Achiever",
+      "category": "Investment-linked",
+      "status": "Carrier listed",
+      "summary": "Investment-linked reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [
+        "g-achiever"
+      ],
+      "flags": [
+        "V01"
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-investor-plus",
+      "carrier": "Guardian Life",
+      "name": "Guardian Investor Plus",
+      "category": "Investment-linked",
+      "status": "Carrier listed",
+      "summary": "Investment-linked reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-new-life",
+      "carrier": "Guardian Life",
+      "name": "Guardian New Life",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-care",
+      "carrier": "Guardian Life",
+      "name": "Guardian Care",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-life-plans",
+      "carrier": "Guardian Life",
+      "name": "Guardian Life Plans",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-flexi-term",
+      "carrier": "Guardian Life",
+      "name": "Guardian Flexi-Term",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-provider",
+      "carrier": "Guardian Life",
+      "name": "Guardian Provider",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-mutual-life-plans",
+      "carrier": "Guardian Life",
+      "name": "Mutual Life Plans",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-dyoll-life-plans",
+      "carrier": "Guardian Life",
+      "name": "Dyoll Life Plans",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-crown-eagle-plans",
+      "carrier": "Guardian Life",
+      "name": "Crown Eagle Plans",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-prime-life-plans",
+      "carrier": "Guardian Life",
+      "name": "Prime Life Plans",
+      "category": "Legacy policies",
+      "status": "Service only",
+      "summary": "Legacy policies reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-individual-health-essential",
+      "carrier": "Guardian Life",
+      "name": "Guardian Individual Health: Essential",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-health"
+      ],
+      "documents": [
+        "g-health"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-individual-health-edge",
+      "carrier": "Guardian Life",
+      "name": "Guardian Individual Health: Edge",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-health"
+      ],
+      "documents": [
+        "g-health"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-individual-health-elite",
+      "carrier": "Guardian Life",
+      "name": "Guardian Individual Health: Elite",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-health"
+      ],
+      "documents": [
+        "g-health"
+      ],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-guardian-retirement-scheme",
+      "carrier": "Guardian Life",
+      "name": "Guardian Retirement Scheme",
+      "category": "Pensions and retirement",
+      "status": "Carrier listed",
+      "summary": "Pensions and retirement reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-pension"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-annuities",
+      "carrier": "Guardian Life",
+      "name": "Annuities",
+      "category": "Pensions and retirement",
+      "status": "Carrier listed",
+      "summary": "Pensions and retirement reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-pension"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-superannuation-fund",
+      "carrier": "Guardian Life",
+      "name": "Superannuation Fund",
+      "category": "Pensions and retirement",
+      "status": "Carrier listed",
+      "summary": "Pensions and retirement reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-pension"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "guardian-life-tourism-workers-pension-scheme",
+      "carrier": "Guardian Life",
+      "name": "Tourism Workers Pension Scheme",
+      "category": "Pensions and retirement",
+      "status": "Restricted scheme",
+      "summary": "Pensions and retirement reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "g-pension"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "jn-life-jn-life-aide",
+      "carrier": "JN Life",
+      "name": "JN Life AIDE",
+      "category": "Critical illness",
+      "status": "Carrier listed",
+      "summary": "Critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-aide",
+        "j-aide-media"
+      ],
+      "documents": [
+        "j-q3"
+      ],
+      "flags": []
+    },
+    {
+      "id": "jn-life-jn-life-family-aide",
+      "carrier": "JN Life",
+      "name": "JN Life Family AIDE",
+      "category": "Critical illness",
+      "status": "Carrier listed",
+      "summary": "Critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-family-aide"
+      ],
+      "documents": [],
+      "flags": [
+        "V02"
+      ]
+    },
+    {
+      "id": "jn-life-jn-life-comfort",
+      "carrier": "JN Life",
+      "name": "JN Life COMFORT",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-comfort"
+      ],
+      "documents": [],
+      "flags": [
+        "V11"
+      ]
+    },
+    {
+      "id": "jn-life-jn-life-family-comfort",
+      "carrier": "JN Life",
+      "name": "JN Life Family COMFORT",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-family-comfort"
+      ],
+      "documents": [
+        "j-q2"
+      ],
+      "flags": [
+        "V03"
+      ]
+    },
+    {
+      "id": "jn-life-jn-life-vest",
+      "carrier": "JN Life",
+      "name": "JN Life Vest",
+      "category": "Term life",
+      "status": "Carrier listed",
+      "summary": "Term life reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-vest",
+        "j-vest-media"
+      ],
+      "documents": [
+        "j-q1"
+      ],
+      "flags": []
+    },
+    {
+      "id": "jn-life-jn-individual-retirement-scheme",
+      "carrier": "JN Life",
+      "name": "JN Individual Retirement Scheme",
+      "category": "Pensions and retirement",
+      "status": "Carrier listed",
+      "summary": "Pensions and retirement reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-retirement"
+      ],
+      "documents": [
+        "j-booklet"
+      ],
+      "flags": []
+    },
+    {
+      "id": "jn-life-bulk-premium-creditor-life",
+      "carrier": "JN Life",
+      "name": "Bulk Premium Creditor Life",
+      "category": "Group and creditor",
+      "status": "Restricted scheme",
+      "summary": "Group and creditor reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-catalog",
+        "j-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "jn-life-credit-card-creditor-life",
+      "carrier": "JN Life",
+      "name": "Credit Card Creditor Life",
+      "category": "Group and creditor",
+      "status": "Restricted scheme",
+      "summary": "Group and creditor reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-catalog",
+        "j-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "jn-life-employee-benefit-group-life",
+      "carrier": "JN Life",
+      "name": "Employee Benefit Group Life",
+      "category": "Group and creditor",
+      "status": "Restricted scheme",
+      "summary": "Group and creditor reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-catalog",
+        "j-group",
+        "j-employees"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "jn-life-mortgage-creditor-life",
+      "carrier": "JN Life",
+      "name": "Mortgage Creditor Life",
+      "category": "Group and creditor",
+      "status": "Restricted scheme",
+      "summary": "Group and creditor reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-catalog",
+        "j-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "jn-life-single-premium-creditor-life",
+      "carrier": "JN Life",
+      "name": "Single Premium Creditor Life",
+      "category": "Group and creditor",
+      "status": "Restricted scheme",
+      "summary": "Group and creditor reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "j-catalog",
+        "j-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-cancer-plus",
+      "carrier": "Sagicor Life",
+      "name": "Cancer Plus",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-sagi-gold-accumulator",
+      "carrier": "Sagicor Life",
+      "name": "Sagi-Gold Accumulator",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-life-protector",
+      "carrier": "Sagicor Life",
+      "name": "Life Protector",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-personal-accident",
+      "carrier": "Sagicor Life",
+      "name": "Personal Accident",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-critical-illness-protector",
+      "carrier": "Sagicor Life",
+      "name": "Critical Illness Protector",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-purple-shield",
+      "carrier": "Sagicor Life",
+      "name": "Purple Shield",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export",
+        "s-purple"
+      ],
+      "documents": [],
+      "flags": [
+        "V04"
+      ]
+    },
+    {
+      "id": "sagicor-life-maximum-protector",
+      "carrier": "Sagicor Life",
+      "name": "Maximum Protector",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export",
+        "s-maximum"
+      ],
+      "documents": [
+        "s-max-doc"
+      ],
+      "flags": [
+        "V06"
+      ]
+    },
+    {
+      "id": "sagicor-life-triple-protector-plus",
+      "carrier": "Sagicor Life",
+      "name": "Triple Protector Plus",
+      "category": "Life and protection",
+      "status": "Carrier listed",
+      "summary": "Life and protection reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export",
+        "s-triple"
+      ],
+      "documents": [],
+      "flags": [
+        "V05"
+      ]
+    },
+    {
+      "id": "sagicor-life-super-term",
+      "carrier": "Sagicor Life",
+      "name": "Super Term",
+      "category": "Term life",
+      "status": "Carrier listed",
+      "summary": "Term life reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export",
+        "s-super"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-term-life",
+      "carrier": "Sagicor Life",
+      "name": "Term Life",
+      "category": "Term life",
+      "status": "Carrier listed",
+      "summary": "Term life reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-ultra-life",
+      "carrier": "Sagicor Life",
+      "name": "Ultra Life",
+      "category": "Universal life and critical illness",
+      "status": "Carrier listed",
+      "summary": "Universal life and critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [
+        "s-ultra-doc"
+      ],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-ultra-lifeline",
+      "carrier": "Sagicor Life",
+      "name": "Ultra Lifeline",
+      "category": "Universal life and critical illness",
+      "status": "Carrier listed",
+      "summary": "Universal life and critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-child-protector",
+      "carrier": "Sagicor Life",
+      "name": "Child Protector",
+      "category": "Universal life and critical illness",
+      "status": "Carrier listed",
+      "summary": "Universal life and critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export",
+        "s-child"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-total-woman",
+      "carrier": "Sagicor Life",
+      "name": "Total Woman",
+      "category": "Universal life and critical illness",
+      "status": "Carrier listed",
+      "summary": "Universal life and critical illness reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export",
+        "s-woman"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-equity-multiplier",
+      "carrier": "Sagicor Life",
+      "name": "Equity Multiplier",
+      "category": "Investment-linked",
+      "status": "Carrier listed",
+      "summary": "Investment-linked reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-solid-investor",
+      "carrier": "Sagicor Life",
+      "name": "Solid Investor",
+      "category": "Investment-linked",
+      "status": "Carrier listed",
+      "summary": "Investment-linked reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export",
+        "s-solid"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-guaranteed-investor",
+      "carrier": "Sagicor Life",
+      "name": "Guaranteed Investor",
+      "category": "Investment-linked",
+      "status": "Carrier listed",
+      "summary": "Investment-linked reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-premium-saver",
+      "carrier": "Sagicor Life",
+      "name": "Premium Saver",
+      "category": "Investment-linked",
+      "status": "Carrier listed",
+      "summary": "Investment-linked reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "JMD reference, confirm edition",
+      "sources": [
+        "s-catalog",
+        "s-catalog-export"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-executive-health",
+      "carrier": "Sagicor Life",
+      "name": "Executive Health",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-health"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-executive-health-plus",
+      "carrier": "Sagicor Life",
+      "name": "Executive Health Plus",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-health"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-supreme-health",
+      "carrier": "Sagicor Life",
+      "name": "Supreme Health",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-health"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-hospitality-workers-insurance-plan",
+      "carrier": "Sagicor Life",
+      "name": "Hospitality Workers Insurance Plan",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-health"
+      ],
+      "documents": [
+        "s-hospitality-doc"
+      ],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-school-companion",
+      "carrier": "Sagicor Life",
+      "name": "School Companion",
+      "category": "Health",
+      "status": "Carrier listed",
+      "summary": "Health reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-health"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-shape",
+      "carrier": "Sagicor Life",
+      "name": "SHAPE",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-supra",
+      "carrier": "Sagicor Life",
+      "name": "SUPRA",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-flexi",
+      "carrier": "Sagicor Life",
+      "name": "FLEXI",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-hmo",
+      "carrier": "Sagicor Life",
+      "name": "HMO",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-aso",
+      "carrier": "Sagicor Life",
+      "name": "ASO",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-ppo",
+      "carrier": "Sagicor Life",
+      "name": "PPO",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": [
+        "V08"
+      ]
+    },
+    {
+      "id": "sagicor-life-sagicare-associations",
+      "carrier": "Sagicor Life",
+      "name": "Sagicare Associations",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-sagicare-credit-unions",
+      "carrier": "Sagicor Life",
+      "name": "Sagicare Credit Unions",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-sagicare-jmmb",
+      "carrier": "Sagicor Life",
+      "name": "Sagicare JMMB",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-school-plus",
+      "carrier": "Sagicor Life",
+      "name": "School Plus",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-group-personal-accident",
+      "carrier": "Sagicor Life",
+      "name": "Group Personal Accident",
+      "category": "Group health and accident",
+      "status": "Restricted scheme",
+      "summary": "Group health and accident reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-group-life",
+      "carrier": "Sagicor Life",
+      "name": "Group Life",
+      "category": "Group life",
+      "status": "Restricted scheme",
+      "summary": "Group life reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-group-life",
+        "s-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-critical-illness",
+      "carrier": "Sagicor Life",
+      "name": "Critical Illness",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-dependent-life",
+      "carrier": "Sagicor Life",
+      "name": "Dependent Life",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-parental-health",
+      "carrier": "Sagicor Life",
+      "name": "Parental Health",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-parental-life",
+      "carrier": "Sagicor Life",
+      "name": "Parental Life",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-supplemental-accidental-dismemberment",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Accidental Dismemberment",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-supplemental-dental-and-optical",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Dental and Optical",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-supplemental-health",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Health",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-supplemental-health-plus",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Health Plus",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-supplemental-life",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Life",
+      "category": "Supplemental benefits",
+      "status": "Restricted scheme",
+      "summary": "Supplemental benefits reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-supp"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-proshield",
+      "carrier": "Sagicor Life",
+      "name": "ProShield",
+      "category": "Specialist scheme",
+      "status": "Restricted scheme",
+      "summary": "Specialist scheme reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-proshield"
+      ],
+      "documents": [
+        "s-pro-doc",
+        "s-pro-rates"
+      ],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-agri-care",
+      "carrier": "Sagicor Life",
+      "name": "Agri-Care",
+      "category": "Specialist scheme",
+      "status": "Restricted scheme",
+      "summary": "Specialist scheme reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-agri",
+        "s-agri-gov"
+      ],
+      "documents": [],
+      "flags": [
+        "V07"
+      ]
+    },
+    {
+      "id": "sagicor-life-care-shield",
+      "carrier": "Sagicor Life",
+      "name": "Care Shield",
+      "category": "Specialist scheme",
+      "status": "Restricted scheme",
+      "summary": "Specialist scheme reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-church-mate-plus",
+      "carrier": "Sagicor Life",
+      "name": "Church Mate Plus",
+      "category": "Specialist scheme",
+      "status": "Restricted scheme",
+      "summary": "Specialist scheme reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-sigma-insurance",
+      "carrier": "Sagicor Life",
+      "name": "Sigma Insurance",
+      "category": "Specialist scheme",
+      "status": "Restricted scheme",
+      "summary": "Specialist scheme reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-sagicor-lifestyle",
+      "carrier": "Sagicor Life",
+      "name": "Sagicor Lifestyle",
+      "category": "Pensions and retirement",
+      "status": "Carrier listed",
+      "summary": "Pensions and retirement reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-pension"
+      ],
+      "documents": [
+        "s-lifestyle-doc"
+      ],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-employer-sponsored-pension-plans",
+      "carrier": "Sagicor Life",
+      "name": "Employer-sponsored pension plans",
+      "category": "Pensions and retirement",
+      "status": "Restricted scheme",
+      "summary": "Pensions and retirement reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-catalog"
+      ],
+      "documents": [],
+      "flags": []
+    },
+    {
+      "id": "sagicor-life-government-sponsored-schemes",
+      "carrier": "Sagicor Life",
+      "name": "Government-sponsored schemes",
+      "category": "Government reference",
+      "status": "Historical reference",
+      "summary": "Government reference reference. Current policy edition, eligibility and new-business availability require carrier confirmation.",
+      "currency": "Not confirmed",
+      "sources": [
+        "s-gov"
+      ],
+      "documents": [],
+      "flags": [
+        "V09"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-super-term",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Super Term",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-purple-shield",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Purple Shield",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [
+        "s-cayman-purple"
+      ],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-total-protector",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Total Protector",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-ultra-lifeline",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Ultra Lifeline",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-guaranteed-investor",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Guaranteed Investor",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-individual-annuity",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Individual Annuity",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-triple-protector-plus",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Triple Protector Plus",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-ultra-75",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Ultra 75",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-ultra-life",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Ultra Life",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    },
+    {
+      "id": "sagicor-cayman-via-sib-universal-investor",
+      "carrier": "Sagicor Cayman via SIB",
+      "name": "Universal Investor",
+      "category": "International reference",
+      "status": "Broker reference",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "currency": "USD",
+      "sources": [
+        "s-broker"
+      ],
+      "documents": [],
+      "flags": [
+        "V10"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "g-catalog",
+      "title": "Guardian Jamaica life catalogue",
+      "url": "https://www.myguardiangroup.com/en_JM_products/life",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-health",
+      "title": "Guardian Individual Health application",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+      "kind": "Carrier application",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-pension",
+      "title": "Guardian Jamaica pensions",
+      "url": "https://jamaica.myguardiangroup.com/products/pension",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-fama",
+      "title": "Ministry: Fisheries and Agricultural Multi-Advantage launch",
+      "url": "https://new.moa.gov.jm/content/registered-farmers-and-fishers-benefit-guardian-life-insurance-plan",
+      "kind": "Government announcement",
+      "date": "2021-03-16",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-lifesaver",
+      "title": "Guardian Lifesaver brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Lifesaver_Brochure_a242701cff.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-assure",
+      "title": "Guardian Assure brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Assure_91747591fd.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-instant",
+      "title": "Guardian Instant Coverage brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Instant_Coverage_Plan_brochure_3e44890317.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-flexi",
+      "title": "Guardian Flexi-Term Special brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Guardian_Flexi_Term_Special_Brochure_2022_460414de6e.pdf",
+      "kind": "Carrier brochure",
+      "date": "2022 (filename)",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-evolution",
+      "title": "Guardian Life Evolution brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Life_Evolution_booklet_93b3f0d42b.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-care",
+      "title": "Guardian Care Plus brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Care_Plus_booklet_5a074e068c.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-investor",
+      "title": "Guardian Investor brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Investor_brochure_NEW_Digital_bd0a655fca.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-achiever",
+      "title": "Guardian Achiever brochure",
+      "url": "https://c360filestore.blob.core.windows.net/strapi-files/assets/NEW_GG_Achiever_brochure_b19bf09da4.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-achiever-media",
+      "title": "Gleaner: Guardian critical illness and Achiever entry age",
+      "url": "https://past.jamaica-gleaner.com/article/health/20230927/guardian-life-makes-commitment-prostate-cancer-awareness-jamaica",
+      "kind": "Media, carrier-supplied",
+      "date": "2023-09-27",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "g-five-media",
+      "title": "Gleaner: Five for Life launch",
+      "url": "https://mobile.jamaicagleaner.com/gleaner/20081109/business/business1.php",
+      "kind": "Media report",
+      "date": "2008-11-09",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-catalog",
+      "title": "JN Life official product navigation",
+      "url": "https://www.jnlifeinsurance.com/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-group",
+      "title": "JN group life catalogue",
+      "url": "https://www.jnlifeinsurance.com/group-life/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-aide",
+      "title": "JN Life AIDE",
+      "url": "https://www.jnlifeinsurance.com/life-insurance/jn-life-aide/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-family-aide",
+      "title": "JN Life Family AIDE",
+      "url": "https://www.jnlifeinsurance.com/life-insurance/jn-life-family-aide/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-comfort",
+      "title": "JN Life COMFORT",
+      "url": "https://www.jnlifeinsurance.com/life-insurance/jn-life-comfort/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-family-comfort",
+      "title": "JN Life Family COMFORT",
+      "url": "https://www.jnlifeinsurance.com/life-insurance/family-indemnity-plan/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-vest",
+      "title": "JN Life Vest",
+      "url": "https://www.jnlifeinsurance.com/life-insurance/jn-life-vest/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-retirement",
+      "title": "JN Individual Retirement Scheme",
+      "url": "https://www.jnlifeinsurance.com/pension/jn-individual-retirement-scheme/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-employees",
+      "title": "JN Employee Benefit Group Life",
+      "url": "https://www.jnlifeinsurance.com/group-life/employee-benefit-group-life-insurance/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-booklet",
+      "title": "JNRS member booklet",
+      "url": "https://www.jnlifeinsurance.com/wp-content/uploads/JNRS-Booklet-4x9-edit_2023.pdf",
+      "kind": "Carrier booklet",
+      "date": "2023 (filename)",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-q3",
+      "title": "JN AIDE newsletter",
+      "url": "https://www.jnlifeinsurance.com/wp-content/uploads/Q3-JN-Life-Newsletter.pdf",
+      "kind": "Carrier newsletter",
+      "date": "2025-09",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-q2",
+      "title": "JN Family COMFORT newsletter",
+      "url": "https://www.jnlifeinsurance.com/wp-content/uploads/Q2-JN-LIFE-NEWSLETTER-compressed.pdf",
+      "kind": "Carrier newsletter",
+      "date": "2025-06",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-q1",
+      "title": "JN Life Vest and AIDE newsletter",
+      "url": "https://www.jnlifeinsurance.com/wp-content/uploads/JN-LIFE-NEWSLETTER_March2025-compressed-1.pdf",
+      "kind": "Carrier newsletter",
+      "date": "2025-03",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-vest-media",
+      "title": "Observer: JN Life Vest launch",
+      "url": "https://www.jamaicaobserver.com/2022/08/09/jn-life-launches-low-priced-coverage/",
+      "kind": "Media report",
+      "date": "2022-08-09",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-aide-media",
+      "title": "Gleaner: individual AIDE recurrence description",
+      "url": "https://past.jamaica-gleaner.com/article/news/20250610/growth-jobs-make-life-insurance-part-estate-planning",
+      "kind": "Media, quoted advisor",
+      "date": "2025-06-10",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "j-family-media",
+      "title": "Gleaner: Family AIDE claim experience",
+      "url": "https://jamaica-gleaner.com/article/news/20251216/growth-jobs-i-never-thought-id-need-it",
+      "kind": "Media, claim account",
+      "date": "2025-12-16",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-catalog",
+      "title": "Sagicor Jamaica individual catalogue",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-catalog-export",
+      "title": "Sagicor individual catalogue PDF export",
+      "url": "https://www.sagicor.com/en-jm/pdf?id=DBFCF13C73724360A39D28F03B57604A",
+      "kind": "Carrier webpage PDF",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-elife",
+      "title": "Sagicor eLife product overview",
+      "url": "https://elife.sagicorjamaica.com/Product/",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-health",
+      "title": "Sagicor individual health catalogue export",
+      "url": "https://www.sagicor.com/en-JM/pdf?id=20E2169F13794930B59DAF5EC4AFEAD7",
+      "kind": "Carrier webpage PDF",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-group",
+      "title": "Sagicor group health",
+      "url": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-group-life",
+      "title": "Sagicor group life",
+      "url": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-life",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-supp",
+      "title": "Sagicor supplemental benefits",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-agri",
+      "title": "Sagicor Agri-Care, including pre-2026 restriction",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/agri-care-plan",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-agri-gov",
+      "title": "Ministry: Sagicor AgriCare launch",
+      "url": "https://moa.gov.jm/content/agricare-insurance-plan-established-farmers-and-fisherfolk",
+      "kind": "Government announcement",
+      "date": "2021-02-10",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-proshield",
+      "title": "Sagicor ProShield",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/proshield",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-gov",
+      "title": "Sagicor government scheme reference",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/government-sponsored-schemes",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-pension",
+      "title": "Sagicor Lifestyle retirement scheme",
+      "url": "https://www.sagicor.com/en-jm/business-solutions/pension/individual%20pension%20arrangement",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-broker",
+      "title": "Sagicor Insurance Brokers, Cayman-issued USD reference",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor%20insurance%20brokers",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-purple",
+      "title": "Sagicor Purple Shield",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew/coupon/purple-shield",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-triple",
+      "title": "Sagicor Triple Protector Plus",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew/coupon/triple-protector-plus",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-maximum",
+      "title": "Sagicor Maximum Protector",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew/coupon/maximum-protector",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-child",
+      "title": "Sagicor Child Protector",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew/universal/child-protector",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-woman",
+      "title": "Sagicor Total Woman",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew/universal/total-woman",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-super",
+      "title": "Sagicor Super Term",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew/term/super-term",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-solid",
+      "title": "Sagicor Solid Investor",
+      "url": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew/investment/solid-investor",
+      "kind": "Carrier page",
+      "date": "Not stated",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-max-doc",
+      "title": "Maximum Protector brochure",
+      "url": "https://www.sagicor.com/-/media/jamaica-pdfs/16slj074saglifmaxprotbrochure-2-faw.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-ultra-doc",
+      "title": "Ultra Life product document",
+      "url": "https://www.sagicor.com/-/media/Jamaica-PDFs/Sagicor-Life-Ultra-Life.pdf",
+      "kind": "Carrier product document",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-pro-doc",
+      "title": "ProShield brochure",
+      "url": "https://www.sagicor.com/-/media/ProShield-Assets-2024/24-SEB-612-Sagicor-Proshield-Plan-Brochure-Reduced-Content-Leaflet--no-cutmarks-FAW.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-pro-rates",
+      "title": "ProShield group rate sheet",
+      "url": "https://www.sagicor.com/-/media/sagicor-proshield-plan-rate-sheet.pdf",
+      "kind": "Carrier rate sheet",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-hospitality-doc",
+      "title": "Hospitality Worker Health Plan brochure",
+      "url": "https://www.sagicor.com/-/media/Jamaica-PDFs/Tourism-Plan-Brochure.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-lifestyle-doc",
+      "title": "Sagicor Lifestyle brochure",
+      "url": "https://www.sagicor.com/-/media/jamaica-pdfs/sagicor-life/sagicor-lifestyle-brochure.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    },
+    {
+      "id": "s-cayman-purple",
+      "title": "Cayman Purple Shield brochure, not Jamaican-dollar plan",
+      "url": "https://www.sagicor.com/-/media/Jamaica-PDFs/Sagicor-Life-Cayman-Brochure-Revisions---PURPLE-SHEILD.pdf",
+      "kind": "Carrier brochure",
+      "date": "Edition not confirmed",
+      "checked": "2026-10-16"
+    }
+  ],
+  "flags": [
+    {
+      "id": "V01",
+      "title": "Guardian Achiever entry age",
+      "detail": "Brochure states ages 1 to 15; carrier-supplied Gleaner coverage dated 27 September 2023 states six months to 15. Confirm base-plan and rider ages separately.",
+      "sources": [
+        "g-achiever",
+        "g-achiever-media"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V02",
+      "title": "Family AIDE recurrence conflict",
+      "detail": "The carrier page describes termination on diagnosis, while its FAQ also describes recurrence. Media claim coverage distinguishes it from the recurrence plan. Do not state a definite recurrence benefit or absence until the policy edition is confirmed.",
+      "sources": [
+        "j-family-aide",
+        "j-family-media"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V03",
+      "title": "Family COMFORT waiting-period conflict",
+      "detail": "The benefits section states one year before terminal illness benefit; the same page FAQ states two years. Confirm the applicable edition.",
+      "sources": [
+        "j-family-comfort",
+        "j-q2"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V04",
+      "title": "Purple Shield coverage conflict",
+      "detail": "Jamaican product page gives up to J$12.5 million and age-banded limits, but retains J$3 million death-benefit text elsewhere. Do not select one as the current limit.",
+      "sources": [
+        "s-purple"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V05",
+      "title": "Triple Protector Plus coverage conflict",
+      "detail": "The Jamaican page retains J$3 million overview wording alongside J$10 million and J$9 million age-banded limits.",
+      "sources": [
+        "s-triple"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V06",
+      "title": "Maximum Protector coverage conflict",
+      "detail": "Previously retrieved official text has different minimums and maxima across sections. Current figures need a dated schedule.",
+      "sources": [
+        "s-maximum",
+        "s-max-doc"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V07",
+      "title": "Agri-Care enrolment restriction",
+      "detail": "Current page restricts Primary Care to members enrolled before 2026. The 2021 government launch notice cannot establish present options or rates.",
+      "sources": [
+        "s-agri",
+        "s-agri-gov"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V08",
+      "title": "PPO existing-client restriction",
+      "detail": "Group catalogue identifies PPO for existing group health clients only. Other group arrangements also require scheme or employer eligibility.",
+      "sources": [
+        "s-group"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V09",
+      "title": "Government scheme administration",
+      "detail": "Published references may describe older administration arrangements. Confirm the current insurer, administrator and eligibility before treating a scheme as available.",
+      "sources": [
+        "s-gov"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V10",
+      "title": "Offshore distribution pending",
+      "detail": "A reference on the carrier broker catalogue does not confirm a Bulwark broker partnership or permission to distribute a Cayman-issued policy. Keep issuer and currency separate.",
+      "sources": [
+        "s-broker"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    },
+    {
+      "id": "V11",
+      "title": "JN COMFORT eligibility consistency",
+      "detail": "The main table and FAQ contain inconsistent age descriptions. Confirm current entry ages and coverage bands rather than quoting the FAQ alone.",
+      "sources": [
+        "j-comfort"
+      ],
+      "action": "Request current policy wording, dated schedule and written carrier confirmation."
+    }
+  ]
+}
