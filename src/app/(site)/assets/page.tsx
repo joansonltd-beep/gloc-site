@@ -1,13 +1,14 @@
+import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
 import QuickQuoteRequest from "@/components/tools/QuickQuoteRequest";
 import { getCluster, getLines } from "@/lib/siteData";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Motor, Home and Property Insurance Jamaica",
   description: "Compare motor, home and property insurance in Jamaica with Bulwark. Understand policy limits, exclusions and costs.",
   alternates: { canonical: "/assets" },
-};
+});
 
 export default async function AssetsPage() {
   const [cluster, lines] = await Promise.all([

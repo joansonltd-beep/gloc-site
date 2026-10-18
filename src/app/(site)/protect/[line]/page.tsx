@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import LineDetail from "@/components/LineDetail";
 import { LINE_DETAILS } from "@/lib/content";
@@ -18,11 +19,11 @@ export async function generateMetadata({
   const { line } = await params;
   const d = LINE_DETAILS.find((x) => x.clusterKey === CLUSTER && x.slug === line);
   return d
-    ? {
+    ? pageMetadata({
         title: `${d.title} Jamaica`,
         description: `Compare ${d.title.toLowerCase()} options in Jamaica with Bulwark Insurance Agency Ltd. Understand benefits, costs and terms. Book a consultation.`,
         alternates: { canonical: `/${CLUSTER}/${d.slug}` },
-      }
+      })
     : {};
 }
 

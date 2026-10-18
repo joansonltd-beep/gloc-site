@@ -215,7 +215,7 @@ export function LineIcon({
   const image = SERVICE_IMAGES[slug] ?? "life";
   return (
     <Image
-      src={`/images/services/${image}-photo.png`}
+      src={`/images/services/${image}-photo.webp`}
       alt={SERVICE_PHOTO_ALT[image]}
       width={640}
       height={480}

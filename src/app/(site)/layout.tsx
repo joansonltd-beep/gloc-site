@@ -18,6 +18,7 @@ export default async function SiteLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "InsuranceAgency",
+    "@id": `${SITE_URL}/#agency`,
     name: "Bulwark Insurance Agency Ltd",
     description: "Independent insurance guidance and comparison across multiple insurers in Jamaica.",
     areaServed: { "@type": "Country", name: "Jamaica" },
@@ -47,7 +48,18 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          __html: JSON.stringify([
+            jsonLd,
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              '@id': `${SITE_URL}/#website`,
+              url: SITE_URL,
+              name: 'Bulwark Insurance Agency Ltd',
+              publisher: { '@id': `${SITE_URL}/#agency` },
+              inLanguage: 'en-JM',
+            },
+          ]).replace(/</g, "\\u003c"),
         }}
       />
       <a href="#main" className="skip-link">

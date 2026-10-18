@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/siteUrl";
 import { getSiteSettings } from "@/lib/siteData";
+import { SHARE_IMAGE } from '@/lib/seo';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,9 +54,9 @@ export async function generateMetadata(): Promise<Metadata> {
       url: SITE_URL,
       title,
       description,
-      images: s.headshotUrl ? [{ url: s.headshotUrl }] : undefined,
+      images: [SHARE_IMAGE],
     },
-    twitter: { card: "summary_large_image" },
+    twitter: { card: "summary_large_image", title, description, images: [SHARE_IMAGE.url] },
     verification: { google: googleVerification },
   };
 }

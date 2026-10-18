@@ -1,13 +1,14 @@
+import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
 import LifeNeedsCalculator from "@/components/tools/LifeNeedsCalculator";
 import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
 import { getCluster, getLines } from "@/lib/siteData";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Life and Health Insurance Jamaica",
   description: "Compare life, health, critical illness and personal accident insurance with independent guidance from Bulwark Insurance Agency Ltd in Jamaica.",
   alternates: { canonical: "/protect" },
-};
+});
 export default async function ProtectPage() {
   const [cluster, lines] = await Promise.all([
     getCluster("protect"),

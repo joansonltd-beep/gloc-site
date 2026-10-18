@@ -1,14 +1,15 @@
+import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import Link from "next/link";
 import { buildWhatsAppLink } from "@/config/site";
 import { getSiteSettings } from "@/lib/siteData";
 import { Chat, Mobile, Facebook, Instagram } from "@/components/icons";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Bulwark | Insurance Agency Jamaica",
   description:
     "Contact Bulwark Insurance Agency Ltd for independent insurance guidance across Jamaica. Call, message on WhatsApp or book a consultation.",
   alternates: { canonical: "/contact" },
-};
+});
 export default async function ContactPage() {
   const settings = await getSiteSettings();
   const number = settings.whatsappNumber.replace(/\D/g, "");

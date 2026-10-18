@@ -1,12 +1,13 @@
+import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
   description:
     "How this website collects, uses and protects your personal information.",
   alternates: { canonical: "/privacy" },
-};
+});
 
 // Plain-language privacy policy covering the callback form, WhatsApp hand-off
 // and Google Ads tag. Kept short on purpose; not legal advice.

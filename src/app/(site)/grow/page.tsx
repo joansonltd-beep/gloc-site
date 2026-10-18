@@ -1,13 +1,14 @@
+import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
 import PensionInflationProjector from "@/components/tools/PensionInflationProjector";
 import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
 import { getCluster, getLines } from "@/lib/siteData";
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Retirement Planning Jamaica",
   description: "Review pension, annuity and investment options in Jamaica with Bulwark. Understand costs, access and risk before deciding.",
   alternates: { canonical: "/grow" },
-};
+});
 export default async function GrowPage() {
   const [cluster, lines] = await Promise.all([
     getCluster("grow"),

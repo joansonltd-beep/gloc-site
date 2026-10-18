@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import CallbackForm from "@/components/CallbackForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
@@ -5,12 +6,12 @@ import AdsConversion from "@/components/AdsConversion";
 import { getSiteSettings } from "@/lib/siteData";
 import { buildWhatsAppLink } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Book a consultation",
   description:
     "Book a no-pressure consultation with Bulwark Insurance Agency Ltd to compare insurance options in Jamaica, or request contact at a time that suits you.",
   alternates: { canonical: "/book" },
-};
+});
 
 // Google Calendar appointment schedule. The embed URL (gv=true) renders the
 // booking calendar directly on the page; the short link is the fallback.
