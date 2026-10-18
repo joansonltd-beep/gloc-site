@@ -6,7 +6,7 @@ import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = pageMetadata({
   title: "Motor, Home and Property Insurance Jamaica",
-  description: "Compare motor, home and property insurance in Jamaica with Bulwark. Understand policy limits, exclusions and costs.",
+  description: "Compare motor, home and property insurance in Jamaica with Joanson. Understand policy limits, exclusions and costs.",
   alternates: { canonical: "/assets" },
 });
 

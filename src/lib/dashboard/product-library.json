@@ -1443,7 +1443,7 @@
       "name": "Super Term",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1459,7 +1459,7 @@
       "name": "Purple Shield",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1477,7 +1477,7 @@
       "name": "Total Protector",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1493,7 +1493,7 @@
       "name": "Ultra Lifeline",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1509,7 +1509,7 @@
       "name": "Guaranteed Investor",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1525,7 +1525,7 @@
       "name": "Individual Annuity",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1541,7 +1541,7 @@
       "name": "Triple Protector Plus",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1557,7 +1557,7 @@
       "name": "Ultra 75",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1573,7 +1573,7 @@
       "name": "Ultra Life",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -1589,7 +1589,7 @@
       "name": "Universal Investor",
       "category": "International reference",
       "status": "Broker reference",
-      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Bulwark distribution is not confirmed.",
+      "summary": "Cayman-issued USD reference listed by Sagicor Insurance Brokers. Distribution authority is not confirmed.",
       "currency": "USD",
       "sources": [
         "s-broker"
@@ -2148,7 +2148,7 @@
     {
       "id": "V10",
       "title": "Offshore distribution pending",
-      "detail": "A reference on the carrier broker catalogue does not confirm a Bulwark broker partnership or permission to distribute a Cayman-issued policy. Keep issuer and currency separate.",
+      "detail": "A reference on the carrier broker catalogue does not confirm a broker partnership for Joanson or permission to distribute a Cayman-issued policy. Keep issuer and currency separate.",
       "sources": [
         "s-broker"
       ],

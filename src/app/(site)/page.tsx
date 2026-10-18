@@ -15,7 +15,7 @@ export default async function Home() {
     <div className="homepage">
       <Hero settings={settings} />
       <div className="home-principles">
-        <p>Bulwark Insurance Agency Ltd</p>
+        <p>Joanson Baptiste James</p>
         <span>Independent agency</span>
         <span>Multiple insurer options</span>
         <span>Jamaica-based service</span>
@@ -37,7 +37,7 @@ export default async function Home() {
             every day.
           </p>
           <p>
-            I&apos;m {settings.agentName}, founder of Bulwark Insurance Agency Ltd.
+            I&apos;m {settings.agentName}, an insurance advisor serving Jamaica.
             I help you compare insurance options from multiple insurers, with
             clear explanations and your needs at the centre of the conversation.
           </p>

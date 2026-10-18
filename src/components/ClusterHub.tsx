@@ -81,7 +81,7 @@ export default function ClusterHub({
         )}
       </header>
 
-      <p className="max-w-2xl text-slate-600">Bulwark Insurance Agency Ltd helps you understand and compare options from multiple insurers across Jamaica. We explain benefits, exclusions and costs so you can choose with confidence.</p>
+      <p className="max-w-2xl text-slate-600">Joanson Baptiste James helps you understand and compare options from multiple insurers across Jamaica. We explain benefits, exclusions and costs so you can choose with confidence.</p>
       {!linesLast && lineCards}
 
       <section className="space-y-12">{children}</section>

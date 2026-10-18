@@ -10,7 +10,7 @@ const cell = (value: string) => value.replaceAll('|', '\\|').replaceAll('\n', ' 
 
 export function libraryMarkdown() {
   const lines = [
-    '# Bulwark Insurance Product Research Library',
+    '# Joanson Insurance Product Research Library',
     '',
     `Research checked: ${library.checked}. Market: Jamaica.`,
     '',

@@ -17,13 +17,12 @@ export default async function SiteLayout({
   const settings = await getSiteSettings();
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "InsuranceAgency",
-    "@id": `${SITE_URL}/#agency`,
-    name: "Bulwark Insurance Agency Ltd",
+    "@type": "Person",
+    "@id": `${SITE_URL}/#advisor`,
+    name: "Joanson Baptiste James",
     description: "Independent insurance guidance and comparison across multiple insurers in Jamaica.",
-    areaServed: { "@type": "Country", name: "Jamaica" },
     telephone: `+${settings.whatsappNumber}`,
-    founder: { "@type": "Person", name: settings.agentName },
+    jobTitle: "Insurance agent",
     url: SITE_URL,
     image: settings.headshotUrl || undefined,
     sameAs: [
@@ -55,8 +54,8 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
               '@type': 'WebSite',
               '@id': `${SITE_URL}/#website`,
               url: SITE_URL,
-              name: 'Bulwark Insurance Agency Ltd',
-              publisher: { '@id': `${SITE_URL}/#agency` },
+              name: 'Joanson Baptiste James',
+              publisher: { '@id': `${SITE_URL}/#advisor` },
               inLanguage: 'en-JM',
             },
           ]).replace(/</g, "\\u003c"),
@@ -77,8 +76,8 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
                 J.
               </span>
               <span>
-                <strong>Bulwark Insurance Agency Ltd</strong>
-                <small>Independent insurance agency · Jamaica</small>
+                <strong>Joanson Baptiste James</strong>
+                <small>Insurance guidance · Jamaica</small>
               </span>
             </Link>
             <SiteNav />
@@ -91,7 +90,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
           <div className="footer-top">
             <div>
               <Link href="/" className="footer-brand">
-                Bulwark Insurance Agency Ltd
+                Joanson Baptiste James
               </Link>
               <p>
                 Independent insurance guidance for
@@ -117,7 +116,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
           <div className="footer-bottom">
             <p>{settings.footerDisclaimer}</p>
             <span>
-              © {new Date().getFullYear()} Bulwark Insurance Agency Ltd.
+              © {new Date().getFullYear()} Joanson Baptiste James.
             </span>
           </div>
         </footer>

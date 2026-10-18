@@ -32,12 +32,12 @@ export type AboutData = {
 
 export const DEFAULT_SETTINGS: SiteSettings = {
   whatsappNumber: "18762109898",
-  professionalDescription: "Independent Insurance Agency in Jamaica",
+  professionalDescription: "Insurance Guidance in Jamaica",
   footerDisclaimer:
     "Information on this website is general in nature and does not constitute financial, legal or tax advice. Insurance products, eligibility, terms and pricing vary by insurer and individual circumstances.",
   agentName: "Joanson Baptiste James",
-  agentTagline: "Founder and lead advisor, Bulwark Insurance Agency Ltd",
-  heroEyebrow: "Independent Insurance Agency in Jamaica",
+  agentTagline: "Insurance advisor in Jamaica",
+  heroEyebrow: "Insurance Guidance in Jamaica",
   heroHeadline: "Protect what you’ve built. Plan for what’s next.",
   heroSubcopy:
     "I help individuals, families and business owners across Jamaica understand their insurance options and choose coverage that fits their needs.",
@@ -84,9 +84,9 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [];
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "I am Joanson Baptiste James, founder and lead advisor of Bulwark Insurance Agency Ltd, an independent insurance agency serving clients across Jamaica.",
+    "I am Joanson Baptiste James, an insurance advisor serving clients across Jamaica.",
   storyParagraphs: [
-    "Bulwark brings independent, client-first guidance to individuals, families and business owners throughout Jamaica. We help you compare options from multiple insurers and understand how each fits your priorities and budget.",
+    "I help individuals, families and business owners throughout Jamaica compare insurance options and understand how each fits their priorities and budget.",
     "My experience in Caribbean financial services shapes a practical approach: listen first, explain clearly and give you room to decide. We review what you already have and discuss benefits, exclusions and costs without unnecessary jargon.",
     "Your needs lead the conversation. Whether you are protecting your family, reviewing retirement options or arranging group benefits, we help you make an informed decision without pressure. Book a consultation or message me on WhatsApp to get started.",
   ],

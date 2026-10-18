@@ -24,8 +24,8 @@ assert.equal(sources.trim().split('\n').length,data.sources.length);
 assert(!/[\u2013\u2014]/.test(md));
 const output=process.env.LIBRARY_EXPORT_DIR;
 if(output){fs.mkdirSync(output,{recursive:true});
-fs.writeFileSync(path.join(output,'bulwark-product-library-2026-10-16.md'),md);
-fs.writeFileSync(path.join(output,'bulwark-product-library-2026-10-16.csv'),csv);
-fs.writeFileSync(path.join(output,'bulwark-source-register-2026-10-16.txt'),sources);
+fs.writeFileSync(path.join(output,'joanson-product-library-2026-10-16.md'),md);
+fs.writeFileSync(path.join(output,'joanson-product-library-2026-10-16.csv'),csv);
+fs.writeFileSync(path.join(output,'joanson-source-register-2026-10-16.txt'),sources);
 }
 console.log(`Passed ${data.products.length} entries, ${data.sources.length} sources, ${data.flags.length} flags, unique identifiers, source integrity and export coverage. Export coverage verified.`);

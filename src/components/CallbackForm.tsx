@@ -43,6 +43,6 @@ export default function CallbackForm() {
     <label className="mt-4 block text-sm font-medium text-slate-700">Message (optional)<textarea value={message} onChange={e=>setMessage(e.target.value)} rows={3} maxLength={2000} className="mt-1 w-full rounded-lg border border-slate-300 p-3 focus:outline-none focus:ring-2 focus:ring-brand/30" /></label>
     <button type="submit" disabled={!ready || status === "sending"} className="button-primary mt-5 disabled:opacity-50">{status === "sending" ? "Sending..." : "Request a consultation"}</button>
     {status === "error" && <p role="alert" className="mt-3 text-sm text-flame">Your request could not be sent. Please try again or <a className="underline" href={whatsappLink("Hi, I would like to request a consultation.")} target="_blank" rel="noopener noreferrer">message on WhatsApp</a>.</p>}
-    <p className="mt-4 text-xs text-slate-500">By submitting, you agree that Bulwark Insurance Agency Ltd may use these details to contact you about your enquiry. <Link href="/privacy" className="underline">Privacy policy</Link>.</p>
+    <p className="mt-4 text-xs text-slate-500">By submitting, you agree that Joanson Baptiste James may use these details to contact you about your enquiry. <Link href="/privacy" className="underline">Privacy policy</Link>.</p>
   </form>;
 }

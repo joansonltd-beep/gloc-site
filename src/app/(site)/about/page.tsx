@@ -7,9 +7,9 @@ import LearnMore from "@/components/LearnMore";
 import { getAbout, getSiteSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Bulwark and Joanson | Insurance Advisor Jamaica",
+  title: "About Joanson | Insurance Advisor Jamaica",
   description:
-    "Meet Joanson Baptiste James, founder of Bulwark Insurance Agency Ltd. Independent guidance and comparison across multiple insurers, serving all of Jamaica.",
+    "Meet Joanson Baptiste James, an insurance advisor serving Jamaica. Compare your insurance options with clear, practical guidance.",
   alternates: { canonical: "/about" },
 });
 

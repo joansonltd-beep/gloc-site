@@ -5,9 +5,9 @@ import { buildWhatsAppLink } from "@/config/site";
 import { getSiteSettings } from "@/lib/siteData";
 import { Chat, Mobile, Facebook, Instagram } from "@/components/icons";
 export const metadata: Metadata = pageMetadata({
-  title: "Contact Bulwark | Insurance Agency Jamaica",
+  title: "Contact Joanson | Insurance Advisor Jamaica",
   description:
-    "Contact Bulwark Insurance Agency Ltd for independent insurance guidance across Jamaica. Call, message on WhatsApp or book a consultation.",
+    "Contact Joanson Baptiste James for independent insurance guidance across Jamaica. Call, message on WhatsApp or book a consultation.",
   alternates: { canonical: "/contact" },
 });
 export default async function ContactPage() {

@@ -105,7 +105,7 @@ export default async function LineDetail({
         </section>
       </div>
 
-      <p className="max-w-3xl text-slate-600">Independent guidance from Bulwark Insurance Agency Ltd helps you compare options from multiple insurers and make an informed decision.</p>
+      <p className="max-w-3xl text-slate-600">Independent guidance from Joanson Baptiste James helps you compare options from multiple insurers and make an informed decision.</p>
       <BrochureSection pageKey={`${clusterKey}/${slug}`} />
 
       {calculator}

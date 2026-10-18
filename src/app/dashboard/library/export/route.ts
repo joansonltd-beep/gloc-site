@@ -11,6 +11,6 @@ export async function GET(request: Request) {
   const content = format === 'csv' ? libraryCsv() : format === 'txt' ? librarySources() : libraryMarkdown();
   return new Response(content, { headers: { ...headers,
     'Content-Type': format === 'csv' ? 'text/csv; charset=utf-8' : 'text/plain; charset=utf-8',
-    'Content-Disposition': `attachment; filename="bulwark-product-library-2026-10-16.${format}"`,
+    'Content-Disposition': `attachment; filename="joanson-product-library-2026-10-16.${format}"`,
   } });
 }

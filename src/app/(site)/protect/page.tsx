@@ -6,7 +6,7 @@ import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer"
 import { getCluster, getLines } from "@/lib/siteData";
 export const metadata: Metadata = pageMetadata({
   title: "Life and Health Insurance Jamaica",
-  description: "Compare life, health, critical illness and personal accident insurance with independent guidance from Bulwark Insurance Agency Ltd in Jamaica.",
+  description: "Compare life, health, critical illness and personal accident insurance with independent guidance from Joanson Baptiste James in Jamaica.",
   alternates: { canonical: "/protect" },
 });
 export default async function ProtectPage() {

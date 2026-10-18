@@ -68,20 +68,20 @@ const SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
   "logoUrl": logo.asset->url,
   facebookUrl, instagramUrl, linkedinUrl, tiktokUrl, youtubeUrl, xUrl
 }`;
-const CLUSTERS_QUERY = `*[_type == "cluster" && contentEdition == "bulwark-v1"]|order(order asc){key, title, intent, lines}`;
-const LINES_QUERY = `*[_type == "line" && contentEdition == "bulwark-v1"]|order(order asc){title, blurb, icon, "clusterKey": cluster->key}`;
-const TESTIMONIALS_QUERY = `*[_type == "testimonial" && contentEdition == "bulwark-v1"]|order(order asc){quote, person, relatedLine}`;
-const COST_FIGURES_QUERY = `*[_type == "costFigure" && contentEdition == "bulwark-v1"]{key, value}`;
-const ABOUT_QUERY = `*[_type == "aboutContent" && contentEdition == "bulwark-v1"][0]{
+const CLUSTERS_QUERY = `*[_type == "cluster" && contentEdition == "joanson-v1"]|order(order asc){key, title, intent, lines}`;
+const LINES_QUERY = `*[_type == "line" && contentEdition == "joanson-v1"]|order(order asc){title, blurb, icon, "clusterKey": cluster->key}`;
+const TESTIMONIALS_QUERY = `*[_type == "testimonial" && contentEdition == "joanson-v1"]|order(order asc){quote, person, relatedLine}`;
+const COST_FIGURES_QUERY = `*[_type == "costFigure" && contentEdition == "joanson-v1"]{key, value}`;
+const ABOUT_QUERY = `*[_type == "aboutContent" && contentEdition == "joanson-v1"][0]{
   teaser, story, videoUrl, credentials,
   "videoFileUrl": videoFile.asset->url,
   "photoUrl": photo.asset->url
 }`;
-const CALCULATOR_QUERY = `*[_type == "calculatorSettings" && contentEdition == "bulwark-v1"][0]{
+const CALCULATOR_QUERY = `*[_type == "calculatorSettings" && contentEdition == "joanson-v1"][0]{
   investmentLowReturn, investmentHighReturn,
   pensionSavingsReturn, pensionStructuredReturn, pensionInflation
 }`;
-const ILLNESS_COSTS_QUERY = `*[_type == "illnessCost" && contentEdition == "bulwark-v1"]|order(order asc){
+const ILLNESS_COSTS_QUERY = `*[_type == "illnessCost" && contentEdition == "joanson-v1"]|order(order asc){
   condition, costLow, costHigh, unit, note
 }`;
 
@@ -119,7 +119,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
     SETTINGS_QUERY,
   );
   if (!res) return DEFAULT_SETTINGS;
-  if (res.contentEdition === "bulwark-v1")
+  if (res.contentEdition === "joanson-v1")
     return {
       ...DEFAULT_SETTINGS,
       ...stripNulls(res),
@@ -215,7 +215,7 @@ export type LineDetailContent = {
   what?: string[];
   why?: string[];
 };
-const LINE_DETAIL_QUERY = `*[_type == "lineDetail" && contentEdition == "bulwark-v1" && clusterKey == $clusterKey && slug.current == $slug][0]{
+const LINE_DETAIL_QUERY = `*[_type == "lineDetail" && contentEdition == "joanson-v1" && clusterKey == $clusterKey && slug.current == $slug][0]{
   title, tagline, what, why
 }`;
 export async function getLineDetail(

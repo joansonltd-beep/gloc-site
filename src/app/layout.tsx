@@ -23,8 +23,8 @@ const googleVerification = "VRywR5Rn38kExZbiFZyYiKT7a1pt-DENH8-uitRodb0";
 // local search) and stay editable in Studio.
 export async function generateMetadata(): Promise<Metadata> {
   const s = await getSiteSettings();
-  const name = "Bulwark Insurance Agency Ltd";
-  const title = `${name} | Independent Insurance Agency in Jamaica`;
+  const name = "Joanson Baptiste James";
+  const title = `${name} | Insurance Guidance in Jamaica`;
   const description =
     s.heroSubcopy ||
     "Insurance and financial planning questions for your life in Jamaica. Family, retirement, home and business guides from Joanson Baptiste James.";
@@ -35,8 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { default: title, template: `%s | ${name}` },
     description,
     keywords: [
-      "independent insurance agency Jamaica",
-      "insurance agency Jamaica",
+      "insurance advisor Jamaica",
+      "insurance guidance Jamaica",
       "business insurance Jamaica",
       "group health insurance Jamaica",
       "insurance advisor Jamaica",

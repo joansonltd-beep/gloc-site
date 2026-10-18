@@ -21,7 +21,7 @@ export async function generateMetadata({
   return d
     ? pageMetadata({
         title: `${d.title} Jamaica`,
-        description: `Compare ${d.title.toLowerCase()} options in Jamaica with Bulwark Insurance Agency Ltd. Understand benefits, costs and terms. Book a consultation.`,
+        description: `Compare ${d.title.toLowerCase()} options in Jamaica with Joanson Baptiste James. Understand benefits, costs and terms. Book a consultation.`,
         alternates: { canonical: `/${CLUSTER}/${d.slug}` },
       })
     : {};

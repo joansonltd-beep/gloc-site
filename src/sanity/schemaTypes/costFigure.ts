@@ -13,7 +13,7 @@ export const costFigure = defineType({
       description:
         "Select Jamaica only after reviewing this document for the current market and business details.",
       type: "string",
-      options: { list: [{ title: "Bulwark, Jamaica", value: "bulwark-v1" }] },
+      options: { list: [{ title: "Joanson, Jamaica", value: "joanson-v1" }] },
     }),
     defineField({
       name: "key",

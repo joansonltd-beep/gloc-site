@@ -33,7 +33,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
           {settings.headshotUrl ? (
             <Image
               src={settings.headshotUrl}
-              alt={`${settings.agentName}, founder of Bulwark Insurance Agency Ltd in Jamaica`}
+              alt={`${settings.agentName}, insurance advisor in Jamaica`}
               fill
               preload
               sizes="(max-width: 767px) 85vw, 460px"
@@ -52,7 +52,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
           </span>
           <div>
             <p>{settings.agentName}</p>
-            <span>Founder and lead advisor, Bulwark</span>
+            <span>Insurance advisor in Jamaica</span>
           </div>
         </div>
         <p className="portrait-side-note" aria-hidden>

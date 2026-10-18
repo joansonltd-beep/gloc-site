@@ -330,7 +330,7 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "life-insurance",
     clusterKey: "protect",
     title: "Life Insurance",
-    tagline: "Help your family meet everyday commitments, education costs and debts if you die. Compare life insurance options in Jamaica with independent guidance from Bulwark.",
+    tagline: "Help your family meet everyday commitments, education costs and debts if you die. Compare life insurance options in Jamaica with independent guidance from Joanson.",
     what: ["Life cover can provide a payment to your chosen beneficiaries if the policy conditions are met. We help you compare cover amounts, policy duration, exclusions and premiums across insurer options."],
     why: [
       "Review who depends on your income.",
@@ -448,7 +448,7 @@ export const LINE_DETAILS: LineDetail[] = [
     clusterKey: "business",
     title: "Group Coverage",
     tagline: "Compare group life, health and pension options in Jamaica. Build employee benefits around your team’s needs and a budget your business can maintain.",
-    what: ["Group Coverage brings life, health and pension benefits into your employee planning. Bulwark helps business owners compare insurer options, eligibility, contributions and administration requirements."],
+    what: ["Group Coverage brings life, health and pension benefits into your employee planning. Joanson helps business owners compare insurer options, eligibility, contributions and administration requirements."],
     why: [
       "Ask who can join and when cover begins.",
       "Understand employer and employee contributions.",

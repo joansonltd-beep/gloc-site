@@ -6,7 +6,7 @@ import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjec
 import { getCluster, getLines } from "@/lib/siteData";
 export const metadata: Metadata = pageMetadata({
   title: "Retirement Planning Jamaica",
-  description: "Review pension, annuity and investment options in Jamaica with Bulwark. Understand costs, access and risk before deciding.",
+  description: "Review pension, annuity and investment options in Jamaica with Joanson. Understand costs, access and risk before deciding.",
   alternates: { canonical: "/grow" },
 });
 export default async function GrowPage() {

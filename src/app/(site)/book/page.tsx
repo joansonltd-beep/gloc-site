@@ -9,7 +9,7 @@ import { buildWhatsAppLink } from "@/config/site";
 export const metadata: Metadata = pageMetadata({
   title: "Book a consultation",
   description:
-    "Book a no-pressure consultation with Bulwark Insurance Agency Ltd to compare insurance options in Jamaica, or request contact at a time that suits you.",
+    "Book a no-pressure consultation with Joanson Baptiste James to compare insurance options in Jamaica, or request contact at a time that suits you.",
   alternates: { canonical: "/book" },
 });
 

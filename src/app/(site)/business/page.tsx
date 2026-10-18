@@ -6,7 +6,7 @@ import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = pageMetadata({
   title: "Group Coverage in Jamaica (Life/Health/Pensions)",
-  description: "Compare group life, health and pension options for your employees in Jamaica with independent guidance from Bulwark Insurance Agency Ltd.",
+  description: "Compare group life, health and pension options for your employees in Jamaica with independent guidance from Joanson Baptiste James.",
   alternates: { canonical: "/business" },
 });
 
