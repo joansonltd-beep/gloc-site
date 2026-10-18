@@ -7,7 +7,9 @@
 // honeypot field ("website" ,  hidden from humans) is dropped without
 // forwarding. Bots still get an OK response so they don't retry.
 
-const MAX_BODY_BYTES = 16_384;
+import { readBoundedText } from '@/lib/requestBody';
+import { allowedLeadOrigin, validLead } from '@/lib/leadValidation';
+const MAX_BODY_CHARACTERS = 16_384;
 
 function isSpam(lead: Record<string, unknown>): boolean {
   // The honeypot field is invisible to humans; anything in it is a bot.
@@ -39,10 +41,11 @@ function isSpam(lead: Record<string, unknown>): boolean {
 }
 
 export async function POST(request: Request): Promise<Response> {
+  if (!allowedLeadOrigin(request)) return Response.json({ ok: false, forwarded: false }, { status: 403 });
   let lead: Record<string, unknown> | null = null;
   try {
-    const raw = await request.text();
-    if (raw.length > MAX_BODY_BYTES)
+    const raw = await readBoundedText(request, 65_536);
+    if (raw.length > MAX_BODY_CHARACTERS)
       return Response.json({ ok: true, forwarded: false });
     const parsed: unknown = JSON.parse(raw);
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
@@ -52,7 +55,7 @@ export async function POST(request: Request): Promise<Response> {
     lead = null;
   }
 
-  if (!lead || isSpam(lead)) {
+  if (!lead || isSpam(lead) || !validLead(lead)) {
     return Response.json({ ok: true, forwarded: false });
   }
   delete lead.website; // strip the (empty) honeypot before forwarding
@@ -60,8 +63,7 @@ export async function POST(request: Request): Promise<Response> {
   const webhook = process.env.LEAD_WEBHOOK_URL;
 
   if (!webhook) {
-    // No endpoint configured yet. Log so it's visible during development.
-    console.info("[lead] (no LEAD_WEBHOOK_URL set) captured:", lead);
+    console.info('[lead] not forwarded: webhook is not configured');
     return Response.json({ ok: true, forwarded: false });
   }
 
@@ -76,8 +78,8 @@ export async function POST(request: Request): Promise<Response> {
       { ok: response.ok, forwarded: response.ok },
       { status: response.ok ? 200 : 502 },
     );
-  } catch (err) {
-    console.error("[lead] failed to forward to webhook:", err);
+  } catch {
+    console.error('[lead] webhook forwarding failed');
     // Still return OK: the visitor's WhatsApp hand-off must not depend on this.
     return Response.json({ ok: true, forwarded: false });
   }

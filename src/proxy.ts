@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 export function proxy(request:NextRequest){
  const hostname=(request.headers.get('host')||'').split(':')[0];
  const url=request.nextUrl.clone();
+ if(hostname==='dashboard.joansonbjames.com'&&url.pathname==='/robots.txt'){
+  return new NextResponse('User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'public, max-age=3600'}});
+ }
  if(hostname==='dashboard.joansonbjames.com'&&!url.pathname.startsWith('/dashboard')&&!url.pathname.startsWith('/_next')&&url.pathname!=='/favicon.ico'){
   url.pathname='/dashboard'+(url.pathname==='/'?'':url.pathname);return NextResponse.rewrite(url);
  }
