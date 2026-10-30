@@ -891,3 +891,33 @@ textarea {
  .brand-lockup small { white-space: normal; letter-spacing: 1px; line-height: 1.5; }
  .menu-toggle { flex-shrink: 0; }
 }
+
+/* Keep long names and form copy readable at narrow widths. */
+.brand-lockup strong {
+  line-height: 1.45;
+}
+.site-main fieldset {
+  min-width: 0;
+}
+.site-main label {
+  line-height: 1.6;
+}
+.hero-note {
+  line-height: 1.7;
+}
+.portrait-caption p {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 767px) {
+  .brand-lockup strong {
+    font-size: 12px;
+    white-space: normal;
+  }
+  .button-primary,
+  .button-gold {
+    max-width: 100%;
+    gap: 18px;
+    line-height: 1.5;
+  }
+}

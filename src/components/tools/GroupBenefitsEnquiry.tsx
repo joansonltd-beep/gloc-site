@@ -25,23 +25,23 @@ export default function GroupBenefitsEnquiry() {
 
   return (
     <ToolFrame
-      title="Group Coverage Enquiry"
+      title="Group coverage enquiry"
       intro="Share a few details about your employees to discuss life, health and pension coverage."
     >
       <div className="grid gap-4 sm:grid-cols-3">
         <Field
-          label="How many staff?"
+          label="How many employees?"
           value={headcount}
           onChange={setHeadcount}
           placeholder="e.g. 8"
         />
         <SelectField
-          label="Any cover already?"
+          label="Do you already have group cover?"
           value={hasCover}
           onChange={setHasCover}
           options={[
             { value: "no", label: "Not yet" },
-            { value: "yes", label: "Yes, reviewing" },
+            { value: "yes", label: "Yes, I would like a review" },
           ]}
         />
         <Field
@@ -64,7 +64,7 @@ export default function GroupBenefitsEnquiry() {
             label="Enquire on WhatsApp"
             lead={{
               source: "group-benefits",
-              recommended: "Group Coverage",
+              recommended: "Group coverage",
               figures: { headcount: team, hasExistingCover: hasCover },
             }}
           />

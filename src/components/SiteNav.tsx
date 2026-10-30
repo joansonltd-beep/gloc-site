@@ -7,7 +7,7 @@ const links = [
   { href: "/protect", label: "Family & health" },
   { href: "/grow", label: "Your future" },
   { href: "/assets", label: "Home & motor" },
-  { href: "/business", label: "Group Coverage" },
+  { href: "/business", label: "Group coverage" },
   { href: "/about", label: "About" },
 ];
 export default function SiteNav() {

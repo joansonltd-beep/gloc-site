@@ -51,7 +51,7 @@ export default function NeedsRouter() {
           What brings you here today?
         </h2>
         <p className="mt-2 text-slate-600">
-          Pick what fits, or answer a few questions and we&apos;ll point you the right way.
+          Choose a topic, or answer a few questions to explore where to start.
         </p>
       </div>
 
@@ -72,7 +72,7 @@ export default function NeedsRouter() {
                   {card.subtitle}
                 </span>
                 <span className="mt-3 text-sm font-medium text-accent-dark">
-                  Start the 4 questions →
+                  Answer four questions →
                 </span>
               </button>
             ) : (

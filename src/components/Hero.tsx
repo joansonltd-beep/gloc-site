@@ -12,6 +12,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
         </p>
         <h1 id="home-title">
           {headline}
+          {" "}
           <br />
           <em>{rest.join(" ")}</em>
         </h1>

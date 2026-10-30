@@ -13,7 +13,7 @@ export function ToolFrame({
   return (
     <div className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm sm:p-8">
       <h3 className="text-xl font-semibold text-brand">{title}</h3>
-      <p className="mt-1 max-w-prose text-sm text-slate-600">{intro}</p>
+      {intro && <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-600">{intro}</p>}
       <div className="mt-5">{children}</div>
     </div>
   );
@@ -34,7 +34,7 @@ export function Field({
 }) {
   return (
     <label className="block text-sm">
-      <span className="font-medium text-slate-700">{label}</span>
+      <span className="block leading-relaxed font-medium text-slate-700">{label}</span>
       <input
         type={type}
         inputMode={type === "number" ? "numeric" : undefined}
@@ -61,7 +61,7 @@ export function SelectField({
 }) {
   return (
     <label className="block text-sm">
-      <span className="font-medium text-slate-700">{label}</span>
+      <span className="block leading-relaxed font-medium text-slate-700">{label}</span>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}

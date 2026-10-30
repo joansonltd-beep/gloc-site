@@ -35,9 +35,9 @@ export const CLUSTERS: Cluster[] = [
   },
   {
     key: "business",
-    title: "Group Coverage",
+    title: "Group coverage",
     href: "/business",
-    lines: "Life / Health / Pensions",
+    lines: "Life, health and pensions",
     intent: "Compare life, health and pension benefits for your team.",
   },
 ];
@@ -71,12 +71,12 @@ export const LINES: Record<ClusterKey, Line[]> = {
   ],
   grow: [
     {
-      title: "Pension / Annuities",
+      title: "Pensions and annuities",
       icon: "pension-annuities",
       blurb: "Think about income for the years after work.",
     },
     {
-      title: "Investments / Mutual Funds",
+      title: "Investments and mutual funds",
       icon: "investments-mutual-funds",
       blurb: "Connect your savings to your goals.",
     },
@@ -100,7 +100,7 @@ export const LINES: Record<ClusterKey, Line[]> = {
   ],
   business: [
     {
-      title: "Group Coverage",
+      title: "Group coverage",
       icon: "group-employee-benefits",
       blurb: "Discuss life, health and pension coverage for your employees.",
     },
@@ -122,8 +122,8 @@ export const ROUTER_CARDS: RouterCard[] = [
     href: "/protect",
   },
   {
-    title: "Plan retirement & grow my money",
-    subtitle: "Pension, annuities & investments",
+    title: "Plan for retirement & grow my savings",
+    subtitle: "Pensions, annuities & investments",
     href: "/grow",
   },
   {
@@ -132,13 +132,13 @@ export const ROUTER_CARDS: RouterCard[] = [
     href: "/assets",
   },
   {
-    title: "Group Coverage",
-    subtitle: "Life / Health / Pensions",
+    title: "Group coverage",
+    subtitle: "Life, health and pensions",
     href: "/business",
   },
   {
     title: "Not sure? Help me figure it out",
-    subtitle: "Answer 4 quick questions",
+    subtitle: "Answer four short questions",
     discovery: true,
   },
 ];
@@ -227,7 +227,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
   if (a.lifeStage === "retiring") {
     scored.push({
       weight: 9,
-      line: "Pension / Annuities",
+      line: "Pensions and annuities",
       cluster: "grow",
       href: "/grow",
       why: "Explore retirement income and the assumptions behind it.",
@@ -237,7 +237,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
   if (a.lifeStage === "starting" || a.lifeStage === "building") {
     scored.push({
       weight: 6,
-      line: "Investments / Mutual Funds",
+      line: "Investments and mutual funds",
       cluster: "grow",
       href: "/grow",
       why: "Start early. Time is your biggest advantage.",
@@ -257,7 +257,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
   if (a.business === "yes") {
     scored.push({
       weight: 8,
-      line: "Group Coverage",
+      line: "Group coverage",
       cluster: "business",
       href: "/business",
       why: "Attract and keep good staff with cover that scales with your team.",
@@ -270,7 +270,7 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
     line: "Health Cover",
     cluster: "protect",
     href: "/protect",
-    why: "Compare health cover in Jamaica against your needs, budget and existing benefits.",
+    why: "Compare health cover in Jamaica based on your needs, budget and existing benefits.",
   });
 
   const ranked = scored.sort((x, y) => y.weight - x.weight);
@@ -395,7 +395,7 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "investments-mutual-funds",
     clusterKey: "grow",
     title: "Investments and Mutual Funds",
-    tagline: "Compare investment and mutual fund options in Jamaica around your goals, time horizon, fees, access needs and tolerance for risk.",
+    tagline: "Compare investment and mutual fund options in Jamaica based on your goals, time horizon, fees, access needs and tolerance for risk.",
     what: ["Investment funds pool money under a defined strategy. We help you understand options, costs and risk so you can assess how they fit your goals alongside emergency savings and other commitments."],
     why: [
       "Read the fund documents and fees.",
@@ -435,7 +435,7 @@ export const LINE_DETAILS: LineDetail[] = [
     clusterKey: "assets",
     title: "Property Insurance",
     tagline: "Compare rental and commercial property insurance in Jamaica. Review building protection, liability and any options for loss of rental income.",
-    what: ["Rental and commercial property have different risks from an owner-occupied home. We help you compare cover based on use, occupancy and building details, including any liability or rental income benefits."],
+    what: ["Rental and commercial properties have different risks from owner-occupied homes. We help you compare cover based on use, occupancy and building details, including any liability or rental income benefits."],
     why: [
       "Describe how the property is used.",
       "Ask about periods when a property is empty.",
@@ -446,9 +446,9 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "group-employee-benefits",
     clusterKey: "business",
-    title: "Group Coverage",
+    title: "Group coverage",
     tagline: "Compare group life, health and pension options in Jamaica. Build employee benefits around your team’s needs and a budget your business can maintain.",
-    what: ["Group Coverage brings life, health and pension benefits into your employee planning. Joanson helps business owners compare insurer options, eligibility, contributions and administration requirements."],
+    what: ["Group coverage brings life, health and pension benefits into your employee planning. Joanson helps business owners compare insurer options, eligibility, contributions and administration requirements."],
     why: [
       "Ask who can join and when cover begins.",
       "Understand employer and employee contributions.",

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Field, SelectField } from "@/components/tools/ToolUI";
 import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
-const TYPES = ["Not sure yet", "Life insurance", "Health insurance", "Critical illness", "Personal accident", "Motor insurance", "Home or property insurance", "Pensions and annuities", "Investments", "Group Coverage (Life/Health/Pensions)"];
+const TYPES = ["Not sure yet", "Life insurance", "Health insurance", "Critical illness", "Personal accident", "Motor insurance", "Home or property insurance", "Pensions and annuities", "Investments", "Group coverage (life, health and pensions)"];
 export default function CallbackForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -29,10 +29,10 @@ export default function CallbackForm() {
       setStatus(response.ok && result.forwarded ? "done" : "error");
     } catch { setStatus("error"); }
   }
-  if (status === "done") return <section className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="text-xl font-semibold text-brand">Thank you, {name.split(" ")[0]}.</h2><p className="mt-2 text-slate-600">Your consultation request has been received. We will contact you using the details provided to arrange the next step.</p></section>;
+  if (status === "done") return <section className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="text-xl font-semibold text-brand">Thank you, {name.split(" ")[0]}.</h2><p className="mt-2 text-slate-600">Your consultation request has been received. I will contact you using the details provided to arrange the next step.</p></section>;
   return <form onSubmit={e => { e.preventDefault(); void submit(); }} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
     <h2 className="text-xl font-semibold text-brand">Request a consultation</h2>
-    <p className="mt-2 text-sm text-slate-600">Tell us what you need and when you prefer to hear from us. No pressure, no obligation.</p>
+    <p className="mt-2 text-sm text-slate-600">Tell me what you need and when you would prefer me to contact you. No pressure, no obligation.</p>
     <div className="hidden" aria-hidden="true"><label>Website<input name="website" value={website} onChange={e=>setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" /></label></div>
     <div className="mt-5 grid gap-4 sm:grid-cols-2">
       <Field label="Full name" type="text" value={name} onChange={setName} placeholder="Full name" />

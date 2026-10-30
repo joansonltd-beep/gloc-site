@@ -14,9 +14,9 @@ const ASSET_TYPES = [
 ];
 
 const DETAIL_LABEL: Record<string, string> = {
-  motor: "Vehicle (make, model, year)",
-  home: "Home location & type",
-  property: "Property location & type",
+  motor: "Vehicle make, model and year",
+  home: "Home location and type",
+  property: "Property location and type",
 };
 
 export default function QuickQuoteRequest() {

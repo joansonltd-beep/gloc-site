@@ -26,6 +26,7 @@ export default async function Home() {
           <p className="eyebrow">Meet Joanson</p>
           <h2>
             Good planning begins
+            {" "}
             <br />
             with <em>listening.</em>
           </h2>
@@ -54,6 +55,7 @@ export default async function Home() {
         <p className="eyebrow">Your next chapter</p>
         <h2>
           A little clarity can
+          {" "}
           <br />
           help you move forward.
         </h2>

@@ -70,7 +70,7 @@ export default function TermInsuranceForm() {
 
   if (status === "done") {
     return (
-      <ToolFrame title="Term Insurance request" intro="">
+      <ToolFrame title="Term insurance request" intro="">
         <div className="text-center">
           <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent-dark">
             <Check className="h-6 w-6" />
@@ -89,7 +89,7 @@ export default function TermInsuranceForm() {
 
   return (
     <ToolFrame
-      title="Term Insurance request"
+      title="Term insurance request"
       intro="Term insurance is straightforward cover for a set number of years, often used to protect a mortgage or a young family. Send these details and I'll be in touch to talk it through."
     >
       <div className="grid gap-4 sm:grid-cols-2">

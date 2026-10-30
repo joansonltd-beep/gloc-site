@@ -27,13 +27,13 @@ export default function MarketSurvey() {
     } catch { setStatus('error'); }
     finally { sending.current = false; }
   }
-  if (status === 'done') return <section role="status" className="mt-8 rounded-xl border border-slate-200 bg-white p-8"><h2 className="text-2xl font-semibold text-brand">Thank you for sharing your views.</h2><p className="mt-3 text-slate-600">{answers.F1 === 'Yes, I would like to arrange a conversation' ? 'Your response and conversation request have been received. I will use your selected contact method to follow up.' : 'Your survey response has been received.'}</p><Link href="/" className="button-text mt-4">Back to the website</Link></section>;
+  if (status === 'done') return <section role="status" className="mt-8 rounded-xl border border-slate-200 bg-white p-8"><h2 className="text-2xl font-semibold text-brand">Thank you for sharing your views.</h2><p className="mt-3 text-slate-600">{answers.F1 === 'Yes, I would like to arrange a conversation' ? 'Your response and request for a conversation have been received. I will use your selected contact method to follow up.' : 'Your survey response has been received.'}</p><Link href="/" className="button-text mt-4">Back to the website</Link></section>;
   return <form onSubmit={submit} className="mt-8 space-y-8 rounded-xl border border-slate-200 bg-white p-6 sm:p-8">
     <p className="text-sm text-slate-600">Questions marked required need an answer. You may leave the other questions blank. Please leave out medical information, policy numbers, account details and other people’s personal information.</p>
     <div hidden aria-hidden="true"><label>Website<input tabIndex={-1} autoComplete="off" value={website} onChange={e=>setWebsite(e.target.value)} /></label></div>
     <fieldset disabled={status === 'sending'} className="space-y-8">
     {questionsFor(answers).map((q, index) => <fieldset key={q.id} className="space-y-3">
-      <legend className="font-semibold text-brand">{index + 1}. {q.title}{['Q1','F1'].includes(q.id) ? ' (required)' : ' (optional)'}</legend>
+      <legend className="mb-3 leading-relaxed font-semibold text-brand">{index + 1}. {q.title}{['Q1','F1'].includes(q.id) ? ' (required)' : ' (optional)'}</legend>
       {q.id === 'C5' ? <textarea aria-label={q.title} className={inputClass} rows={3} maxLength={1000} value={String(answers.C5 || '')} onChange={e=>change('C5',e.target.value)} /> : <>
       {q.multi && <p className="text-sm text-slate-500">{q.max ? `Choose up to ${q.max}.` : 'Select all that apply.'}</p>}
       <div className="grid gap-2">{q.options.map(option => {
