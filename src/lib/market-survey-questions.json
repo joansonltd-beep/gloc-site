@@ -1,0 +1,321 @@
+[
+  {
+    "id": "Q1",
+    "title": "Do you currently have insurance coverage?",
+    "multi": false,
+    "options": [
+      "Yes",
+      "No",
+      "Not sure"
+    ]
+  },
+  {
+    "id": "Y1",
+    "title": "What types of insurance do you currently have?",
+    "multi": true,
+    "options": [
+      "Life insurance",
+      "Health insurance",
+      "Critical illness protection",
+      "Disability or income protection",
+      "Home or property insurance",
+      "Motor insurance",
+      "Business insurance",
+      "Other",
+      "Not sure which types"
+    ]
+  },
+  {
+    "id": "Y2",
+    "title": "Is there anything about your current coverage you would like to understand better or improve?",
+    "multi": true,
+    "options": [
+      "What is covered and excluded",
+      "The amount of coverage",
+      "The cost",
+      "Help with claims",
+      "Service and communication",
+      "Whether it still meets my needs",
+      "Other",
+      "Nothing at present",
+      "Not sure"
+    ]
+  },
+  {
+    "id": "Y3",
+    "title": "When did you last review your insurance coverage?",
+    "multi": false,
+    "options": [
+      "Within the past year",
+      "One to three years ago",
+      "More than three years ago",
+      "I have never reviewed it",
+      "I do not remember"
+    ]
+  },
+  {
+    "id": "N1",
+    "title": "Have you had insurance coverage in the past?",
+    "multi": false,
+    "options": [
+      "Yes",
+      "No",
+      "Not sure"
+    ]
+  },
+  {
+    "id": "N2",
+    "title": "What led to your previous coverage ending?",
+    "multi": true,
+    "options": [
+      "It became unaffordable",
+      "Coverage through work or another arrangement ended",
+      "The policy reached the end of its term",
+      "I chose to cancel it",
+      "Payments stopped and the policy lapsed",
+      "Other",
+      "Not sure",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "N3",
+    "title": "Have you ever explored getting insurance?",
+    "multi": false,
+    "options": [
+      "Yes, but I did not apply",
+      "Yes, I applied but did not take out a policy",
+      "No",
+      "Not sure"
+    ]
+  },
+  {
+    "id": "N4",
+    "title": "What stopped you from applying?",
+    "multi": true,
+    "options": [
+      "The cost",
+      "I was unsure which coverage suited me",
+      "I needed clearer explanations",
+      "The process seemed complicated",
+      "I decided to wait",
+      "Other",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "N5",
+    "title": "What happened with your application?",
+    "multi": false,
+    "options": [
+      "I received an offer but decided not to proceed",
+      "The application was declined or postponed",
+      "I did not complete the application",
+      "I am still waiting for a decision",
+      "I do not remember",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "N5a",
+    "title": "What influenced your decision not to proceed?",
+    "multi": true,
+    "options": [
+      "The cost",
+      "The coverage offered did not meet my needs",
+      "I needed more information",
+      "My circumstances changed",
+      "I decided to wait",
+      "Other",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "N5b",
+    "title": "What made it difficult to complete the application?",
+    "multi": true,
+    "options": [
+      "Gathering the required documents",
+      "Understanding the questions or requirements",
+      "Finding time to complete it",
+      "Concerns about the cost",
+      "I changed my mind",
+      "Other",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "N6",
+    "title": "What has kept you from exploring insurance so far?",
+    "multi": true,
+    "options": [
+      "I have not considered it a priority",
+      "I assumed it would be too expensive",
+      "I do not know where to start",
+      "I have not understood how it could help me",
+      "I have other financial priorities",
+      "Other",
+      "Nothing in particular",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "N7",
+    "title": "What makes you unsure whether you had coverage in the past?",
+    "multi": true,
+    "options": [
+      "A parent or relative handled these arrangements",
+      "I may have had coverage through a previous employer",
+      "I may have had coverage connected to a loan or mortgage",
+      "I remember payments but do not know what they covered",
+      "I cannot remember whether a policy was ever started",
+      "Other",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "N8",
+    "title": "What would be most useful at this point?",
+    "multi": false,
+    "options": [
+      "Guidance on checking whether I previously had coverage",
+      "Help understanding insurance options for my needs now",
+      "Both",
+      "General information only",
+      "Not sure yet"
+    ]
+  },
+  {
+    "id": "N9",
+    "title": "What would be most helpful as a starting point?",
+    "multi": false,
+    "options": [
+      "A simple explanation of how insurance works",
+      "Help identifying my priorities",
+      "Understanding the application process",
+      "Understanding what affects the cost",
+      "General information for now",
+      "Not sure yet"
+    ]
+  },
+  {
+    "id": "U1",
+    "title": "Which of these might apply to you?",
+    "multi": true,
+    "options": [
+      "I may have coverage through my employer",
+      "I may be covered under a family member’s policy",
+      "I may have insurance connected to a loan, mortgage or credit card",
+      "I have policy documents but do not know whether the coverage is active",
+      "I remember arranging insurance but do not know its current status",
+      "Other",
+      "None of these",
+      "I do not know"
+    ]
+  },
+  {
+    "id": "U2",
+    "title": "What would you most like to clarify about that possible coverage?",
+    "multi": true,
+    "options": [
+      "Whether the coverage is active",
+      "What protection it provides",
+      "Who is covered",
+      "The coverage amounts and limits",
+      "Whether it continues if my employment or circumstances change",
+      "Where to obtain the relevant information",
+      "Other",
+      "Not sure yet"
+    ]
+  },
+  {
+    "id": "U3",
+    "title": "What would help you get started?",
+    "multi": false,
+    "options": [
+      "Knowing where to check for existing coverage",
+      "Understanding the different types of insurance",
+      "Identifying my current priorities",
+      "General information only",
+      "Not sure yet"
+    ]
+  },
+  {
+    "id": "C1",
+    "title": "Which areas would you most like help understanding?",
+    "multi": true,
+    "max": 3,
+    "options": [
+      "International health insurance",
+      "Health insurance for care in Jamaica",
+      "Disability or income replacement",
+      "Life insurance and family protection",
+      "Critical illness protection",
+      "Retirement planning",
+      "Savings and investment options",
+      "Business protection",
+      "Employee benefits or group coverage",
+      "Home or property insurance",
+      "Motor insurance",
+      "Other",
+      "I am not sure where to begin",
+      "None at present"
+    ]
+  },
+  {
+    "id": "C2",
+    "title": "Which of those areas is your highest priority?",
+    "multi": false,
+    "options": []
+  },
+  {
+    "id": "C3",
+    "title": "What matters most to you when choosing an insurance representative?",
+    "multi": true,
+    "max": 3,
+    "options": [
+      "Clear explanations",
+      "Understanding my needs and budget",
+      "Honest recommendations",
+      "Regular communication",
+      "Help with applications and paperwork",
+      "Support when making a claim",
+      "Being available when I need assistance",
+      "Other",
+      "Not sure yet"
+    ]
+  },
+  {
+    "id": "C4",
+    "title": "Is there a particular reason you are thinking about insurance now?",
+    "multi": true,
+    "options": [
+      "Reviewing existing coverage",
+      "Checking whether I already have coverage",
+      "Replacing coverage that ended",
+      "Exploring insurance for the first time",
+      "Changes in family responsibilities",
+      "Starting or growing a business",
+      "Planning for retirement",
+      "General research",
+      "Other",
+      "Nothing specific at present",
+      "Prefer not to say"
+    ]
+  },
+  {
+    "id": "C5",
+    "title": "Is there a question or concern you would like to share?",
+    "multi": false,
+    "options": []
+  },
+  {
+    "id": "F1",
+    "title": "Would you like to discuss your insurance needs with me?",
+    "multi": false,
+    "options": [
+      "Yes, I would like to arrange a conversation",
+      "Not at the moment"
+    ]
+  }
+]

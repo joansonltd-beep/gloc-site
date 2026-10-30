@@ -7,6 +7,8 @@
 // honeypot field ("website" ,  hidden from humans) is dropped without
 // forwarding. Bots still get an OK response so they don't retry.
 
+import { surveyLead } from '@/lib/market-survey';
+
 const MAX_BODY_BYTES = 16_384;
 
 function isSpam(lead: Record<string, unknown>): boolean {
@@ -57,11 +59,16 @@ export async function POST(request: Request): Promise<Response> {
   }
   delete lead.website; // strip the (empty) honeypot before forwarding
 
+  if (lead.source === 'jamaica-market-survey') {
+    lead = surveyLead(lead);
+    if (!lead) return Response.json({ ok: false, forwarded: false }, { status: 400 });
+  }
+
   const webhook = process.env.LEAD_WEBHOOK_URL;
 
   if (!webhook) {
     // No endpoint configured yet. Log so it's visible during development.
-    console.info("[lead] (no LEAD_WEBHOOK_URL set) captured:", lead);
+    console.info("[lead] forwarding is not configured");
     return Response.json({ ok: true, forwarded: false });
   }
 

@@ -33,6 +33,10 @@ export default function PrivacyPage() {
           information you add, such as your preferred contact time, insurance needs or message. Other enquiry forms may request information relevant to the cover you are considering. The interactive
           calculators run in your browser; the numbers you enter there are only
           sent to us if you choose to continue on WhatsApp or submit a form.
+          The market survey collects the answers you choose to provide about
+          coverage, priorities and service expectations. Name and contact details
+          are requested only if you ask for a conversation. Please do not include
+          medical information, policy numbers or account details in survey responses.
         </p>
       </section>
 
@@ -43,6 +47,9 @@ export default function PrivacyPage() {
           are used to contact you and to prepare for our conversation. They are
           sent to the configured lead-capture service. We do not sell or share
           your information with third parties for their own marketing.
+          A survey conversation request authorizes contact about that request,
+          rather than signing you up for ongoing marketing. You can complete the
+          survey without requesting contact.
         </p>
       </section>
 
