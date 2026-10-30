@@ -14,7 +14,7 @@ export default function SurveyPage() {
         Insurance needs and priorities
       </h1>
       <p className="mt-4 leading-relaxed text-slate-600">
-        I am Joanson Baptiste James. I am building my insurance practice and
+        I am Joanson “Joey” Baptiste James. I am building my insurance practice and
         would appreciate your views on insurance, the service you expect and
         the financial priorities that matter to you. Your answers help me
         understand people’s needs and improve the guidance I offer. Completing

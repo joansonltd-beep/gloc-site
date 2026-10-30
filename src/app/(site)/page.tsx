@@ -15,7 +15,7 @@ export default async function Home() {
     <div className="homepage">
       <Hero settings={settings} />
       <div className="home-principles">
-        <p>Joanson Baptiste James</p>
+        <p>Joanson “Joey” Baptiste James</p>
         <span>Independent agency</span>
         <span>Multiple insurer options</span>
         <span>Jamaica-based service</span>

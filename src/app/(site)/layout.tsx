@@ -19,7 +19,7 @@ export default async function SiteLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": `${SITE_URL}/#advisor`,
-    name: "Joanson Baptiste James",
+    name: "Joanson “Joey” Baptiste James",
     description: "Independent insurance guidance and comparison across multiple insurers in Jamaica.",
     telephone: `+${settings.whatsappNumber}`,
     jobTitle: "Insurance agent",
@@ -54,7 +54,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
               '@type': 'WebSite',
               '@id': `${SITE_URL}/#website`,
               url: SITE_URL,
-              name: 'Joanson Baptiste James',
+              name: 'Joanson “Joey” Baptiste James',
               publisher: { '@id': `${SITE_URL}/#advisor` },
               inLanguage: 'en-JM',
             },
@@ -76,7 +76,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
                 J.
               </span>
               <span>
-                <strong>Joanson Baptiste James</strong>
+                <strong>Joanson “Joey” Baptiste James</strong>
                 <small>Insurance guidance · Jamaica</small>
               </span>
             </Link>
@@ -90,7 +90,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
           <div className="footer-top">
             <div>
               <Link href="/" className="footer-brand">
-                Joanson Baptiste James
+                Joanson “Joey” Baptiste James
               </Link>
               <p>
                 Independent insurance guidance for
@@ -116,7 +116,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
           <div className="footer-bottom">
             <p>{settings.footerDisclaimer}</p>
             <span>
-              © {new Date().getFullYear()} Joanson Baptiste James.
+              © {new Date().getFullYear()} Joanson “Joey” Baptiste James.
             </span>
           </div>
         </footer>

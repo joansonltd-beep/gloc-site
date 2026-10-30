@@ -23,11 +23,11 @@ const googleVerification = "VRywR5Rn38kExZbiFZyYiKT7a1pt-DENH8-uitRodb0";
 // local search) and stay editable in Studio.
 export async function generateMetadata(): Promise<Metadata> {
   const s = await getSiteSettings();
-  const name = "Joanson Baptiste James";
+  const name = "Joanson “Joey” Baptiste James";
   const title = `${name} | Insurance Guidance in Jamaica`;
   const description =
     s.heroSubcopy ||
-    "Insurance and financial planning questions for your life in Jamaica. Family, retirement, home and business guides from Joanson Baptiste James.";
+    "Insurance and financial planning questions for your life in Jamaica. Family, retirement, home and business guides from Joanson “Joey” Baptiste James.";
   return {
     metadataBase: new URL(SITE_URL),
     // No global canonical: each page sets its own so search engines index

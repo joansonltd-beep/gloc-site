@@ -6,7 +6,7 @@ import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = pageMetadata({
   title: "Group Coverage in Jamaica (Life/Health/Pensions)",
-  description: "Compare group life, health and pension options for your employees in Jamaica with independent guidance from Joanson Baptiste James.",
+  description: "Compare group life, health and pension options for your employees in Jamaica with independent guidance from Joanson “Joey” Baptiste James.",
   alternates: { canonical: "/business" },
 });
 

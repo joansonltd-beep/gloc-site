@@ -35,7 +35,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   professionalDescription: "Insurance Guidance in Jamaica",
   footerDisclaimer:
     "Information on this website is general in nature and does not constitute financial, legal or tax advice. Insurance products, eligibility, terms and pricing vary by insurer and individual circumstances.",
-  agentName: "Joanson Baptiste James",
+  agentName: "Joanson “Joey” Baptiste James",
   agentTagline: "Insurance advisor in Jamaica",
   heroEyebrow: "Insurance Guidance in Jamaica",
   heroHeadline: "Protect what you’ve built. Plan for what’s next.",
@@ -84,7 +84,7 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [];
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "I am Joanson Baptiste James, an insurance advisor serving clients across Jamaica.",
+    "I am Joanson “Joey” Baptiste James, an insurance advisor serving clients across Jamaica.",
   storyParagraphs: [
     "I help individuals, families and business owners throughout Jamaica compare insurance options and understand how each fits their priorities and budget.",
     "My experience in Caribbean financial services shapes a practical approach: listen first, explain clearly and give you room to decide. We review what you already have and discuss benefits, exclusions and costs without unnecessary jargon.",

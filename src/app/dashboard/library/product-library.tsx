@@ -31,7 +31,7 @@ export default function ProductLibrary() {
   return <div className="workspace library-workspace">
     <aside><a href="/dashboard" className="brand"><span className="brand-symbol">J.</span><span>Joanson<small>ACTIVITY WORKSPACE</small></span></a><div className="private-pill">● Private workspace</div>
       <nav aria-label="Workspace"><a className="nav-item" href="/dashboard">Activity tracker</a><a className="nav-item active" aria-current="page" href="/dashboard/library">Product library</a></nav>
-      <div className="sidebar-note"><strong>Know the source.</strong><p>Review carrier documents and keep unresolved terms in view.</p></div><div className="sidebar-foot">Joanson Baptiste James<br />Jamaica</div>
+      <div className="sidebar-note"><strong>Know the source.</strong><p>Review carrier documents and keep unresolved terms in view.</p></div><div className="sidebar-foot">Joanson “Joey” Baptiste James<br />Jamaica</div>
     </aside>
     <main><header className="topbar"><span>YOUR PRIVATE REFERENCE LIBRARY</span><a className="quiet" href="/dashboard">Back to activity tracker</a></header>
       <div className="main-content"><div className="page-head"><div><p className="eyebrow">JOANSON / PRODUCT LIBRARY</p><h1>Products, with the evidence.</h1><p>Carrier references, original documents and a clear record of what still needs confirmation.</p></div></div>

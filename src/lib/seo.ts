@@ -5,7 +5,7 @@ export const SHARE_IMAGE = {
   url: '/images/joanson-social.png',
   width: 1200,
   height: 630,
-  alt: 'Joanson Baptiste James, independent insurance guidance across Jamaica',
+  alt: 'Joanson “Joey” Baptiste James, independent insurance guidance across Jamaica',
 };
 
 // Keep search and sharing metadata aligned for each canonical public page.
@@ -14,11 +14,11 @@ export function pageMetadata(metadata: Metadata): Metadata {
   const description = typeof metadata.description === 'string' ? metadata.description : '';
   const canonical = metadata.alternates?.canonical;
   const path = typeof canonical === 'string' ? canonical : '/';
-  const shareTitle = `${title} | Joanson Baptiste James`;
+  const shareTitle = `${title} | Joanson “Joey” Baptiste James`;
   return {
     ...metadata,
     openGraph: {
-      type: 'website', locale: 'en_JM', siteName: 'Joanson Baptiste James',
+      type: 'website', locale: 'en_JM', siteName: 'Joanson “Joey” Baptiste James',
       url: new URL(path, SITE_URL).toString(),
       title: shareTitle, description, images: [SHARE_IMAGE],
     },
