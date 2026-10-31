@@ -1,0 +1,112 @@
+[
+  {
+    "id": "g-health",
+    "title": "Guardian Individual Health application",
+    "kind": "Carrier application",
+    "carrier": "Guardian",
+    "file": "/documents/g-health.pdf",
+    "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+    "retrieved": "2026-10-31",
+    "pages": 4
+  },
+  {
+    "id": "g-lifesaver",
+    "title": "Guardian Lifesaver brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Guardian",
+    "file": "/documents/g-lifesaver.pdf",
+    "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Lifesaver_Brochure_a242701cff.pdf",
+    "retrieved": "2026-10-31",
+    "pages": 10
+  },
+  {
+    "id": "g-assure",
+    "title": "Guardian Assure brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Guardian",
+    "file": "/documents/g-assure.pdf",
+    "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Assure_91747591fd.pdf",
+    "retrieved": "2026-10-31",
+    "pages": 16
+  },
+  {
+    "id": "g-instant",
+    "title": "Guardian Instant Coverage brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Guardian",
+    "file": "/documents/g-instant.pdf",
+    "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Instant_Coverage_Plan_brochure_3e44890317.pdf",
+    "retrieved": "2026-10-31",
+    "pages": 6
+  },
+  {
+    "id": "g-flexi",
+    "title": "Guardian Flexi-Term Special brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Guardian",
+    "file": "/documents/g-flexi.pdf",
+    "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Guardian_Flexi_Term_Special_Brochure_2022_460414de6e.pdf",
+    "retrieved": "2026-10-31",
+    "pages": 6
+  },
+  {
+    "id": "g-evolution",
+    "title": "Guardian Life Evolution brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Guardian",
+    "file": "/documents/g-evolution.pdf",
+    "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Life_Evolution_booklet_93b3f0d42b.pdf",
+    "retrieved": "2026-10-31",
+    "pages": 16
+  },
+  {
+    "id": "g-care",
+    "title": "Guardian Care Plus brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Guardian",
+    "file": "/documents/g-care.pdf",
+    "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Care_Plus_booklet_5a074e068c.pdf",
+    "retrieved": "2026-10-31",
+    "pages": 16
+  },
+  {
+    "id": "s-max-doc",
+    "title": "Maximum Protector brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Sagicor",
+    "file": "/documents/s-max-doc.pdf",
+    "source": "https://www.sagicor.com/-/media/jamaica-pdfs/16slj074saglifmaxprotbrochure-2-faw.pdf",
+    "retrieved": "2026-10-16",
+    "pages": 8
+  },
+  {
+    "id": "s-ultra-doc",
+    "title": "Ultra Life product document",
+    "kind": "Carrier product document",
+    "carrier": "Sagicor",
+    "file": "/documents/s-ultra-doc.pdf",
+    "source": "https://www.sagicor.com/-/media/Jamaica-PDFs/Sagicor-Life-Ultra-Life.pdf",
+    "retrieved": "2026-10-16",
+    "pages": 12
+  },
+  {
+    "id": "s-pro-doc",
+    "title": "ProShield brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Sagicor",
+    "file": "/documents/s-pro-doc.pdf",
+    "source": "https://www.sagicor.com/-/media/ProShield-Assets-2024/24-SEB-612-Sagicor-Proshield-Plan-Brochure-Reduced-Content-Leaflet--no-cutmarks-FAW.pdf",
+    "retrieved": "2026-10-16",
+    "pages": 28
+  },
+  {
+    "id": "s-hospitality-doc",
+    "title": "Hospitality Worker Health Plan brochure",
+    "kind": "Carrier brochure",
+    "carrier": "Sagicor",
+    "file": "/documents/s-hospitality-doc.pdf",
+    "source": "https://www.sagicor.com/-/media/Jamaica-PDFs/Tourism-Plan-Brochure.pdf",
+    "retrieved": "2026-10-16",
+    "pages": 9
+  }
+]

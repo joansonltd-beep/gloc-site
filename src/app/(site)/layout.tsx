@@ -110,6 +110,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
               <Link href="/book">Book a consultation</Link>
               <Link href="/contact">Get in touch</Link>
               <a href={buildWhatsAppLink(settings.whatsappNumber, "Hi, I would like to discuss my insurance options.")} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+              <Link href="/brochures">Product documents</Link>
               <Link href="/privacy">Privacy policy</Link>
               <SocialLinks settings={settings} />
             </div>

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import library from '@/lib/dashboard/product-library.json';
 import './library.css';
+import documents from '@/lib/product-documents.json';
+const localDocuments = new Map(documents.map(document => [document.id, document]));
 
 const sources = new Map(library.sources.map(source => [source.id, source]));
 const flags = new Map(library.flags.map(flag => [flag.id, flag]));
@@ -11,7 +13,7 @@ const categories = [...new Set(library.products.map(product => product.category)
 
 function SourceLink({ id }: { id: string }) {
   const source = sources.get(id);
-  return source ? <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}<span className="library-link-type">{source.kind}</span></a> : null;
+  return source ? <><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}<span className="library-link-type">{source.kind}</span></a>{localDocuments.has(id) && <a href={localDocuments.get(id)!.file} target="_blank" rel="noopener noreferrer">Open saved PDF · {localDocuments.get(id)!.pages} pages</a>}</> : null;
 }
 
 export default function ProductLibrary() {
