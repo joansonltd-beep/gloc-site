@@ -14,12 +14,7 @@ export default async function Home() {
   return (
     <div className="homepage">
       <Hero settings={settings} />
-      <div className="home-principles">
-        <p>Joanson “Joey” Baptiste James</p>
-        <span>Independent agency</span>
-        <span>Multiple insurer options</span>
-        <span>Jamaica-based service</span>
-      </div>
+
       <ClusterCards clusters={clusters} />
       <section className="personal-section">
         <div>

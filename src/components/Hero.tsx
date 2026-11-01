@@ -25,9 +25,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
             Message on WhatsApp <span aria-hidden>↗</span>
           </a>
         </div>
-        <div className="hero-note">
-          <span aria-hidden>✓</span> Independent guidance · Multiple insurer options · Clear, practical advice
-        </div>
+
       </div>
       <div className="hero-portrait">
         <div className="portrait-arch">
@@ -53,12 +51,9 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
           </span>
           <div>
             <p>{settings.agentName}</p>
-            <span>Insurance advisor in Jamaica</span>
           </div>
         </div>
-        <p className="portrait-side-note" aria-hidden>
-          People first. Plans second.
-        </p>
+
       </div>
     </section>
   );
