@@ -49,7 +49,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
         <span className="portrait-orbit" aria-hidden />
         <div className="portrait-caption">
           <span className="portrait-caption-mark" aria-hidden>
-            J.
+            <img src="/icon.png" alt="" width="42" height="42" />
           </span>
           <div>
             <p>{settings.agentName}</p>

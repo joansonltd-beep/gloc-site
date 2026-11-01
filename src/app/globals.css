@@ -1,20 +1,20 @@
 @import "tailwindcss";
 @theme {
-  --color-brand: #146b58;
-  --color-brand-dark: #0d4e40;
-  --color-brand-light: #8fd3bf;
-  --color-accent: #9bd6ed;
-  --color-accent-dark: #246787;
+  --color-brand: #294fd7;
+  --color-brand-dark: #20242b;
+  --color-brand-light: #b9c8ff;
+  --color-accent: #dce4ff;
+  --color-accent-dark: #2445b5;
   --color-flame: #c5544b;
-  --color-sun: #e0f3fc;
+  --color-sun: #edf1ff;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 :root {
-  --paper: #f6fbfe;
-  --ink: #173d48;
-  --muted: #536b75;
-  --line: #d6e7ee;
+  --paper: #f8f9fc;
+  --ink: #20242b;
+  --muted: #596171;
+  --line: #dfe3ec;
 }
 html {
   scroll-behavior: smooth;
@@ -26,8 +26,8 @@ body {
   color: var(--ink);
 }
 ::selection {
-  background: #9bd6ed;
-  color: #0d4e40;
+  background: #dce4ff;
+  color: #20242b;
 }
 a,
 button,
@@ -37,7 +37,7 @@ select {
 }
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #246787;
+  outline: 2px solid #2445b5;
   outline-offset: 5px;
 }
 button,
@@ -54,10 +54,10 @@ textarea {
   background-color: white;
 }
 .bg-hero-split {
-  background: #146b58;
+  background: #294fd7;
 }
 .bg-swoosh {
-  background: #9bd6ed;
+  background: #dce4ff;
 }
 .skip-link {
   position: fixed;
@@ -80,7 +80,7 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: #f6fbfef5;
+  background: #f8f9fcf5;
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
 }
@@ -136,19 +136,19 @@ textarea {
   text-underline-offset: 6px;
 }
 .site-nav ul a:hover {
-  color: #246787;
+  color: #2445b5;
 }
 .nav-book {
   display: flex;
   gap: 24px;
   align-items: center;
   padding: 13px 20px;
-  border: 1px solid #146b58;
+  border: 1px solid #294fd7;
   font-size: 12px;
   font-weight: 600;
 }
 .nav-book:hover {
-  background: #146b58;
+  background: #294fd7;
   color: white;
 }
 .menu-toggle {
@@ -176,14 +176,14 @@ textarea {
   font-weight: 600;
   letter-spacing: 2.1px;
   text-transform: uppercase;
-  color: #476975;
+  color: #414c65;
 }
 .status-dot {
   display: inline-block;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #277794;
+  background: #414c65;
   margin-right: 9px;
   vertical-align: 1px;
 }
@@ -194,11 +194,11 @@ textarea {
     serif;
   letter-spacing: -3px;
   margin: 27px 0;
-  color: #146b58;
+  color: #294fd7;
 }
 .hero-copy h1 em {
   font-weight: 400;
-  color: #267b9e;
+  color: #414c65;
 }
 .hero-description {
   font-size: 15px;
@@ -220,14 +220,14 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  background: #146b58;
+  background: #294fd7;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
   transition: background 0.2s;
 }
 .button-primary:hover {
-  background: #0d4e40;
+  background: #20242b;
 }
 .button-text {
   display: inline-flex;
@@ -239,7 +239,7 @@ textarea {
   border-bottom: 1px solid #a4c9d8;
 }
 .button-text:hover {
-  color: #246787;
+  color: #2445b5;
 }
 .hero-note {
   margin-top: 34px;
@@ -271,7 +271,7 @@ textarea {
   font:
     italic 80px Georgia,
     serif;
-  color: #146b58;
+  color: #294fd7;
   background: #d1edf8;
 }
 .portrait-orbit {
@@ -286,15 +286,15 @@ textarea {
   bottom: -25px;
   left: -28px;
   background: #ffffff;
-  border: 1px solid #d6e7ee;
+  border: 1px solid #dfe3ec;
   padding: 18px 24px;
   display: flex;
   align-items: center;
   gap: 17px;
-  box-shadow: 0 8px 25px #173d4808;
+  box-shadow: 0 8px 25px #20242b08;
 }
 .portrait-caption-mark {
-  color: #267b9e;
+  color: #414c65;
   font:
     italic 35px Georgia,
     serif;
@@ -307,7 +307,7 @@ textarea {
   display: block;
   margin-top: 4px;
   font-size: 10px;
-  color: #536b75;
+  color: #596171;
 }
 .portrait-side-note {
   position: absolute;
@@ -317,7 +317,7 @@ textarea {
   text-transform: uppercase;
   font-size: 8px;
   letter-spacing: 2.5px;
-  color: #536b75;
+  color: #596171;
 }
 .home-principles {
   border-top: 1px solid var(--line);
@@ -332,12 +332,12 @@ textarea {
 }
 .home-principles p {
   font-weight: 600;
-  color: #146b58;
+  color: #294fd7;
 }
 .home-principles span::before {
   content: "✧";
   margin-right: 10px;
-  color: #277794;
+  color: #414c65;
 }
 .home-section {
   padding: 74px 0;
@@ -370,7 +370,7 @@ textarea {
   position: relative;
   min-height: 268px;
   background: #e9f6fc;
-  border: 1px solid #d6e7ee;
+  border: 1px solid #dfe3ec;
   padding: 25px 22px;
   transition:
     transform 0.2s,
@@ -380,7 +380,7 @@ textarea {
   background: #e2f1f9;
 }
 .planning-card:nth-child(3) {
-  background: #e8f5ef;
+  background: #eef2ff;
 }
 .planning-card:nth-child(4) {
   background: #e7f3fb;
@@ -394,7 +394,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #146b58;
+  color: #294fd7;
   margin-bottom: 29px;
 }
 .planning-card-top > span {
@@ -403,9 +403,9 @@ textarea {
   right: 8px;
   padding: 4px 7px;
   border-radius: 3px;
-  background: #f6fbfe;
+  background: #f8f9fc;
   font-size: 10px;
-  color: #146b58;
+  color: #294fd7;
 }
 .planning-card h3 {
   font:
@@ -449,12 +449,12 @@ textarea {
   margin-top: 20px;
 }
 .personal-section h2 em {
-  color: #266d8b;
+  color: #414c65;
 }
 .personal-section > div > p:not(.eyebrow) {
   font-size: 13px;
   line-height: 1.9;
-  color: #496a76;
+  color: #414c65;
   margin-bottom: 15px;
 }
 .process-grid {
@@ -470,7 +470,7 @@ textarea {
   font:
     italic 31px Georgia,
     serif;
-  color: #267b9e;
+  color: #414c65;
 }
 .process-grid h3 {
   font-size: 14px;
@@ -497,8 +497,8 @@ textarea {
 }
 .home-invitation {
   text-align: center;
-  background: #146b58;
-  color: #f6fbfe;
+  background: #294fd7;
+  color: #f8f9fc;
   padding: 64px 24px;
   position: relative;
   overflow: hidden;
@@ -507,7 +507,7 @@ textarea {
 .home-invitation::after {
   content: "";
   position: absolute;
-  border: 1px solid #8fd3bf30;
+  border: 1px solid #b9c8ff30;
   border-radius: 50%;
   width: 470px;
   height: 470px;
@@ -522,7 +522,7 @@ textarea {
   bottom: -280px;
 }
 .home-invitation .eyebrow {
-  color: #9bd6ed;
+  color: #dce4ff;
 }
 .home-invitation h2 {
   font:
@@ -536,8 +536,8 @@ textarea {
   color: #d5eff5;
 }
 .button-gold {
-  background: #9bd6ed;
-  color: #0d4e40;
+  background: #dce4ff;
+  color: #20242b;
   margin-top: 28px;
 }
 .button-gold:hover {
@@ -564,7 +564,7 @@ textarea {
   margin-top: 15px;
   font-size: 12px;
   line-height: 1.8;
-  color: #536b75;
+  color: #596171;
 }
 .footer-links {
   display: flex;
@@ -584,7 +584,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   gap: 35px;
-  color: #536b75;
+  color: #596171;
   font-size: 10px;
   line-height: 1.8;
 }
@@ -637,9 +637,9 @@ textarea {
     right: 0;
     top: 100%;
     padding: 25px 30px;
-    background: #f6fbfe;
+    background: #f8f9fc;
     border-bottom: 1px solid #c5dce7;
-    box-shadow: 0 20px 30px #173d4810;
+    box-shadow: 0 20px 30px #20242b10;
   }
   .site-nav.is-open {
     display: flex;
@@ -921,3 +921,8 @@ textarea {
     line-height: 1.5;
   }
 }
+
+/* Charcoal and cobalt identity */
+.brand-lockup .brand-logo { display: block; width: 315px; height: auto; max-width: 100%; }
+@media (max-width: 760px) { .brand-lockup .brand-logo { width: 230px; } }
+@media (max-width: 380px) { .brand-lockup .brand-logo { width: 195px; } }

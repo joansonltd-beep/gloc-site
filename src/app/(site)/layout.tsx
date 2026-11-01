@@ -72,13 +72,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
               className="brand-lockup"
               aria-label={`${settings.agentName}, home`}
             >
-              <span className="brand-mark" aria-hidden>
-                J.
-              </span>
-              <span>
-                <strong>Joanson “Joey” Baptiste James</strong>
-                <small>Insurance guidance · Jamaica</small>
-              </span>
+              <img src="/brand/joanson-b-james-logo.png" alt="Joanson B James — Financial Advisor" width="1000" height="168" className="brand-logo" />
             </Link>
             <SiteNav />
           </div>
