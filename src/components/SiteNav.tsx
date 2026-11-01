@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 import { usePathname } from "next/navigation";
 const links = [
-  { href: "/protect", label: "Family & health" },
-  { href: "/grow", label: "Your future" },
-  { href: "/assets", label: "Home & motor" },
-  { href: "/business", label: "Group coverage" },
+  { href: "/protect", label: "Family & Health" },
+  { href: "/grow", label: "Your Future" },
+  { href: "/assets", label: "Home & Motor" },
+  { href: "/business", label: "Group Coverage" },
   { href: "/about", label: "About" },
 ];
 export default function SiteNav() {
