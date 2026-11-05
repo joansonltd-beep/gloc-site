@@ -154,7 +154,8 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 
 export async function getClusters(): Promise<ClusterData[]> {
   const res = await query<ClusterData[]>(CLUSTERS_QUERY);
-  return res?.length ? res : DEFAULT_CLUSTERS;
+  const available = res?.filter((item) => DEFAULT_CLUSTERS.some(({ key }) => key === item.key));
+  return available?.length ? available : DEFAULT_CLUSTERS;
 }
 
 export async function getCluster(key: ClusterKey): Promise<ClusterData> {
@@ -167,7 +168,8 @@ export async function getCluster(key: ClusterKey): Promise<ClusterData> {
 
 export async function getLines(clusterKey?: ClusterKey): Promise<LineData[]> {
   const res = await query<LineData[]>(LINES_QUERY);
-  const all = res?.length ? res : DEFAULT_LINES;
+  const available = res?.filter((item) => DEFAULT_CLUSTERS.some(({ key }) => key === item.clusterKey));
+  const all = available?.length ? available : DEFAULT_LINES;
   return clusterKey ? all.filter((l) => l.clusterKey === clusterKey) : all;
 }
 

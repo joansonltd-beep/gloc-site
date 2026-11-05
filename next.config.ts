@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: "/assets/:path*", destination: "/protect", permanent: true },
       { source: "/survey.html", destination: "/survey", permanent: true },
     ];
   },

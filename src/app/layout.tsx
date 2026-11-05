@@ -45,7 +45,6 @@ export async function generateMetadata(): Promise<Metadata> {
       "health insurance Jamaica",
       "critical illness Jamaica",
       "retirement planning Jamaica",
-      "home motor insurance Jamaica",
     ],
     openGraph: {
       type: "website",

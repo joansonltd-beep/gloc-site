@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Field, SelectField } from "@/components/tools/ToolUI";
 import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
-const TYPES = ["Not sure yet", "Life insurance", "Health insurance", "Critical illness", "Personal accident", "Motor insurance", "Home or property insurance", "Pensions and annuities", "Investments", "Group coverage (life, health and pensions)"];
+const TYPES = ["Not sure yet", "Life insurance", "Health insurance", "Critical illness", "Personal accident", "Pensions and annuities", "Investments", "Group coverage (life, health and pensions)"];
 export default function CallbackForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");

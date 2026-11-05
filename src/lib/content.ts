@@ -1,7 +1,7 @@
 // Dummy content + placeholder discovery logic for M1.
 // All of this moves into Sanity in M4. Keep it centralized so the swap is clean.
 
-export type ClusterKey = "protect" | "grow" | "assets" | "business";
+export type ClusterKey = "protect" | "grow" | "business";
 
 export type Cluster = {
   key: ClusterKey;
@@ -25,13 +25,6 @@ export const CLUSTERS: Cluster[] = [
     href: "/grow",
     lines: "Retirement, savings and investments",
     intent: "Review retirement and savings options in Jamaica.",
-  },
-  {
-    key: "assets",
-    title: "Home & motor",
-    href: "/assets",
-    lines: "Your home, vehicle and property",
-    intent: "Compare cover for your home, vehicle and property.",
   },
   {
     key: "business",
@@ -81,23 +74,6 @@ export const LINES: Record<ClusterKey, Line[]> = {
       blurb: "Connect your savings to your goals.",
     },
   ],
-  assets: [
-    {
-      title: "Motor",
-      icon: "motor",
-      blurb: "Understand the cover for your vehicle.",
-    },
-    {
-      title: "Home",
-      icon: "home",
-      blurb: "Think through your home and belongings.",
-    },
-    {
-      title: "Property",
-      icon: "property",
-      blurb: "Consider the risks around rental or commercial property.",
-    },
-  ],
   business: [
     {
       title: "Group coverage",
@@ -111,7 +87,7 @@ export const LINES: Record<ClusterKey, Line[]> = {
 export type RouterCard = {
   title: string;
   subtitle: string;
-  href?: string; // four cards link out; the fifth opens the discovery flow
+  href?: string; // three cards link out; the fourth opens the discovery flow
   discovery?: boolean;
 };
 
@@ -127,29 +103,23 @@ export const ROUTER_CARDS: RouterCard[] = [
     href: "/grow",
   },
   {
-    title: "Insure my car, home or property",
-    subtitle: "Motor, home & property cover",
-    href: "/assets",
-  },
-  {
     title: "Group coverage",
     subtitle: "Life, health and pensions",
     href: "/business",
   },
   {
     title: "Not sure? Help me figure it out",
-    subtitle: "Answer four short questions",
+    subtitle: "Answer three short questions",
     discovery: true,
   },
 ];
 
-// --- Discovery flow (4 questions) ---------------------------------------
+// --- Discovery flow (3 questions) ---------------------------------------
 // Placeholder logic only. Real recommendations get refined later.
 
 export type DiscoveryAnswers = {
   lifeStage: "starting" | "building" | "family" | "retiring";
   dependents: "yes" | "no";
-  home: "own" | "rent";
   business: "yes" | "no";
 };
 
@@ -176,14 +146,6 @@ export const DISCOVERY_QUESTIONS: DiscoveryQuestion[] = [
     options: [
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },
-    ],
-  },
-  {
-    key: "home",
-    question: "Do you own or rent your home?",
-    options: [
-      { value: "own", label: "I own" },
-      { value: "rent", label: "I rent" },
     ],
   },
   {
@@ -244,16 +206,6 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
     });
   }
 
-  if (a.home === "own") {
-    scored.push({
-      weight: 8,
-      line: "Home / Property Cover",
-      cluster: "assets",
-      href: "/assets",
-      why: "Protect the biggest asset you own against fire, flood and theft.",
-    });
-  }
-
   if (a.business === "yes") {
     scored.push({
       weight: 8,
@@ -311,7 +263,6 @@ export type CalculatorKey =
   | "critical-illness"
   | "pension"
   | "investment"
-  | "quick-quote"
   | "group"
   | null;
 
@@ -403,45 +354,6 @@ export const LINE_DETAILS: LineDetail[] = [
       "Keep short-term commitments in mind before investing.",
     ],
     calculator: "investment",
-  },
-  {
-    slug: "motor",
-    clusterKey: "assets",
-    title: "Motor Insurance",
-    tagline: "Compare motor insurance in Jamaica for your vehicle and its use. Understand liability, vehicle damage, excesses and driver restrictions.",
-    what: ["Motor insurance options differ in the liability and vehicle damage they cover. We help you compare terms for your vehicle, drivers and intended use, with clear explanations of excesses and exclusions."],
-    why: [
-      "Check what happens after an accident or theft.",
-      "Confirm the excess you would need to pay.",
-      "Read any restrictions on drivers or vehicle use.",
-    ],
-    calculator: "quick-quote",
-  },
-  {
-    slug: "home",
-    clusterKey: "assets",
-    title: "Home Insurance",
-    tagline: "Compare home insurance in Jamaica to help protect your building and belongings. Understand rebuilding values, insured events, exclusions and excesses.",
-    what: ["Home insurance can cover a building, its contents or both against specified events. We help you compare insurer options around your home, belongings and mortgage requirements."],
-    why: [
-      "Check the terms for storm and flood damage.",
-      "Review how contents need to be listed or valued.",
-      "Ask about any mortgage-related requirements.",
-    ],
-    calculator: "quick-quote",
-  },
-  {
-    slug: "property",
-    clusterKey: "assets",
-    title: "Property Insurance",
-    tagline: "Compare rental and commercial property insurance in Jamaica. Review building protection, liability and any options for loss of rental income.",
-    what: ["Rental and commercial properties have different risks from owner-occupied homes. We help you compare cover based on use, occupancy and building details, including any liability or rental income benefits."],
-    why: [
-      "Describe how the property is used.",
-      "Ask about periods when a property is empty.",
-      "Check whether liability and rental income are included.",
-    ],
-    calculator: "quick-quote",
   },
   {
     slug: "group-employee-benefits",

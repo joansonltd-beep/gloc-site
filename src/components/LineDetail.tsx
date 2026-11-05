@@ -8,7 +8,6 @@ import ProtectionPlanner from "@/components/tools/ProtectionPlanner";
 import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
 import PensionInflationProjector from "@/components/tools/PensionInflationProjector";
 import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
-import QuickQuoteRequest from "@/components/tools/QuickQuoteRequest";
 import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
 import TermInsuranceForm from "@/components/tools/TermInsuranceForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
@@ -53,9 +52,6 @@ export default async function LineDetail({
       break;
     case "investment":
       calculator = <InvestmentGrowthProjector />;
-      break;
-    case "quick-quote":
-      calculator = <QuickQuoteRequest />;
       break;
     case "group":
       calculator = <GroupBenefitsEnquiry />;

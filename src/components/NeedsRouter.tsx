@@ -72,7 +72,7 @@ export default function NeedsRouter() {
                   {card.subtitle}
                 </span>
                 <span className="mt-3 text-sm font-medium text-accent-dark">
-                  Answer four questions →
+                  Answer three questions →
                 </span>
               </button>
             ) : (
@@ -88,7 +88,7 @@ export default function NeedsRouter() {
                   {card.subtitle}
                 </span>
                 <span className="mt-3 text-sm font-medium text-brand">
-                  {card.href === "/protect" ? "Get life cover guidance" : card.href === "/grow" ? "Review my retirement options" : card.href === "/assets" ? "Insure my vehicle" : "Protect my business"} →
+                  {card.href === "/protect" ? "Get life cover guidance" : card.href === "/grow" ? "Review my retirement options" : "Protect my business"} →
                 </span>
               </Link>
             )

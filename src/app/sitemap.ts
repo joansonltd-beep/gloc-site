@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/siteUrl";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // /brochures is deliberately excluded: it is noindexed and blocked in robots.
-  const topRoutes = ["", "/protect", "/grow", "/assets", "/business", "/about", "/contact", "/book", "/privacy"];
+  const topRoutes = ["", "/protect", "/grow", "/business", "/about", "/contact", "/book", "/privacy"];
   const lineRoutes = LINE_DETAILS.map((d) => `/${d.clusterKey}/${d.slug}`);
   return [...topRoutes, ...lineRoutes].map((path) => ({
     url: `${SITE_URL}${path}`,

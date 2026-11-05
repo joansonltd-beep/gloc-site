@@ -4,7 +4,6 @@ import type { ClusterData } from "@/lib/siteData";
 const icons: Record<string, string> = {
   protect: "life-insurance",
   grow: "pension-annuities",
-  assets: "home",
   business: "group-employee-benefits",
 };
 export default function ClusterCards({
@@ -41,7 +40,7 @@ export default function ClusterCards({
             <h3>{c.title}</h3>
             <p>{c.intent}</p>
             <span className="planning-card-lines">{c.lines}</span>
-            <span className="mt-3 block text-sm font-semibold text-brand">{c.key === "protect" ? "Get life cover guidance" : c.key === "grow" ? "Review my retirement options" : c.key === "assets" ? "Insure my vehicle" : "Protect my business"}</span>
+            <span className="mt-3 block text-sm font-semibold text-brand">{c.key === "protect" ? "Get life cover guidance" : c.key === "grow" ? "Review my retirement options" : "Protect my business"}</span>
             <span className="planning-card-arrow" aria-hidden>
               ↗
             </span>

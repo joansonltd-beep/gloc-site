@@ -96,7 +96,6 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
             <div className="footer-links">
               <Link href="/protect">Family &amp; health</Link>
               <Link href="/grow">Retirement &amp; savings</Link>
-              <Link href="/assets">Home &amp; motor</Link>
               <Link href="/business">Group coverage</Link>
             </div>
             <div className="footer-links">
