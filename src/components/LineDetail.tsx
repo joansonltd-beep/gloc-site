@@ -12,6 +12,7 @@ import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
 import TermInsuranceForm from "@/components/tools/TermInsuranceForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 import BrochureSection from "@/components/BrochureSection";
+import JnLifePrograms from "@/components/JnLifePrograms";
 import { Check } from "@/components/icons";
 
 // Detail page for a single product line: what it is, why it matters, and the
@@ -103,6 +104,7 @@ export default async function LineDetail({
 
       <p className="max-w-3xl text-slate-600">Independent guidance from Joanson “Joey” Baptiste James helps you compare options from multiple insurers and make an informed decision.</p>
       <BrochureSection pageKey={`${clusterKey}/${slug}`} />
+      <JnLifePrograms pageKey={`${clusterKey}/${slug}`} />
 
       {calculator}
 
