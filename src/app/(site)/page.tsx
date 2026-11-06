@@ -46,13 +46,7 @@ export default async function Home() {
         <NeedsRouter />
       </div>
       <section className="home-invitation">
-        <h2>
-          A little clarity can
-          {" "}
-          <br />
-          help you move forward.
-        </h2>
-        <p>Bring your questions. We can start there.</p>
+        <h2>Talk through your insurance options</h2>
         <Link href="/book" className="button-gold">
           Book a consultation <span aria-hidden>↗</span>
         </Link>

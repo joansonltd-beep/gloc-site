@@ -17,13 +17,13 @@ export default function BrochuresPage() {
     <JnLifePrograms />
     {['Guardian', 'Sagicor'].map(carrier => <section key={carrier} className="space-y-4">
       <h2 className="text-2xl font-semibold text-brand">{carrier}</h2>
-      <div className="grid gap-4 sm:grid-cols-2">{documents.filter(d => d.carrier === carrier).map(d => <article key={d.id} className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3">
+      <div className="grid gap-4 sm:grid-cols-2">{documents.filter(d => d.carrier === carrier).map(d => <article key={d.id} className="bg-white p-5 space-y-3">
         <h3 className="text-lg font-semibold text-slate-800">{d.title}</h3>
         <p className="text-sm text-slate-600">{d.kind} · PDF · {d.pages} pages</p>
         <p className="text-xs text-slate-500">Source copy saved {d.retrieved}. Current edition not confirmed.</p>
         <div className="flex flex-wrap gap-4 text-sm font-semibold text-brand"><a href={d.file} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Open PDF</a><a href={d.file} download className="underline underline-offset-4">Download</a><a href={d.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Carrier source</a></div>
       </article>)}</div>
     </section>)}
-    <section className="rounded-2xl bg-slate-50 p-6 space-y-3"><h2 className="text-2xl font-semibold text-brand">Looking for group benefits?</h2><p className="text-slate-600">Group life and health options depend on your organisation and employee needs. Ask for current plan information and a tailored quotation.</p><Link href="/book" className="font-semibold text-brand underline">Discuss group coverage</Link></section>
+    <section className="rounded-sm bg-slate-50 p-6 space-y-3"><h2 className="text-2xl font-semibold text-brand">Looking for group benefits?</h2><p className="text-slate-600">Group life and health options depend on your organisation and employee needs. Ask for current plan information and a tailored quotation.</p><Link href="/book" className="font-semibold text-brand underline">Discuss group coverage</Link></section>
   </div>;
 }

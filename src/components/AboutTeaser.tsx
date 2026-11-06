@@ -13,7 +13,7 @@ export default function AboutTeaser({
   headshotUrl: string | null;
 }) {
   return (
-    <section className="grid items-center gap-6 rounded-2xl border border-slate-200 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
+    <section className="grid items-center gap-6 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
       <div className="relative h-24 w-24 overflow-hidden rounded-full bg-brand">
         {headshotUrl ? (
           <Image

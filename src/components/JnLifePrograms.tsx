@@ -18,7 +18,7 @@ export default function JnLifePrograms({ pageKey }: { pageKey?: string }) {
       <p className="text-slate-600">Check the insurer’s current terms, eligibility and exclusions before applying.</p>
       <div className="grid gap-4 sm:grid-cols-2">
         {items.map(({ name, summary, path }) => (
-          <article key={path} className="space-y-2 rounded-2xl border border-slate-200 bg-white p-5">
+          <article key={path} className="space-y-2 bg-white p-5">
             <h3 className="text-lg font-semibold text-slate-800">{name}</h3>
             <p className="text-sm leading-relaxed text-slate-600">{summary}</p>
             <a href={`https://www.jnlifeinsurance.com/${path}/`} className="inline-block text-sm font-semibold text-brand underline underline-offset-4" aria-label={`Read about ${name} on JN Life`}>Read the official plan details</a>

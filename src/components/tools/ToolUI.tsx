@@ -11,7 +11,7 @@ export function ToolFrame({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm sm:p-8">
+    <div className="bg-white p-6 sm:p-8">
       <h3 className="text-xl font-semibold text-brand">{title}</h3>
       {intro && <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-600">{intro}</p>}
       <div className="mt-5">{children}</div>
@@ -88,7 +88,7 @@ export function ResultCard({
 }) {
   return (
     <div className="rounded-lg border border-slate-200 p-4">
-      <p className="text-xs font-medium uppercase tracking-wide text-accent-dark">
+      <p className="text-xs font-medium text-accent-dark">
         {label}
       </p>
       <p className="mt-1 text-xl font-semibold text-brand">{value}</p>

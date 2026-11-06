@@ -88,7 +88,7 @@ export default async function LineDetail({
           ))}
         </section>
 
-        <section className="rounded-2xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-sm">
+        <section className="bg-white p-6 backdrop-blur-sm">
           <h2 className="text-xl font-semibold text-brand">Why it matters</h2>
           <ul className="mt-3 space-y-2">
             {why.map((point) => (

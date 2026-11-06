@@ -101,7 +101,7 @@ textarea {
 }
 .brand-mark {
   font:
-    italic 44px/1 Georgia,
+    44px/1 Georgia,
     serif;
   border-right: 1px solid #c6dde7;
   padding-right: 17px;
@@ -253,7 +253,7 @@ textarea {
   display: grid;
   place-items: center;
   font:
-    italic 80px Georgia,
+    80px Georgia,
     serif;
   color: #294fd7;
   background: #d1edf8;
@@ -279,7 +279,7 @@ textarea {
 .portrait-caption-mark {
   color: #414c65;
   font:
-    italic 35px Georgia,
+    35px Georgia,
     serif;
 }
 .portrait-caption p {
@@ -450,7 +450,7 @@ textarea {
 }
 .process-number {
   font:
-    italic 31px Georgia,
+    31px Georgia,
     serif;
   color: #414c65;
 }

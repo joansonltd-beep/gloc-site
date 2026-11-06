@@ -28,9 +28,6 @@ export default async function BookPage() {
     <div className="mx-auto max-w-3xl">
       <AdsConversion sendTo="AW-18282133568/QM1DCMyU7sccEMDwzI1E" />
       <div className="text-center">
-        <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
-          Book a consultation
-        </p>
         <h1 className="mt-2 text-3xl font-semibold text-brand sm:text-4xl">
           Let&apos;s find a time to talk
         </h1>
@@ -55,7 +52,7 @@ export default async function BookPage() {
         </p>
       </div>
 
-      <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div className="mt-8 overflow-hidden bg-white shadow-sm">
         <iframe
           src={BOOKING_EMBED_URL}
           title="Book a meeting"
@@ -103,11 +100,8 @@ export default async function BookPage() {
       {/* Market survey funnel ,  its own standalone page. */}
       <a
         href="/survey"
-        className="mt-10 block rounded-2xl border border-slate-200 bg-white/70 p-6 text-center shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+        className="mt-10 block bg-white p-6 text-center transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
       >
-        <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
-          Not ready to book?
-        </p>
         <p className="mt-1 text-lg font-semibold text-brand">
           Take my short market survey
         </p>

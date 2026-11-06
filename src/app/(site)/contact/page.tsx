@@ -56,7 +56,7 @@ export default async function ContactPage() {
     <div className="space-y-10">
       <header>
         <h1 className="mt-4 text-4xl font-semibold text-brand">
-          Insurance guidance across Jamaica.
+          Insurance guidance across Jamaica
         </h1>
         <p className="mt-4 max-w-xl leading-relaxed text-slate-600">
           Message or call me to start a conversation. If you prefer to choose a

@@ -34,7 +34,7 @@ export default function WhyWorkWithMe() {
         {reasons.map((r) => (
           <div
             key={r.title}
-            className="rounded-xl border border-slate-200 bg-white/70 p-5 backdrop-blur-sm"
+            className="rounded-xl border border-slate-200 bg-white p-5 backdrop-blur-sm"
           >
             <h3 className="font-semibold text-brand">{r.title}</h3>
             <p className="mt-1 text-sm text-slate-600">{r.body}</p>

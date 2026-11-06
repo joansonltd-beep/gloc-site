@@ -29,8 +29,8 @@ export default function CallbackForm() {
       setStatus(response.ok && result.forwarded ? "done" : "error");
     } catch { setStatus("error"); }
   }
-  if (status === "done") return <section className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="text-xl font-semibold text-brand">Thank you, {name.split(" ")[0]}</h2><p className="mt-2 text-slate-600">Your consultation request has been received. I will contact you using the details provided to arrange the next step.</p></section>;
-  return <form onSubmit={e => { e.preventDefault(); void submit(); }} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+  if (status === "done") return <section className="bg-white p-6"><h2 className="text-xl font-semibold text-brand">Thank you, {name.split(" ")[0]}</h2><p className="mt-2 text-slate-600">Your consultation request has been received. I will contact you using the details provided to arrange the next step.</p></section>;
+  return <form onSubmit={e => { e.preventDefault(); void submit(); }} className="bg-white p-6 sm:p-8">
     <h2 className="text-xl font-semibold text-brand">Request a consultation</h2>
     <p className="mt-2 text-sm text-slate-600">Tell me what you need and when you would prefer me to contact you. No pressure, no obligation.</p>
     <div className="hidden" aria-hidden="true"><label>Website<input name="website" value={website} onChange={e=>setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" /></label></div>
