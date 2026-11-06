@@ -55,8 +55,7 @@ export default async function ContactPage() {
   return (
     <div className="space-y-10">
       <header>
-        <p className="eyebrow">Get in touch</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-brand">
+        <h1 className="mt-4 text-4xl font-semibold text-brand">
           Insurance guidance across Jamaica.
         </h1>
         <p className="mt-4 max-w-xl leading-relaxed text-slate-600">

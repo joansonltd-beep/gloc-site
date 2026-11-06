@@ -54,7 +54,7 @@ export default function ClusterHub({
         <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
           {cluster.intent}
         </p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
+        <h1 className="mt-2 text-3xl font-semibold text-brand sm:text-4xl">
           {cluster.title} in Jamaica
         </h1>
         {linkLines ? (
@@ -87,7 +87,7 @@ export default function ClusterHub({
       <section className="space-y-12">{children}</section>
 
       {linesLast && lineCards}
-      <section className="rounded-2xl bg-brand p-6 text-white"><h2 className="text-xl font-semibold">Not sure where to start? Book a no-pressure consultation.</h2><Link href="/book" className="button-gold mt-4">Book a consultation</Link></section>
+      <section className="rounded-2xl bg-brand p-6 text-white"><h2 className="text-xl font-semibold">Not sure where to start? Book a no-pressure consultation</h2><Link href="/book" className="button-gold mt-4">Book a consultation</Link></section>
     </div>
   );
 }

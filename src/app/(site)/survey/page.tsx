@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 export default function SurveyPage() {
   return (
     <div className="mx-auto max-w-2xl">
-      <p className="eyebrow">Your perspective</p>
       <h1 className="mt-4 text-4xl font-semibold text-brand">
         Insurance needs and priorities
       </h1>

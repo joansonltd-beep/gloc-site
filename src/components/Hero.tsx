@@ -3,19 +3,10 @@ import Link from "next/link";
 import { buildWhatsAppLink } from "@/config/site";
 import type { SiteSettings } from "@/lib/siteData";
 export default function Hero({ settings }: { settings: SiteSettings }) {
-  const [headline, ...rest] = settings.heroHeadline.split(/(?<=\.)\s+/);
   return (
     <section className="home-hero" aria-labelledby="home-title">
       <div className="hero-copy">
-        <p className="eyebrow">
-          <span className="status-dot" /> {settings.heroEyebrow}
-        </p>
-        <h1 id="home-title">
-          {headline}
-          {" "}
-          <br />
-          <em>{rest.join(" ")}</em>
-        </h1>
+        <h1 id="home-title">{settings.heroHeadline.trim().replace(/\.$/, "")}</h1>
         <p className="hero-description">{settings.heroSubcopy}</p>
         <div className="hero-actions">
           <Link href="/book" className="button-primary">
@@ -44,7 +35,6 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
             </div>
           )}
         </div>
-        <span className="portrait-orbit" aria-hidden />
         <div className="portrait-caption">
           <span className="portrait-caption-mark" aria-hidden>
             <img src="/icon.png" alt="" width="42" height="42" />

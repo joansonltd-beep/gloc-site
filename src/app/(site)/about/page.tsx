@@ -26,7 +26,7 @@ export default async function AboutPage() {
           <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
             {settings.agentTagline}
           </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-semibold text-brand sm:text-4xl">
             Meet {settings.agentName}
           </h1>
           <p className="mt-3 max-w-xl text-lg text-slate-600">{about.teaser}</p>

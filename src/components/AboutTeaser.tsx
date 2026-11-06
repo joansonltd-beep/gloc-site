@@ -14,7 +14,7 @@ export default function AboutTeaser({
 }) {
   return (
     <section className="grid items-center gap-6 rounded-2xl border border-slate-200 p-6 sm:grid-cols-[auto_1fr] sm:p-8">
-      <div className="relative h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br from-brand to-brand-dark">
+      <div className="relative h-24 w-24 overflow-hidden rounded-full bg-brand">
         {headshotUrl ? (
           <Image
             src={headshotUrl}
@@ -30,7 +30,7 @@ export default function AboutTeaser({
         )}
       </div>
       <div>
-        <h2 className="text-2xl font-semibold tracking-tight text-brand">
+        <h2 className="text-2xl font-semibold text-brand">
           Meet Joanson
         </h2>
         <p className="mt-2 max-w-prose text-slate-600">{teaser}</p>

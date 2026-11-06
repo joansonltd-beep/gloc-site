@@ -18,12 +18,11 @@ export default async function Home() {
       <ClusterCards clusters={clusters} />
       <section className="personal-section">
         <div>
-          <p className="eyebrow">Meet Joanson</p>
           <h2>
             Good planning begins
             {" "}
             <br />
-            with <em>listening.</em>
+            with listening
           </h2>
         </div>
         <div>
@@ -47,7 +46,6 @@ export default async function Home() {
         <NeedsRouter />
       </div>
       <section className="home-invitation">
-        <p className="eyebrow">Your next chapter</p>
         <h2>
           A little clarity can
           {" "}

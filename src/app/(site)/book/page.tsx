@@ -31,7 +31,7 @@ export default async function BookPage() {
         <p className="text-sm font-medium uppercase tracking-wide text-accent-dark">
           Book a consultation
         </p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
+        <h1 className="mt-2 text-3xl font-semibold text-brand sm:text-4xl">
           Let&apos;s find a time to talk
         </h1>
         <p className="mt-3 text-lg text-slate-600">
@@ -77,7 +77,7 @@ export default async function BookPage() {
       </p>
 
       <div className="mt-10 text-center">
-        <h2 className="text-xl font-semibold tracking-tight text-brand">
+        <h2 className="text-xl font-semibold text-brand">
           Prefer a callback?
         </h2>
         <p className="mt-1 text-slate-600">

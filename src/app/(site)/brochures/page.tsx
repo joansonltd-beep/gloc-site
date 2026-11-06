@@ -9,8 +9,7 @@ export const metadata: Metadata = {
 export default function BrochuresPage() {
   return <div className="max-w-5xl space-y-8">
     <div className="max-w-2xl space-y-4">
-      <p className="eyebrow">Product information</p>
-      <h1 className="text-4xl font-semibold text-brand">Explore your insurance options.</h1>
+      <h1 className="text-4xl font-semibold text-brand">Explore your insurance options</h1>
       <p className="leading-relaxed text-slate-600">Browse Guardian and Sagicor documents and official JN Life plan information, then let’s talk about what fits your needs.</p>
       <p className="rounded-xl bg-amber-50 p-4 text-sm leading-relaxed text-slate-700">These are reference documents. Editions, benefits and availability may have changed. Confirm current terms before applying. An application form is not a brochure or a quotation. Please do not send completed forms or medical details through this website.</p>
       <Link href="/book" className="button-primary">Help me understand my options <span aria-hidden>↗</span></Link>

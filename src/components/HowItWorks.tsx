@@ -17,8 +17,7 @@ export default function HowItWorks() {
     <section className="home-section process-section">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">A straightforward process</p>
-          <h2>It starts with a conversation.</h2>
+          <h2>It starts with a conversation</h2>
         </div>
         <p>
           You do not need to have

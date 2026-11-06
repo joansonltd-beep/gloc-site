@@ -15,8 +15,7 @@ export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-8">
       <header>
-        <span className="block h-1.5 w-24 rounded-full bg-swoosh" />
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-semibold text-brand sm:text-4xl">
           Privacy Policy
         </h1>
         <p className="mt-3 text-lg text-slate-600">

@@ -109,13 +109,13 @@ textarea {
 .brand-lockup strong {
   display: block;
   font-size: 14px;
-  letter-spacing: -0.35px;
+
   font-weight: 600;
 }
 .brand-lockup small {
   display: block;
   margin-top: 5px;
-  text-transform: uppercase;
+
   letter-spacing: 2px;
   font-size: 9px;
   color: var(--muted);
@@ -171,28 +171,12 @@ textarea {
   align-items: center;
   padding: 72px 0 68px;
 }
-.eyebrow {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2.1px;
-  text-transform: uppercase;
-  color: #414c65;
-}
-.status-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #414c65;
-  margin-right: 9px;
-  vertical-align: 1px;
-}
 .hero-copy h1 {
   font:
     400 clamp(48px, 5.8vw, 76px)/1.06 Georgia,
     "Times New Roman",
     serif;
-  letter-spacing: -3px;
+
   margin: 27px 0;
   color: #294fd7;
 }
@@ -286,7 +270,6 @@ textarea {
   bottom: -25px;
   left: -28px;
   background: #ffffff;
-  border: 1px solid #dfe3ec;
   padding: 18px 24px;
   display: flex;
   align-items: center;
@@ -314,7 +297,7 @@ textarea {
   top: 50%;
   right: -37px;
   writing-mode: vertical-rl;
-  text-transform: uppercase;
+
   font-size: 8px;
   letter-spacing: 2.5px;
   color: #596171;
@@ -353,7 +336,7 @@ textarea {
   font:
     400 39px/1.15 Georgia,
     serif;
-  letter-spacing: -1.3px;
+
   margin-top: 14px;
 }
 .section-heading > p {
@@ -370,7 +353,6 @@ textarea {
   position: relative;
   min-height: 268px;
   background: #e9f6fc;
-  border: 1px solid #dfe3ec;
   padding: 25px 22px;
   transition:
     transform 0.2s,
@@ -411,7 +393,7 @@ textarea {
   font:
     400 25px/1.2 Georgia,
     serif;
-  letter-spacing: -0.5px;
+
 }
 .planning-card > p {
   font-size: 12px;
@@ -445,13 +427,13 @@ textarea {
   font:
     400 43px/1.17 Georgia,
     serif;
-  letter-spacing: -1.2px;
+
   margin-top: 20px;
 }
 .personal-section h2 em {
   color: #414c65;
 }
-.personal-section > div > p:not(.eyebrow) {
+.personal-section > div > p {
   font-size: 13px;
   line-height: 1.9;
   color: #414c65;
@@ -503,35 +485,14 @@ textarea {
   position: relative;
   overflow: hidden;
 }
-.home-invitation::before,
-.home-invitation::after {
-  content: "";
-  position: absolute;
-  border: 1px solid #b9c8ff30;
-  border-radius: 50%;
-  width: 470px;
-  height: 470px;
-  pointer-events: none;
-}
-.home-invitation::before {
-  left: -340px;
-  top: -145px;
-}
-.home-invitation::after {
-  right: -290px;
-  bottom: -280px;
-}
-.home-invitation .eyebrow {
-  color: #dce4ff;
-}
 .home-invitation h2 {
   font:
     400 48px/1.1 Georgia,
     serif;
-  letter-spacing: -1px;
+
   margin: 23px 0 17px;
 }
-.home-invitation > p:not(.eyebrow) {
+.home-invitation > p {
   font-size: 13px;
   color: #d5eff5;
 }
@@ -666,16 +627,13 @@ textarea {
   }
   .hero-copy h1 {
     font-size: 55px;
-    letter-spacing: -2px;
+
   }
   .hero-actions {
     gap: 17px;
   }
   .hero-description {
     font-size: 13px;
-  }
-  .hero-copy .eyebrow {
-    font-size: 8px;
   }
   .home-principles {
     display: grid;
@@ -721,10 +679,6 @@ textarea {
     grid-template-columns: 1fr;
     padding: 42px 0 38px;
     gap: 40px;
-  }
-  .hero-copy .eyebrow {
-    font-size: 9px;
-    letter-spacing: 1.6px;
   }
   .hero-copy h1 {
     font-size: 54px;

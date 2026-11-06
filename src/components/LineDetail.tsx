@@ -72,8 +72,7 @@ export default async function LineDetail({
       </nav>
 
       <header className="max-w-2xl">
-        <span className="block h-1.5 w-24 rounded-full bg-swoosh" />
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-brand sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-semibold text-brand sm:text-4xl">
           {title} in Jamaica
         </h1>
         <p className="mt-3 text-lg text-slate-600">{tagline}</p>
@@ -112,8 +111,8 @@ export default async function LineDetail({
 
       <section aria-labelledby="service-faqs"><h2 id="service-faqs" className="text-2xl font-semibold text-brand">Your questions about {title.toLowerCase()}</h2><div className="mt-4 space-y-3">{(SERVICE_FAQS[slug] ?? []).map(faq => <details key={faq.question} className="rounded-xl border border-slate-200 bg-white p-5"><summary className="cursor-pointer font-semibold text-brand">{faq.question}</summary><p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p></details>)}</div></section>
       <p className="text-sm leading-relaxed text-slate-500">{DEFAULT_SETTINGS.footerDisclaimer}</p>
-      <section className="rounded-2xl bg-gradient-to-br from-brand-light via-brand to-brand-dark p-6 text-white sm:p-8">
-        <h2 className="text-xl font-semibold">Not sure where to start? Book a no-pressure consultation.</h2>
+      <section className="bg-brand-dark p-6 text-white sm:p-8">
+        <h2 className="text-xl font-semibold">Not sure where to start? Book a no-pressure consultation</h2>
         <p className="mt-1 text-white/80">
           Bring your questions about {title.toLowerCase()}. We can discuss your
           priorities and the next steps for your situation.

@@ -22,7 +22,7 @@ export default function WhyWorkWithMe() {
   return (
     <section>
       <div className="mb-6 max-w-2xl">
-        <h2 className="text-2xl font-semibold tracking-tight text-brand sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-brand sm:text-3xl">
           Why work with me
         </h2>
         <p className="mt-2 text-slate-600">

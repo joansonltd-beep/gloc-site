@@ -28,7 +28,7 @@ export default function BrochureCarousel({ brochures }: { brochures: Brochure[] 
             rel="noopener noreferrer"
             className="group w-60 shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-brand hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
-            <div className="flex h-32 items-center justify-center bg-gradient-to-br from-brand to-brand-dark">
+            <div className="flex h-32 items-center justify-center bg-brand">
               <FileText className="h-12 w-12 text-white/80 transition group-hover:scale-105" />
             </div>
             <div className="p-4">

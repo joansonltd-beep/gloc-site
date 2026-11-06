@@ -47,7 +47,7 @@ export default function NeedsRouter() {
   return (
     <section id="router" className="scroll-mt-20">
       <div className="mb-6 text-center">
-        <h2 className="text-2xl font-semibold tracking-tight text-brand sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-brand sm:text-3xl">
           What brings you here today?
         </h2>
         <p className="mt-2 text-slate-600">

@@ -19,23 +19,17 @@ export default function ClusterCards({
     >
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Start with what matters</p>
           <h2 id="explore-title">What are you planning for?</h2>
         </div>
-        <p>
-          A family to look after. A home to protect.
-          <br />A future you want to prepare for.
-        </p>
       </div>
       <div className="planning-grid">
-        {clusters.map((c, i) => (
+        {clusters.map(c => (
           <Link key={c.key} href={`/${c.key}`} className="planning-card">
             <div className="planning-card-top">
               <LineIcon
                 slug={icons[c.key]}
                 className="aspect-[4/3] h-auto w-full"
               />
-              <span>0{i + 1}</span>
             </div>
             <h3>{c.title}</h3>
             <p>{c.intent}</p>
