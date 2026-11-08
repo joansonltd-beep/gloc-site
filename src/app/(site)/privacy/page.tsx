@@ -53,6 +53,20 @@ export default function PrivacyPage() {
       </section>
 
       <section className="space-y-3 text-slate-700">
+        <h2 className="text-xl font-semibold text-brand">Coverage enquiries</h2>
+        <p>
+          The coverage enquiry asks about work status, an optional earnings band,
+          your priorities and readiness to consider cover. These answers help
+          Joanson prepare a response; they do not determine insurance eligibility.
+          The earnings question includes a “Prefer not to say” option. Your
+          answers remain in your browser until you choose to continue to
+          WhatsApp. That step shares the prepared message with WhatsApp so you
+          can review and send it to Joanson. The answers are not submitted to
+          the website lead service or sent as advertising audience data.
+        </p>
+      </section>
+
+      <section className="space-y-3 text-slate-700">
         <h2 className="text-xl font-semibold text-brand">WhatsApp</h2>
         <p>
           If you choose to message on WhatsApp, your conversation is handled by
