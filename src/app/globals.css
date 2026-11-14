@@ -880,3 +880,30 @@ textarea {
 .brand-lockup .brand-logo { display: block; width: 315px; height: auto; max-width: 100%; }
 @media (max-width: 760px) { .brand-lockup .brand-logo { width: 230px; } }
 @media (max-width: 380px) { .brand-lockup .brand-logo { width: 195px; } }
+
+/* Fine blueprint lines and quiet washes give the public homepage depth. */
+.home-hero {
+  background-image: radial-gradient(ellipse at 25% 50%, var(--paper) 15%, transparent 70%),
+    radial-gradient(ellipse at 90% 36%, #dce6ff, transparent 58%),
+    linear-gradient(to right, rgb(36 69 181 / 9%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(36 69 181 / 9%) 1px, transparent 1px);
+  background-size: auto, auto, 28px 28px, 28px 28px;
+}
+.homepage .personal-section {
+  background-image: radial-gradient(ellipse at 2% 35%, #e6edff, transparent 72%),
+    radial-gradient(circle, rgb(32 36 43 / 8%) .5px, transparent .8px);
+  background-size: auto, 5px 5px;
+}
+.home-invitation {
+  background-image: radial-gradient(ellipse at 90% 0%, #4764df, transparent 70%),
+    radial-gradient(circle, rgb(255 255 255 / 14%) .6px, transparent 1px);
+  background-size: auto, 6px 6px;
+}
+@media (max-width: 640px) {
+  .home-hero {
+    background-image: radial-gradient(ellipse at 18% 24%, var(--paper) 21%, transparent 76%),
+      radial-gradient(ellipse at 82% 74%, #dce6ff, transparent 58%),
+      linear-gradient(to right, rgb(36 69 181 / 8%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(36 69 181 / 8%) 1px, transparent 1px);
+  }
+}
