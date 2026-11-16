@@ -32,9 +32,9 @@ export default function PrivacyPage() {
           information you add, such as your preferred contact time, insurance needs or message. Other enquiry forms may request information relevant to the cover you are considering. The interactive
           calculators run in your browser; the numbers you enter there are only
           sent to us if you choose to continue on WhatsApp or submit a form.
-          The market survey collects the answers you choose to provide about
-          coverage, priorities and service expectations. Name and contact details
-          are requested only if you ask for a conversation. Please do not include
+          The market survey collects your name and the answers you choose to provide about
+          coverage, priorities and service expectations. If you ask for a conversation,
+          it also asks how to reach you. Please do not include
           medical information, policy numbers or account details in survey responses.
         </p>
       </section>
@@ -42,7 +42,8 @@ export default function PrivacyPage() {
       <section className="space-y-3 text-slate-700">
         <h2 className="text-xl font-semibold text-brand">How we use it</h2>
         <p>
-          Survey responses help us understand planning needs. Enquiry details
+          Joanson Baptiste James uses survey information to understand planning needs
+          and tailor insurance agent services. Enquiry details
           are used to contact you and to prepare for our conversation. They are
           sent to the configured lead-capture service. We do not sell or share
           your information with third parties for their own marketing.
@@ -54,6 +55,13 @@ export default function PrivacyPage() {
 
       <section className="space-y-3 text-slate-700">
         <h2 className="text-xl font-semibold text-brand">Coverage enquiries</h2>
+        <p>
+          The homepage coverage finder saves completed enquiries in Joanson’s private
+          Lead Desk. The form collects your name, phone number, employment type,
+          age range, coverage interests, current coverage, timeframe and contact
+          preferences. Joanson uses your answers to respond to your enquiry.
+          Your permission covers this enquiry only.
+        </p>
         <p>
           The coverage enquiry asks about work status, an optional earnings band,
           your priorities and readiness to consider cover. These answers help

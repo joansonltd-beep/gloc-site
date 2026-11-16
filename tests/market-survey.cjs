@@ -1,6 +1,6 @@
 require('tsx/cjs');
 const assert = require('node:assert/strict');
-const {questionsFor,cleanAnswers,surveyLead} = require('../src/lib/market-survey.ts');
+const {questionsFor,cleanAnswers,surveyLead,namedSurveyVersion} = require('../src/lib/market-survey.ts');
 const defs = require('../src/lib/market-survey-questions.json');
 const ids = a => questionsFor(a).map(q=>q.id);
 assert.deepEqual(ids({}), ['Q1']);
@@ -28,6 +28,14 @@ assert.equal(cleanAnswers({Q1:'Yes',C1:['Disability or income replacement','Reti
 assert(!cleanAnswers({Q1:'Yes',Y1:['Life insurance'],Y1Other:'stale'}).Y1Other);
 const base={answers:{Q1:'No',F1:'Not at the moment'},name:'discard',phone:'1234567',contactConsent:true};
 assert(!surveyLead(base).name);
+const named = { ...base, surveyVersion: namedSurveyVersion, name: '  Test Person  ' };
+assert.equal(surveyLead(named), null);
+assert.equal(surveyLead({ ...named, name: ' ', informationConsent: true }), null);
+const namedLead = surveyLead({ ...named, informationConsent: true });
+assert.equal(namedLead.name, 'Test Person');
+assert.equal(namedLead.informationConsent, true);
+assert.equal(namedLead.contactConsent, false);
+assert.equal(namedLead.phone, undefined);
 assert(!surveyLead({answers:{Q1:'Yes',F1:'Yes, I would like to arrange a conversation'}}));
 for(const method of ['Email','WhatsApp','Phone call']) {
   const lead=surveyLead({answers:{Q1:'Yes',F1:'Yes, I would like to arrange a conversation'},contactMethod:method,contactConsent:true,name:'Test',email:'test@example.com',phone:'+18765550100',bestTime:'Morning'});

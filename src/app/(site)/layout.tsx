@@ -70,9 +70,12 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
             <Link
               href="/"
               className="brand-lockup"
-              aria-label={`${settings.agentName}, home`}
+              aria-label={`${settings.agentName}, Insurance Agent, home`}
             >
-              <img src="/brand/joanson-b-james-logo.png" alt="Joanson B James — Financial Advisor" width="1000" height="168" className="brand-logo" />
+              <span className="brand-logo" aria-hidden="true">
+                <img src="/brand/joanson-b-james-logo.png" alt="" width="1000" height="167" />
+                <span className="brand-role">Insurance Agent</span>
+              </span>
             </Link>
             <SiteNav />
           </div>

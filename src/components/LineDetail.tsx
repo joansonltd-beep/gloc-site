@@ -4,12 +4,6 @@ import { DEFAULT_SETTINGS } from "@/lib/defaults";
 import { notFound } from "next/navigation";
 import { LINE_DETAILS, CLUSTERS, type ClusterKey } from "@/lib/content";
 import { getLineDetail } from "@/lib/siteData";
-import ProtectionPlanner from "@/components/tools/ProtectionPlanner";
-import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
-import PensionInflationProjector from "@/components/tools/PensionInflationProjector";
-import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
-import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
-import TermInsuranceForm from "@/components/tools/TermInsuranceForm";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 import BrochureSection from "@/components/BrochureSection";
 import JnLifePrograms from "@/components/JnLifePrograms";
@@ -40,24 +34,14 @@ export default async function LineDetail({
   const what = override?.what?.length ? override.what : detail.what;
   const why = override?.why?.length ? override.why : detail.why;
 
-  let calculator: React.ReactNode = null;
-  switch (detail.calculator) {
-    case "protection":
-      calculator = <ProtectionPlanner />;
-      break;
-    case "critical-illness":
-      calculator = <CriticalIllnessExplorer />;
-      break;
-    case "pension":
-      calculator = <PensionInflationProjector />;
-      break;
-    case "investment":
-      calculator = <InvestmentGrowthProjector />;
-      break;
-    case "group":
-      calculator = <GroupBenefitsEnquiry />;
-      break;
-  }
+  const toolAnchors = {
+    protection: ["life-insurance", "Life insurance needs calculator"],
+    "critical-illness": ["critical-illness", "Critical illness cost explorer"],
+    pension: ["retirement", "Retirement savings calculator"],
+    investment: ["investment", "Savings and investment projector"],
+    group: ["group-benefits", "Group benefits enquiry"],
+  };
+  const tool = detail.calculator ? toolAnchors[detail.calculator] : undefined;
 
   const message = `Hi, I'd like to know more about ${title}.`;
 
@@ -105,9 +89,12 @@ export default async function LineDetail({
       <BrochureSection pageKey={`${clusterKey}/${slug}`} />
       <JnLifePrograms pageKey={`${clusterKey}/${slug}`} />
 
-      {calculator}
-
-      {detail.slug === "life-insurance" ? <TermInsuranceForm /> : null}
+      {(tool || detail.slug === "life-insurance") && (
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
+          {tool && <Link className="button-text" href={`/tools#${tool[0]}`}>{tool[1]} <span aria-hidden>→</span></Link>}
+          {detail.slug === "life-insurance" && <Link className="button-text" href="/tools#term-insurance">Term insurance enquiry <span aria-hidden>→</span></Link>}
+        </div>
+      )}
 
       <section aria-labelledby="service-faqs"><h2 id="service-faqs" className="text-2xl font-semibold text-brand">Your questions about {title.toLowerCase()}</h2><div className="mt-4 space-y-3">{(SERVICE_FAQS[slug] ?? []).map(faq => <details key={faq.question} className="rounded-xl border border-slate-200 bg-white p-5"><summary className="cursor-pointer font-semibold text-brand">{faq.question}</summary><p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p></details>)}</div></section>
       <p className="text-sm leading-relaxed text-slate-500">{DEFAULT_SETTINGS.footerDisclaimer}</p>

@@ -1,7 +1,7 @@
 export default function HowItWorks() {
   const steps = [
     {
-      title: "Tell me what matters",
+      title: "Share what matters to you",
       body: "We start with your family, your commitments and the plans you have in mind.",
     },
     {

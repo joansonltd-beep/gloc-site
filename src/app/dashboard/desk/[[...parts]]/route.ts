@@ -2,6 +2,7 @@ import { authenticated,sameOrigin } from '@/lib/dashboard/auth';
 import { Conflict,readDocument,writeDocument } from '@/lib/dashboard/storage';
 import { POST as logout } from '@/app/dashboard/logout/route';
 import { json,clean,leadFrom,scriptIds } from '@/lib/dashboard/lead-desk/model';
+import { deskPath, emptyDesk, type Lead } from '@/lib/dashboard/lead-desk/workspace';
 import page from '@/lib/dashboard/lead-desk/index.html';
 import css from '@/lib/dashboard/lead-desk/style.css';
 import js from '@/lib/dashboard/lead-desk/app.js';
@@ -9,11 +10,6 @@ import js from '@/lib/dashboard/lead-desk/app.js';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-type Lead = ReturnType<typeof leadFrom> & {id:string;revision:number;updatedAt:string};
-type Script = {id:string;revision:number;title:string;text:string};
-type Desk = {leads:Lead[];scripts:Script[]};
-const path = 'dashboard/lead-desk-v1.json';
-const empty: Desk = {leads:[],scripts:[]};
 const headers = {'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff'};
 type Context = {params:Promise<{parts?:string[]}>};
 
@@ -21,7 +17,7 @@ export async function GET(request: Request, {params}:Context) {
   const key = (await params).parts?.join('/') ?? '';
   if (!await authenticated()) return key ? json({error:'Sign in to access your workspace.'},401) : Response.redirect(new URL('/dashboard/login',request.url),307);
   if (key === 'api/workspace') {
-    try { return json((await readDocument(path,empty)).value); }
+    try { return json((await readDocument(deskPath,emptyDesk)).value); }
     catch { return json({error:'The workspace could not be loaded.'},503); }
   }
   const asset = key === '' ? [page,'text/html'] : key === 'app.js' ? [js,'text/javascript'] : key === 'style.css' ? [css,'text/css'] : null;
@@ -78,17 +74,18 @@ async function mutate(request:Request,{params}:Context) {
     if (lead.verified.includes('Appointment')&&!lead.appointment) return json({error:'Add appointment details or clear their verification.'},400);
   } else if (!title||!script) return json({error:'Enter a title and script.'},400);
   try {
-    const {value,etag}=await readDocument(path,empty);
+    const {value,etag}=await readDocument(deskPath,emptyDesk);
     const stale=()=>json({error:'This entry changed in another tab. Refresh before trying again.'},409);
     if (lead) {
-      if (!create && value.leads.find(item=>item.id===id)?.revision!==revision) return stale();
-      const record={...lead,id:create?crypto.randomUUID():id,revision:create?1:Number(revision)+1,updatedAt:new Date().toISOString()};
-      await writeDocument(path,{...value,leads:[record,...value.leads.filter(item=>item.id!==record.id)]},etag);
+      const current = create ? undefined : value.leads.find(item=>item.id===id);
+      if (!create && current?.revision!==revision) return stale();
+      const record={...current,...lead,id:create?crypto.randomUUID():id,revision:create?1:Number(revision)+1,updatedAt:new Date().toISOString()};
+      await writeDocument(deskPath,{...value,leads:[record,...value.leads.filter(item=>item.id!==record.id)]},etag);
       return json(record,create?201:200);
     }
     if ((value.scripts.find(item=>item.id===id)?.revision??0)!==revision) return stale();
     const record={id,revision:Number(revision)+1,title,text:script};
-    await writeDocument(path,{...value,scripts:[record,...value.scripts.filter(item=>item.id!==id)]},etag);
+    await writeDocument(deskPath,{...value,scripts:[record,...value.scripts.filter(item=>item.id!==id)]},etag);
     return json(record);
   } catch (error) {
     if (error instanceof Conflict) return json({error:'The workspace changed. Refresh and try again.'},409);

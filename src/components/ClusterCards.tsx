@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LineIcon } from "@/components/icons";
 import type { ClusterData } from "@/lib/siteData";
 const icons: Record<string, string> = {
-  protect: "life-insurance",
+  protect: "health",
   grow: "pension-annuities",
   business: "group-employee-benefits",
 };
@@ -19,7 +19,7 @@ export default function ClusterCards({
     >
       <div className="section-heading">
         <div>
-          <h2 id="explore-title">What are you planning for?</h2>
+          <h2 id="explore-title">Explore your coverage options</h2>
         </div>
       </div>
       <div className="planning-grid">
@@ -34,7 +34,7 @@ export default function ClusterCards({
             <h3>{c.title}</h3>
             <p>{c.intent}</p>
             <span className="planning-card-lines">{c.lines}</span>
-            <span className="mt-3 block text-sm font-semibold text-brand">{c.key === "protect" ? "Get life cover guidance" : c.key === "grow" ? "Review my retirement options" : "Protect my business"}</span>
+            <span className="mt-3 block text-sm font-semibold text-brand">Explore this coverage</span>
             <span className="planning-card-arrow" aria-hidden>
               ↗
             </span>

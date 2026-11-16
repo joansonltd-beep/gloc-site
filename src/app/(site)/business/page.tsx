@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
-import GroupBenefitsEnquiry from "@/components/tools/GroupBenefitsEnquiry";
 import { getCluster, getLines } from "@/lib/siteData";
 
 export const metadata: Metadata = pageMetadata({
@@ -18,7 +18,9 @@ export default async function BusinessPage() {
 
   return (
     <ClusterHub cluster={cluster} lines={lines}>
-      <GroupBenefitsEnquiry />
+      <div className="flex flex-wrap gap-x-6 gap-y-2">
+        <Link className="button-text" href="/tools#group-benefits">Group benefits enquiry <span aria-hidden>→</span></Link>
+      </div>
     </ClusterHub>
   );
 }

@@ -88,7 +88,7 @@ export default function NeedsRouter() {
                   {card.subtitle}
                 </span>
                 <span className="mt-3 text-sm font-medium text-brand">
-                  {card.href === "/protect" ? "Get life cover guidance" : card.href === "/grow" ? "Review my retirement options" : "Protect my business"} →
+                  {card.href === "/protect" ? "Get life cover guidance" : card.href === "/grow" ? "Review retirement options" : "Explore group coverage"} →
                 </span>
               </Link>
             )
@@ -177,7 +177,7 @@ function Results({
   return (
     <div className="mx-auto max-w-xl bg-white p-6 sm:p-8">
       <h3 className="mt-1 text-xl font-semibold text-brand">
-        Here&apos;s where I&apos;d start
+        Options to explore
       </h3>
 
       <ul className="mt-5 space-y-3">

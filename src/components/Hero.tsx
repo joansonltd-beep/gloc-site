@@ -1,49 +1,99 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { buildWhatsAppLink } from "@/config/site";
-import type { SiteSettings } from "@/lib/siteData";
-export default function Hero({ settings }: { settings: SiteSettings }) {
-  return (
-    <section className="home-hero" aria-labelledby="home-title">
-      <div className="hero-copy">
-        <h1 id="home-title">{settings.heroHeadline.trim().replace(/\.$/, "")}</h1>
-        <p className="hero-description">{settings.heroSubcopy}</p>
-        <div className="hero-actions">
-          <Link href="/book" className="button-primary">
-            Book a consultation <span aria-hidden>↗</span>
-          </Link>
-          <a href={buildWhatsAppLink(settings.whatsappNumber, "Hi, I would like to discuss my insurance options.")} className="button-text" target="_blank" rel="noopener noreferrer">
-            Message on WhatsApp <span aria-hidden>↗</span>
-          </a>
-        </div>
+import { ageRanges, coverageGoals } from "@/lib/insurance-enquiry";
 
+const featured = [
+  { label: "Coverage finder", photo: "home" },
+  { label: "Critical illness cover", photo: "illness", href: "/protect/critical-illness", action: "Explore critical illness cover", description: "See how a policy can help with expenses after a covered diagnosis." },
+  { label: "Life insurance", photo: "life", href: "/protect/life-insurance", action: "Explore life insurance", description: "Explore life cover for the people who depend on you." },
+  { label: "Health card", photo: "health", href: "/protect/health", action: "Explore health coverage", description: "Ask about health plans, medical benefits and how to use a health card." },
+  { label: "Plan for retirement", photo: "retirement", href: "/grow", action: "Explore retirement planning", description: "Talk through pension and annuity options for your retirement." },
+  { label: "Group coverage", photo: "team", href: "/business", action: "Explore group coverage", description: "Compare group life, health and pension options for your team." },
+];
+
+export default function Hero({ headline, description }: { headline: string; description: string }) {
+  const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const [hovered, setHovered] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const slide = featured[active];
+  const finder = !slide.href;
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(preference.matches);
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!playing || hovered || reducedMotion) return;
+    const timer = window.setTimeout(() => setActive((active + 1) % featured.length), 6500);
+    return () => window.clearTimeout(timer);
+  }, [active, playing, hovered, reducedMotion]);
+
+  function select(index: number) {
+    setActive((index + featured.length) % featured.length);
+    setPlaying(false);
+  }
+
+  return (
+    <section className="home-hero" aria-label="Featured insurance services" aria-roledescription="carousel"
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+      onFocusCapture={event => {
+        if ((!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) &&
+          !(event.target instanceof HTMLElement && event.target.classList.contains("hero-control-toggle"))) setPlaying(false);
+      }}>
+      <div className="hero-photo" aria-hidden="true">
+        {featured.map((item, index) => (
+          <Image key={item.photo} src={`/images/services/${item.photo}-photo.webp`}
+            alt="" fill preload={index === 0} sizes="100vw"
+            className={index === active ? "hero-image is-active" : "hero-image"} />
+        ))}
       </div>
-      <div className="hero-portrait">
-        <div className="portrait-arch">
-          {settings.headshotUrl ? (
-            <Image
-              src={settings.headshotUrl}
-              alt={`${settings.agentName}, insurance advisor in Jamaica`}
-              fill
-              preload
-              sizes="(max-width: 767px) 85vw, 460px"
-              className="object-cover"
-            />
+      <div className="hero-frame">
+        <div className="hero-copy" aria-live={playing && !reducedMotion ? "off" : "polite"}>
+          <h1 className="sr-only">{headline}</h1>
+          {finder ? (
+            <form action="/insurance-enquiry" className="hero-finder" aria-label="Find insurance coverage">
+              <label>Your age range
+                <select name="age" defaultValue="" required>
+                  <option value="" disabled>Select an age range</option>
+                  {ageRanges.map(age => <option key={age}>{age}</option>)}
+                </select>
+              </label>
+              <label>Looking for
+                <select name="goal" defaultValue="" required>
+                  <option value="" disabled>Select a coverage goal</option>
+                  {coverageGoals.map(goal => <option key={goal}>{goal}</option>)}
+                </select>
+              </label>
+              <button type="submit" className="hero-slide-link">Search <span aria-hidden>→</span></button>
+            </form>
           ) : (
-            <div className="portrait-monogram" aria-hidden>
-              JBJ
-            </div>
+            <>
+              <h2>{slide.label}</h2>
+              <p className="hero-description">{slide.description ?? description}</p>
+              <Link href={slide.href ?? "/protect"} className="hero-slide-link">{slide.action} <span aria-hidden>→</span></Link>
+            </>
           )}
         </div>
-        <div className="portrait-caption">
-          <span className="portrait-caption-mark" aria-hidden>
-            <img src="/icon.png" alt="" width="42" height="42" />
-          </span>
-          <div>
-            <p>{settings.agentName}</p>
-          </div>
-        </div>
-
+      </div>
+      <div className="hero-controls" aria-label="Slideshow controls">
+        <button type="button" className="hero-control-arrow" aria-label="Previous slide" onClick={() => select(active - 1)}>‹</button>
+        {featured.map((item, index) => (
+          <button key={item.label} type="button" className="hero-slide-dot"
+            aria-label={`Show ${item.label}`} aria-current={active === index ? "true" : undefined}
+            onClick={() => select(index)} />
+        ))}
+        <button type="button" className="hero-control-arrow" aria-label="Next slide" onClick={() => select(active + 1)}>›</button>
+        {!reducedMotion && <button type="button" className="hero-control-toggle"
+          onMouseDown={event => event.preventDefault()}
+          onClick={() => setPlaying(current => !current)}>{playing ? "Pause" : "Play"}</button>}
       </div>
     </section>
   );

@@ -7,6 +7,9 @@
 // honeypot field ("website" ,  hidden from humans) is dropped without
 // forwarding. Bots still get an OK response so they don't retry.
 
+import { sameOrigin } from '@/lib/dashboard/auth';
+import { saveEnquiry } from '@/lib/dashboard/lead-desk/workspace';
+import { parseEnquiry } from '@/lib/insurance-enquiry';
 import { surveyLead } from '@/lib/market-survey';
 
 const MAX_BODY_BYTES = 16_384;
@@ -58,6 +61,18 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ ok: true, forwarded: false });
   }
   delete lead.website; // strip the (empty) honeypot before forwarding
+
+  if (lead.source === 'website-insurance-enquiry') {
+    if (!sameOrigin(request)) return Response.json({ ok: false }, { status: 403 });
+    const enquiry = parseEnquiry(lead);
+    if (!enquiry) return Response.json({ ok: false }, { status: 400 });
+    try {
+      await saveEnquiry(enquiry);
+      return Response.json({ ok: true, saved: true }, { status: 201 });
+    } catch {
+      return Response.json({ ok: false }, { status: 503 });
+    }
+  }
 
   if (lead.source === 'jamaica-market-survey') {
     lead = surveyLead(lead);

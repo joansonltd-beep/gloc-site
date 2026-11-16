@@ -15,7 +15,12 @@ const writeDocument=async(path,value,expected)=>{if(path!=='dashboard/lead-desk-
 const page='Joey’s Lead Desk';const js='script';const css='styles';
 export const signIn=()=>{signed=true}; export const didSignOut=()=>signedOut;
 `;
-const desk=await compile(model+shim+route);
+const workspaceSource=readFileSync('src/lib/dashboard/lead-desk/workspace.ts','utf8').replace(/^import .*;\r?\n/gm,'');
+const definitions=readFileSync('src/lib/market-survey-questions.json','utf8');
+const surveySource=readFileSync('src/lib/market-survey.ts','utf8').replace(/^import .*;\r?\n/gm,'');
+const enquirySource=readFileSync('src/lib/insurance-enquiry.ts','utf8').replace(/^import .*;\r?\n/gm,'');
+const intakeRoute=readFileSync('src/app/api/lead/route.ts','utf8').replace(/^import .*;\r?\n/gm,'').replace('export async function POST','export async function intake');
+const desk=await compile(model+shim+'const definitions='+definitions+';'+surveySource+enquirySource+workspaceSource+route+intakeRoute);
 const request=(parts=[],method='GET',body,origin='https://test.invalid')=>(desk[method](new Request('https://test.invalid/dashboard/desk/'+parts.join('/'),{method,headers:{origin,'content-type':'application/json'},...(body ? {body:JSON.stringify(body)}:{})}),{params:Promise.resolve({parts})}));
 assert.equal((await request()).status,307);
 assert.equal((await request(['api','workspace'])).status,401);
@@ -37,6 +42,46 @@ assert.equal((await request(['api','scripts','email-first'],'PUT',{revision:0,ti
 const workspace=await (await request(['api','workspace'])).json();
 assert.equal(workspace.leads[0].status,'Archived');
 assert.equal(workspace.scripts[0].title,'Synthetic');
+const form={
+  source:'website-insurance-enquiry', requestId:'0a2a9cc3-46ed-415d-8ce3-7070cc2d49fc',
+  name:'Website test lead', phone:'+1 (876) 555-0100', age:'26 to 35', goal:'Critical illness cover',
+  entry:'Coverage finder', dateOfBirth:'1991-07-16', employment:'Employed', currentCover:'No coverage', timeframe:'Within a month',
+  incomeType:'Salaried', incomeAmount:'150000.50', incomeFrequency:'Monthly',
+  contactDays:['Sunday','Friday'], contactWindows:['Morning (8 am to noon)','Evening (4 to 8 pm)'],
+  method:'WhatsApp', notes:'Test notes', contactConsent:true,
+};
+const intake=(body=form,origin='https://test.invalid')=>desk.intake(new Request('https://test.invalid/api/lead',{
+  method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify(body)
+}));
+assert.equal((await intake(form,'https://other.invalid')).status,403);
+assert.equal((await intake({...form,contactConsent:false})).status,400);
+assert.equal((await intake({...form,goal:'Invalid'})).status,400);
+for(const patch of [{dateOfBirth:'2000-02-30'},{contactDays:['Saturday']},{contactWindows:[]},{incomeAmount:''},{incomeFrequency:''}]) {
+  assert.equal((await intake({...form,...patch})).status,400);
+}
+const noIncome = desk.parseEnquiry({...form,employment:'Not employed',incomeType:'No income',incomeAmount:'',incomeFrequency:''});
+assert.equal(noIncome.incomeAmount,0);
+assert.equal(noIncome.incomeFrequency,'');
+assert.equal(desk.parseEnquiry({...form,entry:'Group benefits enquiry'}),null);
+assert.equal(desk.parseEnquiry({...form,entry:'Group benefits enquiry',headcount:'20'}).headcount,20);
+assert.equal(desk.parseEnquiry({...form,entry:'Term insurance enquiry',coverAmount:'5000000'}).coverAmount,5000000);
+assert.equal(desk.parseEnquiry({...form,entry:'Market survey',informationConsent:true,survey:{Q1:'Yes',F1:'Yes, I would like to arrange a conversation'}}).survey.Q1,'Yes');
+assert.equal((await intake({...form,website:'Filled honeypot'})).status,200);
+for (const response of await Promise.all([intake(),intake()])) assert.equal(response.status,201);
+const after=(await (await request(['api','workspace'])).json()).leads;
+assert.equal(after.length,2);
+const captured=after.find(item=>item.id===form.requestId);
+for (const key of ['name','phone','age','dateOfBirth','goal','employment','currentCover','timeframe','method','incomeType','incomeFrequency','notes','contactConsent']) assert.equal(captured.enquiry[key],form[key]);
+assert.equal(captured.unverifiedContact,form.phone);
+assert.equal(captured.consent,'');
+assert.match(captured.consentEvidence,/enquiry only/);
+assert.match(captured.unverifiedNotes,/Income: J\$150000.5/);
+assert.deepEqual(captured.enquiry.contactDays,form.contactDays);
+assert.deepEqual(captured.enquiry.contactWindows,form.contactWindows);
+assert.equal(captured.enquiry.incomeAmount,150000.5);
+const edited=await request(['api','leads',captured.id],'PUT',{...captured,status:'Contacted',enquiry:undefined});
+assert.equal(edited.status,200);
+assert.deepEqual((await edited.json()).enquiry,captured.enquiry);
 assert.equal((await request(['sign-out'],'POST')).status,303);
 assert.equal(desk.didSignOut(),true);
 assert.equal((await request(['api','workspace'])).status,401);

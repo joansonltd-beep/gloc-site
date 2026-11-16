@@ -93,12 +93,12 @@ export type RouterCard = {
 
 export const ROUTER_CARDS: RouterCard[] = [
   {
-    title: "Protect my family",
+    title: "Protect your family",
     subtitle: "Life, health & critical illness",
     href: "/protect",
   },
   {
-    title: "Plan for retirement & grow my savings",
+    title: "Plan for retirement and grow your savings",
     subtitle: "Pensions, annuities & investments",
     href: "/grow",
   },
@@ -108,7 +108,7 @@ export const ROUTER_CARDS: RouterCard[] = [
     href: "/business",
   },
   {
-    title: "Not sure? Help me figure it out",
+    title: "Find a starting point",
     subtitle: "Answer three short questions",
     discovery: true,
   },
@@ -135,7 +135,7 @@ export const DISCOVERY_QUESTIONS: DiscoveryQuestion[] = [
     question: "Where are you in life right now?",
     options: [
       { value: "starting", label: "Just starting out" },
-      { value: "building", label: "Building my career" },
+      { value: "building", label: "Building a career" },
       { value: "family", label: "Raising a family" },
       { value: "retiring", label: "Approaching retirement" },
     ],

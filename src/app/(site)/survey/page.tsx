@@ -12,26 +12,27 @@ export default function SurveyPage() {
       <h1 className="mt-4 text-4xl font-semibold text-brand">
         Insurance needs and priorities
       </h1>
-      <div className="mt-4 space-y-4 leading-relaxed text-slate-600">
-        <p>
-          I am Joanson “Joey” Baptiste James, an insurance professional expanding
-          my practice into Jamaica. This survey helps me understand your
-          priorities, your views on insurance and the information or assistance
-          you would find useful.
-        </p>
-        <p>
-          You do not need any knowledge of insurance to take part. Whether you
-          have coverage, have never had insurance or have never been offered it,
-          your perspective is welcome. There are no right or wrong answers.
-        </p>
-        <p>
-          The questions adjust to your answers, and you may leave optional
-          questions unanswered. Completing the survey does not commit you to
-          buying anything. At the end, you can choose whether you would like a
-          conversation about your insurance needs.
-        </p>
-      </div>
-      <MarketSurvey />
+      <MarketSurvey>
+        <div className="space-y-4 leading-relaxed text-slate-600">
+          <p>
+            This survey is run by Joanson “Joey” Baptiste James, an insurance
+            professional working in Jamaica. A lot of what this industry believes
+            about what people want is out of date, and the only way to find out is
+            to ask people who are not in the business.
+          </p>
+          <p>
+            You do not need any knowledge of insurance to take part. Whether you
+            have coverage, have never had insurance or have never been offered it,
+            your perspective is welcome. There are no right or wrong answers.
+          </p>
+          <p>
+            The questions adjust to your answers, and you may leave optional
+            questions unanswered. Completing the survey does not commit you to
+            buying anything. At the end, you can choose whether you would like a
+            conversation about your insurance needs.
+          </p>
+        </div>
+      </MarketSurvey>
     </div>
   );
 }

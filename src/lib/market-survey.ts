@@ -1,4 +1,5 @@
 import definitions from './market-survey-questions.json';
+export const namedSurveyVersion = 3;
 export type Answers = Record<string, string | string[]>;
 export const exclusive = (s: string) => /^(Not sure|Prefer not to say|Nothing at present|Nothing in particular|None of these|I do not know|I am not sure where to begin|None at present|Nothing specific at present)/.test(s);
 export function questionsFor(a: Answers) {
@@ -75,9 +76,16 @@ export function surveyLead(raw: Record<string, unknown>) {
   const answers = cleanAnswers(raw.answers as Answers);
   if (!answers.Q1 || !answers.F1) return null;
   const contact: Record<string, string | boolean> = {};
+  const namedSurvey = raw.surveyVersion === namedSurveyVersion;
+  const name = typeof raw.name === 'string' ? raw.name.trim().slice(0, 200) : '';
+  if (namedSurvey) {
+    if (!name || raw.informationConsent !== true) return null;
+    contact.name = name;
+    contact.informationConsent = true;
+    contact.contactConsent = false;
+  }
   if (answers.F1 === 'Yes, I would like to arrange a conversation') {
     if (!['Phone call', 'WhatsApp', 'Email'].includes(String(raw.contactMethod)) || raw.contactConsent !== true) return null;
-    const name = typeof raw.name === 'string' ? raw.name.trim().slice(0, 200) : '';
     if (!name) return null;
     contact.name = name;
     contact.contactMethod = String(raw.contactMethod);
@@ -91,5 +99,5 @@ export function surveyLead(raw: Record<string, unknown>) {
       if (raw.contactMethod === 'Phone call' && ['Morning', 'Afternoon', 'Evening', 'No preference'].includes(String(raw.bestTime))) contact.bestTime = String(raw.bestTime);
     }
   }
-  return { source: 'jamaica-market-survey', surveyVersion: 2, answers, figures: { market: 'Jamaica', ...answers }, ...contact, message: Object.entries(answers).map(([k,v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`).join('\n'), submittedAt: new Date().toISOString() };
+  return { source: 'jamaica-market-survey', surveyVersion: namedSurvey ? namedSurveyVersion : 2, answers, figures: { market: 'Jamaica', ...answers }, ...contact, message: Object.entries(answers).map(([k,v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`).join('\n'), submittedAt: new Date().toISOString() };
 }

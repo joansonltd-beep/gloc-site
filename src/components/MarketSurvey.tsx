@@ -1,20 +1,19 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { cleanAnswers, exclusive, questionsFor, type Answers } from '@/lib/market-survey';
+import InsuranceEnquiry from '@/components/InsuranceEnquiry';
+import { cleanAnswers, exclusive, questionsFor, namedSurveyVersion, type Answers } from '@/lib/market-survey';
 
 const wantsConversation = 'Yes, I would like to arrange a conversation';
-const emptyContact = { name: '', contactMethod: '', phone: '', email: '', bestTime: '', contactConsent: false };
-const phonePattern = /[+\d\s\(\)\-]*\d(?:[+\s\(\)\-]*\d){6,14}[+\s\(\)\-]*/;
 const needsAnswer = (id: string) => id === 'Q1' || id === 'F1';
 
-export default function MarketSurvey() {
+export default function MarketSurvey({ children }: { children: React.ReactNode }) {
+  const [name, setName] = useState('');
   const [answers, setAnswers] = useState<Answers>({});
-  const [contact, setContact] = useState(emptyContact);
   const [website, setWebsite] = useState('');
   const [status, setStatus] = useState('idle');
   const sending = useRef(false);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(-1);
   const prompt = useRef<HTMLElement>(null);
   const moveFocus = useRef(false);
   useEffect(() => {
@@ -32,13 +31,9 @@ export default function MarketSurvey() {
   }
 
   const questions = questionsFor(answers);
-  const contactSteps = answers.F1 === wantsConversation
-    ? ['name', 'method', ...(contact.contactMethod ? ['address'] : []),
-        ...(contact.contactMethod === 'Phone call' ? ['time'] : []), 'consent']
-    : [];
   const q = questions[step];
-  const contactStep = contactSteps[step - questions.length];
-  const finalStep = q ? q.id === 'F1' && answers.F1 !== wantsConversation : contactStep === 'consent';
+  const addingEnquiry = step === questions.length && answers.F1 === wantsConversation;
+  const finalStep = q?.id === 'F1' && answers.F1 !== wantsConversation;
   const ready = !q || !needsAnswer(q.id) || Boolean(answers[q.id]);
   const inputClass = 'mt-2 w-full rounded-lg border border-slate-300 bg-white p-3';
   function change(id: string, value: string | string[]) {
@@ -54,7 +49,6 @@ export default function MarketSurvey() {
       const selected = next[id];
       if (Array.isArray(selected) && selected.includes('Other') && typeof answers[other] === 'string') next[other] = answers[other];
     }
-    if (id === 'F1' && value !== wantsConversation) setContact(emptyContact);
     setAnswers(next);
   }
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -67,14 +61,36 @@ export default function MarketSurvey() {
     sending.current = true;
     setStatus('sending');
     try {
-      const res = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ source: 'jamaica-market-survey', surveyVersion: 2, answers: cleanAnswers(answers), website, ...(answers.F1 === wantsConversation ? contact : {}) }), signal: AbortSignal.timeout(15000) });
+      const res = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ source: 'jamaica-market-survey', surveyVersion: namedSurveyVersion, name: name.trim(), informationConsent: true, answers: cleanAnswers(answers), website }), signal: AbortSignal.timeout(15000) });
       const result = await res.json();
       if (res.ok && result.forwarded) moveFocus.current = true;
       setStatus(res.ok && result.forwarded ? 'done' : 'error');
     } catch { setStatus('error'); }
     finally { sending.current = false; }
   }
-  if (status === 'done') return <section ref={prompt} tabIndex={-1} role="status" className="mt-8 rounded-xl border border-slate-200 bg-white p-8"><h2 className="text-2xl font-semibold text-brand">Thank you for sharing your views</h2><p className="mt-3 text-slate-600">{answers.F1 === wantsConversation ? 'Your response and request for a conversation have been received. I will use your selected contact method to follow up.' : 'Your survey response has been received.'}</p><Link href="/" className="button-text mt-4">Back to the website</Link></section>;
+  if (step === -1) return (
+    <section ref={prompt} tabIndex={-1} aria-label="Before you start" className="mt-6 space-y-6">
+      {children}
+      <form className="space-y-4 border border-slate-200 bg-white p-6 sm:p-8" onSubmit={submit}>
+        <label className="block text-sm font-medium text-brand-dark">Your name (required)
+          <input autoComplete="name" required pattern={/.*\S.*/.source} maxLength={200} className={inputClass}
+            aria-describedby="information-consent" value={name} onChange={event => setName(event.target.value)} />
+        </label>
+        <p id="information-consent" className="text-sm leading-relaxed text-slate-600">By entering your name, you consent to your information being used by Joanson Baptiste James to tailor insurance agent services.</p>
+        <p className="text-sm text-slate-600"><Link href="/privacy" className="underline">Privacy Policy</Link></p>
+        <button type="submit" className="button-primary">Agree and continue</button>
+      </form>
+    </section>
+  );
+  if (addingEnquiry) return (
+    <section ref={prompt} tabIndex={-1} className="mt-8">
+      <button type="button" className="button-text" onClick={() => go(step - 1)}>Back to survey questions</button>
+      <h2 className="mt-3 text-2xl font-semibold text-brand">Arrange a conversation</h2>
+      <p className="mt-2 text-slate-600">Submit your survey answers along with your contact and planning details.</p>
+      <InsuranceEnquiry entry="Market survey" name={name} survey={cleanAnswers(answers)} />
+    </section>
+  );
+  if (status === 'done') return <section ref={prompt} tabIndex={-1} role="status" className="mt-8 rounded-xl border border-slate-200 bg-white p-8"><h2 className="text-2xl font-semibold text-brand">Thank you for sharing your views</h2><p className="mt-3 text-slate-600">Your survey response has been received.</p><Link href="/" className="button-text mt-4">Back to the website</Link></section>;
   return <form onSubmit={submit} className="mt-8 space-y-8 rounded-xl border border-slate-200 bg-white p-6 sm:p-8">
     {step === 0 && <p className="text-sm text-slate-600">Questions marked required need an answer. You may leave the other questions blank. Please leave out medical information, policy numbers, account details and other people’s personal information.</p>}
     <div hidden aria-hidden="true"><label>Website<input tabIndex={-1} autoComplete="off" value={website} onChange={e=>setWebsite(e.target.value)} /></label></div>
@@ -98,18 +114,11 @@ export default function MarketSurvey() {
         {!needsAnswer(q.id) && answers[q.id] && <button type="button" className="text-sm text-brand underline" onClick={()=>change(q.id,q.multi ? [] : '')}>Clear answer</button>}
         </>}
       </fieldset>}
-      {contactStep === 'name' && <label className="block text-sm"><span id="survey-question" className="text-lg font-semibold text-brand">What is your name? (required)</span><input autoComplete="name" required pattern={/.*\S.*/.source} maxLength={200} className={inputClass} value={contact.name} onChange={e=>setContact({...contact,name:e.target.value})} /></label>}
-      {contactStep === 'method' && <label className="block text-sm"><span id="survey-question" className="text-lg font-semibold text-brand">How would you like me to contact you? (required)</span><select required className={inputClass} value={contact.contactMethod} onChange={e=>setContact({...contact,contactMethod:e.target.value,phone:'',email:'',bestTime:'',contactConsent:false})}><option value="">Choose one</option>{['Phone call','WhatsApp','Email'].map(v=><option key={v}>{v}</option>)}</select></label>}
-        {contactStep === 'address' && (contact.contactMethod === 'Email' ? <label className="block text-sm"><span id="survey-question" className="text-lg font-semibold text-brand">What is your email address? (required)</span><input type="email" autoComplete="email" required maxLength={254} className={inputClass} value={contact.email} onChange={e=>setContact({...contact,email:e.target.value})}/></label> : <label className="block text-sm"><span id="survey-question" className="text-lg font-semibold text-brand">What is your contact number, including country code? (required)</span><input type="tel" autoComplete="tel" required pattern={phonePattern.source} maxLength={30} className={inputClass} value={contact.phone} onChange={e=>setContact({...contact,phone:e.target.value})}/></label>)}
-        {contactStep === 'time' && <label className="block text-sm"><span id="survey-question" className="text-lg font-semibold text-brand">When would you prefer a phone call? (optional)</span><select className={inputClass} value={contact.bestTime} onChange={e=>setContact({...contact,bestTime:e.target.value})}><option value="">Choose one</option>{['Morning','Afternoon','Evening','No preference'].map(v=><option key={v}>{v}</option>)}</select><span className="mt-1 block text-xs text-slate-500">Your selection is a contact preference.</span></label>}
-        {contactStep === 'consent' && <fieldset className="space-y-4"><legend id="survey-question" className="text-lg font-semibold text-brand">May I contact you about your responses? (required)</legend><label className="flex items-start gap-3 text-sm text-slate-600"><input type="checkbox" className="mt-1" required checked={contact.contactConsent} onChange={e=>setContact({...contact,contactConsent:e.target.checked})}/><span>I request that Joanson “Joey” Baptiste James contact me by my selected method to discuss my survey responses and insurance needs. This does not sign me up for ongoing marketing.</span></label>
-        <p className="text-xs text-slate-500">To submit without contact details, go back to the conversation question and choose “Not at the moment”.</p>
-      </fieldset>}
       </fieldset>
     </section>
     <p className="text-xs leading-relaxed text-slate-500">Your responses will be used to understand insurance needs and, if you request it, prepare for a conversation with you. Read the <Link href="/privacy" className="underline">Privacy Policy</Link> for information about how your details are handled.</p>
     <div className="flex flex-wrap justify-between gap-3">
-      {step > 0 && <button type="button" className="button-text" disabled={status === 'sending'} onClick={() => go(step - 1)}>Back</button>}
+      <button type="button" className="button-text" disabled={status === 'sending'} onClick={() => go(step - 1)}>Back</button>
       <button type="submit" className="button-primary ml-auto disabled:opacity-50" disabled={!ready || status === 'sending'}>
         {status === 'sending' ? 'Sending...' : finalStep ? 'Submit my responses' : 'Continue'}
       </button>

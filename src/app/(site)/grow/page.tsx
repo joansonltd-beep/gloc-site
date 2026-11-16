@@ -1,8 +1,7 @@
+import Link from "next/link";
 import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
-import PensionInflationProjector from "@/components/tools/PensionInflationProjector";
-import InvestmentGrowthProjector from "@/components/tools/InvestmentGrowthProjector";
 import { getCluster, getLines } from "@/lib/siteData";
 export const metadata: Metadata = pageMetadata({
   title: "Retirement Planning Jamaica",
@@ -16,8 +15,10 @@ export default async function GrowPage() {
   ]);
   return (
     <ClusterHub cluster={cluster} lines={lines}>
-      <PensionInflationProjector />
-      <InvestmentGrowthProjector />
+      <div className="flex flex-wrap gap-x-6 gap-y-2">
+        <Link className="button-text" href="/tools#retirement">Retirement savings calculator <span aria-hidden>→</span></Link>
+        <Link className="button-text" href="/tools#investment">Savings and investment projector <span aria-hidden>→</span></Link>
+      </div>
     </ClusterHub>
   );
 }
