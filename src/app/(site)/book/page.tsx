@@ -44,9 +44,11 @@ export default async function BookPage() {
           . No pressure, no obligation. Not ready to book?{" "}
           <a
             href="/survey"
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-semibold text-brand hover:underline"
           >
-            Take my short market survey
+            Take my short market survey (opens in a new tab)
           </a>{" "}
           instead.
         </p>
@@ -100,6 +102,8 @@ export default async function BookPage() {
       {/* Market survey funnel ,  its own standalone page. */}
       <a
         href="/survey"
+        target="_blank"
+        rel="noopener noreferrer"
         className="mt-10 block bg-white p-6 text-center transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
       >
         <p className="mt-1 text-lg font-semibold text-brand">
@@ -110,7 +114,7 @@ export default async function BookPage() {
           use it to understand what people really want.
         </p>
         <span className="mt-3 inline-block text-sm font-semibold text-brand">
-          Start the survey →
+          Start the survey (opens in a new tab) →
         </span>
       </a>
     </div>
