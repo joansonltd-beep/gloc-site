@@ -75,6 +75,17 @@ export default function PrivacyPage() {
       </section>
 
       <section className="space-y-3 text-slate-700">
+        <h2 className="text-xl font-semibold text-brand">Anonymous feedback</h2>
+        <p>
+          The anonymous feedback form stores your message, optional username and
+          submission time in Joanson’s private dashboard. Joanson may share your
+          response publicly with your chosen username, or as Anonymous if you
+          leave that field blank. Please use a nickname and leave out personal
+          details. Hosting services may retain routine connection logs.
+        </p>
+      </section>
+
+      <section className="space-y-3 text-slate-700">
         <h2 className="text-xl font-semibold text-brand">WhatsApp</h2>
         <p>
           If you choose to message on WhatsApp, your conversation is handled by

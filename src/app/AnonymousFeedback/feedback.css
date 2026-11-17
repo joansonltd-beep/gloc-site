@@ -1,0 +1,30 @@
+.anonymous-feedback {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 24px 60px;
+  color: #20242b;
+}
+.anonymous-feedback h1, .anonymous-feedback h2 {
+  font-family: var(--feedback-heading), Arial, sans-serif;
+  font-weight: 650;
+  line-height: 1.15;
+}
+.anonymous-feedback h1 { font-size: clamp(28px, 5vw, 40px); margin: 30px 0 18px; }
+.anonymous-feedback h2 { font-size: 26px; }
+.anonymous-feedback p { margin: 12px 0; line-height: 1.6; color: #515b64; }
+.feedback-brand { font-size: 23px; font-weight: 650; }
+.anonymous-feedback form { margin-top: 30px; }
+.anonymous-feedback label { display: block; font-weight: 600; margin: 22px 0 10px; }
+.anonymous-feedback label span { font-weight: 400; color: #515b64; }
+.anonymous-feedback input, .anonymous-feedback textarea {
+  width: 100%; border: 1px solid #9eaab2; padding: 12px; font: inherit; background: #fff;
+}
+.anonymous-feedback textarea { resize: vertical; min-height: 180px; }
+.anonymous-feedback button {
+  margin-top: 16px; padding: 13px 23px; background: #006740; color: #fff; font-weight: 600; min-height: 46px; cursor: pointer;
+}
+.anonymous-feedback button:disabled { opacity: .55; cursor: default; }
+.anonymous-feedback :is(a, button, input, textarea):focus-visible { outline: 2px solid #006740; outline-offset: 4px; }
+.anonymous-feedback p[role="alert"] { color: #a52422; }
+.feedback-thanks { margin-top: 30px; padding: 24px; background: #eef3f0; }
+.feedback-privacy { display: inline-block; margin-top: 26px; text-decoration: underline; }
