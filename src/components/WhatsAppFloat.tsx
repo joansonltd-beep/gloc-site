@@ -1,5 +1,6 @@
 "use client";
 
+import { WhatsAppIcon } from "@/components/icons";
 import { captureLead } from "@/lib/leadCapture";
 import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 
@@ -15,16 +16,9 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       onClick={() => captureLead({ source: "float-button", message })}
-      className="fixed bottom-5 right-5 z-40 hidden items-center gap-2 rounded-sm bg-[#25D366] px-4 py-3 font-semibold text-white transition hover:bg-[#1ebe5b] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366] sm:flex"
+      className="fixed bottom-5 right-5 z-40 hidden h-11 w-11 place-items-center rounded-full bg-[#087948] text-white hover:bg-[#06633a] focus-visible:ring-2 focus-visible:ring-[#087948] focus-visible:ring-offset-2 sm:grid"
     >
-      <svg
-        viewBox="0 0 32 32"
-        className="h-6 w-6 fill-current"
-        aria-hidden="true"
-      >
-        <path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.4 3 18.2 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.5-13 12.5zm7.1-9.4c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.4.4-1.3 1.3-1.3 3.1 0 1.8 1.3 3.6 1.5 3.8.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z" />
-      </svg>
-      <span className="hidden sm:inline">WhatsApp</span>
+      <WhatsAppIcon className="h-6 w-6 fill-current" />
     </a>
   );
 }

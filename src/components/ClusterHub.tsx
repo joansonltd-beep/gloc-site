@@ -25,7 +25,7 @@ export default function ClusterHub({
         <Link
           key={line.title}
           href={`/${cluster.key}/${line.icon || slugify(line.title)}`}
-          className="group flex flex-col rounded-xl border border-white/60 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-brand hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+          className="group flex flex-col bg-white p-5 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
         >
           <span className="block w-full">
             <LineIcon
@@ -39,7 +39,7 @@ export default function ClusterHub({
           <p className="mt-1 flex-1 text-sm text-slate-600">{line.blurb}</p>
           <span className="mt-3 text-sm font-medium text-brand">
             Compare your options{" "}
-            <span className="inline-block transition group-hover:translate-x-0.5">
+            <span className="inline-block" aria-hidden>
               →
             </span>
           </span>
@@ -84,7 +84,7 @@ export default function ClusterHub({
       <section className="space-y-12">{children}</section>
 
       {linesLast && lineCards}
-      <section className="rounded-sm bg-brand p-6 text-white"><h2 className="text-xl font-semibold">Not sure where to start? Book a no-pressure consultation</h2><Link href="/book" className="button-gold mt-4">Book a consultation</Link></section>
+      <section className="bg-brand p-6 text-white"><h2 className="text-xl font-semibold">Talk through your options</h2><Link href="/book" className="button-gold mt-4">Book a consultation</Link></section>
     </div>
   );
 }

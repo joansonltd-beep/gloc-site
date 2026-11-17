@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Barlow_Semi_Condensed, Syne } from "next/font/google";
+import { Archivo, Barlow_Semi_Condensed, DM_Sans, Syne } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 const GOOGLE_ADS_ID="AW-18282133568";
@@ -13,6 +13,8 @@ import { getSiteSettings } from "@/lib/siteData";
 import { SITE_URL } from "@/lib/siteUrl";
 
 const wordmarkFont = Syne({ weight: "700", subsets: ["latin"], display: "swap" });
+const siteFont = Archivo({ subsets: ["latin"], display: "swap", variable: "--font-public-body" });
+const headingFont = DM_Sans({ subsets: ["latin"], display: "swap", variable: "--font-public-heading" });
 const taglineFont = Barlow_Semi_Condensed({
   weight: "600",
   style: ["normal", "italic"],
@@ -75,23 +77,19 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <div className="site-shell">
+      <div className={`site-shell ${siteFont.variable} ${headingFont.variable}`}>
         <header className="site-header">
           <div className="header-inner">
-            <div className="header-brand">
-              <Link
-                href="/"
-                className={`brand-name ${wordmarkFont.className}`}
-                aria-label={`${settings.agentName}, home`}
-              >
-                <Image src="/brand/joanson-pillars-green-yellow-black.png" alt="" width={27} height={27}
-                  className="brand-logo" />
-                <span aria-hidden="true">oanson</span>
-              </Link>
-              <span className={`header-brand-tagline ${taglineFont.className}`}>
-                Insurance made <em>Easy</em>
-              </span>
-            </div>
+            <Link href="/" className="header-brand" aria-label={`${settings.agentName}, home`}>
+              <Image src="/brand/joanson-pillars-green-yellow-black.png" alt="" width={46} height={46}
+                className="brand-logo" />
+              <div className="header-brand-copy">
+                <span className={`brand-name ${wordmarkFont.className}`}>Joanson</span>
+                <span className={`header-brand-tagline ${taglineFont.className}`}>
+                  Insurance made <em>Easy</em>
+                </span>
+              </div>
+            </Link>
             <SiteNav />
           </div>
         </header>

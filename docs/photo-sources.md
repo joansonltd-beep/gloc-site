@@ -19,3 +19,6 @@ Each was cropped to 4:3 (1448 x 1086) and saved as WebP.
 | retirement-photo.webp | https://www.pexels.com/photo/14488976/ |
 | savings-photo.webp | https://www.pexels.com/photo/14599163/ |
 | team-photo.webp | https://www.pexels.com/photo/9487241/ |
+
+The retirement carousel and coverage card use the older couple portrait in
+`public/images/stock/retirement-couple.webp` from https://www.pexels.com/photo/11907183/.

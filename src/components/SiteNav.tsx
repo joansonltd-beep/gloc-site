@@ -3,12 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 
 import { siteMenus } from "@/lib/site-navigation";
 
 export default function SiteNav() {
-  const whatsappLink = useWhatsAppLink();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
@@ -52,7 +50,6 @@ export default function SiteNav() {
       </button>
       <nav id="site-navigation" aria-label="Main navigation" className={`site-nav ${open ? "is-open" : ""}`}>
         <ul className="site-nav-items">
-          <li><Link href="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={close}>About Joanson</Link></li>
           {Object.entries(siteMenus).map(([id, { label, href, groups }]) => (
             <li key={id} className="site-nav-dropdown"
               onPointerEnter={event => {
@@ -89,8 +86,8 @@ export default function SiteNav() {
             </li>
           ))}
           <li><Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined} onClick={close}>Client Care</Link></li>
+          <li><Link href="/about" aria-current={pathname === "/about" ? "page" : undefined} onClick={close}>About Joanson</Link></li>
         </ul>
-        <a href={whatsappLink("Hi, I would like to discuss my insurance options.")} target="_blank" rel="noopener noreferrer" onClick={close}>WhatsApp</a>
         <Link href="/book" className="nav-book" onClick={close}>Book a consultation <span aria-hidden>↗</span></Link>
       </nav>
     </div>

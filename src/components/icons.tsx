@@ -175,6 +175,16 @@ export const ChevronRight = ({ className }: IconProps) => (
 );
 
 // --- brand marks --------------------------------------------------------
+export const WhatsAppIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 32 32"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.7 20.4 3 18.2 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 12.5-13 12.5zm7.1-9.4c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.6-.7-.9-.7h-.8c-.2 0-.7.1-1 .5-.4.4-1.3 1.3-1.3 3.1 0 1.8 1.3 3.6 1.5 3.8.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z" />
+  </svg>
+);
+
 export const Facebook = ({ className }: IconProps) => (
   <Fill className={className}>
     <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" />
@@ -190,30 +200,17 @@ export const Instagram = ({ className }: IconProps) => (
 // --- lookups ------------------------------------------------------------
 // Map a product-line slug to its icon so rendering never depends on an emoji
 // string in the content/CMS data.
-const SERVICE_IMAGES: Record<string, string> = {
-  "life-insurance": "life",
-  health: "health",
-  "critical-illness": "illness",
-  "personal-accident": "accident",
-  "pension-annuities": "retirement",
-  "investments-mutual-funds": "savings",
-  motor: "motor",
-  home: "home",
-  property: "property",
-  "group-employee-benefits": "team",
-};
-
-const SERVICE_PHOTO_ALT: Record<string, string> = {
-  life: "Parents walking with their toddler on a boardwalk surrounded by greenery",
-  health: "Doctor with a stethoscope reviewing notes with a patient",
-  illness: "Three generations of women sitting together on a couch, holding hands",
-  accident: "Cyclist in a helmet resting on her bike on an open road",
-  retirement: "Older couple sitting together on a bench outdoors",
-  savings: "Couple going through bills and paperwork at the kitchen table",
-  motor: "Smiling man driving a car",
-  home: "Family sitting together on the front steps of their home",
-  property: "Colourful building with palm trees and a wooden front door",
-  team: "Three colleagues reviewing a document together in an office",
+const SERVICE_IMAGES: Record<string, readonly [string, string]> = {
+  "life-insurance": ["/images/stock/family-dinner.webp", "Several generations of a family gathering around a dinner table"],
+  health: ["/images/stock/health-checkup.webp", "A clinician examining a child with a stethoscope"],
+  "critical-illness": ["/images/stock/clinic-conversation.webp", "A clinician talks with a woman during a visit"],
+  "personal-accident": ["/images/stock/city-cyclist.webp", "A woman riding a bicycle on a sunlit path"],
+  "pension-annuities": ["/images/stock/retirement-couple.webp", "An older Black couple standing together indoors"],
+  "investments-mutual-funds": ["/images/stock/savings-together.webp", "A couple talking with a book and laptop on a sofa"],
+  "group-employee-benefits": ["/images/stock/team-at-work.webp", "A construction team working in hard hats and safety vests"],
+  motor: ["/images/services/motor-photo.webp", "Smiling man driving a car"],
+  home: ["/images/services/home-photo.webp", "Family sitting together on the front steps of their home"],
+  property: ["/images/services/property-photo.webp", "Colourful building with palm trees and a wooden front door"],
 };
 
 export function LineIcon({
@@ -223,15 +220,15 @@ export function LineIcon({
   slug: string;
   className?: string;
 }) {
-  const image = SERVICE_IMAGES[slug] ?? "life";
+  const [src, alt] = SERVICE_IMAGES[slug] ?? SERVICE_IMAGES["life-insurance"];
   return (
     <Image
-      src={`/images/services/${image}-photo.webp`}
-      alt={SERVICE_PHOTO_ALT[image]}
+      src={src}
+      alt={alt}
       width={640}
       height={480}
       sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 33vw"
-      className={`rounded-lg object-cover ${className ?? ""}`}
+      className={`object-cover ${className ?? ""}`}
     />
   );
 }

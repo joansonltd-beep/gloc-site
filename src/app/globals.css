@@ -76,6 +76,12 @@ textarea {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #fff;
+  font-family: var(--font-public-body), Arial, sans-serif;
+}
+.site-shell :where(h1, h2, h3, h4) {
+  font-family: var(--font-public-heading), Arial, sans-serif;
+  letter-spacing: normal;
 }
 .site-header {
   position: sticky;
@@ -92,28 +98,30 @@ textarea {
   gap: 18px;
 }
 .header-brand {
-  display: grid;
-  justify-items: center;
-  gap: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex-shrink: 0;
   color: var(--ink);
 }
 .brand-logo {
+  display: block;
   flex: none;
-  width: 27px;
-  height: 27px;
+  width: 46px;
+  height: 46px;
+}
+.header-brand-copy {
+  display: grid;
+  gap: 3px;
 }
 .brand-name {
-  display: flex;
-  align-items: end;
-  gap: 1px;
-  font-size: 27px;
+  font-size: 29px;
   font-weight: 700;
   line-height: 1;
 }
 .header-brand-tagline {
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 13px;
+  line-height: 1;
   white-space: nowrap;
   color: var(--ink);
 }
@@ -127,8 +135,8 @@ textarea {
 }
 .site-nav ul {
   display: flex;
-  gap: 15px;
-  font-size: 12px;
+  gap: 22px;
+  font-size: 14px;
   font-weight: 500;
 }
 .site-nav-items > li > a,
@@ -155,7 +163,7 @@ textarea {
 }
 .site-nav-label > a {
   display: block;
-  padding-block: 14px;
+  padding-block: 12px;
 }
 .site-nav-trigger {
   display: grid;
@@ -229,9 +237,7 @@ textarea {
   padding: 0 0 90px;
 }
 .home-content {
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: clamp(20px, 4vw, 40px);
+  padding-inline: var(--page-gutter);
 }
 .home-hero {
   position: relative;
@@ -239,12 +245,18 @@ textarea {
   align-content: center;
   min-height: clamp(490px, 74svh, 800px);
   isolation: isolate;
-  background: #365566;
+  background: #0c202b;
 }
 .hero-photo {
   position: absolute;
   inset: 0;
   z-index: -1;
+}
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgb(7 22 30 / 88%), rgb(7 22 30 / 71%) 31%, rgb(7 22 30 / 28%) 51%, transparent 72%);
 }
 .hero-image {
   object-fit: cover;
@@ -255,16 +267,40 @@ textarea {
 .hero-image.is-active {
   opacity: 1;
 }
+.hero-image[data-photo="family-garden"] {
+  object-position: center 68%;
+}
+.hero-image[data-photo="family-dinner"] {
+  object-position: center 30%;
+}
+.hero-image[data-photo="health-checkup"] {
+  object-position: 70% 24%;
+}
+.hero-image[data-photo="retirement-couple"] {
+  object-position: center 10%;
+}
 .hero-frame {
-  width: min(100%, 1280px);
-  margin-inline: auto;
-  padding: 48px clamp(20px, 5vw, 72px) 88px;
+  width: 100%;
+  padding: 48px var(--page-gutter) 88px;
 }
 .hero-copy {
-  width: min(100%, 570px);
-  padding: clamp(24px, 4vw, 48px);
+  width: min(46%, 490px);
   color: white;
-  background: rgb(16 37 45 / 89%);
+}
+.home-hero :is(a, button, select):focus-visible {
+  outline-color: white;
+}
+@media (min-width: 641px) {
+  .hero-image[data-photo="retirement-couple"] {
+    padding-left: 30%;
+    mask-image: linear-gradient(90deg, transparent 30%, #000 46%);
+  }
+  .home-hero[data-copy-side="right"] .hero-copy {
+    margin-left: auto;
+  }
+  .home-hero[data-copy-side="right"] .hero-photo::after {
+    background: linear-gradient(to left, rgb(7 22 30 / 88%), rgb(7 22 30 / 71%) 31%, rgb(7 22 30 / 28%) 51%, transparent 72%);
+  }
 }
 .hero-copy :is(h1, h2) {
   font-size: clamp(34px, 4.2vw, 60px);
@@ -293,19 +329,20 @@ textarea {
 }
 .hero-finder {
   display: grid;
-  gap: 20px;
+  gap: 15px;
+  margin-top: 22px;
 }
 .hero-finder label {
   display: grid;
   gap: 4px;
-  font-size: clamp(17px, 2vw, 28px);
+  font-size: 16px;
 }
 .hero-finder select {
   width: 100%;
   min-height: 48px;
   padding: 4px 10px 8px 0;
   border-bottom: 1px solid #fff;
-  color: #c7dda2;
+  color: white;
   background: transparent;
 }
 .hero-finder select option {
@@ -315,7 +352,13 @@ textarea {
 .hero-finder .hero-slide-link {
   justify-self: start;
   margin-top: 4px;
+  border-color: #006740;
+  background: #006740;
   cursor: pointer;
+}
+.hero-finder .hero-slide-link:hover {
+  border-color: #fff;
+  background: #fff;
 }
 .hero-controls {
   position: absolute;
@@ -462,11 +505,9 @@ textarea {
   margin-bottom: 35px;
 }
 .section-heading h2 {
-  font:
-    400 39px/1.15 Georgia,
-    serif;
-
-  margin-top: 14px;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 650;
+  line-height: 1.15;
 }
 .section-heading > p {
   font-size: 12px;
@@ -475,97 +516,64 @@ textarea {
 }
 .planning-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 .planning-card {
-  position: relative;
-  min-height: 268px;
-  background: #e9f6fc;
+  display: flex;
+  flex-direction: column;
+  background: #eef0f1;
   padding: 25px 22px;
-  transition:
-    transform 0.2s,
-    background 0.2s;
-}
-.planning-card:nth-child(2) {
-  background: #e2f1f9;
-}
-.planning-card:nth-child(3) {
-  background: #eef2ff;
-}
-.planning-card:nth-child(4) {
-  background: #e7f3fb;
 }
 .planning-card:hover {
-  transform: translateY(-4px);
-  background: #d9eef8;
+  background: #e3e7e8;
+}
+.planning-card:hover .planning-card-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .planning-card-top {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--color-brand);
-  margin-bottom: 29px;
+  margin-bottom: 20px;
 }
-.planning-card-top > span {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 4px 7px;
-  border-radius: 3px;
-  background: #f8f9fc;
-  font-size: 10px;
-  color: var(--color-brand);
+.planning-card-top img {
+  max-height: 380px;
+  object-position: center 28%;
 }
 .planning-card h3 {
-  font:
-    400 25px/1.2 Georgia,
-    serif;
-
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 .planning-card > p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.6;
   margin-top: 10px;
   color: var(--muted);
+  flex: 1;
 }
-.planning-card-lines {
-  font-size: 9px;
-  line-height: 1.6;
-  display: block;
-  max-width: 85%;
-  margin-top: 18px;
-  color: #536f7b;
-}
-.planning-card-arrow {
-  position: absolute;
-  bottom: 22px;
-  right: 22px;
-  font-size: 20px;
+.planning-card-link {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #006740;
 }
 .personal-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   padding: 60px;
-  background: #e2f3fa;
-  border-left: 3px solid #708e92;
+  background: #eef0f1;
 }
 .personal-section h2 {
-  font:
-    400 43px/1.17 Georgia,
-    serif;
-
-  margin-top: 20px;
-}
-.personal-section h2 em {
-  color: #414c65;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 650;
+  line-height: 1.17;
 }
 .personal-section > div > p {
-  font-size: 13px;
-  line-height: 1.9;
-  color: #414c65;
+  max-width: 60ch;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted);
   margin-bottom: 15px;
 }
 .process-grid {
@@ -577,21 +585,14 @@ textarea {
   border-top: 1px solid #c6dfe9;
   padding-top: 25px;
 }
-.process-number {
-  font:
-    31px Georgia,
-    serif;
-  color: #414c65;
-}
 .process-grid h3 {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
-  margin-top: 17px;
 }
 .process-grid p {
   margin-top: 10px;
-  font-size: 12px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--muted);
   max-width: 285px;
 }
@@ -599,31 +600,33 @@ textarea {
   padding: 40px 0 70px;
 }
 .discovery-section h2 {
-  font:
-    400 38px Georgia,
-    serif;
+  font-size: 38px;
+  font-weight: 650;
 }
 .discovery-section #router > div:first-child > p {
   font-size: 13px;
 }
 .home-invitation {
-  text-align: center;
-  background: var(--color-brand);
+  display: grid;
+  align-items: center;
+  min-height: clamp(360px, 29vw, 600px);
+  background-color: #0f252e;
+  background-image: linear-gradient(90deg, transparent 38%, rgb(15 37 46 / 78%) 61%, #0f252e 76%),
+    url("/images/stock/agent-meeting.webp");
+  background-size: cover, 77% auto;
+  background-position: center, left 29%;
+  background-repeat: no-repeat;
   color: #f8f9fc;
-  padding: 64px 24px;
-  position: relative;
-  overflow: hidden;
+  padding: 48px clamp(24px, 5vw, 72px);
+}
+.home-invitation-copy {
+  width: min(46%, 410px);
+  margin-left: auto;
 }
 .home-invitation h2 {
-  font:
-    400 48px/1.1 Georgia,
-    serif;
-
-  margin: 23px 0 17px;
-}
-.home-invitation > p {
-  font-size: 13px;
-  color: #d5eff5;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 650;
+  line-height: 1.15;
 }
 .button-gold {
   background: var(--color-accent);
@@ -634,8 +637,8 @@ textarea {
   background: #dce9e8;
 }
 .site-footer {
-  background: #e9f6fc;
-  border-top: 1px solid #cce3ed;
+  background: #eef0f1;
+  border-top: 1px solid var(--line);
 }
 .footer-top {
   max-width: 1200px;
@@ -646,9 +649,9 @@ textarea {
   gap: 45px;
 }
 .footer-brand {
-  font:
-    400 24px Georgia,
-    serif;
+  font-family: var(--font-public-heading), Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 650;
 }
 .footer-top > div > p {
   margin-top: 15px;
@@ -667,7 +670,7 @@ textarea {
   text-underline-offset: 4px;
 }
 .footer-bottom {
-  border-top: 1px solid #cce3ed;
+  border-top: 1px solid var(--line);
   max-width: 1120px;
   margin: auto;
   padding: 22px 0 30px;
@@ -798,11 +801,21 @@ textarea {
   .hero-image {
     object-position: 56% top;
   }
+  .hero-image[data-photo="health-checkup"] {
+    object-position: 75% top;
+  }
+  .hero-image[data-photo="retirement-couple"] {
+    object-position: 57% top;
+    padding-bottom: 50px;
+  }
   .hero-frame {
-    padding: 190px 16px 72px;
+    padding: 220px 20px 72px;
+  }
+  .hero-photo::after {
+    background: linear-gradient(to bottom, transparent 16%, rgb(7 22 30 / 37%) 36%, rgb(7 22 30 / 88%) 72%, #0c202b 100%);
   }
   .hero-copy {
-    padding: 22px;
+    width: 100%;
   }
   .hero-description {
     font-size: 14px;
@@ -859,17 +872,6 @@ textarea {
   .planning-card h3 {
     font-size: 22px;
   }
-  .planning-card > p {
-    font-size: 11px;
-  }
-  .planning-card-lines {
-    font-size: 9px;
-    margin-top: 13px;
-  }
-  .planning-card-arrow {
-    bottom: 14px;
-    right: 14px;
-  }
   .personal-section {
     grid-template-columns: 1fr;
     gap: 25px;
@@ -884,21 +886,11 @@ textarea {
     gap: 28px;
   }
   .process-grid li {
-    display: grid;
-    grid-template-columns: 45px 1fr;
-    gap: 0 13px;
     padding-top: 20px;
   }
-  .process-grid h3 {
-    margin-top: 3px;
-  }
   .process-grid p {
-    grid-column: 2;
     margin-top: 7px;
     max-width: none;
-  }
-  .process-number {
-    grid-row: span 2;
   }
   .discovery-section {
     padding: 0 0 45px;
@@ -907,7 +899,16 @@ textarea {
     font-size: 30px;
   }
   .home-invitation {
-    padding: 46px 21px;
+    align-items: end;
+    min-height: 400px;
+    padding: 165px 21px 34px;
+    background-image: linear-gradient(0deg, #0f252e 34%, rgb(12 29 37 / 75%) 47%, transparent 68%),
+      url("/images/stock/agent-meeting.webp");
+    background-size: cover, 100% auto;
+    background-position: center, center top;
+  }
+  .home-invitation-copy {
+    width: 100%;
   }
   .home-invitation h2 {
     font-size: 37px;
@@ -945,16 +946,14 @@ textarea {
     transition: none !important;
   }
 }
-
-@media (max-width: 767px) {
- .brand-name { font-size: 25px; }
- .brand-logo { width: 25px; height: 25px; }
+@media (max-width: 1250px) {
+ .brand-name { font-size: 24px; }
+ .brand-logo { width: 40px; height: 40px; }
+ .header-brand-tagline { font-size: 12px; }
  .menu-toggle { flex-shrink: 0; }
 }
 @media (max-width: 380px) {
   .header-inner { padding-inline: 14px; }
-  .brand-name { font-size: 22px; }
-  .brand-logo { width: 24px; height: 24px; }
 }
 
 /* Keep long names and form copy readable at narrow widths. */
@@ -971,15 +970,4 @@ textarea {
     gap: 18px;
     line-height: 1.5;
   }
-}
-
-.homepage .personal-section {
-  background-image: radial-gradient(ellipse at 2% 35%, #ebefef, transparent 72%),
-    radial-gradient(circle, rgb(32 36 43 / 8%) .5px, transparent .8px);
-  background-size: auto, 5px 5px;
-}
-.home-invitation {
-  background-image: radial-gradient(ellipse at 90% 0%, #476575, transparent 70%),
-    radial-gradient(circle, rgb(255 255 255 / 14%) .6px, transparent 1px);
-  background-size: auto, 6px 6px;
 }

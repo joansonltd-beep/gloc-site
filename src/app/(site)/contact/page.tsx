@@ -70,7 +70,7 @@ export default async function ContactPage() {
             href={m.href}
             target={m.external ? "_blank" : undefined}
             rel={m.external ? "noopener noreferrer" : undefined}
-            className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-6 transition hover:border-brand"
+            className="flex items-center gap-4 border border-slate-200 bg-white p-6 hover:bg-slate-100"
           >
             <m.icon className="h-7 w-7 text-brand" />
             <span>

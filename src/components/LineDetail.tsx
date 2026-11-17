@@ -72,7 +72,7 @@ export default async function LineDetail({
           ))}
         </section>
 
-        <section className="bg-white p-6 backdrop-blur-sm">
+        <section className="bg-white p-6">
           <h2 className="text-xl font-semibold text-brand">Why it matters</h2>
           <ul className="mt-3 space-y-2">
             {why.map((point) => (
@@ -96,7 +96,7 @@ export default async function LineDetail({
         </div>
       )}
 
-      <section aria-labelledby="service-faqs"><h2 id="service-faqs" className="text-2xl font-semibold text-brand">Your questions about {title.toLowerCase()}</h2><div className="mt-4 space-y-3">{(SERVICE_FAQS[slug] ?? []).map(faq => <details key={faq.question} className="rounded-xl border border-slate-200 bg-white p-5"><summary className="cursor-pointer font-semibold text-brand">{faq.question}</summary><p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p></details>)}</div></section>
+      <section aria-labelledby="service-faqs"><h2 id="service-faqs" className="text-2xl font-semibold text-brand">Your questions about {title.toLowerCase()}</h2><div className="mt-4 border-t border-slate-200">{(SERVICE_FAQS[slug] ?? []).map(faq => <details key={faq.question} className="border-b border-slate-200 py-4"><summary className="cursor-pointer font-semibold text-brand">{faq.question}</summary><p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p></details>)}</div></section>
       <p className="text-sm leading-relaxed text-slate-500">{DEFAULT_SETTINGS.footerDisclaimer}</p>
       <section className="bg-brand-dark p-6 text-white sm:p-8">
         <h2 className="text-xl font-semibold">Not sure where to start? Book a no-pressure consultation</h2>

@@ -24,21 +24,18 @@ export default async function Home() {
           </nav>
         </section>
         <section className="home-invitation">
-          <h2>Talk through your insurance options</h2>
-          <Link href="/book" className="button-gold">
-            Book a consultation <span aria-hidden>→</span>
-          </Link>
+          <div className="home-invitation-copy">
+            <h2>Talk through your insurance options</h2>
+            <Link href="/book" className="button-gold">
+              Book a consultation <span aria-hidden>→</span>
+            </Link>
+          </div>
         </section>
         <section className="personal-section">
           <div>
             <h2>Meet your insurance advisor</h2>
           </div>
           <div>
-            <p>
-              School fees, household bills, caring for parents, building a
-              business. Your financial decisions sit alongside the things you do
-              every day.
-            </p>
             <p>
               {settings.agentName} is an insurance advisor serving Jamaica.
               Joanson helps you compare options from multiple insurers and explains

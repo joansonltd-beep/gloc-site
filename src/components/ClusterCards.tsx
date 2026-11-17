@@ -33,11 +33,7 @@ export default function ClusterCards({
             </div>
             <h3>{c.title}</h3>
             <p>{c.intent}</p>
-            <span className="planning-card-lines">{c.lines}</span>
-            <span className="mt-3 block text-sm font-semibold text-brand">Explore this coverage</span>
-            <span className="planning-card-arrow" aria-hidden>
-              ↗
-            </span>
+            <span className="planning-card-link">Explore this coverage <span aria-hidden>→</span></span>
           </Link>
         ))}
       </div>
