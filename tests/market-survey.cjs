@@ -38,10 +38,16 @@ assert.equal(namedLead.contactConsent, false);
 assert.equal(namedLead.phone, undefined);
 assert(!surveyLead({answers:{Q1:'Yes',F1:'Yes, I would like to arrange a conversation'}}));
 for(const method of ['Email','WhatsApp','Phone call']) {
-  const lead=surveyLead({answers:{Q1:'Yes',F1:'Yes, I would like to arrange a conversation'},contactMethod:method,contactConsent:true,name:'Test',email:'test@example.com',phone:'+18765550100',bestTime:'Morning'});
+  const lead=surveyLead({answers:{Q1:'Yes',F1:'Yes, I would like to arrange a conversation'},contactMethod:method,contactConsent:true,emailConsent:method==='Email',name:'Test',email:'test@example.com',phone:'+18765550100',bestTime:'Morning'});
   assert(lead);
   assert.equal(!!lead.email,method==='Email');
   assert.equal(!!lead.phone,method!=='Email');
   assert.equal(!!lead.bestTime,method==='Phone call');
 }
+for(const Q1 of ["Don't have but considering","Don't have and not considering"]) {
+  const cleaned=cleanAnswers({Q1,N1:'No',N3:'No'});
+  assert.equal(cleaned.Q1,Q1);
+  assert(ids(cleaned).includes('N6'));
+}
+assert.equal(surveyLead({answers:{Q1:'Yes',F1:'Yes, I would like to arrange a conversation'},contactMethod:'Email',contactConsent:true,name:'Test',email:'test@example.com',emailConsent:false}),null);
 console.log('Survey branch, backtracking, priority and contact validation checks passed.');

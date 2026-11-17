@@ -99,7 +99,10 @@ export default function MarketSurvey({ children }: { children: React.ReactNode }
       <fieldset disabled={status === 'sending'}>
       {q && <fieldset key={q.id} className="space-y-3">
         <legend id="survey-question" className="mb-3 text-lg leading-relaxed font-semibold text-brand">{q.title}{needsAnswer(q.id) ? ' (required)' : ' (optional)'}</legend>
-        {q.id === 'C5' ? <textarea aria-label={q.title} className={inputClass} rows={3} maxLength={1000} value={String(answers.C5 || '')} onChange={e=>change('C5',e.target.value)} /> : <>
+        {q.id === 'Q1' ? <select aria-label={q.title} required className={inputClass} value={String(answers.Q1 || '')} onChange={e=>change('Q1',e.target.value)}>
+          <option value="" disabled>Choose an option</option>
+          {q.options.map(option=><option key={option}>{option}</option>)}
+        </select> : q.id === 'C5' ? <textarea aria-label={q.title} className={inputClass} rows={3} maxLength={1000} value={String(answers.C5 || '')} onChange={e=>change('C5',e.target.value)} /> : <>
         {q.multi && <p className="text-sm text-slate-500">{q.max ? `Choose up to ${q.max}.` : 'Select all that apply.'}</p>}
         <div className="grid gap-2">{q.options.map(option => {
           const selected = Array.isArray(answers[q.id]) ? answers[q.id] as string[] : [];

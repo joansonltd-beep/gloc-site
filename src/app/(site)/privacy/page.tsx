@@ -57,10 +57,10 @@ export default function PrivacyPage() {
         <h2 className="text-xl font-semibold text-brand">Coverage enquiries</h2>
         <p>
           The homepage coverage finder saves completed enquiries in Joanson’s private
-          Lead Desk. The form collects your name, phone number, employment type,
+          Lead Desk. The form collects your name, phone number, optional email address, email contact permission, employment type,
           age range, coverage interests, current coverage, timeframe and contact
           preferences. Joanson uses your answers to respond to your enquiry.
-          Your permission covers this enquiry only.
+          Your permission covers this enquiry only. Email permission is optional and is recorded as permission not given unless you tick the email permission checkbox.
         </p>
         <p>
           The coverage enquiry asks about work status, an optional earnings band,

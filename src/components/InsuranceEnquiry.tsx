@@ -36,6 +36,8 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
 
   const questions: Question[] = [
     { key: "name", title: "Full name", attributes: { autoComplete: "name", maxLength: 100, pattern: /.*\S.*/.source } },
+    { key: "phone", title: "Phone number, including area code", attributes: { type: "tel", autoComplete: "tel", maxLength: 30, pattern: /\+?[\s\(\)\-]*\d(?:[\s\(\)\-]*\d){6,14}[\s\(\)\-]*/.source } },
+    { key: "email", title: "Email address", optional: true, attributes: { type: "email", autoComplete: "email", maxLength: 254 } },
     { key: "dateOfBirth", title: "Date of birth", attributes: { type: "date", autoComplete: "bday", min: "1900-01-01" } },
     { key: "employment", title: "Employment type", control: "select", options: employmentTypes },
     { key: "incomeType", title: "Income type", control: "select", options: incomeTypes },
@@ -43,7 +45,6 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
       { key: "incomeAmount", title: "Income amount (J$) per pay period", attributes: { type: "number", min: "0.01", step: "0.01", max: "9999999999999.99" } },
       { key: "incomeFrequency", title: "Income frequency", control: "select" as const, options: incomeFrequencies },
     ]),
-    { key: "phone", title: "Phone number, including area code", attributes: { type: "tel", autoComplete: "tel", maxLength: 30, pattern: /\+?[\s\(\)\-]*\d(?:[\s\(\)\-]*\d){6,14}[\s\(\)\-]*/.source } },
     { key: "goal", title: "What are you looking for?", control: "select", options: coverageGoals },
     { key: "currentCover", title: entry === "Group benefits enquiry" ? "Does your company currently have group insurance?" : "Do you currently have insurance?", control: "select", options: coverStatuses },
     { key: "timeframe", title: "When would you like to explore coverage?", control: "select", options: timeframes },
@@ -55,7 +56,7 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
       { key: "coverAmount", title: "Amount of cover required (J$)", attributes: { type: "number", min: 1 } },
       { key: "purpose", title: "Purpose of cover", optional: true, attributes: { maxLength: 150 } },
     ] : []),
-    { key: "method", title: "Preferred contact method", control: "select", options: contactMethods },
+    { key: "method", title: "Preferred contact method", control: "select", options: contactMethods.filter(method => method !== "Email" || (values.email && values.emailConsent === "on")) },
     { key: "contactDays", title: "Which days work for you?", control: "choices", options: contactDays },
     { key: "contactWindows", title: "What times work for you?", control: "choices", options: contactWindows },
     { key: "notes", title: "Comments", control: "comments", optional: true },
@@ -69,6 +70,8 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
 
   function update(key: string, value: string) {
     setValues(previous => ({ ...previous, [key]: value,
+      ...(key === "email" ? { emailConsent: "", ...(previous.method === "Email" ? { method: "" } : {}) } : {}),
+      ...(key === "emailConsent" && !value && previous.method === "Email" ? { method: "" } : {}),
       ...(key === "incomeType" && value === "No income" ? { incomeAmount: "", incomeFrequency: "" } : {}),
     }));
   }
@@ -92,7 +95,7 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
     try {
       const response = await fetch("/api/lead", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, ...schedule, age, entry, survey, informationConsent: Boolean(survey), source: "website-insurance-enquiry", requestId: requestId.current, contactConsent: values.contactConsent === "on" }),
+        body: JSON.stringify({ ...values, ...schedule, age, entry, survey, informationConsent: Boolean(survey), source: "website-insurance-enquiry", requestId: requestId.current, emailConsent: values.emailConsent === "on", contactConsent: values.contactConsent === "on" }),
         signal: AbortSignal.timeout(15000),
       });
       const result = await response.json();
@@ -155,7 +158,16 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
               <textarea aria-label={title} maxLength={1000} rows={3} className={input} value={value} onChange={event => update(key, event.target.value)} />
             </>
           ) : (
-            <input {...attributes} aria-label={title} required={!optional} className={input} value={value} onChange={event => update(key, event.target.value)} />
+            <>
+              <input {...attributes} aria-label={title} required={!optional || (key === "email" && values.emailConsent === "on")} className={input} value={value} onChange={event => update(key, event.target.value)} />
+              {key === "email" && <>
+                <label className="mt-4 flex items-start gap-3 text-sm text-slate-700">
+                  <input type="checkbox" className="mt-1" checked={values.emailConsent === "on"} onChange={event => update("emailConsent", event.target.checked ? "on" : "")} />
+                  <span>I give Joanson Baptiste James permission to contact me by email about my insurance enquiry.</span>
+                </label>
+                <p className="mt-2 text-sm text-slate-600">If you leave this unticked, email contact will be recorded as permission not given.</p>
+              </>}
+            </>
           )}
         </fieldset>
       </section>

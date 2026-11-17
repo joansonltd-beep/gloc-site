@@ -7,9 +7,9 @@ export const incomeTypes = ["Salaried", "Commission", "Sales", "Mixed", "Pension
 export const incomeFrequencies = ["Daily", "Fortnightly", "Monthly"] as const;
 export const contactDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
 export const contactWindows = ["Morning (8 am to noon)", "Afternoon (noon to 4 pm)", "Evening (4 to 8 pm)"] as const;
-export const coverStatuses = ["Have coverage", "Have some coverage", "No coverage", "Not sure"] as const;
+export const coverStatuses = ["Have coverage", "Have some coverage", "Don't have but considering", "Don't have and not considering", "Not sure"] as const;
 export const timeframes = ["Within a month", "In the next few months", "Just exploring"] as const;
-export const contactMethods = ["Phone", "WhatsApp"] as const;
+export const contactMethods = ["Phone", "WhatsApp", "Email"] as const;
 export const enquiryEntries = ["Coverage finder", "Consultation request", "Coverage enquiry", "Term insurance enquiry", "Group benefits enquiry", "Market survey"] as const;
 export type EnquiryEntry = typeof enquiryEntries[number];
 export const enquiryConsent = "I agree that Joanson Baptiste James may use these details to respond to my enquiry by my chosen contact method.";
@@ -28,11 +28,16 @@ export function parseEnquiry(body: Record<string, unknown>) {
   const requestId = text(body.requestId, 36);
   const name = text(body.name, 100);
   const phone = text(body.phone, 30);
+  const email = text(body.email, 254);
+  const emailConsent = body.emailConsent === true;
+  if ((body.email !== undefined && typeof body.email !== "string") ||
+      (typeof body.email === "string" && body.email.length > 254) ||
+      (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) || (emailConsent && !email)) return null;
   const digits = phone.replace(/\D/g, "");
   const age = enquiryChoice(body.age, ageRanges);
   const goal = enquiryChoice(body.goal, coverageGoals);
   const employment = enquiryChoice(body.employment, employmentTypes);
-  const currentCover = enquiryChoice(body.currentCover, coverStatuses);
+  const currentCover = enquiryChoice(body.currentCover, [...coverStatuses, "No coverage"]);
   const timeframe = enquiryChoice(body.timeframe, timeframes);
   const method = enquiryChoice(body.method, contactMethods);
   const entry = enquiryChoice(body.entry, enquiryEntries);
@@ -54,14 +59,14 @@ export function parseEnquiry(body: Record<string, unknown>) {
       !entry || !goal || !employment || !currentCover || !timeframe || !method || !days || !windows ||
       !incomeType || (hasIncome && (!/^\d+(?:\.\d{1,2})?$/.test(amount) || !Number.isFinite(incomeAmount) || incomeAmount <= 0 || !incomeFrequency)) ||
       (entry === "Market survey" && (!survey?.Q1 || survey.F1 !== "Yes, I would like to arrange a conversation" || body.informationConsent !== true)) ||
-      body.contactConsent !== true) return null;
+      body.contactConsent !== true || (method === "Email" && (!email || !emailConsent))) return null;
   const company = entry === "Group benefits enquiry" ? text(body.company, 100) : "";
   const headcount = entry === "Group benefits enquiry" ? Number(text(body.headcount, 9)) : 0;
   const coverAmount = entry === "Term insurance enquiry" ? Number(text(body.coverAmount, 18)) : 0;
   const purpose = entry === "Term insurance enquiry" ? text(body.purpose, 150) : "";
   if (entry === "Group benefits enquiry" && (!Number.isSafeInteger(headcount) || headcount <= 0)) return null;
   if (entry === "Term insurance enquiry" && (!Number.isFinite(coverAmount) || coverAmount <= 0)) return null;
-  return { requestId, name, phone, age, dateOfBirth, goal, employment, currentCover, timeframe, method,
+  return { requestId, name, phone, email, emailConsent, emailPermission: emailConsent ? "Permission given" : "Permission not given", age, dateOfBirth, goal, employment, currentCover, timeframe, method,
     entry, incomeType, incomeAmount, incomeFrequency, contactDays: days, contactWindows: windows,
     notes: text(body.notes, 1000), contactConsent: true as const, company, headcount, coverAmount, purpose,
     ...(survey ? { survey, informationConsent: true as const } : {}) };

@@ -15,16 +15,16 @@ export const emptyDesk: Desk = {leads: [], scripts: []};
 
 export async function saveEnquiry(enquiry: Enquiry) {
   const receivedAt = new Date().toISOString();
-  const { requestId, name, phone, employment, age, goal, currentCover, timeframe, method, notes, entry, dateOfBirth, incomeType, incomeAmount, incomeFrequency, contactDays, contactWindows, company, headcount, coverAmount, purpose } = enquiry;
+  const { requestId, name, phone, email, emailConsent, employment, age, goal, currentCover, timeframe, method, notes, entry, dateOfBirth, incomeType, incomeAmount, incomeFrequency, contactDays, contactWindows, company, headcount, coverAmount, purpose } = enquiry;
   const bestTime = contactDays.join(", ") + " · " + contactWindows.join(", ");
   const record: Lead = {
     ...leadFrom({
       name, source: 'Other', campaign: entry, coverage: [goal],
-      unverifiedContact: phone, employment: employment === 'Not employed' ? 'Unemployed' : employment,
+      phone, email, emailConsent, insurance: currentCover === 'Have coverage' || currentCover === 'Have some coverage' ? 'Has insurance' : currentCover, employment: employment === 'Not employed' ? 'Unemployed' : employment,
       method, bestTime,
       consentEvidence: `Website enquiry, ${receivedAt}. ${enquiryConsent} Permission applies to this enquiry only.`,
-      unverifiedNotes: [
-        `Date of birth: ${dateOfBirth}`, age && `Finder age range: ${age}`,
+      notes: [
+        `Email contact: ${enquiry.emailPermission}`, `Date of birth: ${dateOfBirth}`, age && `Finder age range: ${age}`,
         incomeType === "No income" ? "Income: No income" : `Income: J$${incomeAmount} · ${incomeType} · ${incomeFrequency}`,
         `Employment type: ${employment}`, `Coverage interest: ${goal}`,
         `Current cover: ${currentCover}`, `Timeframe: ${timeframe}`, `Contact preference: ${method}`,

@@ -5,7 +5,8 @@
     "multi": false,
     "options": [
       "Yes",
-      "No",
+      "Don't have but considering",
+      "Don't have and not considering",
       "Not sure"
     ]
   },

@@ -4,8 +4,9 @@ export type Answers = Record<string, string | string[]>;
 export const exclusive = (s: string) => /^(Not sure|Prefer not to say|Nothing at present|Nothing in particular|None of these|I do not know|I am not sure where to begin|None at present|Nothing specific at present)/.test(s);
 export function questionsFor(a: Answers) {
   const ids = ['Q1'];
+  const noCover = ['No', "Don't have but considering", "Don't have and not considering"].includes(String(a.Q1));
   if (a.Q1 === 'Yes') ids.push('Y1', 'Y2', 'Y3');
-  if (a.Q1 === 'No') {
+  if (noCover) {
     ids.push('N1');
     if (a.N1 === 'Yes') ids.push('N2');
     if (a.N1 === 'No') {
@@ -41,7 +42,7 @@ export function questionsFor(a: Answers) {
     if (id === 'C4') options = options.filter(o => {
       if (o === 'Reviewing existing coverage') return a.Q1 === 'Yes';
       if (o === 'Checking whether I already have coverage') return a.Q1 === 'Not sure';
-      if (o === 'Replacing coverage that ended') return a.Q1 === 'No' && a.N1 === 'Yes';
+      if (o === 'Replacing coverage that ended') return noCover && a.N1 === 'Yes';
       if (o === 'Exploring insurance for the first time') return a.N1 === 'No' && a.N3 === 'No';
       return true;
     });
@@ -63,7 +64,7 @@ export function cleanAnswers(input: Answers): Answers {
       if (selected.some(exclusive)) selected = [selected.find(exclusive)!];
       if (q.max) selected = selected.slice(0, q.max);
       if (selected.length) clean[q.id] = selected;
-    } else if (typeof value === 'string' && active.options.includes(value)) clean[q.id] = value;
+    } else if (typeof value === 'string' && (active.options.includes(value) || (q.id === "Q1" && value === "No"))) clean[q.id] = value;
     if (Array.isArray(clean[q.id]) && clean[q.id].includes('Other') && typeof input[q.id + 'Other'] === 'string') clean[q.id + 'Other'] = (input[q.id + 'Other'] as string).trim().slice(0, 300);
   }
   if (Array.isArray(clean.C1) && clean.C1.length === 1 && !exclusive(clean.C1[0])) clean.highestPriority = clean.C1[0];
@@ -83,6 +84,8 @@ export function surveyLead(raw: Record<string, unknown>) {
     contact.name = name;
     contact.informationConsent = true;
     contact.contactConsent = false;
+    contact.emailConsent = false;
+    contact.emailPermission = 'Permission not given';
   }
   if (answers.F1 === 'Yes, I would like to arrange a conversation') {
     if (!['Phone call', 'WhatsApp', 'Email'].includes(String(raw.contactMethod)) || raw.contactConsent !== true) return null;
@@ -91,8 +94,10 @@ export function surveyLead(raw: Record<string, unknown>) {
     contact.contactMethod = String(raw.contactMethod);
     contact.contactConsent = true;
     if (raw.contactMethod === 'Email') {
-      if (typeof raw.email !== 'string' || raw.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(raw.email)) return null;
+      if (raw.emailConsent !== true || typeof raw.email !== 'string' || raw.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(raw.email)) return null;
       contact.email = raw.email.trim();
+      contact.emailConsent = true;
+      contact.emailPermission = 'Permission given';
     } else {
       if (typeof raw.phone !== 'string' || !/^[+\d\s()-]+$/.test(raw.phone) || raw.phone.replace(/\D/g, '').length < 7 || raw.phone.replace(/\D/g, '').length > 15) return null;
       contact.phone = raw.phone.trim();

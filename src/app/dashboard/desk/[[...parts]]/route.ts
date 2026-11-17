@@ -1,7 +1,7 @@
 import { authenticated,sameOrigin } from '@/lib/dashboard/auth';
 import { Conflict,readDocument,writeDocument } from '@/lib/dashboard/storage';
 import { POST as logout } from '@/app/dashboard/logout/route';
-import { json,clean,leadFrom,scriptIds } from '@/lib/dashboard/lead-desk/model';
+import { json,clean,leadFrom,normalizeLead,scriptIds } from '@/lib/dashboard/lead-desk/model';
 import { deskPath, emptyDesk, type Lead } from '@/lib/dashboard/lead-desk/workspace';
 import page from '@/lib/dashboard/lead-desk/index.html';
 import css from '@/lib/dashboard/lead-desk/style.css';
@@ -17,7 +17,7 @@ export async function GET(request: Request, {params}:Context) {
   const key = (await params).parts?.join('/') ?? '';
   if (!await authenticated()) return key ? json({error:'Sign in to access your workspace.'},401) : Response.redirect(new URL('/dashboard/login',request.url),307);
   if (key === 'api/workspace') {
-    try { return json((await readDocument(deskPath,emptyDesk)).value); }
+    try { const value=(await readDocument(deskPath,emptyDesk)).value; return json({...value,leads:value.leads.map(normalizeLead)}); }
     catch { return json({error:'The workspace could not be loaded.'},503); }
   }
   const asset = key === '' ? [page,'text/html'] : key === 'app.js' ? [js,'text/javascript'] : key === 'style.css' ? [css,'text/css'] : null;
@@ -68,10 +68,10 @@ async function mutate(request:Request,{params}:Context) {
   const title=clean(body.title,100), script=clean(body.text,4000);
   if (lead) {
     if (!lead.name) return json({error:'Enter a lead name.'},400);
+    if (!lead.insurance) return json({error:'Choose an existing coverage status.'},400);
+    if (lead.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) return json({error:'Enter a valid email address.'},400);
+    if (body.emailConsent === true && !lead.email) return json({error:'Enter an email address for email permission.'},400);
     if (lead.consent==='Permission documented'&&!lead.consentEvidence) return json({error:'Record how and when permission was given.'},400);
-    if (lead.verified.length&&!lead.verificationSource) return json({error:'Record the source and date of the verified details.'},400);
-    if (lead.verified.includes('Contact details')&&!lead.confirmedContact) return json({error:'Add confirmed contact details or clear their verification.'},400);
-    if (lead.verified.includes('Appointment')&&!lead.appointment) return json({error:'Add appointment details or clear their verification.'},400);
   } else if (!title||!script) return json({error:'Enter a title and script.'},400);
   try {
     const {value,etag}=await readDocument(deskPath,emptyDesk);
