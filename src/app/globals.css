@@ -15,6 +15,7 @@
   --ink: #20242b;
   --muted: #596171;
   --line: #dfe3ec;
+  --page-gutter: clamp(20px, 4vw, 80px);
 }
 html {
   scroll-behavior: smooth;
@@ -84,51 +85,56 @@ textarea {
   border-bottom: 1px solid var(--line);
 }
 .header-inner {
-  max-width: 1280px;
-  margin: auto;
-  padding: 8px 40px;
+  padding: 8px var(--page-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 18px;
 }
-.brand-lockup {
-  display: flex;
-  align-items: center;
-  gap: 13px;
+.header-brand {
+  display: grid;
+  justify-items: center;
+  gap: 1px;
   flex-shrink: 0;
+  color: var(--ink);
 }
-.brand-mark {
-  font:
-    44px/1 Georgia,
-    serif;
-  border-right: 1px solid #c6dde7;
-  padding-right: 17px;
+.brand-logo {
+  flex: none;
+  width: 27px;
+  height: 27px;
 }
-.brand-lockup strong {
-  display: block;
-  font-size: 14px;
-
-  font-weight: 600;
+.brand-name {
+  display: flex;
+  align-items: end;
+  gap: 1px;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1;
 }
-.brand-lockup small {
-  display: block;
-  margin-top: 5px;
-
-  letter-spacing: 2px;
-  font-size: 9px;
-  color: var(--muted);
+.header-brand-tagline {
+  font-size: 12px;
+  line-height: 12px;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.header-brand-tagline em {
+  color: #007242;
 }
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 17px;
 }
 .site-nav ul {
   display: flex;
-  gap: 22px;
+  gap: 15px;
   font-size: 12px;
   font-weight: 500;
+}
+.site-nav-items > li > a,
+.site-nav-label > a,
+.nav-book {
+  white-space: nowrap;
 }
 .site-nav a[aria-current] {
   text-decoration: underline;
@@ -197,9 +203,9 @@ textarea {
 }
 .nav-book {
   display: flex;
-  gap: 24px;
+  gap: 14px;
   align-items: center;
-  padding: 9px 16px;
+  padding: 9px 12px;
   border: 1px solid var(--color-brand);
   font-size: 12px;
   font-weight: 600;
@@ -679,17 +685,11 @@ textarea {
   flex-shrink: 0;
 }
 @media (max-width: 1100px) {
-  .header-inner {
-    padding: 8px 28px;
-  }
   .site-nav {
     gap: 20px;
   }
   .site-nav ul {
     gap: 14px;
-  }
-  .brand-lockup strong {
-    font-size: 12px;
   }
   .home-principles {
     flex-wrap: wrap;
@@ -702,7 +702,7 @@ textarea {
     margin: 0 40px;
   }
 }
-@media (max-width: 1150px) {
+@media (max-width: 1250px) {
   .menu-toggle {
     display: flex;
     gap: 12px;
@@ -786,20 +786,7 @@ textarea {
 @media (max-width: 640px) {
   .header-inner {
     padding: 7px 20px;
-  }
-  .brand-mark {
-    font-size: 35px;
-    padding-right: 12px;
-  }
-  .brand-lockup {
-    gap: 10px;
-  }
-  .brand-lockup strong {
-    font-size: 11px;
-  }
-  .brand-lockup small {
-    font-size: 8px;
-    letter-spacing: 1.6px;
+    gap: 12px;
   }
   .site-main {
     padding: 35px 22px 60px;
@@ -960,16 +947,17 @@ textarea {
 }
 
 @media (max-width: 767px) {
- .brand-lockup { min-width: 0; flex-shrink: 1; }
- .brand-lockup > span:last-child { min-width: 0; }
- .brand-lockup small { white-space: normal; letter-spacing: 1px; line-height: 1.5; }
+ .brand-name { font-size: 25px; }
+ .brand-logo { width: 25px; height: 25px; }
  .menu-toggle { flex-shrink: 0; }
+}
+@media (max-width: 380px) {
+  .header-inner { padding-inline: 14px; }
+  .brand-name { font-size: 22px; }
+  .brand-logo { width: 24px; height: 24px; }
 }
 
 /* Keep long names and form copy readable at narrow widths. */
-.brand-lockup strong {
-  line-height: 1.45;
-}
 .site-main fieldset {
   min-width: 0;
 }
@@ -977,10 +965,6 @@ textarea {
   line-height: 1.6;
 }
 @media (max-width: 767px) {
-  .brand-lockup strong {
-    font-size: 12px;
-    white-space: normal;
-  }
   .button-primary,
   .button-gold {
     max-width: 100%;
@@ -988,35 +972,6 @@ textarea {
     line-height: 1.5;
   }
 }
-
-/* Charcoal and cobalt identity */
-.brand-lockup .brand-logo {
-  position: relative;
-  display: block;
-  width: 215px;
-  max-width: 100%;
-  container-type: inline-size;
-}
-.brand-logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  clip-path: polygon(0 0, 100% 0, 100% 67%, 26% 67%, 26% 100%, 0 100%);
-}
-.brand-role {
-  position: absolute;
-  top: 69%;
-  left: 28.4%;
-  color: var(--color-brand);
-  font-size: 4.15cqw;
-  font-weight: 600;
-  letter-spacing: .18em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-@media (max-width: 760px) { .brand-lockup .brand-logo { width: 183px; } }
-@media (max-width: 380px) { .brand-lockup .brand-logo { width: 163px; } }
 
 .homepage .personal-section {
   background-image: radial-gradient(ellipse at 2% 35%, #ebefef, transparent 72%),

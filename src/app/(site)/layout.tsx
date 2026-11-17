@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { Barlow_Semi_Condensed, Syne } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 const GOOGLE_ADS_ID="AW-18282133568";
@@ -9,6 +11,15 @@ import SiteNav from "@/components/SiteNav";
 import { SiteSettingsProvider } from "@/components/SiteSettingsProvider";
 import { getSiteSettings } from "@/lib/siteData";
 import { SITE_URL } from "@/lib/siteUrl";
+
+const wordmarkFont = Syne({ weight: "700", subsets: ["latin"], display: "swap" });
+const taglineFont = Barlow_Semi_Condensed({
+  weight: "600",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export default async function SiteLayout({
   children,
 }: {
@@ -67,16 +78,20 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
       <div className="site-shell">
         <header className="site-header">
           <div className="header-inner">
-            <Link
-              href="/"
-              className="brand-lockup"
-              aria-label={`${settings.agentName}, Insurance Agent, home`}
-            >
-              <span className="brand-logo" aria-hidden="true">
-                <img src="/brand/joanson-b-james-logo.png" alt="" width="1000" height="167" />
-                <span className="brand-role">Insurance Agent</span>
+            <div className="header-brand">
+              <Link
+                href="/"
+                className={`brand-name ${wordmarkFont.className}`}
+                aria-label={`${settings.agentName}, home`}
+              >
+                <Image src="/brand/joanson-pillars-green-yellow-black.png" alt="" width={27} height={27}
+                  className="brand-logo" />
+                <span aria-hidden="true">oanson</span>
+              </Link>
+              <span className={`header-brand-tagline ${taglineFont.className}`}>
+                Insurance made <em>Easy</em>
               </span>
-            </Link>
+            </div>
             <SiteNav />
           </div>
         </header>
