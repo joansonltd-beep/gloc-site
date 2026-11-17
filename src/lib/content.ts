@@ -281,7 +281,7 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "life-insurance",
     clusterKey: "protect",
     title: "Life Insurance",
-    tagline: "Help your family meet everyday commitments, education costs and debts if you die. Compare life insurance options in Jamaica with independent guidance from Joanson.",
+    tagline: "Help your family meet everyday commitments, education costs and debts when you die. Compare life insurance options in Jamaica with independent guidance from Joanson.",
     what: ["Life cover can provide a payment to your chosen beneficiaries if the policy conditions are met. We help you compare cover amounts, policy duration, exclusions and premiums across insurer options."],
     why: [
       "Review who depends on your income.",

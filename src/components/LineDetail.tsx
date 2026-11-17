@@ -6,7 +6,7 @@ import { LINE_DETAILS, CLUSTERS, type ClusterKey } from "@/lib/content";
 import { getLineDetail } from "@/lib/siteData";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 import BrochureSection from "@/components/BrochureSection";
-import JnLifePrograms from "@/components/JnLifePrograms";
+import InsurancePrograms from "@/components/InsurancePrograms";
 import { Check } from "@/components/icons";
 
 // Detail page for a single product line: what it is, why it matters, and the
@@ -87,7 +87,7 @@ export default async function LineDetail({
 
       <p className="max-w-3xl text-slate-600">Independent guidance from Joanson “Joey” Baptiste James helps you compare options from multiple insurers and make an informed decision.</p>
       <BrochureSection pageKey={`${clusterKey}/${slug}`} />
-      <JnLifePrograms pageKey={`${clusterKey}/${slug}`} />
+      <InsurancePrograms pageKey={`${clusterKey}/${slug}`} />
 
       {(tool || detail.slug === "life-insurance") && (
         <div className="flex flex-wrap gap-x-6 gap-y-2">

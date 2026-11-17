@@ -87,7 +87,7 @@ export const DEFAULT_ABOUT: AboutData = {
     "I am Joanson “Joey” Baptiste James, an insurance advisor serving clients across Jamaica.",
   storyParagraphs: [
     "I help individuals, families and business owners throughout Jamaica compare insurance options and understand how each fits their priorities and budget.",
-    "My experience in Caribbean financial services shapes a practical approach: listen first, explain clearly and give you room to decide. We review what you already have and discuss benefits, exclusions and costs without unnecessary jargon.",
+    "My experience in Caribbean financial services shapes a practical approach: listen first, explain clearly and give you room to decide. Whether you are getting insurance for the first time or reviewing existing cover, we discuss what each option covers, what it leaves out and what it costs.",
     "Your needs lead the conversation. Whether you are protecting your family, reviewing retirement options or arranging group benefits, I help you make an informed decision without pressure. Book a consultation or message me on WhatsApp to get started.",
   ],
   credentials: [],

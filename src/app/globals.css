@@ -122,6 +122,7 @@ textarea {
 .header-brand-tagline {
   font-size: 13px;
   line-height: 1;
+  text-align: center;
   white-space: nowrap;
   color: var(--ink);
 }
