@@ -203,7 +203,18 @@ const SERVICE_IMAGES: Record<string, string> = {
   "group-employee-benefits": "team",
 };
 
-const SERVICE_PHOTO_ALT: Record<string, string> = {"life": "Illustrative family spending time together in Jamaica", "health": "Illustrative Jamaican family discussing health care", "illness": "Illustrative person supported by family during recovery", "accident": "Illustrative everyday activity in Jamaica", "retirement": "Illustrative couple planning their future in Jamaica", "savings": "Illustrative person reviewing savings plans", "motor": "Illustrative driver beside a vehicle in Jamaica", "home": "Illustrative family outside a home in Jamaica", "property": "Illustrative property in Jamaica", "team": "Illustrative employees wearing matching Vostra uniforms"};
+const SERVICE_PHOTO_ALT: Record<string, string> = {
+  life: "Parents walking with their toddler on a boardwalk surrounded by greenery",
+  health: "Doctor with a stethoscope reviewing notes with a patient",
+  illness: "Three generations of women sitting together on a couch, holding hands",
+  accident: "Cyclist in a helmet resting on her bike on an open road",
+  retirement: "Older couple sitting together on a bench outdoors",
+  savings: "Couple going through bills and paperwork at the kitchen table",
+  motor: "Smiling man driving a car",
+  home: "Family sitting together on the front steps of their home",
+  property: "Colourful building with palm trees and a wooden front door",
+  team: "Three colleagues reviewing a document together in an office",
+};
 
 export function LineIcon({
   slug,
