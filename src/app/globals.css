@@ -126,7 +126,11 @@ textarea {
   white-space: nowrap;
   color: var(--ink);
 }
-.header-brand-tagline em {
+.brand-tagline-life {
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   color: #007242;
 }
 .site-nav {

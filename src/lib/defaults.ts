@@ -36,7 +36,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   footerDisclaimer:
     "Information on this website is general in nature and does not constitute financial, legal or tax advice. Insurance products, eligibility, terms and pricing vary by insurer and individual circumstances.",
   agentName: "Joanson “Joey” Baptiste James",
-  agentTagline: "Insurance advisor in Jamaica",
+  agentTagline: "Your Agent for Life",
   heroEyebrow: "Insurance Guidance in Jamaica",
   heroHeadline: "Protect what you’ve built. Plan for what’s next.",
   heroSubcopy:

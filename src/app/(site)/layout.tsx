@@ -1,3 +1,4 @@
+import BrandTagline from "@/components/BrandTagline";
 import PublicPageImage from "@/components/PublicPageImage";
 import Image from "next/image";
 import { Archivo, Barlow_Semi_Condensed, DM_Sans, Syne } from "next/font/google";
@@ -87,7 +88,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
               <div className="header-brand-copy">
                 <span className={`brand-name ${wordmarkFont.className}`}>Joanson</span>
                 <span className={`header-brand-tagline ${taglineFont.className}`}>
-                  Insurance made <em>Easy</em>
+                  <BrandTagline />
                 </span>
               </div>
             </Link>
@@ -104,10 +105,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
                 Joanson “Joey” Baptiste James
               </Link>
               <p>
-                Independent insurance guidance for
-                {" "}
-                <br />
-                your life in Jamaica.
+                <BrandTagline />
               </p>
             </div>
             <div className="footer-links">

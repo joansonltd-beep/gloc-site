@@ -1,3 +1,4 @@
+import BrandTagline from "@/components/BrandTagline";
 import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -24,7 +25,7 @@ export default async function AboutPage() {
       <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
         <header>
           <p className="text-sm font-medium text-accent-dark">
-            {settings.agentTagline}
+            <BrandTagline />
           </p>
           <h1 className="mt-2 text-3xl font-semibold text-brand sm:text-4xl">
             Meet {settings.agentName}
@@ -36,7 +37,7 @@ export default async function AboutPage() {
           <div className="relative mx-auto aspect-[4/5] w-60 overflow-hidden rounded-sm ring-1 ring-slate-200 md:mx-0">
             <Image
               src={aboutPhoto}
-              alt={`${settings.agentName}, ${settings.agentTagline}`}
+              alt={`${settings.agentName}, insurance agent in Jamaica`}
               fill
               sizes="(max-width: 768px) 240px, 240px"
               className="object-cover"

@@ -24,7 +24,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "Is the life insurance from my job enough?",
-      "answer": "Usually not on its own. Group life through an employer is often set at a multiple of salary, commonly around three times, and it normally ends when you leave the job. If you change employers, retire or are laid off, that cover can stop while your family still needs it. A personal policy stays with you wherever you work."
+      "answer": "It depends on the benefit and what your family would need. Group life may use a multiple of salary or a fixed amount, and it can end when you leave the job. Check the amount, who receives it and what happens if you change employers or retire. A personal policy can provide cover separately from your job, subject to its own terms."
     },
     {
       "question": "What happens if I miss a premium payment?",
@@ -32,7 +32,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "Why would a life insurance claim be refused?",
-      "answer": "The most common reason is information missing from the application, especially an earlier illness or treatment. Many policies allow the insurer to look closely at the application if a claim is made in the first two years. Answer every health question fully and honestly. Claims can also be refused under exclusions written into the contract, and we go through those with you before you apply."
+      "answer": "A claim can be refused if important information was missing from the application or if a policy exclusion applies. Answer every health question fully and honestly, including questions about earlier illness or treatment. We go through the exclusions with you before you apply, and the insurer assesses any claim under the contract."
     },
     {
       "question": "Who should I name as my beneficiary?",
@@ -70,7 +70,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "Will existing medical conditions be covered?",
-      "answer": "Often only after a waiting period. Many individual plans exclude conditions you had before joining for a set time, commonly 6 to 12 months, and some exclude certain conditions altogether. Declare everything on the application. A condition left off the form can lead to a refused claim or a cancelled policy later."
+      "answer": "This depends on the plan and the insurer’s assessment. A condition may be excluded, accepted with conditions or covered under the plan’s rules. A waiting period ending does not automatically mean a pre-existing condition will be covered. Declare your medical history and ask the insurer to confirm any restrictions in writing."
     },
     {
       "question": "How does my NHF card work with private health insurance?",
@@ -90,7 +90,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "What happens to my health insurance if I leave my job?",
-      "answer": "Group health cover through an employer normally ends when you leave. Some insurers let you move to an individual plan within a short window, often 30 days, without a new medical and without restarting the waiting period for existing conditions, provided your group benefits were at least as good. Ask about this before your last day, because the window is easy to miss."
+      "answer": "Group health cover can end when you leave your job. Ask your insurer whether you can apply for an individual plan, what deadline applies and whether you will need medical evidence or new waiting periods. These conditions vary, so arrange the next step before your last day rather than assuming your benefits will transfer unchanged."
     },
     {
       "question": "How do I make a claim?",
@@ -120,7 +120,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "What are waiting and survival periods?",
-      "answer": "A waiting period is the time after the policy starts during which a diagnosis is not covered, commonly 60 to 90 days. A survival period is how long you must live after diagnosis before the benefit is paid, commonly 14 to 30 days. Both vary by plan, so check them in the contract."
+      "answer": "A waiting period is the time after a policy starts during which certain diagnoses or claims are not covered. A survival period is how long the insured person must live after a qualifying diagnosis for a benefit to become payable. The periods and the way they apply depend on the particular policy, so check both in the contract."
     },
     {
       "question": "How much cover should I consider?",
@@ -304,7 +304,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "How much life cover does a group plan usually give?",
-      "answer": "Group life is often set as a multiple of each employee’s salary, commonly around three times, or as the same fixed amount for everyone. A salary multiple keeps the benefit in line with pay. Ask whether there is a maximum amount per person."
+      "answer": "Some plans use a multiple of each employee’s salary, while others provide the same fixed amount for everyone. The employer and insurer agree the benefit structure. Ask how much each employee is covered for, whether there is a maximum per person and when medical evidence is required."
     },
     {
       "question": "Do employees need a medical to join?",
