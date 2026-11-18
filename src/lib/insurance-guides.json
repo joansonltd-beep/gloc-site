@@ -1,0 +1,248 @@
+{
+  "life-insurance": {
+    "intro": "Life insurance provides money for the people you leave behind when you die, subject to the policy terms. It can help them pay everyday bills, settle debts and keep longer-term plans on track.",
+    "sections": [
+      {
+        "heading": "What life insurance does",
+        "paragraphs": [
+          "You pay a premium to keep the policy in place. When you die while the cover is active, the insurer assesses the claim and pays the agreed benefit to the person or people entitled to receive it under the policy. Naming your beneficiaries and keeping their details current is an important part of setting up your cover.",
+          "The amount of cover should reflect the commitments you want to leave funded. These might include rent, school fees, support for children or parents, and outstanding loans. Existing insurance and savings also matter. A policy that is affordable to keep is more useful than one you have to stop paying for."
+        ]
+      },
+      {
+        "heading": "Term, whole life and universal life",
+        "paragraphs": [
+          "Term life covers a set period. It is often used for a need with an end date, such as the years your children depend on your income. Many term policies do not build savings, and cover ends when the term ends unless the contract allows a renewal or conversion.",
+          "Whole life is designed to continue throughout your life if its requirements are met. Some policies build a cash value, but the amount available and the effect of withdrawing it depend on the contract. Final-expense and family-indemnity plans have their own benefit and eligibility rules.",
+          "Universal life combines life cover with a policy account. Charges, premiums, investment performance and withdrawals can affect how long the cover lasts. Ask for a clear illustration showing what is guaranteed, what is projected and what happens if the account cannot meet the policy charges."
+        ]
+      }
+    ],
+    "checks": [
+      "How long does the cover last, and can the premium change?",
+      "Which exclusions and waiting periods apply?",
+      "Who receives the benefit, and how is a claim made?",
+      "Does using a living benefit or withdrawing money reduce the life cover?"
+    ],
+    "sources": [
+      [
+        "Sagicor Jamaica: individual life insurance",
+        "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew"
+      ],
+      [
+        "JN Life: life insurance",
+        "https://www.jnlifeinsurance.com/life-insurance/"
+      ]
+    ]
+  },
+  "health": {
+    "intro": "Health insurance helps pay for medical care covered by your plan. Your benefits, limits and share of the bill depend on the policy you choose.",
+    "sections": [
+      {
+        "heading": "What health insurance can cover",
+        "paragraphs": [
+          "A health plan may include doctor visits, prescriptions, tests, hospital care and surgery. Dental, optical and maternity benefits may be included, optional or unavailable. Read the benefit schedule for the actual plan rather than assuming every medical expense is covered.",
+          "The insurer may pay a provider directly or reimburse you after you pay. You may still have to meet a deductible, pay a percentage of the cost or pay charges above the plan’s limit. Some treatment needs approval before it takes place. A provider accepting your plan does not mean every service is covered in full."
+        ]
+      },
+      {
+        "heading": "What a health card does",
+        "paragraphs": [
+          "A health card identifies you to participating providers and helps them check your benefits. The card is not a separate promise of unlimited medical care. Your policy must be active, and the treatment must meet the plan’s requirements.",
+          "Before arranging new cover, look at any benefits available through work and whether your dependants are included. Compare the gaps, the cost and what happens when you change jobs or retire. Individual and employer plans can have different entry rules and benefit structures."
+        ]
+      }
+    ],
+    "checks": [
+      "What will you pay at the doctor, pharmacy or hospital?",
+      "Are your usual providers included?",
+      "What limits, exclusions and pre-existing-condition rules apply?",
+      "Which treatment needs approval, and what happens in an emergency?"
+    ],
+    "sources": [
+      [
+        "Sagicor Jamaica: group health",
+        "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health"
+      ],
+      [
+        "Guardian Jamaica: individual health application and plan options",
+        "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf"
+      ]
+    ]
+  },
+  "critical-illness": {
+    "intro": "Critical illness insurance pays a cash benefit when a diagnosis or medical event meets the policy’s definition of a covered condition. It is different from a health plan that pays eligible medical bills.",
+    "sections": [
+      {
+        "heading": "How critical illness cover works",
+        "paragraphs": [
+          "The contract lists the illnesses and medical events it covers, along with the definitions a claim must satisfy. A condition being serious, or having a similar name, does not automatically mean it qualifies. The insurer assesses the medical evidence against those definitions.",
+          "A cash benefit can help with the financial effects of recovery, including time away from work, household bills, transport or care. The way the payment may be used depends on the policy. It can sit alongside health and life insurance, but does not replace either of them."
+        ]
+      },
+      {
+        "heading": "The details that change the cover",
+        "paragraphs": [
+          "Plans can differ in their covered conditions, severity requirements, waiting periods and any requirement to survive for a stated time after diagnosis. Some plans allow more than one claim or provide benefits for family members. Others stop after a payout. These features need to be checked for the specific product.",
+          "Some critical illness benefits are attached to a life policy. A payment under one benefit may reduce another, depending on how the policy is arranged. Ask to see the effect on your remaining cover before you choose."
+        ]
+      }
+    ],
+    "checks": [
+      "Which conditions and severity levels qualify?",
+      "Are there waiting or survival periods?",
+      "Can you claim again, and does a payout end or reduce other cover?",
+      "What medical information is needed when applying and claiming?"
+    ],
+    "sources": [
+      [
+        "JN Life: AIDE",
+        "https://www.jnlifeinsurance.com/life-insurance/jn-life-aide/"
+      ],
+      [
+        "Sagicor Jamaica: Triple Protector Plus",
+        "https://www.sagicor.com/en-jm/personal-solution/insurance/individual%20lifenew/coupon/triple%20protector%20plus"
+      ]
+    ]
+  },
+  "personal-accident": {
+    "intro": "Personal accident insurance pays benefits for injuries or death caused by an accident covered by the policy. It focuses on accidental events, rather than illness.",
+    "sections": [
+      {
+        "heading": "What an accident policy pays for",
+        "paragraphs": [
+          "Depending on the plan, benefits may apply to accidental death, loss of a limb or sight, certain disabilities, hospital stays or eligible medical expenses. The policy’s benefit schedule explains which events qualify and how each payment is calculated. Not every injury pays the full amount of cover.",
+          "Accident cover can help with an unexpected interruption to work or family life. It is important to compare what it actually pays with any health insurance, employer benefits or other policies you already have."
+        ]
+      },
+      {
+        "heading": "Where the limits matter",
+        "paragraphs": [
+          "The policy defines what it considers an accident and may place conditions on how and when a claim is made. Occupation, hazardous activities, sport, travel and alcohol or drug-related events can affect cover. Ask about the activities that are part of your actual routine.",
+          "An accident policy is not a substitute for broad life cover or a health plan. A death or disability caused by illness may fall outside it, and medical benefits may be limited to injuries from a covered accident."
+        ]
+      }
+    ],
+    "checks": [
+      "Which injuries and disabilities are covered, and at what benefit amounts?",
+      "Does your occupation or a regular activity affect eligibility?",
+      "Are medical bills included, or does the plan pay only scheduled cash benefits?",
+      "What evidence and deadlines apply to a claim?"
+    ],
+    "sources": [
+      [
+        "Sagicor Jamaica: individual insurance catalogue",
+        "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew"
+      ]
+    ]
+  },
+  "pension-annuities": {
+    "intro": "A pension arrangement helps build money for retirement. An annuity is a contract that turns a sum of money into income under agreed terms. They serve different stages of retirement planning.",
+    "sections": [
+      {
+        "heading": "Building retirement savings",
+        "paragraphs": [
+          "An employer pension plan or an individual retirement scheme collects contributions and invests them for retirement. The benefits you eventually receive depend on the type of arrangement, its rules and, where applicable, the money accumulated and investment results.",
+          "In Jamaica, approved pension arrangements have eligibility, contribution and benefit rules. Retirement money is not usually available in the same way as an ordinary savings account. Before joining or transferring, ask how the scheme treats changes of employment, transfers, early retirement and death."
+        ]
+      },
+      {
+        "heading": "Taking an income in retirement",
+        "paragraphs": [
+          "An annuity can provide regular income in exchange for a lump sum. Depending on the contract, payments may continue for your lifetime, include a guarantee period or provide for a surviving spouse. The choices made when it starts can affect the payment and what is left for beneficiaries.",
+          "Start with the expenses you expect to have, then consider your existing pension benefits, savings and other income. Inflation, fees and the length of retirement all affect how far that money may go. Ask an appropriately qualified professional to explain tax treatment and the choices available under your scheme."
+        ]
+      }
+    ],
+    "checks": [
+      "Who can join, and what contributions and fees apply?",
+      "When can you take benefits or transfer the money?",
+      "What happens if you change jobs or die before retirement?",
+      "For an annuity, which income and survivor benefits are guaranteed?"
+    ],
+    "sources": [
+      [
+        "JN Life: Individual Retirement Scheme",
+        "https://www.jnlifeinsurance.com/pension/jn-individual-retirement-scheme/"
+      ],
+      [
+        "Sagicor Jamaica: retirement planning",
+        "https://www.sagicor.com/en-jm/personal-solution/pension/retirement-planning"
+      ],
+      [
+        "Financial Services Commission Jamaica: pensions",
+        "https://www.fscjamaica.org/industry/pension/"
+      ]
+    ]
+  },
+  "investments-mutual-funds": {
+    "intro": "Investing means putting money into assets with the aim of growing it or earning income. Returns depend on the investment, and you can lose money. Investing is different from buying insurance against a covered event.",
+    "sections": [
+      {
+        "heading": "Funds and investment-linked policies",
+        "paragraphs": [
+          "A mutual fund or unit trust pools money from investors and follows a stated investment strategy. A fund might hold shares, bonds or other assets. Its documents explain what it can invest in, the risks, the charges and how investors can buy or redeem their holdings.",
+          "An investment-linked insurance policy combines insurance with an account or investment element. It has insurance charges and policy conditions as well as investment considerations. It should not be treated as identical to a stand-alone fund or a bank deposit."
+        ]
+      },
+      {
+        "heading": "Choosing a purpose for the money",
+        "paragraphs": [
+          "Money needed soon has a different job from money being set aside for education or a longer-term goal. Consider how quickly you may need access, whether you could manage a fall in value, and whether you have other money available for emergencies.",
+          "Read the current product documents and compare charges, withdrawal conditions, currency exposure and any guarantees. A projection shows an assumption, not a promise. This page explains the differences; the sale of investment or pension products must be handled through the appropriately licensed provider or representative."
+        ]
+      }
+    ],
+    "checks": [
+      "What does the fund or policy invest in?",
+      "Which charges apply when joining, holding or withdrawing?",
+      "Can the value fall, and what exactly is guaranteed?",
+      "How quickly can you access the money, and in which currency?"
+    ],
+    "sources": [
+      [
+        "Sagicor Jamaica: individual insurance and investment products",
+        "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew"
+      ],
+      [
+        "JN Life: provider distinction for its retirement scheme",
+        "https://www.jnlifeinsurance.com/pension/jn-individual-retirement-scheme/"
+      ]
+    ]
+  },
+  "group-employee-benefits": {
+    "intro": "Group coverage lets an employer or eligible organisation arrange benefits for its members. Life insurance, health insurance and pension arrangements do different jobs, even when they form part of the same employee benefits package.",
+    "sections": [
+      {
+        "heading": "Life, health and pensions for a team",
+        "paragraphs": [
+          "Group life insurance provides a death benefit for eligible members under the group contract. A group health plan helps pay covered medical expenses for members and any eligible dependants. A pension arrangement builds retirement benefits under a separate set of rules.",
+          "The employer or organisation agrees the arrangement with the provider. Members must meet the entry requirements, and there may be rules about waiting periods, evidence of health, dependant cover and enrolment dates. The cost may be met by the employer, the employee or both."
+        ]
+      },
+      {
+        "heading": "Planning a workable benefits package",
+        "paragraphs": [
+          "Start with who needs to be covered and which benefits matter most to the team. Compare the benefit limits, employee contributions, claims process and the work involved in joining and updating the scheme. A low premium alone does not tell you whether a plan will meet your employees’ needs.",
+          "Ask what happens when someone is absent from work, leaves the organisation or retires. Cover under the group may end or change, and any option to continue it individually will have its own conditions. Explain those rules to employees rather than assuming the benefits follow them automatically."
+        ]
+      }
+    ],
+    "checks": [
+      "Who can join, and when does each benefit begin?",
+      "Which dependants can be included?",
+      "How are premiums, contributions and renewals handled?",
+      "What happens when a member leaves, retires or needs to claim?"
+    ],
+    "sources": [
+      [
+        "JN Life: Employee Benefit Group Life",
+        "https://www.jnlifeinsurance.com/group-life/employee-benefit-group-life-insurance/"
+      ],
+      [
+        "Sagicor Jamaica: group health",
+        "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health"
+      ]
+    ]
+  }
+}

@@ -125,6 +125,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       ...stripNulls(res),
       whatsappNumber: DEFAULT_SETTINGS.whatsappNumber,
       agentName: DEFAULT_SETTINGS.agentName,
+      agentTagline: DEFAULT_SETTINGS.agentTagline,
     };
   // The owner-confirmed phone is bundled until CMS contact data is updated.
   // Retain existing social channels and personal photo. Legacy

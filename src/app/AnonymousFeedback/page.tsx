@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Archivo, DM_Sans } from "next/font/google";
 import Link from "next/link";
@@ -18,6 +19,7 @@ export default function AnonymousFeedbackPage() {
   return (
     <main className={"anonymous-feedback " + bodyFont.className + " " + headingFont.variable}>
       <Link href="/" className="feedback-brand">Joanson</Link>
+      <div className="feedback-photo"><Image src="/images/stock/family-garden.webp" alt="A family spending time outdoors" fill sizes="(max-width:760px) 100vw, 720px" /></div>
       <h1>What is keeping you from getting insurance?</h1>
       <p>Cost, trust, finding the right cover or something else. Share what has made it difficult for you.</p>
       <p>Share as much or as little as you like. You can use a nickname or leave the username blank.</p>

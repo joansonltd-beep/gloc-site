@@ -1,3 +1,4 @@
+import PublicPageImage from "@/components/PublicPageImage";
 import Image from "next/image";
 import { Archivo, Barlow_Semi_Condensed, DM_Sans, Syne } from "next/font/google";
 import Link from "next/link";
@@ -94,7 +95,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
           </div>
         </header>
         <main id="main" className="site-main">
-          {children}
+          <PublicPageImage />{children}
         </main>
         <footer className="site-footer">
           <div className="footer-top">

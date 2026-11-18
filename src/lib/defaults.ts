@@ -40,7 +40,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   heroEyebrow: "Insurance Guidance in Jamaica",
   heroHeadline: "Protect what you’ve built. Plan for what’s next.",
   heroSubcopy:
-    "I help individuals, families and business owners across Jamaica understand their insurance options and choose coverage that fits their needs.",
+    "Joanson helps individuals, families and business owners across Jamaica understand their insurance options and choose cover that fits their needs.",
   headshotUrl:
     "https://cdn.sanity.io/images/83r56hq8/production/70ccac5f33bb6fad5624099bce88930b1918396f-3222x4585.jpg",
   logoUrl: null,
@@ -84,7 +84,7 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [];
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "I am Joanson “Joey” Baptiste James, an insurance advisor serving clients across Jamaica.",
+    "I am Joanson “Joey” Baptiste James, an insurance agent serving clients across Jamaica.",
   storyParagraphs: [
     "I help individuals, families and business owners throughout Jamaica compare insurance options and understand how each fits their priorities and budget.",
     "My experience in Caribbean financial services shapes a practical approach: listen first, explain clearly and give you room to decide. Whether you are getting insurance for the first time or reviewing existing cover, we discuss what each option covers, what it leaves out and what it costs.",

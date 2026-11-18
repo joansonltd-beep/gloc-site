@@ -7,9 +7,9 @@ import LearnMore from "@/components/LearnMore";
 import { getAbout, getSiteSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Joanson | Insurance Advisor Jamaica",
+  title: "About Joanson | Insurance Agent Jamaica",
   description:
-    "Meet Joanson “Joey” Baptiste James, an insurance advisor serving Jamaica. Compare your insurance options with clear, practical guidance.",
+    "Meet Joanson “Joey” Baptiste James, an insurance agent serving Jamaica. Compare your insurance options with clear, practical guidance.",
   alternates: { canonical: "/about" },
 });
 

@@ -1,0 +1,1097 @@
+{
+  "reviewed": "2026-11-17",
+  "carriers": [
+    {
+      "slug": "guardian-life",
+      "name": "Guardian Life",
+      "intro": "Explore Guardian Life’s published life, health, critical illness and retirement options for Jamaica."
+    },
+    {
+      "slug": "jn-life",
+      "name": "JN Life",
+      "intro": "Explore JN Life’s individual life, critical illness, employee life and retirement options."
+    },
+    {
+      "slug": "sagicor-life",
+      "name": "Sagicor Life",
+      "intro": "Explore Sagicor Life Jamaica’s published individual insurance, group benefits and retirement options."
+    }
+  ],
+  "products": [
+    {
+      "id": "guardian-life-guardian-lifesaver",
+      "carrier": "Guardian Life",
+      "name": "Guardian Lifesaver",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-lifesaver",
+          "title": "Guardian Lifesaver brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Guardian",
+          "file": "/documents/g-lifesaver.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Lifesaver_Brochure_a242701cff.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 10
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-assure-plan",
+      "carrier": "Guardian Life",
+      "name": "Guardian Assure Plan",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-assure",
+          "title": "Guardian Assure brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Guardian",
+          "file": "/documents/g-assure.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Assure_91747591fd.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 16
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-full-century",
+      "carrier": "Guardian Life",
+      "name": "Full Century",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-guardian-instant-coverage",
+      "carrier": "Guardian Life",
+      "name": "Guardian Instant Coverage",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-instant",
+          "title": "Guardian Instant Coverage brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Guardian",
+          "file": "/documents/g-instant.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Instant_Coverage_Plan_brochure_3e44890317.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 6
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-flexi-term-special",
+      "carrier": "Guardian Life",
+      "name": "Guardian Flexi-Term Special",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-flexi",
+          "title": "Guardian Flexi-Term Special brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Guardian",
+          "file": "/documents/g-flexi.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Guardian_Flexi_Term_Special_Brochure_2022_460414de6e.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 6
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-life-evolution",
+      "carrier": "Guardian Life",
+      "name": "Guardian Life Evolution",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-evolution",
+          "title": "Guardian Life Evolution brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Guardian",
+          "file": "/documents/g-evolution.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Life_Evolution_booklet_93b3f0d42b.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 16
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-5-for-life",
+      "carrier": "Guardian Life",
+      "name": "5 for Life",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-guardian-extendable-term-special",
+      "carrier": "Guardian Life",
+      "name": "Guardian Extendable-Term Special",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-guardian-angel",
+      "carrier": "Guardian Life",
+      "name": "Guardian Angel",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-guardian-care-plus",
+      "carrier": "Guardian Life",
+      "name": "Guardian Care Plus",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-care",
+          "title": "Guardian Care Plus brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Guardian",
+          "file": "/documents/g-care.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Care_Plus_booklet_5a074e068c.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 16
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-life-s-new-ultimate-provider",
+      "carrier": "Guardian Life",
+      "name": "Guardian Life's New Ultimate Provider",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-guardian-new-life-plus",
+      "carrier": "Guardian Life",
+      "name": "Guardian New Life Plus",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-guardian-investor",
+      "carrier": "Guardian Life",
+      "name": "Guardian Investor",
+      "topics": [
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-investor",
+          "title": "Guardian Investor brochure",
+          "kind": "Carrier brochure",
+          "file": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Investor_brochure_NEW_Digital_bd0a655fca.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/GLL_Guardian_Investor_brochure_NEW_Digital_bd0a655fca.pdf",
+          "retrieved": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-achiever",
+      "carrier": "Guardian Life",
+      "name": "Guardian Achiever",
+      "topics": [
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": [
+        {
+          "id": "g-achiever",
+          "title": "Guardian Achiever brochure",
+          "kind": "Carrier brochure",
+          "file": "https://c360filestore.blob.core.windows.net/strapi-files/assets/NEW_GG_Achiever_brochure_b19bf09da4.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/NEW_GG_Achiever_brochure_b19bf09da4.pdf",
+          "retrieved": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-investor-plus",
+      "carrier": "Guardian Life",
+      "name": "Guardian Investor Plus",
+      "topics": [
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.myguardiangroup.com/en_JM_products/life",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-guardian-individual-health-essential",
+      "carrier": "Guardian Life",
+      "name": "Guardian Individual Health: Essential",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+      "documents": [
+        {
+          "id": "g-health",
+          "title": "Guardian Individual Health application",
+          "kind": "Carrier application",
+          "carrier": "Guardian",
+          "file": "/documents/g-health.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 4
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-individual-health-edge",
+      "carrier": "Guardian Life",
+      "name": "Guardian Individual Health: Edge",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+      "documents": [
+        {
+          "id": "g-health",
+          "title": "Guardian Individual Health application",
+          "kind": "Carrier application",
+          "carrier": "Guardian",
+          "file": "/documents/g-health.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 4
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-individual-health-elite",
+      "carrier": "Guardian Life",
+      "name": "Guardian Individual Health: Elite",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+      "documents": [
+        {
+          "id": "g-health",
+          "title": "Guardian Individual Health application",
+          "kind": "Carrier application",
+          "carrier": "Guardian",
+          "file": "/documents/g-health.pdf",
+          "source": "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf",
+          "retrieved": "2026-10-31",
+          "pages": 4
+        }
+      ]
+    },
+    {
+      "id": "guardian-life-guardian-retirement-scheme",
+      "carrier": "Guardian Life",
+      "name": "Guardian Retirement Scheme",
+      "topics": [
+        "pension-annuities"
+      ],
+      "restricted": false,
+      "source": "https://jamaica.myguardiangroup.com/products/pension",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-annuities",
+      "carrier": "Guardian Life",
+      "name": "Annuities",
+      "topics": [
+        "pension-annuities"
+      ],
+      "restricted": false,
+      "source": "https://jamaica.myguardiangroup.com/products/pension",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-superannuation-fund",
+      "carrier": "Guardian Life",
+      "name": "Superannuation Fund",
+      "topics": [
+        "pension-annuities"
+      ],
+      "restricted": false,
+      "source": "https://jamaica.myguardiangroup.com/products/pension",
+      "documents": []
+    },
+    {
+      "id": "guardian-life-tourism-workers-pension-scheme",
+      "carrier": "Guardian Life",
+      "name": "Tourism Workers Pension Scheme",
+      "topics": [
+        "pension-annuities"
+      ],
+      "restricted": true,
+      "source": "https://jamaica.myguardiangroup.com/products/pension",
+      "documents": []
+    },
+    {
+      "id": "jn-life-jn-life-aide",
+      "carrier": "JN Life",
+      "name": "JN Life AIDE",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.jnlifeinsurance.com/life-insurance/jn-life-aide/",
+      "documents": [
+        {
+          "id": "j-q3",
+          "title": "JN AIDE newsletter",
+          "kind": "Carrier newsletter",
+          "file": "https://www.jnlifeinsurance.com/wp-content/uploads/Q3-JN-Life-Newsletter.pdf",
+          "source": "https://www.jnlifeinsurance.com/wp-content/uploads/Q3-JN-Life-Newsletter.pdf",
+          "retrieved": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "jn-life-jn-life-family-aide",
+      "carrier": "JN Life",
+      "name": "JN Life Family AIDE",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.jnlifeinsurance.com/life-insurance/jn-life-family-aide/",
+      "documents": []
+    },
+    {
+      "id": "jn-life-jn-life-comfort",
+      "carrier": "JN Life",
+      "name": "JN Life COMFORT",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.jnlifeinsurance.com/life-insurance/jn-life-comfort/",
+      "documents": []
+    },
+    {
+      "id": "jn-life-jn-life-family-comfort",
+      "carrier": "JN Life",
+      "name": "JN Life Family COMFORT",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.jnlifeinsurance.com/life-insurance/family-indemnity-plan/",
+      "documents": [
+        {
+          "id": "j-q2",
+          "title": "JN Family COMFORT newsletter",
+          "kind": "Carrier newsletter",
+          "file": "https://www.jnlifeinsurance.com/wp-content/uploads/Q2-JN-LIFE-NEWSLETTER-compressed.pdf",
+          "source": "https://www.jnlifeinsurance.com/wp-content/uploads/Q2-JN-LIFE-NEWSLETTER-compressed.pdf",
+          "retrieved": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "jn-life-jn-life-vest",
+      "carrier": "JN Life",
+      "name": "JN Life Vest",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.jnlifeinsurance.com/life-insurance/jn-life-vest/",
+      "documents": [
+        {
+          "id": "j-q1",
+          "title": "JN Life Vest and AIDE newsletter",
+          "kind": "Carrier newsletter",
+          "file": "https://www.jnlifeinsurance.com/wp-content/uploads/JN-LIFE-NEWSLETTER_March2025-compressed-1.pdf",
+          "source": "https://www.jnlifeinsurance.com/wp-content/uploads/JN-LIFE-NEWSLETTER_March2025-compressed-1.pdf",
+          "retrieved": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "jn-life-jn-individual-retirement-scheme",
+      "carrier": "JN Life",
+      "name": "JN Individual Retirement Scheme",
+      "topics": [
+        "pension-annuities"
+      ],
+      "restricted": false,
+      "source": "https://www.jnlifeinsurance.com/pension/jn-individual-retirement-scheme/",
+      "documents": [
+        {
+          "id": "jn-retirement-handbook",
+          "title": "JN Individual Retirement Scheme member handbook",
+          "kind": "Member handbook",
+          "file": "/documents/jn-retirement-handbook.pdf",
+          "source": "https://www.jnlifeinsurance.com/wp-content/uploads/JNRS-Booklet-4x9-edit_2023.pdf",
+          "retrieved": "2026-11-17"
+        },
+        {
+          "id": "jn-retirement-faq",
+          "title": "JN Individual Retirement Scheme FAQ brochure",
+          "kind": "Brochure",
+          "file": "/documents/jn-retirement-faq.pdf",
+          "source": "https://www.jnlifeinsurance.com/wp-content/uploads/JNRS-FAQ-TRIFold-Brochure.pdf",
+          "retrieved": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "jn-life-employee-benefit-group-life",
+      "carrier": "JN Life",
+      "name": "Employee Benefit Group Life",
+      "topics": [
+        "life-insurance",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.jnlifeinsurance.com/",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-cancer-plus",
+      "carrier": "Sagicor Life",
+      "name": "Cancer Plus",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-sagi-gold-accumulator",
+      "carrier": "Sagicor Life",
+      "name": "Sagi-Gold Accumulator",
+      "topics": [
+        "life-insurance",
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-life-protector",
+      "carrier": "Sagicor Life",
+      "name": "Life Protector",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-personal-accident",
+      "carrier": "Sagicor Life",
+      "name": "Personal Accident",
+      "topics": [
+        "personal-accident"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-critical-illness-protector",
+      "carrier": "Sagicor Life",
+      "name": "Critical Illness Protector",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-purple-shield",
+      "carrier": "Sagicor Life",
+      "name": "Purple Shield",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-maximum-protector",
+      "carrier": "Sagicor Life",
+      "name": "Maximum Protector",
+      "topics": [
+        "life-insurance",
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": [
+        {
+          "id": "s-max-doc",
+          "title": "Maximum Protector brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Sagicor",
+          "file": "/documents/s-max-doc.pdf",
+          "source": "https://www.sagicor.com/-/media/jamaica-pdfs/16slj074saglifmaxprotbrochure-2-faw.pdf",
+          "retrieved": "2026-10-16",
+          "pages": 8
+        }
+      ]
+    },
+    {
+      "id": "sagicor-life-triple-protector-plus",
+      "carrier": "Sagicor Life",
+      "name": "Triple Protector Plus",
+      "topics": [
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-super-term",
+      "carrier": "Sagicor Life",
+      "name": "Super Term",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-term-life",
+      "carrier": "Sagicor Life",
+      "name": "Term Life",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-ultra-life",
+      "carrier": "Sagicor Life",
+      "name": "Ultra Life",
+      "topics": [
+        "life-insurance",
+        "critical-illness"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": [
+        {
+          "id": "s-ultra-doc",
+          "title": "Ultra Life product document",
+          "kind": "Carrier product document",
+          "carrier": "Sagicor",
+          "file": "/documents/s-ultra-doc.pdf",
+          "source": "https://www.sagicor.com/-/media/Jamaica-PDFs/Sagicor-Life-Ultra-Life.pdf",
+          "retrieved": "2026-10-16",
+          "pages": 12
+        }
+      ]
+    },
+    {
+      "id": "sagicor-life-ultra-lifeline",
+      "carrier": "Sagicor Life",
+      "name": "Ultra Lifeline",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-child-protector",
+      "carrier": "Sagicor Life",
+      "name": "Child Protector",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-total-woman",
+      "carrier": "Sagicor Life",
+      "name": "Total Woman",
+      "topics": [
+        "life-insurance"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-equity-multiplier",
+      "carrier": "Sagicor Life",
+      "name": "Equity Multiplier",
+      "topics": [
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-solid-investor",
+      "carrier": "Sagicor Life",
+      "name": "Solid Investor",
+      "topics": [
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-guaranteed-investor",
+      "carrier": "Sagicor Life",
+      "name": "Guaranteed Investor",
+      "topics": [
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-premium-saver",
+      "carrier": "Sagicor Life",
+      "name": "Premium Saver",
+      "topics": [
+        "investments-mutual-funds"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-executive-health",
+      "carrier": "Sagicor Life",
+      "name": "Executive Health",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-JM/pdf?id=20E2169F13794930B59DAF5EC4AFEAD7",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-executive-health-plus",
+      "carrier": "Sagicor Life",
+      "name": "Executive Health Plus",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-JM/pdf?id=20E2169F13794930B59DAF5EC4AFEAD7",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-supreme-health",
+      "carrier": "Sagicor Life",
+      "name": "Supreme Health",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-JM/pdf?id=20E2169F13794930B59DAF5EC4AFEAD7",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-hospitality-workers-insurance-plan",
+      "carrier": "Sagicor Life",
+      "name": "Hospitality Workers Insurance Plan",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-JM/pdf?id=20E2169F13794930B59DAF5EC4AFEAD7",
+      "documents": [
+        {
+          "id": "s-hospitality-doc",
+          "title": "Hospitality Worker Health Plan brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Sagicor",
+          "file": "/documents/s-hospitality-doc.pdf",
+          "source": "https://www.sagicor.com/-/media/Jamaica-PDFs/Tourism-Plan-Brochure.pdf",
+          "retrieved": "2026-10-16",
+          "pages": 9
+        }
+      ]
+    },
+    {
+      "id": "sagicor-life-school-companion",
+      "carrier": "Sagicor Life",
+      "name": "School Companion",
+      "topics": [
+        "health"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-JM/pdf?id=20E2169F13794930B59DAF5EC4AFEAD7",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-shape",
+      "carrier": "Sagicor Life",
+      "name": "SHAPE",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-supra",
+      "carrier": "Sagicor Life",
+      "name": "SUPRA",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-flexi",
+      "carrier": "Sagicor Life",
+      "name": "FLEXI",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-hmo",
+      "carrier": "Sagicor Life",
+      "name": "HMO",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-aso",
+      "carrier": "Sagicor Life",
+      "name": "ASO",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-ppo",
+      "carrier": "Sagicor Life",
+      "name": "PPO",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-sagicare-associations",
+      "carrier": "Sagicor Life",
+      "name": "Sagicare Associations",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-sagicare-credit-unions",
+      "carrier": "Sagicor Life",
+      "name": "Sagicare Credit Unions",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-sagicare-jmmb",
+      "carrier": "Sagicor Life",
+      "name": "Sagicare JMMB",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-school-plus",
+      "carrier": "Sagicor Life",
+      "name": "School Plus",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-group-personal-accident",
+      "carrier": "Sagicor Life",
+      "name": "Group Personal Accident",
+      "topics": [
+        "personal-accident",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-group-life",
+      "carrier": "Sagicor Life",
+      "name": "Group Life",
+      "topics": [
+        "life-insurance",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/insurance/group-life",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-critical-illness",
+      "carrier": "Sagicor Life",
+      "name": "Critical Illness",
+      "topics": [
+        "critical-illness",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-dependent-life",
+      "carrier": "Sagicor Life",
+      "name": "Dependent Life",
+      "topics": [
+        "life-insurance",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-parental-health",
+      "carrier": "Sagicor Life",
+      "name": "Parental Health",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-parental-life",
+      "carrier": "Sagicor Life",
+      "name": "Parental Life",
+      "topics": [
+        "life-insurance",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-supplemental-accidental-dismemberment",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Accidental Dismemberment",
+      "topics": [
+        "personal-accident",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-supplemental-dental-and-optical",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Dental and Optical",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-supplemental-health",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Health",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-supplemental-health-plus",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Health Plus",
+      "topics": [
+        "health",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-supplemental-life",
+      "carrier": "Sagicor Life",
+      "name": "Supplemental Life",
+      "topics": [
+        "life-insurance",
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/sagicor-wellness-group-page/group-supplemental-insurance/supplemental-health-upgrade",
+      "documents": []
+    },
+    {
+      "id": "sagicor-life-proshield",
+      "carrier": "Sagicor Life",
+      "name": "ProShield",
+      "topics": [
+        "group-employee-benefits"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/proshield",
+      "documents": [
+        {
+          "id": "s-pro-doc",
+          "title": "ProShield brochure",
+          "kind": "Carrier brochure",
+          "carrier": "Sagicor",
+          "file": "/documents/s-pro-doc.pdf",
+          "source": "https://www.sagicor.com/-/media/ProShield-Assets-2024/24-SEB-612-Sagicor-Proshield-Plan-Brochure-Reduced-Content-Leaflet--no-cutmarks-FAW.pdf",
+          "retrieved": "2026-10-16",
+          "pages": 28
+        }
+      ]
+    },
+    {
+      "id": "sagicor-life-sagicor-lifestyle",
+      "carrier": "Sagicor Life",
+      "name": "Sagicor Lifestyle",
+      "topics": [
+        "pension-annuities"
+      ],
+      "restricted": false,
+      "source": "https://www.sagicor.com/en-jm/business-solutions/pension/individual%20pension%20arrangement",
+      "documents": [
+        {
+          "id": "s-lifestyle-doc",
+          "title": "Sagicor Lifestyle brochure",
+          "kind": "Carrier brochure",
+          "file": "https://www.sagicor.com/-/media/jamaica-pdfs/sagicor-life/sagicor-lifestyle-brochure.pdf",
+          "source": "https://www.sagicor.com/-/media/jamaica-pdfs/sagicor-life/sagicor-lifestyle-brochure.pdf",
+          "retrieved": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "id": "sagicor-life-employer-sponsored-pension-plans",
+      "carrier": "Sagicor Life",
+      "name": "Employer-sponsored pension plans",
+      "topics": [
+        "pension-annuities"
+      ],
+      "restricted": true,
+      "source": "https://www.sagicor.com/en-jm/personal-solution/insurance/individual-lifenew",
+      "documents": []
+    }
+  ]
+}

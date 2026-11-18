@@ -205,7 +205,7 @@ const SERVICE_IMAGES: Record<string, readonly [string, string]> = {
   health: ["/images/stock/health-checkup.webp", "A clinician examining a child with a stethoscope"],
   "critical-illness": ["/images/stock/clinic-conversation.webp", "A clinician talks with a woman during a visit"],
   "personal-accident": ["/images/stock/city-cyclist.webp", "A woman riding a bicycle on a sunlit path"],
-  "pension-annuities": ["/images/stock/retirement-couple.webp", "An older Black couple standing together indoors"],
+  "pension-annuities": ["/images/stock/retirement-planning.webp", "An older couple reviewing documents together"],
   "investments-mutual-funds": ["/images/stock/savings-together.webp", "A couple talking with a book and laptop on a sofa"],
   "group-employee-benefits": ["/images/stock/team-at-work.webp", "A construction team working in hard hats and safety vests"],
   motor: ["/images/services/motor-photo.webp", "Smiling man driving a car"],
