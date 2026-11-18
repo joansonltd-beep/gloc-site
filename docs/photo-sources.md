@@ -24,3 +24,5 @@ The previous retirement carousel and coverage card used the older couple portrai
 `public/images/stock/retirement-couple.webp` from https://www.pexels.com/photo/11907183/.
 
 The current retirement carousel and coverage card use `public/images/stock/retirement-planning.webp`: [A Happy Elderly Couple Holding a Document](https://www.pexels.com/photo/a-happy-elderly-couple-holding-a-document-8441854/), by Kampus Production. Pexels records a Nikon D600 photograph taken May 5, 2021 and published June 22, 2021, in Portugal. Downloaded from the original photo endpoint, resized to 1800 pixels wide and encoded as WebP. No generative edits. Used under the Pexels License linked above. The people pictured are stock models, not clients or endorsers.
+
+The homepage slider's retirement slide uses `public/images/stock/retirement-bench.webp`: an older couple on a bench outdoors, https://www.pexels.com/photo/14488976/. Downloaded at 2400 pixels wide from the Pexels image server, resized to 1800 pixels wide and encoded as WebP. Used under the Pexels License linked above. The people pictured are stock models, not clients or endorsers.

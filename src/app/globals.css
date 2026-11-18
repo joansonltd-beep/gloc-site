@@ -277,8 +277,8 @@ textarea {
 .hero-image[data-photo="health-checkup"] {
   object-position: 70% 24%;
 }
-.hero-image[data-photo="retirement-couple"] {
-  object-position: center 10%;
+.hero-image[data-photo="retirement-bench"] {
+  object-position: 50% 43%;
 }
 .hero-frame {
   width: 100%;
@@ -292,10 +292,6 @@ textarea {
   outline-color: white;
 }
 @media (min-width: 641px) {
-  .hero-image[data-photo="retirement-couple"] {
-    padding-left: 30%;
-    mask-image: linear-gradient(90deg, transparent 30%, #000 46%);
-  }
   .home-hero[data-copy-side="right"] .hero-copy {
     margin-left: auto;
   }
@@ -382,6 +378,10 @@ textarea {
   outline-color: white;
   outline-offset: 2px;
 }
+.hero-control-arrow,
+.hero-control-toggle {
+  flex-shrink: 0;
+}
 .hero-control-arrow {
   font-size: 34px;
   line-height: 1;
@@ -391,16 +391,70 @@ textarea {
   font-size: 13px;
   font-weight: 600;
 }
-.hero-slide-dot::before {
-  content: "";
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  border: 1px solid white;
-  border-radius: 50%;
+.hero-steps {
+  display: flex;
+  flex: 0 1 860px;
+  gap: clamp(8px, 1.6vw, 20px);
+  min-width: 0;
+  margin-inline: 8px;
 }
-.hero-slide-dot[aria-current="true"]::before {
+.hero-controls .hero-step {
+  display: grid;
+  flex: 1;
+  align-content: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 4px 0;
+  color: rgb(255 255 255 / 68%);
+  text-align: left;
+}
+.hero-controls .hero-step:hover,
+.hero-step[aria-current="true"] {
+  color: white;
+}
+.hero-step-label {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hero-step-track {
+  position: relative;
+  display: block;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 28%);
+}
+.hero-step-fill {
+  position: absolute;
+  inset: 0;
   background: white;
+  transform-origin: left center;
+  animation: hero-step-progress 6.5s linear forwards;
+}
+.home-hero[data-paused="true"] .hero-step-fill {
+  animation-play-state: paused;
+}
+@keyframes hero-step-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-step-fill {
+    animation: none;
+  }
+}
+@media (max-width: 640px) {
+  .hero-step-label {
+    display: none;
+  }
+  .hero-steps {
+    gap: 6px;
+    margin-inline: 4px;
+  }
 }
 @media (max-width: 420px) {
   .hero-controls {
@@ -805,9 +859,8 @@ textarea {
   .hero-image[data-photo="health-checkup"] {
     object-position: 75% top;
   }
-  .hero-image[data-photo="retirement-couple"] {
-    object-position: 57% top;
-    padding-bottom: 50px;
+  .hero-image[data-photo="retirement-bench"] {
+    object-position: 60% 43%;
   }
   .hero-frame {
     padding: 220px 20px 72px;

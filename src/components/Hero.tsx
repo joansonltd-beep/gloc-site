@@ -6,18 +6,19 @@ import Link from "next/link";
 import { ageRanges, coverageGoals } from "@/lib/insurance-enquiry";
 
 const featured = [
-  { label: "Coverage finder", photo: "family-garden" },
-  { label: "Critical illness cover", photo: "clinic-conversation", copySide: "right", href: "/protect/critical-illness", action: "Explore critical illness cover", description: "See how a policy can help with expenses after a covered diagnosis." },
-  { label: "Life insurance", photo: "family-dinner", href: "/protect/life-insurance", action: "Explore life insurance", description: "Explore life cover for the people who depend on you." },
-  { label: "Health card", photo: "health-checkup", href: "/protect/health", action: "Explore health coverage", description: "Ask about health plans, medical benefits and how to use a health card." },
-  { label: "Plan for retirement", photo: "retirement-couple", href: "/grow", action: "Explore retirement planning", description: "Talk through pension and annuity options for your retirement." },
-  { label: "Group coverage", photo: "team-at-work", href: "/business", action: "Explore group coverage", description: "Compare group life, health and pension options for your team." },
+  { label: "Coverage finder", short: "Find cover", photo: "family-garden" },
+  { label: "Critical illness cover", short: "Critical illness", photo: "clinic-conversation", copySide: "right", href: "/protect/critical-illness", action: "Explore critical illness cover", description: "See how a policy can help with expenses after a covered diagnosis." },
+  { label: "Life insurance", short: "Life insurance", photo: "family-dinner", href: "/protect/life-insurance", action: "Explore life insurance", description: "Explore life cover for the people who depend on you." },
+  { label: "Health card", short: "Health", photo: "health-checkup", href: "/protect/health", action: "Explore health coverage", description: "Ask about health plans, medical benefits and how to use a health card." },
+  { label: "Plan for retirement", short: "Retirement", photo: "retirement-bench", href: "/grow", action: "Explore retirement planning", description: "Talk through pension and annuity options for your retirement." },
+  { label: "Group coverage", short: "Group cover", photo: "team-at-work", href: "/business", action: "Explore group coverage", description: "Compare group life, health and pension options for your team." },
 ];
 
 export default function Hero({ headline, description }: { headline: string; description: string }) {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
+  const [keyboardFocus, setKeyboardFocus] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const slide = featured[active];
   const finder = !slide.href;
@@ -30,23 +31,25 @@ export default function Hero({ headline, description }: { headline: string; desc
     return () => preference.removeEventListener("change", update);
   }, []);
 
-  useEffect(() => {
-    if (!playing || hovered || reducedMotion) return;
-    const timer = window.setTimeout(() => setActive((active + 1) % featured.length), 6500);
-    return () => window.clearTimeout(timer);
-  }, [active, playing, hovered, reducedMotion]);
+  // The active step's progress line is a CSS animation; when it finishes the
+  // slider advances. Pausing the animation (hover, keyboard focus, Pause) pauses
+  // the slider at the same point, so the line and the timing never drift apart.
+  const paused = !playing || hovered || keyboardFocus;
 
   function select(index: number) {
     setActive((index + featured.length) % featured.length);
-    setPlaying(false);
   }
 
   return (
-    <section className="home-hero" data-copy-side={slide.copySide} aria-label="Featured insurance services" aria-roledescription="carousel"
+    <section className="home-hero" data-copy-side={slide.copySide} data-paused={paused ? "true" : undefined}
+      aria-label="Featured insurance services" aria-roledescription="carousel"
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
       onFocusCapture={event => {
-        if ((!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) &&
-          !(event.target instanceof HTMLElement && event.target.classList.contains("hero-control-toggle"))) setPlaying(false);
+        if (event.target instanceof HTMLElement && event.target.matches(":focus-visible") &&
+          !event.target.classList.contains("hero-control-toggle")) setKeyboardFocus(true);
+      }}
+      onBlurCapture={event => {
+        if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node)) setKeyboardFocus(false);
       }}>
       <div className="hero-photo" aria-hidden="true">
         {featured.map((item, index) => (
@@ -88,11 +91,19 @@ export default function Hero({ headline, description }: { headline: string; desc
       </div>
       <div className="hero-controls" aria-label="Slideshow controls">
         <button type="button" className="hero-control-arrow" aria-label="Previous slide" onClick={() => select(active - 1)}>‹</button>
-        {featured.map((item, index) => (
-          <button key={item.label} type="button" className="hero-slide-dot"
-            aria-label={`Show ${item.label}`} aria-current={active === index ? "true" : undefined}
-            onClick={() => select(index)} />
-        ))}
+        <div className="hero-steps">
+          {featured.map((item, index) => (
+            <button key={item.label} type="button" className="hero-step"
+              aria-label={`Show ${item.label}`} aria-current={active === index ? "true" : undefined}
+              onClick={() => select(index)}>
+              <span className="hero-step-label">{item.short}</span>
+              <span className="hero-step-track" aria-hidden="true">
+                {active === index && <span key={active} className="hero-step-fill"
+                  onAnimationEnd={() => setActive((active + 1) % featured.length)} />}
+              </span>
+            </button>
+          ))}
+        </div>
         <button type="button" className="hero-control-arrow" aria-label="Next slide" onClick={() => select(active + 1)}>›</button>
         {!reducedMotion && <button type="button" className="hero-control-toggle"
           onMouseDown={event => event.preventDefault()}
