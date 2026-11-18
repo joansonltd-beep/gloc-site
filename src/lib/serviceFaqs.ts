@@ -219,60 +219,6 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string }[]
       "answer": "Yes. Bring statements and product documents so we can discuss your existing arrangements, costs and goals."
     }
   ],
-  "motor": [
-    {
-      "question": "Which type of motor cover should I choose?",
-      "answer": "Compare the liability and vehicle protection offered by each option against your needs, budget and any financing requirements."
-    },
-    {
-      "question": "What affects my premium?",
-      "answer": "Factors may include vehicle details, use, drivers, claims history, insured value and the level of cover."
-    },
-    {
-      "question": "What documents should I prepare?",
-      "answer": "Have vehicle and driver information, existing policy details and any ownership or financing documents ready. The insurer will confirm requirements."
-    },
-    {
-      "question": "Can I review my current motor policy?",
-      "answer": "Yes. We can compare its benefits, exclusions, excesses and renewal terms with options suited to your current circumstances."
-    }
-  ],
-  "home": [
-    {
-      "question": "Should I insure the building, contents or both?",
-      "answer": "Consider what you own and are responsible for. Owners and tenants have different needs, and mortgage requirements may also apply."
-    },
-    {
-      "question": "How much should I insure my home for?",
-      "answer": "Building cover is usually considered against rebuilding costs rather than sale price. Discuss valuation requirements and contents values with the insurer."
-    },
-    {
-      "question": "Are storm and flood damage included?",
-      "answer": "This depends on the policy. Check the insured events, exclusions, limits and excesses rather than assuming coverage."
-    },
-    {
-      "question": "What documents should I prepare?",
-      "answer": "Bring property details, any valuation and existing policy or mortgage information. The insurer may request further documents."
-    }
-  ],
-  "property": [
-    {
-      "question": "Does a home policy cover a rental property?",
-      "answer": "Do not assume it does. Tell the insurer how the property is used and who occupies it so the cover can be assessed correctly."
-    },
-    {
-      "question": "Can rental income be covered?",
-      "answer": "Some policies offer cover for specified loss of rent. Check the trigger, payment period and limits."
-    },
-    {
-      "question": "What happens if the property is empty?",
-      "answer": "Unoccupied property may have special conditions or restrictions. Discuss expected empty periods before choosing or renewing cover."
-    },
-    {
-      "question": "What should I prepare?",
-      "answer": "Have property use, occupancy, building value and existing policy information ready. Requirements vary by insurer."
-    }
-  ],
   "group-employee-benefits": [
     {
       "question": "Which benefits can we offer our team?",

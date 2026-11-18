@@ -208,9 +208,6 @@ const SERVICE_IMAGES: Record<string, readonly [string, string]> = {
   "pension-annuities": ["/images/stock/retirement-planning.webp", "An older couple reviewing documents together"],
   "investments-mutual-funds": ["/images/stock/savings-together.webp", "A couple talking with a book and laptop on a sofa"],
   "group-employee-benefits": ["/images/stock/team-at-work.webp", "A construction team working in hard hats and safety vests"],
-  motor: ["/images/services/motor-photo.webp", "Smiling man driving a car"],
-  home: ["/images/services/home-photo.webp", "Family sitting together on the front steps of their home"],
-  property: ["/images/services/property-photo.webp", "Colourful building with palm trees and a wooden front door"],
 };
 
 export function LineIcon({
