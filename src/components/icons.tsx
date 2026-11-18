@@ -201,6 +201,8 @@ export const Instagram = ({ className }: IconProps) => (
 // Map a product-line slug to its icon so rendering never depends on an emoji
 // string in the content/CMS data.
 const SERVICE_IMAGES: Record<string, readonly [string, string]> = {
+  "family-tropical": ["/images/stock/family-tropical.webp", "Parents and their daughter spending time together in a lush garden"],
+  "retirement-portrait": ["/images/stock/retirement-portrait.webp", "An older couple embracing beside colourful flowers"],
   "life-insurance": ["/images/stock/family-dinner.webp", "Several generations of a family gathering around a dinner table"],
   health: ["/images/stock/health-checkup.webp", "A clinician examining a child with a stethoscope"],
   "critical-illness": ["/images/stock/clinic-conversation.webp", "A clinician talks with a woman during a visit"],

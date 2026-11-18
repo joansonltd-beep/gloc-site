@@ -2,8 +2,8 @@ import Link from "next/link";
 import { LineIcon } from "@/components/icons";
 import type { ClusterData } from "@/lib/siteData";
 const icons: Record<string, string> = {
-  protect: "health",
-  grow: "pension-annuities",
+  protect: "family-tropical",
+  grow: "retirement-portrait",
   business: "group-employee-benefits",
 };
 export default function ClusterCards({

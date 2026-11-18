@@ -1,5 +1,12 @@
 # Service photo sources
 
+## Homepage insurance cards, November 2026
+
+- `stock/family-tropical.webp`: [Family Sitting on Grass Near Building](https://www.pexels.com/photo/family-sitting-on-grass-near-building-1128316/), Agung Pandit Wiguna. Real photograph published in 2018. Cropped to 1440 x 1080 and encoded as WebP.
+- `stock/retirement-portrait.webp`: [Elderly Man in Suit with Woman in Dress](https://www.pexels.com/photo/elderly-man-in-suit-with-woman-in-dress-18383669/), Juma Saada. Real photograph published in 2023, recorded in Dar es Salaam, Tanzania. Cropped to retain both faces at 4:3 and encoded as WebP.
+
+Both use the Pexels License below. Selected for warmer family imagery for the Jamaican audience, without claiming the models or locations are Jamaican or Caribbean. No generative edits. The people pictured are not clients or endorsers.
+
 The ten photos in `public/images/services/` are from Pexels, used under the
 Pexels License (https://www.pexels.com/license/): free for commercial use,
 no credit required, may be cropped and edited. Don't sell unaltered copies,
