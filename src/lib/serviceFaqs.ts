@@ -1,8 +1,9 @@
 export const SERVICE_FAQS: Record<string, { question: string; answer: string; links?: { label: string; href: string }[] }[]> = {
   "life-insurance": [
+    { question: "What does ‘cover’ mean?", answer: "‘Cover’ means the protection an insurance policy provides. It describes the events or expenses the policy can pay for, how much it may pay and the conditions that apply. When a policy states an amount of cover, that is an insured amount or benefit limit, not a promise to pay for every situation. For example, life insurance can pay a benefit when the insured person dies, while health insurance can help pay eligible medical bills. You may see the word in an insurer’s brochure or policy document." },
     {
-      "question": "How much life cover do I need?",
-      "answer": "Add up what your family would need if your income stopped: debts such as a mortgage or car loan, school fees, funeral costs and enough to cover household bills for the years they would depend on you. Take away savings and any cover you already have, excluding group cover from work. What is left is the gap to fill. The life insurance calculator gives you a first figure. Then book a one-on-one consultation so we can go through it together and you know exactly where you stand.",
+      "question": "How much life insurance do I need?",
+      "answer": "Add up what your family would need if your income stopped: debts such as a mortgage or car loan, school fees, funeral costs and enough to pay for household bills for the years they would depend on you. Take away savings and any insurance you already have, excluding group insurance from work. What is left is the gap to fill. The life insurance calculator gives you a first figure. Then book a one-on-one consultation so you and Joanson can go through it together and you know exactly where you stand.",
       "links": [
         {
           "label": "Life insurance needs calculator",
@@ -16,23 +17,23 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "What affects my premium?",
-      "answer": "Your age and health matter most. Insurers also look at whether you smoke, your job, the amount of cover and how long it lasts. Term cover usually costs less than whole life for the same amount because it runs for a set period and builds no cash value. Buying while you are younger and in good health generally means a lower premium."
+      "answer": "Your age and health matter most. Insurers also look at whether you smoke, your job, the amount of insurance and how long it lasts. Term insurance usually costs less than whole life for the same amount because it runs for a set period and builds no cash value. Buying while you are younger and in good health generally means a lower premium."
     },
     {
       "question": "Should I choose term or whole life?",
-      "answer": "Term life suits a need with an end date, such as the years until your children finish school or your mortgage is paid off. Whole life is meant to last your lifetime and can build a cash value, which is why it costs more. Many families use term cover for the large, temporary need and a smaller whole life or final-expense policy for costs that will come whenever death happens, such as a funeral."
+      "answer": "Term life suits a need with an end date, such as the years until your children finish school or your mortgage is paid off. Whole life is meant to last your lifetime and can build a cash value, which is why it costs more. Many families use term insurance for the large, temporary need and a smaller whole life or final-expense policy for costs that will come whenever death happens, such as a funeral."
     },
     {
       "question": "Is the life insurance from my job enough?",
-      "answer": "It depends on the benefit and what your family would need. Group life may use a multiple of salary or a fixed amount, and it can end when you leave the job. Check the amount, who receives it and what happens if you change employers or retire. A personal policy can provide cover separately from your job, subject to its own terms."
+      "answer": "It depends on the benefit and what your family would need. Group life may use a multiple of salary or a fixed amount, and it can end when you leave the job. Check the amount, who receives it and what happens if you change employers or retire. A personal policy can provide insurance separately from your job, subject to its own terms."
     },
     {
       "question": "What happens if I miss a premium payment?",
-      "answer": "Most policies give a grace period, often about 30 days, during which your cover stays in force. If the premium is still unpaid when it ends, the policy can lapse. A policy with a cash value may be able to use it to keep the cover going for a while. Getting a lapsed policy reinstated can mean answering health questions again, so call your insurer or us as soon as you know a payment will be late."
+      "answer": "Most policies give a grace period, often about 30 days, during which your insurance stays in force. If the premium is still unpaid when it ends, the policy can lapse. A policy with a cash value may be able to use it to keep the insurance active for a while. Getting a lapsed policy reinstated can mean answering health questions again, so call your insurer or Joanson as soon as you know a payment will be late."
     },
     {
       "question": "Why would a life insurance claim be refused?",
-      "answer": "A claim can be refused if important information was missing from the application or if a policy exclusion applies. Answer every health question fully and honestly, including questions about earlier illness or treatment. We go through the exclusions with you before you apply, and the insurer assesses any claim under the contract."
+      "answer": "A claim can be refused if important information was missing from the application or if a policy exclusion applies. Answer every health question fully and honestly, including questions about earlier illness or treatment. Joanson goes through the exclusions with you before you apply, and the insurer assesses any claim under the contract."
     },
     {
       "question": "Who should I name as my beneficiary?",
@@ -40,27 +41,27 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "How long does it take to get covered?",
-      "answer": "It depends on the amount of cover and your health. A straightforward application can be approved quickly, while one that needs a medical exam or a doctor’s report takes longer. Your cover starts when the insurer accepts the application and the first premium is paid, unless the insurer gives you temporary cover while it decides."
+      "answer": "It depends on the amount of insurance and your health. A straightforward application can be approved quickly, while one that needs a medical exam or a doctor’s report takes longer. Your insurance starts when the insurer accepts the application and the first premium is paid, unless the insurer gives you temporary insurance while it decides."
     },
     {
       "question": "How can I pay my premiums?",
-      "answer": "Options usually include salary deduction, an automatic bank deduction, or paying online or at a branch, monthly or less often. An automatic deduction makes a missed payment less likely. Tell us what suits you and we will set it up when you apply."
+      "answer": "Options usually include salary deduction, an automatic bank deduction, or paying online or at a branch, monthly or less often. An automatic deduction makes a missed payment less likely. Tell Joanson what suits you and Joanson will set it up when you apply."
     },
     {
       "question": "How does my family make a claim?",
-      "answer": "They should contact the insurer or us as soon as they can. The insurer will usually ask for a claim form, a certified copy of the death certificate, the policy details and ID and TRN for each beneficiary, and it may request medical records. We can help the family gather the documents and follow up with the insurer."
+      "answer": "They should contact the insurer or Joanson as soon as they can. The insurer will usually ask for a claim form, a certified copy of the death certificate, the policy details and ID and TRN for each beneficiary, and it may request medical records. Joanson can help the family gather the documents and follow up with the insurer."
     },
     {
       "question": "What if I’m unhappy with how my insurer handles a claim?",
-      "answer": "Put your complaint to the insurer in writing first and ask for their final decision in writing. If it is still not resolved, you can complain to the Financial Services Commission at complaints@fscjamaica.org, with copies of your documents. We can help you put the complaint together."
+      "answer": "Put your complaint to the insurer in writing first and ask for their final decision in writing. If it is still not resolved, you can complain to the Financial Services Commission at complaints@fscjamaica.org, with copies of your documents. Joanson can help you put the complaint together."
     },
     {
       "question": "Can you review my existing policy?",
-      "answer": "Yes. Bring your policy schedule and latest statement. We will check how much cover you have, how long it lasts, who your beneficiaries are and whether the premium can change, then compare that with what your family needs now."
+      "answer": "Yes. Bring your policy schedule and latest statement. Joanson will check how much insurance you have, how long it lasts, who your beneficiaries are and whether the premium can change, then compare that with what your family needs now."
     },
     {
       "question": "What should I prepare to apply?",
-      "answer": "Bring your ID and TRN, details of any existing policies, your doctor’s name and your basic medical history, and the names and dates of birth of the people you want to name as beneficiaries. Depending on your age and the amount of cover, the insurer may ask for a medical exam or tests. The insurer confirms the final list."
+      "answer": "Bring your ID and TRN, details of any existing policies, your doctor’s name and your basic medical history, and the names and dates of birth of the people you want to name as beneficiaries. Depending on your age and the amount of insurance, the insurer may ask for a medical exam or tests. The insurer confirms the final list."
     }
   ],
   "health": [
@@ -78,7 +79,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "What is co-insurance?",
-      "answer": "It is the share of a covered bill you pay yourself. On an 80/20 plan, for example, the insurer pays 80 per cent of the eligible cost and you pay 20 per cent. You also pay anything above the plan’s limits and anything the plan does not cover, so check both before treatment."
+      "answer": "It is the share of a covered bill you pay yourself. On an 80/20 plan, for example, the insurer pays 80 per cent of the eligible cost and you pay 20 per cent. You also pay anything above the plan’s limits and anything not included in the plan, so check both before treatment."
     },
     {
       "question": "Do I need approval before going into hospital?",
@@ -90,29 +91,29 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "What happens to my health insurance if I leave my job?",
-      "answer": "Group health cover can end when you leave your job. Ask your insurer whether you can apply for an individual plan, what deadline applies and whether you will need medical evidence or new waiting periods. These conditions vary, so arrange the next step before your last day rather than assuming your benefits will transfer unchanged."
+      "answer": "Group health insurance can end when you leave your job. Ask your insurer whether you can apply for an individual plan, what deadline applies and whether you will need medical evidence or new waiting periods. These conditions vary, so arrange the next step before your last day rather than assuming your benefits will transfer unchanged."
     },
     {
       "question": "How do I make a claim?",
       "answer": "At a participating doctor, pharmacy or hospital, show your card and the provider usually claims from the insurer directly, so you pay only your share. If you pay the whole bill yourself, keep the original receipts and send them with a claim form for reimbursement. Claims have a time limit, so send them promptly."
     },
     {
-      "question": "I lost my health card. What should I do?",
-      "answer": "Report it to your insurer, or to HR if the card is through your job, and ask for a replacement. Until it arrives, ask your doctor or pharmacy whether they can confirm your cover with the insurer directly."
+      "question": "I lost my health insurance card. What should I do?",
+      "answer": "Report it to your insurer, or to HR if the card is through your job, and ask for a replacement. Until it arrives, ask your doctor or pharmacy whether they can confirm your insurance with the insurer directly."
     },
     {
       "question": "What if I’m unhappy with how my insurer handles a claim?",
-      "answer": "Put your complaint to the insurer in writing first and ask for their final decision in writing. If it is still not resolved, you can complain to the Financial Services Commission at complaints@fscjamaica.org, with copies of your documents. We can help you put the complaint together."
+      "answer": "Put your complaint to the insurer in writing first and ask for their final decision in writing. If it is still not resolved, you can complain to the Financial Services Commission at complaints@fscjamaica.org, with copies of your documents. Joanson can help you put the complaint together."
     },
     {
       "question": "What documents should I prepare?",
-      "answer": "Bring your ID and TRN, details of any current or previous health plan, and a list of your medical conditions and medications. If you are moving from a group plan, bring proof of that cover and the date it ends. The insurer may ask for more depending on your age and health."
+      "answer": "Bring your ID and TRN, details of any current or previous health plan, and a list of your medical conditions and medications. If you are moving from a group plan, bring proof of that insurance and the date it ends. The insurer may ask for more depending on your age and health."
     }
   ],
   "critical-illness": [
     {
       "question": "Does every serious diagnosis qualify?",
-      "answer": "No. The policy names the conditions it covers and defines each one, often including how severe it must be. Certain cancers, heart attack and stroke are commonly covered, but an early-stage cancer or a milder heart event may not meet the definition. We go through the definitions with you before you apply."
+      "answer": "No. The policy names the conditions it covers and defines each one, often including how severe it must be. Certain cancers, heart attack and stroke are commonly covered, but an early-stage cancer or a milder heart event may not meet the definition. Joanson goes through the definitions with you before you apply."
     },
     {
       "question": "How is the benefit paid?",
@@ -123,20 +124,20 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
       "answer": "A waiting period is the time after a policy starts during which certain diagnoses or claims are not covered. A survival period is how long the insured person must live after a qualifying diagnosis for a benefit to become payable. The periods and the way they apply depend on the particular policy, so check both in the contract."
     },
     {
-      "question": "How much cover should I consider?",
-      "answer": "Start with how long you could be off work and what your household spends each month. Add treatment costs your health plan would not meet, such as care overseas. Then take away savings you could realistically use. Choose an amount you can keep paying for, because cover you cancel later does not help."
+      "question": "How much insurance should I consider?",
+      "answer": "Start with how long you could be off work and what your household spends each month. Add treatment costs your health plan would not meet, such as care overseas. Then take away savings you could realistically use. Choose an amount you can keep paying for, because insurance you cancel later does not help."
     },
     {
       "question": "How does it differ from health insurance?",
-      "answer": "Health insurance pays toward eligible medical bills, often directly to the doctor or hospital. Critical illness cover pays you a lump sum when a listed condition is diagnosed, whatever your bills come to. Many people have both: the health plan for treatment and the critical illness benefit for everything else that comes with being ill."
+      "answer": "Health insurance pays toward eligible medical bills, often directly to the doctor or hospital. Critical illness insurance pays you a lump sum when a listed condition is diagnosed, whatever your bills come to. Many people have both: the health plan for treatment and the critical illness benefit for everything else that comes with being ill."
     },
     {
       "question": "Can I claim more than once?",
-      "answer": "It depends on the plan. Many policies end after one full payout. Others pay again for a second, unrelated condition or for a recurrence after a set time, and some include benefits for a spouse or children. If the benefit is attached to a life policy, ask whether a payout reduces your life cover."
+      "answer": "It depends on the plan. Many policies end after one full payout. Others pay again for a second, unrelated condition or for a recurrence after a set time, and some include benefits for a spouse or children. If the benefit is attached to a life policy, ask whether a payout reduces your life insurance."
     },
     {
       "question": "How do I make a claim?",
-      "answer": "Contact the insurer or us once you have a diagnosis. You will usually need a claim form and a report from your specialist confirming the diagnosis, with the test results it is based on. The insurer checks this against the policy definition before paying."
+      "answer": "Contact the insurer or Joanson once you have a diagnosis. You will usually need a claim form and a report from your specialist confirming the diagnosis, with the test results it is based on. The insurer checks this against the policy definition before paying."
     },
     {
       "question": "Will a condition I already have be covered?",
@@ -144,7 +145,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "What should I compare between insurers?",
-      "answer": "Compare the covered conditions and their definitions, the waiting and survival periods, whether you can claim more than once and whether a payout reduces other cover. Also check how long the cover lasts and whether the premium can rise as you get older."
+      "answer": "Compare the covered conditions and their definitions, the waiting and survival periods, whether you can claim more than once and whether a payout reduces other insurance. Also check how long the insurance lasts and whether the premium can rise as you get older."
     }
   ],
   "personal-accident": [
@@ -153,7 +154,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
       "answer": "Policies define eligible events and may exclude certain activities. Discuss your work, travel and hobbies when comparing options."
     },
     {
-      "question": "Does it replace life or health cover?",
+      "question": "Does it replace life or health insurance?",
       "answer": "It covers a narrower set of circumstances. Review how it fits with life, health and employer benefits."
     },
     {
@@ -168,7 +169,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
   "pension-annuities": [
     {
       "question": "Where should retirement planning start?",
-      "answer": "With a number. Estimate what your household will need each month in retirement, then add up what you expect from NIS, any employer pension and your own savings. The difference is what you need to build. The retirement savings calculator gives a first estimate. Then book a one-on-one consultation so we can go through it together and you know exactly where you stand.",
+      "answer": "With a number. Estimate what your household will need each month in retirement, then add up what you expect from NIS, any employer pension and your own savings. The difference is what you need to build. The retirement savings calculator gives a first estimate. Then book a one-on-one consultation so you and Joanson can go through it together and you know exactly where you stand.",
       "links": [
         {
           "label": "Retirement savings calculator",
@@ -236,17 +237,17 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "Can I review what I already hold?",
-      "answer": "Yes. Bring statements and product documents so we can discuss your existing arrangements, costs and goals."
+      "answer": "Yes. Bring statements and product documents so Joanson can discuss your existing arrangements, costs and goals."
     }
   ],
   "motor": [
     {
-      "question": "Which type of motor cover should I choose?",
+      "question": "Which type of motor insurance should I choose?",
       "answer": "Compare the liability and vehicle protection offered by each option against your needs, budget and any financing requirements."
     },
     {
       "question": "What affects my premium?",
-      "answer": "Factors may include vehicle details, use, drivers, claims history, insured value and the level of cover."
+      "answer": "Factors may include vehicle details, use, drivers, claims history, insured value and the level of insurance."
     },
     {
       "question": "What documents should I prepare?",
@@ -254,7 +255,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "Can I review my current motor policy?",
-      "answer": "Yes. We can compare its benefits, exclusions, excesses and renewal terms with options suited to your current circumstances."
+      "answer": "Yes. Joanson can compare its benefits, exclusions, excesses and renewal terms with options suited to your current circumstances."
     }
   ],
   "home": [
@@ -264,11 +265,11 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "How much should I insure my home for?",
-      "answer": "Building cover is usually considered against rebuilding costs rather than sale price. Discuss valuation requirements and contents values with the insurer."
+      "answer": "Building insurance is usually considered against rebuilding costs rather than sale price. Discuss valuation requirements and contents values with the insurer."
     },
     {
       "question": "Are storm and flood damage included?",
-      "answer": "This depends on the policy. Check the insured events, exclusions, limits and excesses rather than assuming coverage."
+      "answer": "This depends on the policy. Check the insured events, exclusions, limits and excesses rather than assuming insurance."
     },
     {
       "question": "What documents should I prepare?",
@@ -277,16 +278,16 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
   ],
   "property": [
     {
-      "question": "Does a home policy cover a rental property?",
-      "answer": "Do not assume it does. Tell the insurer how the property is used and who occupies it so the cover can be assessed correctly."
+      "question": "Does a home policy insurance a rental property?",
+      "answer": "Do not assume it does. Tell the insurer how the property is used and who occupies it so the insurance can be assessed correctly."
     },
     {
       "question": "Can rental income be covered?",
-      "answer": "Some policies offer cover for specified loss of rent. Check the trigger, payment period and limits."
+      "answer": "Some policies offer insurance for specified loss of rent. Check the trigger, payment period and limits."
     },
     {
       "question": "What happens if the property is empty?",
-      "answer": "Unoccupied property may have special conditions or restrictions. Discuss expected empty periods before choosing or renewing cover."
+      "answer": "Unoccupied property may have special conditions or restrictions. Discuss expected empty periods before choosing or renewing insurance."
     },
     {
       "question": "What should I prepare?",
@@ -296,19 +297,19 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
   "group-employee-benefits": [
     {
       "question": "Which benefits can we offer our team?",
-      "answer": "The usual starting points are group life, group health and a group pension. Some employers add critical illness or accident benefits. You can start with one benefit and add others later. We can talk through what matters most to your staff and what fits your budget."
+      "answer": "The usual starting points are group life, group health and a group pension. Some employers add critical illness or accident benefits. You can start with one benefit and add others later. Joanson can talk through what matters most to your staff and what fits your budget."
     },
     {
       "question": "What affects the cost?",
       "answer": "Mainly the number of people covered, their ages, the benefit levels you choose and whether dependants are included. For group health, the group’s claims history also affects renewal prices. The employer can pay the whole premium or share it with employees."
     },
     {
-      "question": "How much life cover does a group plan usually give?",
+      "question": "How much life insurance does a group plan usually give?",
       "answer": "Some plans use a multiple of each employee’s salary, while others provide the same fixed amount for everyone. The employer and insurer agree the benefit structure. Ask how much each employee is covered for, whether there is a maximum per person and when medical evidence is required."
     },
     {
       "question": "Do employees need a medical to join?",
-      "answer": "Usually not for standard benefit levels. Group plans often cover each member up to a set amount without health questions, known as the free cover limit. Anyone whose cover goes above that limit may need to give medical evidence for the extra amount. Late joiners can also be asked for evidence, so enrol people as soon as they become eligible."
+      "answer": "Usually not for standard benefit levels. Some group plans let members join without health questions up to a stated benefit limit. Anyone whose insurance goes above that limit may need to give medical evidence for the extra amount. Late joiners can also be asked for evidence, so enrol people as soon as they become eligible."
     },
     {
       "question": "Who receives a group life benefit?",
@@ -316,11 +317,11 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "What happens when an employee joins or leaves?",
-      "answer": "New staff join once they meet the plan’s eligibility rules, such as finishing probation. When someone leaves, their group cover normally ends. Many plans let a departing employee move to an individual policy within a short window, often about 30 days, sometimes without a new medical. Tell staff about this before they leave."
+      "answer": "New staff join once they meet the plan’s eligibility rules, such as finishing probation. When someone leaves, their group insurance normally ends. Many plans let a departing employee move to an individual policy within a short window, often about 30 days, sometimes without a new medical. Tell staff about this before they leave."
     },
     {
       "question": "How do we add or remove employees?",
-      "answer": "Send the insurer an update whenever someone joins, leaves or has a change that affects their cover, such as a new dependant or a pay rise. Do it promptly, ideally each month. Late updates can leave someone without cover or mean you keep paying for people who have left."
+      "answer": "Send the insurer an update whenever someone joins, leaves or has a change that affects their insurance, such as a new dependant or a pay rise. Do it promptly, ideally each month. Late updates can leave someone without insurance or mean you keep paying for people who have left."
     },
     {
       "question": "How do employees make a claim?",
@@ -328,7 +329,7 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string; li
     },
     {
       "question": "Can we review our existing plan?",
-      "answer": "Yes. Bring the benefit schedule, the latest renewal notice and any employee feedback you have. We will look at what the plan costs, how it is used and where it falls short, then compare it with other options."
+      "answer": "Yes. Bring the benefit schedule, the latest renewal notice and any employee feedback you have. Joanson will look at what the plan costs, how it is used and where it falls short, then compare it with other options."
     }
   ]
 };

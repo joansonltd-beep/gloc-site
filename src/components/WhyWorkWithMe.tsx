@@ -7,7 +7,7 @@ export default function WhyWorkWithMe() {
     },
     {
       title: "Built around your budget",
-      body: "We start from what you can comfortably afford and work out cover that fits.",
+      body: "We start from what you can comfortably afford and work out insurance that fits.",
     },
     {
       title: "One point of contact",
@@ -26,7 +26,7 @@ export default function WhyWorkWithMe() {
           Why work with me
         </h2>
         <p className="mt-2 text-slate-600">
-          Straightforward help choosing protection and savings cover that suits
+          Straightforward help choosing protection and savings insurance that suits
           your situation.
         </p>
       </div>

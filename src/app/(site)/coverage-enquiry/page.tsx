@@ -2,7 +2,7 @@ import CoverageEnquiry from "@/components/CoverageEnquiry";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Look at your coverage gaps",
+  title: "Look at your insurance gaps",
   description: "An insurance enquiry for employed and self employed people in Jamaica. Share your priorities with Joanson Baptiste James, Insurance Agent.",
   alternates: { canonical: "/coverage-enquiry" },
 });

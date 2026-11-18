@@ -100,22 +100,22 @@ textarea {
 .header-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex-shrink: 0;
   color: var(--ink);
 }
 .brand-logo {
   display: block;
   flex: none;
-  width: 46px;
-  height: 46px;
+  width: 64px;
+  height: 64px;
 }
 .header-brand-copy {
   display: grid;
   gap: 3px;
 }
 .brand-name {
-  font-size: 29px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 1;
 }
@@ -267,7 +267,7 @@ textarea {
   object-fit: cover;
   object-position: center 43%;
   opacity: 0;
-  transition: opacity .55s ease;
+  transition: none;
 }
 .hero-image.is-active {
   opacity: 1;
@@ -382,84 +382,11 @@ textarea {
   outline-color: white;
   outline-offset: 2px;
 }
-.hero-control-arrow,
-.hero-control-toggle {
-  flex-shrink: 0;
-}
-.hero-control-arrow {
-  font-size: 34px;
-  line-height: 1;
-}
-.hero-control-toggle {
-  padding-inline: 8px;
-  font-size: 13px;
-  font-weight: 600;
-}
-.hero-steps {
-  display: flex;
-  flex: 0 1 860px;
-  gap: clamp(8px, 1.6vw, 20px);
-  min-width: 0;
-  margin-inline: 8px;
-}
-.hero-controls .hero-step {
-  display: grid;
-  flex: 1;
-  align-content: center;
-  gap: 7px;
-  min-width: 0;
-  padding: 4px 0;
-  color: rgb(255 255 255 / 68%);
-  text-align: left;
-}
-.hero-controls .hero-step:hover,
-.hero-step[aria-current="true"] {
-  color: white;
-}
-.hero-step-label {
-  overflow: hidden;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .01em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.hero-step-track {
-  position: relative;
-  display: block;
-  height: 3px;
-  overflow: hidden;
-  border-radius: 2px;
-  background: rgb(255 255 255 / 28%);
-}
-.hero-step-fill {
-  position: absolute;
-  inset: 0;
-  background: white;
-  transform-origin: left center;
-  animation: hero-step-progress 6.5s linear forwards;
-}
-.home-hero[data-paused="true"] .hero-step-fill {
-  animation-play-state: paused;
-}
-@keyframes hero-step-progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-step-fill {
-    animation: none;
-  }
-}
-@media (max-width: 640px) {
-  .hero-step-label {
-    display: none;
-  }
-  .hero-steps {
-    gap: 6px;
-    margin-inline: 4px;
-  }
-}
+.hero-control-arrow { font-size: 34px; line-height: 1; }
+.hero-steps { display: flex; align-items: center; gap: 16px; width: min(420px, 60vw); }
+.hero-controls .hero-step { flex: 1; min-width: 0; padding: 16px 0; cursor: pointer; }
+.hero-step-track { display: block; width: 100%; height: 3px; background: rgb(255 255 255 / 35%); }
+.hero-step[aria-current="true"] .hero-step-track { background: #fff; }
 @media (max-width: 420px) {
   .hero-controls {
     gap: 0;
@@ -1005,9 +932,9 @@ textarea {
   }
 }
 @media (max-width: 1250px) {
- .brand-name { font-size: 24px; }
- .brand-logo { width: 40px; height: 40px; }
- .header-brand-tagline { font-size: 12px; }
+ .brand-name { font-size: 34px; }
+ .brand-logo { width: 58px; height: 58px; }
+ .header-brand-tagline { font-size: 13px; }
  .menu-toggle { flex-shrink: 0; }
 }
 @media (max-width: 380px) {
@@ -1043,3 +970,5 @@ textarea {
 .insurer-product h3{font-size:21px;font-weight:600;color:#203d36}
 .insurer-product p{margin-top:8px;max-width:65ch;line-height:1.65;color:#52615b}
 .insurer-product a{display:inline-block;margin:12px 24px 0 0;color:#244b3e;text-decoration:underline;text-underline-offset:4px}
+
+@media (max-width:380px){.header-inner{gap:8px;padding-inline:14px}.header-brand{gap:8px}.brand-logo{width:50px;height:50px}.brand-name{font-size:30px}.header-brand-tagline{font-size:12px}.menu-toggle{gap:7px;padding:10px}}

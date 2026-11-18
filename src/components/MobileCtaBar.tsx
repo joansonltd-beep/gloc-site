@@ -9,7 +9,7 @@ import { useWhatsAppLink } from "@/components/SiteSettingsProvider";
 // Hidden on >= sm, where the WhatsApp float button is shown instead.
 export default function MobileCtaBar() {
   const whatsappLink = useWhatsAppLink();
-  const message = "Hi, I'd like to ask about insurance cover.";
+  const message = "Hi, I'd like to ask about my insurance options.";
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t border-slate-200 bg-white p-3 backdrop-blur sm:hidden">

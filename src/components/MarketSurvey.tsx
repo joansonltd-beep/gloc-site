@@ -1,4 +1,5 @@
 "use client";
+import { plainInsuranceText } from "@/lib/plain-insurance-text";
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import InsuranceEnquiry from '@/components/InsuranceEnquiry';
@@ -98,11 +99,11 @@ export default function MarketSurvey({ children }: { children: React.ReactNode }
       <p className="mb-3 text-sm text-slate-600">Question {step + 1}</p>
       <fieldset disabled={status === 'sending'}>
       {q && <fieldset key={q.id} className="space-y-3">
-        <legend id="survey-question" className="mb-3 text-lg leading-relaxed font-semibold text-brand">{q.title}{needsAnswer(q.id) ? ' (required)' : ' (optional)'}</legend>
-        {q.id === 'Q1' ? <select aria-label={q.title} required className={inputClass} value={String(answers.Q1 || '')} onChange={e=>change('Q1',e.target.value)}>
+        <legend id="survey-question" className="mb-3 text-lg leading-relaxed font-semibold text-brand">{plainInsuranceText(q.title)}{needsAnswer(q.id) ? ' (required)' : ' (optional)'}</legend>
+        {q.id === 'Q1' ? <select aria-label={plainInsuranceText(q.title)} required className={inputClass} value={String(answers.Q1 || '')} onChange={e=>change('Q1',e.target.value)}>
           <option value="" disabled>Choose an option</option>
-          {q.options.map(option=><option key={option}>{option}</option>)}
-        </select> : q.id === 'C5' ? <textarea aria-label={q.title} className={inputClass} rows={3} maxLength={1000} value={String(answers.C5 || '')} onChange={e=>change('C5',e.target.value)} /> : <>
+          {q.options.map(option=><option key={option} value={option}>{plainInsuranceText(option)}</option>)}
+        </select> : q.id === 'C5' ? <textarea aria-label={plainInsuranceText(q.title)} className={inputClass} rows={3} maxLength={1000} value={String(answers.C5 || '')} onChange={e=>change('C5',e.target.value)} /> : <>
         {q.multi && <p className="text-sm text-slate-500">{q.max ? `Choose up to ${q.max}.` : 'Select all that apply.'}</p>}
         <div className="grid gap-2">{q.options.map(option => {
           const selected = Array.isArray(answers[q.id]) ? answers[q.id] as string[] : [];
@@ -110,7 +111,7 @@ export default function MarketSurvey({ children }: { children: React.ReactNode }
             <input className="mt-1" type={q.multi ? 'checkbox' : 'radio'} name={q.id} value={option} checked={q.multi ? selected.includes(option) : answers[q.id] === option} required={!q.multi && needsAnswer(q.id)} disabled={q.multi && !!q.max && selected.length >= q.max && !selected.includes(option) && !exclusive(option)} onChange={()=>{
               if (!q.multi) change(q.id,option);
               else change(q.id,selected.includes(option) ? selected.filter(s=>s!==option) : exclusive(option) ? [option] : [...selected.filter(s=>!exclusive(s)),option]);
-            }} />{option}
+            }} />{plainInsuranceText(option)}
           </label>;
         })}</div>
         {Array.isArray(answers[q.id]) && answers[q.id].includes('Other') && <label className="block text-sm text-slate-600">Please tell me more (optional)<input className={inputClass} maxLength={300} value={String(answers[q.id+'Other'] || '')} onChange={e=>change(q.id+'Other',e.target.value)} /></label>}

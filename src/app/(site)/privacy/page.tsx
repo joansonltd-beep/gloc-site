@@ -25,27 +25,27 @@ export default function PrivacyPage() {
       </header>
 
       <section className="space-y-3 text-slate-700">
-        <h2 className="text-xl font-semibold text-brand">What we collect</h2>
+        <h2 className="text-xl font-semibold text-brand">Information collected</h2>
         <p>
-          Joanson “Joey” Baptiste James uses the details you provide when you request a consultation or book a meeting. We collect the details
+          Joanson “Joey” Baptiste James uses the details you provide when you request a consultation or book a meeting. Joanson collects the details
           you choose to give: your name, phone number, and any optional
-          information you add, such as your preferred contact time, insurance needs or message. Other enquiry forms may request information relevant to the cover you are considering. The interactive
+          information you add, such as your preferred contact time, insurance needs or message. Other enquiry forms may request information relevant to the insurance you are considering. The interactive
           calculators run in your browser; the numbers you enter there are only
-          sent to us if you choose to continue on WhatsApp or submit a form.
+          sent to Joanson if you choose to continue on WhatsApp or submit a form.
           The market survey collects your name and the answers you choose to provide about
-          coverage, priorities and service expectations. If you ask for a conversation,
+          insurance, priorities and service expectations. If you ask for a conversation,
           it also asks how to reach you. Please do not include
           medical information, policy numbers or account details in survey responses.
         </p>
       </section>
 
       <section className="space-y-3 text-slate-700">
-        <h2 className="text-xl font-semibold text-brand">How we use it</h2>
+        <h2 className="text-xl font-semibold text-brand">How your information is used</h2>
         <p>
           Joanson Baptiste James uses survey information to understand planning needs
           and tailor insurance agent services. Enquiry details
-          are used to contact you and to prepare for our conversation. They are
-          sent to the configured lead-capture service. We do not sell or share
+          are used to contact you and to prepare for your conversation with Joanson. They are
+          sent to the configured lead-capture service. Joanson does not sell or share
           your information with third parties for their own marketing.
           A survey conversation request authorizes contact about that request,
           rather than signing you up for ongoing marketing. You can complete the
@@ -54,17 +54,17 @@ export default function PrivacyPage() {
       </section>
 
       <section className="space-y-3 text-slate-700">
-        <h2 className="text-xl font-semibold text-brand">Coverage enquiries</h2>
+        <h2 className="text-xl font-semibold text-brand">Insurance enquiries</h2>
         <p>
-          The homepage coverage finder saves completed enquiries in Joanson’s private
+          The homepage insurance finder saves completed enquiries in Joanson’s private
           Lead Desk. The form collects your name, phone number, optional email address, email contact permission, employment type,
-          age range, coverage interests, current coverage, timeframe and contact
+          age range, insurance interests, current insurance, timeframe and contact
           preferences. Joanson uses your answers to respond to your enquiry.
           Your permission covers this enquiry only. Email permission is optional and is recorded as permission not given unless you tick the email permission checkbox.
         </p>
         <p>
-          The coverage enquiry asks about work status, an optional earnings band,
-          your priorities and readiness to consider cover. These answers help
+          The insurance enquiry asks about work status, an optional earnings band,
+          your priorities and readiness to consider insurance. These answers help
           Joanson prepare a response; they do not determine insurance eligibility.
           The earnings question includes a “Prefer not to say” option. Your
           answers remain in your browser until you choose to continue to
@@ -108,15 +108,15 @@ export default function PrivacyPage() {
       <section className="space-y-3 text-slate-700">
         <h2 className="text-xl font-semibold text-brand">Your choices</h2>
         <p>
-          You can ask at any time to see the details we hold about you, have
+          You can ask at any time to see the details Joanson holds about you, have
           them corrected, or have them deleted.{" "}
           <Link
             href="/contact"
             className="font-semibold text-brand hover:underline"
           >
-            Contact us
+            Contact Joanson
           </Link>{" "}
-          and we will sort it out.
+          and Joanson will help you resolve it.
         </p>
       </section>
     </div>

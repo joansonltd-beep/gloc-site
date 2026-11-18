@@ -17,7 +17,7 @@ export const CLUSTERS: Cluster[] = [
     title: "Family & health",
     href: "/protect",
     lines: "Life, health and critical illness",
-    intent: "Compare cover for the people who depend on you.",
+    intent: "Compare insurance for the people who depend on you.",
   },
   {
     key: "grow",
@@ -28,7 +28,7 @@ export const CLUSTERS: Cluster[] = [
   },
   {
     key: "business",
-    title: "Group coverage",
+    title: "Group insurance",
     href: "/business",
     lines: "Life, health and pensions",
     intent: "Compare life, health and pension benefits for your team.",
@@ -49,7 +49,7 @@ export const LINES: Record<ClusterKey, Line[]> = {
     {
       title: "Health",
       icon: "health",
-      blurb: "Understand what a health policy would cover.",
+      blurb: "Understand what a health policy would include.",
     },
     {
       title: "Critical Illness",
@@ -76,9 +76,9 @@ export const LINES: Record<ClusterKey, Line[]> = {
   ],
   business: [
     {
-      title: "Group coverage",
+      title: "Group insurance",
       icon: "group-employee-benefits",
-      blurb: "Discuss life, health and pension coverage for your employees.",
+      blurb: "Discuss life, health and pension benefits for your employees.",
     },
   ],
 };
@@ -103,7 +103,7 @@ export const ROUTER_CARDS: RouterCard[] = [
     href: "/grow",
   },
   {
-    title: "Group coverage",
+    title: "Group insurance",
     subtitle: "Life, health and pensions",
     href: "/business",
   },
@@ -209,20 +209,20 @@ export function recommend(a: DiscoveryAnswers): Recommendation[] {
   if (a.business === "yes") {
     scored.push({
       weight: 8,
-      line: "Group coverage",
+      line: "Group insurance",
       cluster: "business",
       href: "/business",
-      why: "Attract and keep good staff with cover that scales with your team.",
+      why: "Attract and keep good staff with insurance that scales with your team.",
     });
   }
 
   // Baseline everyone benefits from, lower priority.
   scored.push({
     weight: 4,
-    line: "Health Cover",
+    line: "Health Insurance",
     cluster: "protect",
     href: "/protect",
-    why: "Compare health cover in Jamaica based on your needs, budget and existing benefits.",
+    why: "Compare health insurance in Jamaica based on your needs, budget and existing benefits.",
   });
 
   const ranked = scored.sort((x, y) => y.weight - x.weight);
@@ -282,11 +282,11 @@ export const LINE_DETAILS: LineDetail[] = [
     clusterKey: "protect",
     title: "Life Insurance",
     tagline: "Help your family meet everyday commitments, education costs and debts when you die. Compare life insurance options in Jamaica with independent guidance from Joanson.",
-    what: ["Life cover can provide a payment to your chosen beneficiaries if the policy conditions are met. We help you compare cover amounts, policy duration, exclusions and premiums across insurer options."],
+    what: ["Life insurance can provide a payment to your chosen beneficiaries if the policy conditions are met. Joanson helps you compare insurance amounts, policy duration, exclusions and premiums across insurer options."],
     why: [
       "Review who depends on your income.",
-      "Consider the cover you already have.",
-      "Ask about premiums, exclusions and how long the cover lasts.",
+      "Consider the insurance you already have.",
+      "Ask about premiums, exclusions and how long the insurance lasts.",
     ],
     calculator: "protection",
   },
@@ -294,8 +294,8 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "health",
     clusterKey: "protect",
     title: "Health Insurance",
-    tagline: "Understand your medical cover and compare health insurance options in Jamaica, including benefits, limits and your share of the costs.",
-    what: ["Health insurance can help with eligible medical expenses. We help you compare hospital and outpatient benefits, prescriptions, provider arrangements and exclusions alongside any employer cover."],
+    tagline: "Understand your medical insurance and compare health insurance options in Jamaica, including benefits, limits and your share of the costs.",
+    what: ["Health insurance can help with eligible medical expenses. Joanson helps you compare hospital and outpatient benefits, prescriptions, provider arrangements and exclusions alongside any employer insurance."],
     why: [
       "Read the exclusions as well as the benefits.",
       "Check deductibles and annual limits.",
@@ -308,11 +308,11 @@ export const LINE_DETAILS: LineDetail[] = [
     clusterKey: "protect",
     title: "Critical Illness Insurance",
     tagline: "Compare critical illness insurance in Jamaica to help plan for household expenses and recovery after a covered serious illness.",
-    what: ["Critical illness cover may pay a benefit when an illness meets the policy definition. We help you compare covered conditions, benefit amounts, waiting periods and how it works with life and health cover."],
+    what: ["Critical illness insurance may pay a benefit when an illness meets the policy definition. Joanson helps you compare covered conditions, benefit amounts, waiting periods and how it works with life and health insurance."],
     why: [
       "Check the exact definitions of covered conditions.",
       "Ask about waiting and survival periods.",
-      "Understand how the benefit fits with existing health cover.",
+      "Understand how the benefit fits with existing health insurance.",
     ],
     calculator: "critical-illness",
   },
@@ -320,8 +320,8 @@ export const LINE_DETAILS: LineDetail[] = [
     slug: "personal-accident",
     clusterKey: "protect",
     title: "Personal Accident Insurance",
-    tagline: "Compare personal accident cover in Jamaica for specified injuries, disability or accidental death, with practical guidance on benefits and exclusions.",
-    what: ["Personal accident insurance may provide benefits for specified accidental injuries, disability or death. We help you understand the benefit schedule, occupation requirements and how it complements your existing cover."],
+    tagline: "Compare personal accident insurance in Jamaica for specified injuries, disability or accidental death, with practical guidance on benefits and exclusions.",
+    what: ["Personal accident insurance may provide benefits for specified accidental injuries, disability or death. Joanson helps you understand the benefit schedule, occupation requirements and how it complements your existing insurance."],
     why: [
       "Ask which activities are excluded.",
       "Check how benefits are calculated.",
@@ -334,7 +334,7 @@ export const LINE_DETAILS: LineDetail[] = [
     clusterKey: "grow",
     title: "Pensions and Annuities",
     tagline: "Review retirement planning options in Jamaica. Compare pension and annuity arrangements, contributions, fees and access to your money.",
-    what: ["Retirement planning connects your future income needs with the savings and benefits already in place. We help you compare pension and annuity options, including contribution arrangements and income choices."],
+    what: ["Retirement planning connects your future income needs with the savings and benefits already in place. Joanson helps you compare pension and annuity options, including contribution arrangements and income choices."],
     why: [
       "Include your household and care commitments.",
       "Ask about fees and access to your money.",
@@ -347,7 +347,7 @@ export const LINE_DETAILS: LineDetail[] = [
     clusterKey: "grow",
     title: "Investments and Mutual Funds",
     tagline: "Compare investment and mutual fund options in Jamaica based on your goals, time horizon, fees, access needs and tolerance for risk.",
-    what: ["Investment funds pool money under a defined strategy. We help you understand options, costs and risk so you can assess how they fit your goals alongside emergency savings and other commitments."],
+    what: ["Investment funds pool money under a defined strategy. Joanson helps you understand options, costs and risk so you can assess how they fit your goals alongside emergency savings and other commitments."],
     why: [
       "Read the fund documents and fees.",
       "Understand that investment values can fall.",
@@ -358,11 +358,11 @@ export const LINE_DETAILS: LineDetail[] = [
   {
     slug: "group-employee-benefits",
     clusterKey: "business",
-    title: "Group coverage",
+    title: "Group insurance",
     tagline: "Compare group life, health and pension options in Jamaica. Build employee benefits around your team’s needs and a budget your business can maintain.",
-    what: ["Group coverage brings life, health and pension benefits into your employee planning. Joanson helps business owners compare insurer options, eligibility, contributions and administration requirements."],
+    what: ["Group insurance brings life, health and pension benefits into your employee planning. Joanson helps business owners compare insurer options, eligibility, contributions and administration requirements."],
     why: [
-      "Ask who can join and when cover begins.",
+      "Ask who can join and when insurance begins.",
       "Understand employer and employee contributions.",
       "Review what happens when someone leaves the team.",
     ],

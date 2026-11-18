@@ -2,7 +2,7 @@ export const siteMenus = {
   personal: { label: "Personal Solutions", href: "/personal-solutions", groups: [
     { title: "Life & health", links: [
       ["Life Insurance", "/protect/life-insurance"],
-      ["Health Card & Health Insurance", "/protect/health"],
+      ["Health Insurance", "/protect/health"],
       ["Critical Illness", "/protect/critical-illness"],
       ["Personal Accident", "/protect/personal-accident"],
     ] },
@@ -26,7 +26,7 @@ export const siteMenus = {
       ["Savings and Investment Growth", "/tools#investment"],
     ] },
     { title: "Planning & enquiries", links: [
-      ["Help Choosing Coverage", "/tools#router"],
+      ["Help Choosing Insurance", "/tools#router"],
       ["Term Insurance Enquiry", "/tools#term-insurance"],
       ["Group Benefits Enquiry", "/tools#group-benefits"],
       ["Product Documents", "/brochures"],

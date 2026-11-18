@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Personal Solutions in Jamaica",
-  description: "Explore life and health insurance, critical illness cover, and retirement planning in Jamaica.",
+  description: "Explore life and health insurance, critical illness insurance, and retirement planning in Jamaica.",
   alternates: { canonical: "/personal-solutions" },
 });
 

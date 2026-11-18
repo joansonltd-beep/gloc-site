@@ -22,7 +22,7 @@ export default function SurveyPage() {
           </p>
           <p>
             You do not need any knowledge of insurance to take part. Whether you
-            have coverage, have never had insurance or have never been offered it,
+            have insurance, have never had insurance or have never been offered it,
             your perspective is welcome. There are no right or wrong answers.
           </p>
           <p>

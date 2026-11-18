@@ -5,7 +5,7 @@ import { buildWhatsAppLink } from "@/config/site";
 import { getSiteSettings } from "@/lib/siteData";
 import { Chat, Mobile, Facebook, Instagram } from "@/components/icons";
 export const metadata: Metadata = pageMetadata({
-  title: "Contact Joanson | Insurance Advisor Jamaica",
+  title: "Contact Joanson | Insurance Agent Jamaica",
   description:
     "Contact Joanson “Joey” Baptiste James for independent insurance guidance across Jamaica. Call me, message me on WhatsApp or book a consultation.",
   alternates: { canonical: "/contact" },

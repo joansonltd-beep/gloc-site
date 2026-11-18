@@ -1,3 +1,4 @@
+import { plainInsuranceText } from "@/lib/plain-insurance-text";
 // Server-side data layer (spec.md §11).
 // Every page fetches content through these functions. When Sanity is configured
 // they return CMS content; otherwise (or on error, or before seeding) they
@@ -156,7 +157,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 export async function getClusters(): Promise<ClusterData[]> {
   const res = await query<ClusterData[]>(CLUSTERS_QUERY);
   const available = res?.filter((item) => DEFAULT_CLUSTERS.some(({ key }) => key === item.key));
-  return available?.length ? available : DEFAULT_CLUSTERS;
+  return (available?.length ? available : DEFAULT_CLUSTERS).map(c=>({...c,title:plainInsuranceText(c.title),intent:plainInsuranceText(c.intent),lines:plainInsuranceText(c.lines)}));
 }
 
 export async function getCluster(key: ClusterKey): Promise<ClusterData> {
@@ -171,7 +172,7 @@ export async function getLines(clusterKey?: ClusterKey): Promise<LineData[]> {
   const res = await query<LineData[]>(LINES_QUERY);
   const available = res?.filter((item) => DEFAULT_CLUSTERS.some(({ key }) => key === item.clusterKey));
   const all = available?.length ? available : DEFAULT_LINES;
-  return clusterKey ? all.filter((l) => l.clusterKey === clusterKey) : all;
+  return (clusterKey ? all.filter((l) => l.clusterKey === clusterKey) : all).map(l=>({...l,title:plainInsuranceText(l.title),blurb:plainInsuranceText(l.blurb)}));
 }
 
 export async function getTestimonials(): Promise<TestimonialData[]> {

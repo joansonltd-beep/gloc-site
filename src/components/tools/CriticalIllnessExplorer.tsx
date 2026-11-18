@@ -2,7 +2,7 @@ import { ToolFrame } from "./ToolUI";
 export default function CriticalIllnessExplorer() {
   return (
     <ToolFrame
-      title="Questions about critical illness cover"
+      title="Questions about critical illness insurance"
       intro="Start with the policy wording. Benefits and eligibility depend on the specific contract."
     >
       <ul className="list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-700">
@@ -15,7 +15,7 @@ export default function CriticalIllnessExplorer() {
           expenses?
         </li>
         <li>
-          How does this fit with any health or life cover you already have?
+          How does this fit with any health or life insurance you already have?
         </li>
       </ul>
       <p className="mt-5 text-sm text-slate-600">

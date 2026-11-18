@@ -22,7 +22,7 @@ export default function LifeNeedsCalculator() {
   const gap = Math.max(0, livingCosts + commitments - resources);
   return (
     <ToolFrame
-      title="Family cover planning tool"
+      title="Family insurance planning tool"
       intro="Use your own household figures to explore a possible gap. All amounts are in Jamaican dollars (JMD)."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -48,7 +48,7 @@ export default function LifeNeedsCalculator() {
           onChange={setSavings}
         />
         <Field
-          label="Existing life cover (J$)"
+          label="Existing life insurance (J$)"
           value={cover}
           onChange={setCover}
         />
@@ -73,7 +73,7 @@ export default function LifeNeedsCalculator() {
             <ResultCard
               label="Available resources"
               value={formatJMD(resources)}
-              note="Savings and existing life cover you entered"
+              note="Savings and existing life insurance you entered"
             />
           </div>
           <WhatsAppCTA
@@ -103,7 +103,7 @@ export default function LifeNeedsCalculator() {
       )}
       <Assumptions>
         Living costs plus debts and other needs, less available savings and
-        existing cover. Blank optional fields count as zero. This simple
+        existing insurance. Blank optional fields count as zero. This simple
         illustration excludes inflation, investment growth and policy terms. It
         is not a quote, eligibility decision or personalised recommendation.
       </Assumptions>

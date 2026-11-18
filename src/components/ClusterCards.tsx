@@ -19,7 +19,7 @@ export default function ClusterCards({
     >
       <div className="section-heading">
         <div>
-          <h2 id="explore-title">Explore your coverage options</h2>
+          <h2 id="explore-title">Explore your insurance options</h2>
         </div>
       </div>
       <div className="planning-grid">
@@ -33,7 +33,7 @@ export default function ClusterCards({
             </div>
             <h3>{c.title}</h3>
             <p>{c.intent}</p>
-            <span className="planning-card-link">Explore this coverage <span aria-hidden>→</span></span>
+            <span className="planning-card-link">Explore this insurance <span aria-hidden>→</span></span>
           </Link>
         ))}
       </div>

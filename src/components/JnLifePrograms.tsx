@@ -1,10 +1,10 @@
 const programs = [
   { page: "protect/life-insurance", name: "JN Life VEST", summary: "Term life insurance with an investment option.", path: "life-insurance/jn-life-vest" },
   { page: "protect/life-insurance", name: "JN Life COMFORT", summary: "Whole life insurance designed to help with final expenses.", path: "life-insurance/jn-life-comfort" },
-  { page: "protect/life-insurance", name: "JN Life Family COMFORT", summary: "Family indemnity cover designed to help with funeral expenses for eligible family members.", path: "life-insurance/family-indemnity-plan" },
-  { page: "protect/critical-illness", name: "JN Life AIDE", summary: "Individual cover that pays a benefit for a qualifying diagnosis of a covered critical illness.", path: "life-insurance/jn-life-aide" },
-  { page: "protect/critical-illness", name: "JN Life Family AIDE", summary: "Critical illness cover for the main insured and eligible family members.", path: "life-insurance/jn-life-family-aide" },
-  { page: "business/group-employee-benefits", name: "Employee Benefit Group Life Insurance", summary: "Group life cover that employers can arrange for eligible employees.", path: "group-life/employee-benefit-group-life-insurance" },
+  { page: "protect/life-insurance", name: "JN Life Family COMFORT", summary: "Family indemnity insurance designed to help with funeral expenses for eligible family members.", path: "life-insurance/family-indemnity-plan" },
+  { page: "protect/critical-illness", name: "JN Life AIDE", summary: "Individual insurance that pays a benefit for a qualifying diagnosis of a covered critical illness.", path: "life-insurance/jn-life-aide" },
+  { page: "protect/critical-illness", name: "JN Life Family AIDE", summary: "Critical illness insurance for the main insured and eligible family members.", path: "life-insurance/jn-life-family-aide" },
+  { page: "business/group-employee-benefits", name: "Employee Benefit Group Life Insurance", summary: "Group life insurance that employers can arrange for eligible employees.", path: "group-life/employee-benefit-group-life-insurance" },
   { page: "grow/pension-annuities", name: "JN Individual Retirement Scheme", summary: "An individual pension scheme for building retirement savings.", path: "pension/jn-individual-retirement-scheme" },
 ];
 

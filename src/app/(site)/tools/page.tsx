@@ -12,7 +12,7 @@ import EducationSavingsCalculator from "@/components/tools/EducationSavingsCalcu
 
 export const metadata = pageMetadata({
   title: "Insurance tools and calculators",
-  description: "Explore life cover, critical illness, education savings, pensions and group coverage with planning tools for Jamaica.",
+  description: "Explore life insurance, critical illness, education savings, pensions and group insurance with planning tools for Jamaica.",
   alternates: { canonical: "/tools" },
 });
 
@@ -33,7 +33,7 @@ export default function ToolsPage() {
     <div className="space-y-9">
       <header>
         <h1 className="text-3xl font-semibold text-brand sm:text-4xl">Tools &amp; resources</h1>
-        <p className="mt-3 max-w-2xl text-slate-600">Estimate coverage needs, explore savings scenarios or prepare an insurance enquiry.</p>
+        <p className="mt-3 max-w-2xl text-slate-600">Estimate insurance needs, explore savings scenarios or prepare an insurance enquiry.</p>
       </header>
       <NavigationCards menu="tools" />
       <NeedsRouter />

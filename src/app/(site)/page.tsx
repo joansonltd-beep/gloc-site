@@ -12,7 +12,7 @@ export default async function Home() {
   ]);
   return (
     <div className="homepage">
-      <Hero headline={settings.heroHeadline} description="Insurance guidance for individuals, families and businesses across Jamaica. Explore your options and find coverage that fits your needs." />
+      <Hero headline={settings.heroHeadline} description="Insurance guidance for individuals, families and businesses across Jamaica. Explore your options and find insurance that fits your needs." />
       <div className="home-content">
         <ClusterCards clusters={clusters} />
         <section className="home-resources" id="resources" aria-labelledby="resources-title">

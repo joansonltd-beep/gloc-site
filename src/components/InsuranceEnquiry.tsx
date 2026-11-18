@@ -1,5 +1,7 @@
 "use client";
 
+import { plainInsuranceText } from "@/lib/plain-insurance-text";
+
 import Link from "next/link";
 import { useEffect, useRef, useState, type InputHTMLAttributes } from "react";
 import type { Answers } from "@/lib/market-survey";
@@ -47,14 +49,14 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
     ]),
     { key: "goal", title: "What are you looking for?", control: "select", options: coverageGoals },
     { key: "currentCover", title: entry === "Group benefits enquiry" ? "Does your company currently have group insurance?" : "Do you currently have insurance?", control: "select", options: coverStatuses },
-    { key: "timeframe", title: "When would you like to explore coverage?", control: "select", options: timeframes },
+    { key: "timeframe", title: "When would you like to explore insurance?", control: "select", options: timeframes },
     ...(entry === "Group benefits enquiry" ? [
       { key: "company", title: "Company name", optional: true, attributes: { maxLength: 100 } },
       { key: "headcount", title: "Number of employees", attributes: { type: "number", min: 1, max: 999999999, step: 1 } },
     ] : []),
     ...(entry === "Term insurance enquiry" ? [
-      { key: "coverAmount", title: "Amount of cover required (J$)", attributes: { type: "number", min: 1 } },
-      { key: "purpose", title: "Purpose of cover", optional: true, attributes: { maxLength: 150 } },
+      { key: "coverAmount", title: "Amount of insurance needed (J$)", attributes: { type: "number", min: 1 } },
+      { key: "purpose", title: "Reason for insurance", optional: true, attributes: { maxLength: 150 } },
     ] : []),
     { key: "method", title: "Preferred contact method", control: "select", options: contactMethods.filter(method => method !== "Email" || (values.email && values.emailConsent === "on")) },
     { key: "contactDays", title: "Which days work for you?", control: "choices", options: contactDays },
@@ -150,7 +152,7 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
           ) : control === "select" ? (
             <select aria-label={title} required className={input} value={value} onChange={event => update(key, event.target.value)}>
               <option value="" disabled>Choose an option</option>
-              {options?.map(option => <option key={option}>{option}</option>)}
+              {options?.map(option => <option key={option} value={option}>{plainInsuranceText(option)}</option>)}
             </select>
           ) : control === "comments" ? (
             <>

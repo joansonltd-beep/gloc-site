@@ -88,7 +88,7 @@ export default function NeedsRouter() {
                   {card.subtitle}
                 </span>
                 <span className="mt-3 text-sm font-medium text-brand">
-                  {card.href === "/protect" ? "Get life cover guidance" : card.href === "/grow" ? "Review retirement options" : "Explore group coverage"} →
+                  {card.href === "/protect" ? "Get life insurance guidance" : card.href === "/grow" ? "Review retirement options" : "Explore group insurance"} →
                 </span>
               </Link>
             )

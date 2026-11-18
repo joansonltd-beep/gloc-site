@@ -83,7 +83,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
         <header className="site-header">
           <div className="header-inner">
             <Link href="/" className="header-brand" aria-label={`${settings.agentName}, home`}>
-              <Image src="/brand/joanson-pillars-green-yellow-black.png" alt="" width={46} height={46}
+              <Image src="/brand/joanson-pillars-green-yellow-black.png" alt="" width={64} height={64}
                 className="brand-logo" />
               <div className="header-brand-copy">
                 <span className={`brand-name ${wordmarkFont.className}`}>Joanson</span>
@@ -111,7 +111,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
             <div className="footer-links">
               <Link href="/protect">Family &amp; health</Link>
               <Link href="/grow">Retirement &amp; savings</Link>
-              <Link href="/business">Group coverage</Link>
+              <Link href="/business">Group insurance</Link>
             </div>
             <div className="footer-links">
               <Link href="/about">About Joanson</Link>
