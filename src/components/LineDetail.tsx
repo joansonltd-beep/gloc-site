@@ -4,6 +4,7 @@ import { LINE_DETAILS, CLUSTERS, type ClusterKey } from "@/lib/content";
 import guides from "@/lib/insurance-guides.json";
 import { SERVICE_FAQS } from "@/lib/serviceFaqs";
 import InsurancePrograms from "@/components/InsurancePrograms";
+import ConsultationLink from "@/components/ConsultationLink";
 export default function LineDetail({clusterKey,slug}:{clusterKey:ClusterKey;slug:string}) {
  const detail=LINE_DETAILS.find(d=>d.clusterKey===clusterKey && d.slug===slug);
  if(!detail)notFound();
@@ -19,9 +20,10 @@ export default function LineDetail({clusterKey,slug}:{clusterKey:ClusterKey;slug
   <section className="insurance-guide"><h2>Before choosing a plan</h2><ul className="list-disc space-y-3 pl-5">{guide.checks.map(point=><li key={point}>{point}</li>)}</ul></section>
   <div className="flex flex-wrap gap-x-8 gap-y-4">
   {tool&&<Link className="button-text" href={`/tools#${tool[0]}`}>{tool[1]} <span aria-hidden>→</span></Link>}
+  {tool&&slug!=='group-employee-benefits'&&<ConsultationLink />}
   {slug==='life-insurance'&&<Link className="button-text" href="/tools#term-insurance">Term insurance enquiry <span aria-hidden>→</span></Link>}
   </div>
-  <section className="max-w-3xl"><h2 className="text-2xl font-semibold text-brand">Your questions</h2>{(SERVICE_FAQS[slug]||[]).map(faq=><details key={faq.question} className="border-b border-slate-200 py-4"><summary className="cursor-pointer font-semibold text-brand">{faq.question}</summary><p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p></details>)}</section>
+  <section className="max-w-3xl"><h2 className="text-2xl font-semibold text-brand">Your questions</h2>{(SERVICE_FAQS[slug]||[]).map(faq=><details key={faq.question} className="border-b border-slate-200 py-4"><summary className="cursor-pointer font-semibold text-brand">{faq.question}</summary><p className="mt-3 leading-relaxed text-slate-600">{faq.answer}</p>{faq.links&&<p className="mt-3 flex flex-wrap gap-x-6 gap-y-2">{faq.links.map(l=><Link key={l.href} className="button-text" href={l.href}>{l.label} <span aria-hidden>→</span></Link>)}</p>}</details>)}</section>
   <details className="max-w-3xl text-sm text-slate-600"><summary className="cursor-pointer font-semibold">Sources and further reading</summary><ul className="mt-3 space-y-2">{guide.sources.map(([label,url])=><li key={url}><a href={url} target="_blank" rel="noopener noreferrer" className="underline">{label}</a></li>)}</ul><p className="mt-3 leading-relaxed">These explanations describe types of cover. The insurer’s current policy documents set the actual benefits, exclusions and claim requirements.</p></details>
   <section className="bg-brand-dark p-6 text-white sm:p-8"><h2 className="text-2xl font-semibold">Talk through your options</h2><p className="mt-3 max-w-2xl leading-relaxed">Bring your questions about {detail.title.toLowerCase()}. Joanson can explain the differences and help you work through what to check before choosing cover.</p><Link href="/book" className="button-gold mt-5">Book a consultation</Link></section>
  </div>;

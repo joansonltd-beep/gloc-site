@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ConsultationLink from "@/components/ConsultationLink";
 import { pageMetadata } from '@/lib/seo';
 import type { Metadata } from "next";
 import ClusterHub from "@/components/ClusterHub";
@@ -18,6 +19,7 @@ export default async function GrowPage() {
       <div className="flex flex-wrap gap-x-6 gap-y-2">
         <Link className="button-text" href="/tools#retirement">Retirement savings calculator <span aria-hidden>→</span></Link>
         <Link className="button-text" href="/tools#investment">Savings and investment projector <span aria-hidden>→</span></Link>
+        <ConsultationLink />
       </div>
     </ClusterHub>
   );

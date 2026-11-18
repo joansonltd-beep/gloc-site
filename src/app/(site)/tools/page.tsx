@@ -1,5 +1,6 @@
 import NavigationCards from "@/components/NavigationCards";
 import NeedsRouter from "@/components/NeedsRouter";
+import ConsultationLink from "@/components/ConsultationLink";
 import { pageMetadata } from "@/lib/seo";
 import LifeNeedsCalculator from "@/components/tools/LifeNeedsCalculator";
 import CriticalIllnessExplorer from "@/components/tools/CriticalIllnessExplorer";
@@ -14,6 +15,8 @@ export const metadata = pageMetadata({
   description: "Explore life cover, critical illness, education savings, pensions and group coverage with planning tools for Jamaica.",
   alternates: { canonical: "/tools" },
 });
+
+const calculators = new Set(["life-insurance", "critical-illness", "education", "retirement", "investment"]);
 
 const tools = [
   { id: "life-insurance", label: "Life insurance needs", Tool: LifeNeedsCalculator },
@@ -38,6 +41,7 @@ export default function ToolsPage() {
         <section id={id} key={id} aria-labelledby={`${id}-title`} className="space-y-3">
           <h2 id={`${id}-title`} className="text-2xl font-semibold text-brand">{label}</h2>
           <Tool />
+          {calculators.has(id) && <ConsultationLink withNote />}
         </section>
       ))}
     </div>

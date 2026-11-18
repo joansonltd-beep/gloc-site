@@ -1,8 +1,18 @@
-export const SERVICE_FAQS: Record<string, { question: string; answer: string }[]> = {
+export const SERVICE_FAQS: Record<string, { question: string; answer: string; links?: { label: string; href: string }[] }[]> = {
   "life-insurance": [
     {
       "question": "How much life cover do I need?",
-      "answer": "Add up what your family would need if your income stopped: debts such as a mortgage or car loan, school fees, funeral costs and enough to cover household bills for the years they would depend on you. Take away savings and any cover you already have, including group life through work. What is left is the gap to fill. The life insurance calculator on this site gives you a first figure, and we can work through it with you."
+      "answer": "Add up what your family would need if your income stopped: debts such as a mortgage or car loan, school fees, funeral costs and enough to cover household bills for the years they would depend on you. Take away savings and any cover you already have, excluding group cover from work. What is left is the gap to fill. The life insurance calculator gives you a first figure. Then book a one-on-one consultation so we can go through it together and you know exactly where you stand.",
+      "links": [
+        {
+          "label": "Life insurance needs calculator",
+          "href": "/tools#life-insurance"
+        },
+        {
+          "label": "Book a one-on-one consultation",
+          "href": "/book"
+        }
+      ]
     },
     {
       "question": "What affects my premium?",
@@ -158,7 +168,17 @@ export const SERVICE_FAQS: Record<string, { question: string; answer: string }[]
   "pension-annuities": [
     {
       "question": "Where should retirement planning start?",
-      "answer": "With a number. Estimate what your household will need each month in retirement, then add up what you expect from NIS, any employer pension and your own savings. The difference is what you need to build. The retirement savings calculator on this site gives a first estimate, and we can go through it with you."
+      "answer": "With a number. Estimate what your household will need each month in retirement, then add up what you expect from NIS, any employer pension and your own savings. The difference is what you need to build. The retirement savings calculator gives a first estimate. Then book a one-on-one consultation so we can go through it together and you know exactly where you stand.",
+      "links": [
+        {
+          "label": "Retirement savings calculator",
+          "href": "/tools#retirement"
+        },
+        {
+          "label": "Book a one-on-one consultation",
+          "href": "/book"
+        }
+      ]
     },
     {
       "question": "Is the NIS pension enough?",
