@@ -15,7 +15,7 @@ export const emptyDesk: Desk = {leads: [], scripts: []};
 
 export async function saveEnquiry(enquiry: Enquiry) {
   const receivedAt = new Date().toISOString();
-  const { requestId, name, phone, email, emailConsent, employment, age, goal, currentCover, timeframe, method, notes, entry, dateOfBirth, incomeType, incomeAmount, incomeFrequency, contactDays, contactWindows, company, headcount, coverAmount, purpose } = enquiry;
+  const { requestId, name, phone, email, emailConsent, employment, goal, currentCover, timeframe, method, notes, entry, dateOfBirth, incomeType, incomeAmount, incomeFrequency, contactDays, contactWindows, company, headcount, coverAmount, purpose } = enquiry;
   const bestTime = contactDays.join(", ") + " · " + contactWindows.join(", ");
   const record: Lead = {
     ...leadFrom({
@@ -23,15 +23,10 @@ export async function saveEnquiry(enquiry: Enquiry) {
       phone, email, emailConsent, insurance: currentCover === 'Have coverage' || currentCover === 'Have some coverage' ? 'Has insurance' : currentCover, employment: employment === 'Not employed' ? 'Unemployed' : employment,
       method, bestTime,
       consentEvidence: `Website enquiry, ${receivedAt}. ${enquiryConsent} Permission applies to this enquiry only.`,
-      notes: [
-        `Email contact: ${enquiry.emailPermission}`, `Date of birth: ${dateOfBirth}`, age && `Finder age range: ${age}`,
-        incomeType === "No income" ? "Income: No income" : `Income: J$${incomeAmount} · ${incomeType} · ${incomeFrequency}`,
-        `Employment type: ${employment}`, `Coverage interest: ${goal}`,
-        `Current cover: ${currentCover}`, `Timeframe: ${timeframe}`, `Contact preference: ${method}`,
-        `Best time: ${bestTime}`, company && `Company: ${company}`, headcount && `Employees: ${headcount}`,
-        coverAmount && `Cover requested: J$${coverAmount}`, purpose && `Purpose: ${purpose}`, notes && `Comments: ${notes}`,
-        enquiry.survey && Object.entries(enquiry.survey).map(([key,value]) => `Survey ${key}: ${Array.isArray(value) ? value.join(", ") : value}`).join("\n"),
-      ].filter(Boolean).join('\n'),
+      dateOfBirth, incomeType, incomeAmount, incomeFrequency, contactDays, contactWindows,
+      timeframe, company, headcount, coverAmount, purpose, surveyResponses: enquiry.survey,
+      notes,
+
     }),
     id: requestId, revision: 1, updatedAt: receivedAt,
     enquiry: { ...enquiry, receivedAt, consentText: enquiryConsent },

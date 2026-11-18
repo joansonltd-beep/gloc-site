@@ -68,6 +68,14 @@ async function mutate(request:Request,{params}:Context) {
   const title=clean(body.title,100), script=clean(body.text,4000);
   if (lead) {
     if (!lead.name) return json({error:'Enter a lead name.'},400);
+    if (body.dateOfBirth && !lead.dateOfBirth) return json({error:'Enter a valid date of birth that is not in the future.'},400);
+    for (const key of ['incomeAmount','headcount','coverAmount'] as const) {
+      if (body[key] !== undefined && body[key] !== '' && lead[key] === '') return json({error:'Enter a valid amount or count.'},400);
+    }
+    if (lead.headcount && !Number.isSafeInteger(Number(lead.headcount))) return json({error:'Enter a whole number of employees.'},400);
+    for (const key of ['contactDays','contactWindows'] as const) {
+      if (body[key] !== undefined && (!Array.isArray(body[key]) || body[key].some(value=>!lead[key].includes(value)))) return json({error:'Choose valid contact days and times.'},400);
+    }
     if (!lead.insurance) return json({error:'Choose an existing coverage status.'},400);
     if (lead.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) return json({error:'Enter a valid email address.'},400);
     if (body.emailConsent === true && !lead.email) return json({error:'Enter an email address for email permission.'},400);
