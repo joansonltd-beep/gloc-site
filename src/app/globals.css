@@ -972,3 +972,39 @@ textarea {
 .insurer-product a{display:inline-block;margin:12px 24px 0 0;color:#244b3e;text-decoration:underline;text-underline-offset:4px}
 
 @media (max-width:380px){.header-inner{gap:8px;padding-inline:14px}.header-brand{gap:8px}.brand-logo{width:50px;height:50px}.brand-name{font-size:30px}.header-brand-tagline{font-size:12px}.menu-toggle{gap:7px;padding:10px}}
+/* Compact, high-contrast reading style for text outside photographs. */
+.site-shell {
+  --ink: #000;
+  --muted: #000;
+  background: #fff;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.site-shell .site-main :is(h1,h2,h3,h4,p,li,dt,dd,summary,label,legend,small,output,a,button,span):not(.home-hero, .home-hero *, .home-invitation, .home-invitation *) { color: #000; }
+.site-shell .site-main :is(h1,h2,h3,h4):not(.home-hero *, .home-invitation *) { font-family: Arial, Helvetica, sans-serif; font-weight: 600; letter-spacing: normal; line-height: 1.25; }
+.site-shell .site-main h1:not(.home-hero *, .home-invitation *) { font-size: 30px; }
+.site-shell .site-main h2:not(.home-hero *, .home-invitation *) { font-size: 24px; }
+.site-shell .site-main h3:not(.home-hero *, .home-invitation *) { font-size: 19px; }
+.site-shell .site-main :is(p,li,dt,dd,summary,label,legend):not(.home-hero *, .home-invitation *) { font-size: 15px; line-height: 1.65; }
+.site-shell .site-main :is(section,article,aside,fieldset,[class*="bg-"],.planning-card,.personal-section,.home-quick-links a):not(.home-hero, .home-hero *, .home-invitation, .home-invitation *) { background-color: #fff; color: #000; }
+.site-shell .site-main :is(.button-primary,.button-gold,button[type="submit"]):not(.home-hero *, .home-invitation *) { color: #000; background: #fff; border: 1px solid #000; font-size: 14px; }
+.site-shell .site-main :is(input,select,textarea):not(.home-hero *) { color: #000; background: #fff; font-size: 16px; }
+.site-shell .insurance-guide { color: #000; line-height: 1.65; }
+.site-shell .insurer-links a { font-size: 17px; }
+.site-shell .site-footer { background: #fff; color: #000; }
+.site-shell .site-footer :is(p,a,span) { color: #000; }
+.site-shell .footer-brand { font-family: Arial, Helvetica, sans-serif; font-size: 20px; }
+.site-shell .footer-top p,.site-shell .footer-links { font-size: 14px; }
+.site-shell .footer-bottom { color: #000; font-size: 12px; }
+.site-shell .brand-tagline-life { color: #000; }
+@media (max-width:640px) {
+  .site-shell .site-main h1:not(.home-hero *, .home-invitation *) { font-size: 27px; }
+  .site-shell .site-main h2:not(.home-hero *, .home-invitation *) { font-size: 22px; }
+}
+body { background: #fff; }
+.site-shell .mobile-cta-bar > a:first-child { color: #000; background: #fff; border: 1px solid #000; }
+.site-shell .site-nav,.site-shell .site-nav-panel { background: #fff; }
+.site-shell .site-header :is(a,button,p) { color: #000; }
+.site-shell .nav-book,.site-shell .nav-book:hover { color: #000; background: #fff; border-color: #000; }

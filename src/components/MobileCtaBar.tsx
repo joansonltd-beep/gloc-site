@@ -12,7 +12,7 @@ export default function MobileCtaBar() {
   const message = "Hi, I'd like to ask about my insurance options.";
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t border-slate-200 bg-white p-3 backdrop-blur sm:hidden">
+    <div className="mobile-cta-bar fixed inset-x-0 bottom-0 z-40 flex items-center gap-2 border-t border-slate-200 bg-white p-3 backdrop-blur sm:hidden">
       <Link
         href="/book"
         className="flex-1 rounded-lg bg-brand px-4 py-3 text-center text-sm font-semibold text-white"

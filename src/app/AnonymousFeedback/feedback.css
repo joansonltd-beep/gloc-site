@@ -30,3 +30,11 @@
 .feedback-privacy { display: inline-block; margin-top: 26px; text-decoration: underline; }
 
 .feedback-photo{position:relative;height:180px;overflow:hidden;margin-top:24px}.feedback-photo img{object-fit:cover;object-position:center 60%}
+.anonymous-feedback.anonymous-feedback { font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #000; background: #fff; }
+.anonymous-feedback.anonymous-feedback :is(h1,h2) { font-family: Arial, Helvetica, sans-serif; color: #000; }
+.anonymous-feedback.anonymous-feedback h1 { font-size: 28px; }
+.anonymous-feedback.anonymous-feedback h2 { font-size: 22px; }
+.anonymous-feedback.anonymous-feedback :is(p,label,label span,a) { color: #000; }
+.anonymous-feedback.anonymous-feedback button { color: #000; background: #fff; border: 1px solid #000; }
+.anonymous-feedback.anonymous-feedback .feedback-thanks { background: #fff; }
+.anonymous-feedback.anonymous-feedback :is(input,textarea) { color: #000; font-family: Arial, Helvetica, sans-serif; font-size: 16px; }
