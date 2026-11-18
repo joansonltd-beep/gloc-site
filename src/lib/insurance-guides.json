@@ -32,6 +32,10 @@
       [
         "JN Life: life insurance",
         "https://www.jnlifeinsurance.com/life-insurance/"
+      ],
+      [
+        "Financial Services Commission: designating beneficiaries and trustees under the Insurance Act",
+        "https://www.fscjamaica.org/wp-content/uploads/2020/04/1608056017_bulletin-on-new-requirements-related-to-payment-of-proceeds-from-group.pdf"
       ]
     ]
   },
@@ -67,6 +71,14 @@
       [
         "Guardian Jamaica: individual health application and plan options",
         "https://c360filestore.blob.core.windows.net/strapi-files/assets/Individual_Health_Plan_Application_Form_282793c492.pdf"
+      ],
+      [
+        "National Health Fund",
+        "https://www.nhf.org.jm/"
+      ],
+      [
+        "Sagicor Jamaica: your health insurance and you",
+        "https://www.sagicor.com/en-JM/Blogs/Your%20Health%20Insurance%20and%20You"
       ]
     ]
   },
@@ -172,6 +184,18 @@
       [
         "Financial Services Commission Jamaica: pensions",
         "https://www.fscjamaica.org/industry/pension/"
+      ],
+      [
+        "Ministry of Labour and Social Security: National Insurance Scheme",
+        "https://mlss.gov.jm/departments/national-insurance-scheme/"
+      ],
+      [
+        "Jamaica Gleaner: contribution limits and NIS pension levels (April 2026)",
+        "https://jamaica-gleaner.com/article/news/20260407/growth-jobs-jn-life-urges-jamaicans-boost-retirement-savings-amid-longer-life"
+      ],
+      [
+        "Financial Services Commission: approved retirement scheme benefits",
+        "https://www.fscjamaica.org/wp-content/uploads/2020/03/document_Discussion_Paper_Unlocking_Benefits_of_Approved_Retirement_Schemes_200313114.pdf"
       ]
     ]
   },
@@ -242,6 +266,10 @@
       [
         "Sagicor Jamaica: group health",
         "https://www.sagicor.com/en-jm/business-solutions/insurance/group-health"
+      ],
+      [
+        "Financial Services Commission: paying group life proceeds",
+        "https://www.fscjamaica.org/wp-content/uploads/2020/04/1608056017_bulletin-on-new-requirements-related-to-payment-of-proceeds-from-group.pdf"
       ]
     ]
   }
