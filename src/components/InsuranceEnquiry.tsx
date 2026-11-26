@@ -125,7 +125,7 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
   if (status === "sent") return (
     <section ref={prompt} tabIndex={-1} role="status" className="mt-6 border border-slate-200 bg-white p-6">
       <h2 className="text-xl font-semibold text-brand">{consultation ? "Your consultation request was received" : "Your enquiry was received"}</h2>
-      <p className="mt-2 text-slate-600">{consultation ? "Joanson will contact you using your chosen method to arrange a suitable time. Your appointment is not confirmed yet." : "Joanson can follow up using the contact method you selected."}</p>
+      <p className="mt-2 text-slate-600">{consultation ? "I will contact you within 48 hours using your chosen contact method to arrange a suitable time. Your appointment is not confirmed yet." : "Joanson can follow up using the contact method you selected."}</p>
       <Link href="/" className="button-text">Return to the website</Link>
     </section>
   );

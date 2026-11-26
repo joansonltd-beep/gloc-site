@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import InsuranceEnquiry from "@/components/InsuranceEnquiry";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 import AdsConversion from "@/components/AdsConversion";
+import { getSiteSettings } from "@/lib/siteData";
+import { buildWhatsAppLink } from "@/config/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Request a consultation",
@@ -10,14 +12,17 @@ export const metadata: Metadata = pageMetadata({
   alternates: { canonical: "/book" },
 });
 
-export default function BookPage() {
+export default async function BookPage() {
+  const settings = await getSiteSettings();
+  const whatsappLink = buildWhatsAppLink(settings.whatsappNumber, "Hi Joanson, I would like to arrange a conversation about insurance.");
   return (
     <div className="mx-auto max-w-2xl">
       <AdsConversion sendTo="AW-18282133568/QM1DCMyU7sccEMDwzI1E" />
       <header>
         <h1 className="mt-2 text-3xl font-semibold">Request a consultation</h1>
-        <p className="mt-3">Tell Joanson a little about yourself and what you would like help with. Complete the questions below to request a conversation.</p>
-        <p className="mt-3">After you send your request, Joanson will contact you to arrange a suitable time. There is no obligation to buy insurance.</p>
+        <p className="mt-3">Congratulations on taking the first step towards a more secure financial future. Tell me a little about yourself and what you would like help with by completing the questions below.</p>
+        <p className="mt-3">When you&apos;re finished, tap <strong>Send request</strong>. I will contact you within 48 hours to arrange a suitable time. If you would like to contact me right away, you can <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">WhatsApp</a> me.</p>
+        <p className="mt-3">Sending a request does not create an obligation to buy insurance.</p>
       </header>
       <InsuranceEnquiry entry="Consultation request" />
       <div className="mt-8">
