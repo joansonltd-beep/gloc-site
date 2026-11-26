@@ -1,4 +1,48 @@
 @import "tailwindcss";
+
+.welcome-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  pointer-events: none;
+  animation: welcome-reveal 200ms ease 2150ms both;
+}
+.welcome-intro-words { display: grid; place-items: center; }
+.welcome-intro-words > span {
+  grid-area: 1 / 1;
+  font-size: clamp(46px, 9vw, 110px);
+  font-weight: 600;
+  line-height: 1.1;
+  opacity: 0;
+  animation: welcome-word 500ms ease both;
+}
+.welcome-intro-words > span:nth-child(2) { animation-delay: 500ms; }
+.welcome-intro-words > span:nth-child(3) { animation-delay: 1000ms; }
+.welcome-intro-words > span:nth-child(4) { animation-delay: 1500ms; animation-duration: 650ms; }
+.welcome-intro > button {
+  position: absolute;
+  bottom: max(30px, env(safe-area-inset-bottom));
+  right: 30px;
+  padding: 12px;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+@keyframes welcome-word {
+  0% { opacity: 0; transform: translateY(6px); }
+  18%, 80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+@keyframes welcome-reveal { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .welcome-intro { display: none; } }
+@media print { .welcome-intro { display: none; } }
 @theme {
   --color-brand: #365566;
   --color-brand-dark: #20242b;

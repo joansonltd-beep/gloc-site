@@ -154,4 +154,53 @@ for(const patch of [{dateOfBirth:'2000-02-30'},{dateOfBirth:'2999-01-01'},{incom
 assert.equal((await request(['sign-out'],'POST')).status,303);
 assert.equal(desk.didSignOut(),true);
 assert.equal((await request(['api','workspace'])).status,401);
+// Consultation requests collect contact preferences without inventing income data.
+const consultationForm = {...form, requestId:'0a2a9cc3-46ed-415d-8ce3-7070cc2d49fe', entry:'Consultation request',messagingPermission:'Yes'};
+for (const key of ['incomeType','incomeAmount','incomeFrequency','timeframe']) delete consultationForm[key];
+const consultation = desk.parseEnquiry(consultationForm);
+assert.ok(consultation);
+assert.equal(consultation.incomeAmount,'');
+assert.equal(consultation.incomeType,'');
+assert.equal(consultation.timeframe,'');
+assert.equal(desk.parseEnquiry({...consultationForm,entry:'Coverage finder'}),null);
+for (const patch of [{dateOfBirth:''},{employment:''},{contactDays:[]},{contactDays:['Saturday']},{contactConsent:false},{method:'Email',email:'person@example.com',emailConsent:false},{incomeType:'invalid'}]) {
+  assert.equal(desk.parseEnquiry({...consultationForm,...patch}),null);
+}
+assert.equal((await intake(consultationForm)).status,201);
+desk.signIn();
+const consultationLead=(await (await request(['api','workspace'])).json()).leads.find(item=>item.id===consultationForm.requestId);
+assert.equal(consultationLead.dateOfBirth,consultationForm.dateOfBirth);
+assert.equal(consultationLead.incomeAmount,'');
+assert.equal(consultationLead.emailConsent,false);
+assert.deepEqual(consultationLead.contactDays,consultationForm.contactDays);
+for (const employment of ['Employed Full time','Employed Part time']) {
+  assert.equal(desk.parseEnquiry({...consultationForm,employment}),null);
+  assert.equal(desk.parseEnquiry({...consultationForm,employment,employmentBasis:'Other'}),null);
+  for (const employmentBasis of ['Permanent','Temporary/Contract']) {
+    assert.equal(desk.parseEnquiry({...consultationForm,employment,employmentBasis}).employmentBasis,employmentBasis);
+    const normalized = desk.leadFrom({...consultationLead,employment,employmentBasis});
+    assert.equal(normalized.employment,employment);
+    assert.equal(normalized.employmentBasis,employmentBasis);
+  }
+}
+assert.equal(desk.parseEnquiry({...consultationForm,employment:'Self-employed',employmentBasis:'Permanent'}).employmentBasis,'');
+assert.equal(desk.parseEnquiry({...consultationForm,messagingPermission:undefined}),null);
+assert.equal(desk.parseEnquiry({...consultationForm,messagingPermission:'No',method:'WhatsApp'}),null);
+assert.equal(desk.parseEnquiry({...consultationForm,messagingPermission:'No',method:'iMessage'}),null);
+assert.equal(desk.parseEnquiry({...consultationForm,messagingPermission:'No',method:'Phone'}).messagingPermission,'No');
+assert.equal(desk.parseEnquiry({...consultationForm,messagingPermission:'Yes',method:'iMessage'}).messagingPermission,'Yes');
+assert.equal(consultationLead.messagingPermission,'Yes');
+assert.equal(desk.parseEnquiry({...consultationForm,currentCover:"Don't understand insurance"}).currentCover,"Don't understand insurance");
+assert.equal(desk.normalizeLead({...consultationLead,insurance:"Don't understand insurance"}).insurance,"Don't understand insurance");
+const employedRequest={...consultationForm,requestId:'0a2a9cc3-46ed-415d-8ce3-7070cc2d49ff',employment:'Employed Part time',employmentBasis:'Temporary/Contract',messagingPermission:'Yes',method:'iMessage',currentCover:"Don't understand insurance"};
+assert.equal((await intake(employedRequest)).status,201);
+const employedSaved=(await(await request(['api','workspace'])).json()).leads.find(item=>item.id===employedRequest.requestId);
+assert.equal(employedSaved.employment,'Employed Part time');
+assert.equal(employedSaved.employmentBasis,'Temporary/Contract');
+assert.equal(employedSaved.messagingPermission,'Yes');
+assert.equal(employedSaved.method,'iMessage');
+assert.equal(employedSaved.insurance,"Don't understand insurance");
+const employedEdited=await request(['api','leads',employedSaved.id],'PUT',{...employedSaved,notes:'Follow-up arranged'});
+assert.equal(employedEdited.status,200);
+assert.equal((await employedEdited.json()).employmentBasis,'Temporary/Contract');
 console.log('Passed lead desk route tests: access, origin, validation, CRUD, revision, scripts, sign-out, and separate storage.');

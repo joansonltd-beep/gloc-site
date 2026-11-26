@@ -1,13 +1,13 @@
 // Prospect fields and compatibility for records saved before the contact form update.
 const stages = ['New lead','Contacted','Qualified','Appointment set','Follow-up due','Converted','Not a fit','Archived'];
 const sources = ['Insurance ad','Personal prospecting','Referral','Other'];
-const insuranceStatuses = ['Has insurance','Has insurance and is considering more',"Don't have but considering","Don't have and not considering",'Not sure','No coverage'];
+const insuranceStatuses = ["Don't understand insurance",'Has insurance','Has insurance and is considering more',"Don't have but considering","Don't have and not considering",'Not sure','No coverage'];
 const qualification = {
-  employment: ['Employed','Self-employed','Unemployed','Student','Retired','Other'],
+  employment: ['Employed','Employed Full time','Employed Part time','Self-employed','Unemployed','Student','Retired','Other'],
   salary: ['Yes','No','Checking'],
   insurance: insuranceStatuses,
   commitment: ['Ready to discuss a budget','Interested, exploring options','Not ready','Declined'],
-  method: ['WhatsApp','Phone','Email','Social media'],
+  method: ['WhatsApp','iMessage','Phone','Email','Social media'],
   consent: ['Permission documented','Declined','Do not contact']
 };
 const scriptIds = ['whatsapp-first','whatsapp-follow','phone-first','phone-qualify','email-first','email-follow','social-public','social-dm'];
@@ -57,7 +57,7 @@ function leadProfile(body: Record<string,unknown>, enquiry: Record<string,unknow
       surveyResponses[clean(key,80)]=Array.isArray(value)?value.map(item=>clean(item,1000)).join(', '):clean(value,1000);
     }
   }
-  return {profileVersion:1,dateOfBirth:dob && dob>='1900-01-01' && new Date(dob)<=new Date()?dob:'',
+  return {profileVersion:1,messagingPermission:option(pick('messagingPermission'),['Yes','No']),employmentBasis:option(body.employment ?? enquiry.employment,['Employed Full time','Employed Part time']) ? option(pick('employmentBasis'),['Permanent','Temporary/Contract']) : '',dateOfBirth:dob && dob>='1900-01-01' && new Date(dob)<=new Date()?dob:'',
     incomeType:option(pick('incomeType'),kycIncomeTypes),incomeAmount:amount('incomeAmount'),
     incomeFrequency:option(pick('incomeFrequency'),kycFrequencies),contactDays:list('contactDays',kycDays),contactWindows:list('contactWindows',kycWindows),
     timeframe:option(pick('timeframe'),['Within a month','In the next few months','Just exploring']),

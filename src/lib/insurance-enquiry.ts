@@ -3,13 +3,15 @@ import { cleanAnswers, type Answers } from "./market-survey";
 export const ageRanges = ["18 to 25", "26 to 35", "36 to 45", "46 to 55", "56 to 65", "66 or older", "Prefer not to say"] as const;
 export const coverageGoals = ["Life insurance", "Term insurance", "Health insurance", "Critical illness cover", "Personal accident", "Retirement planning", "Investments", "Group coverage", "Help choosing coverage"] as const;
 export const employmentTypes = ["Employed", "Self-employed", "Retired", "Not employed"] as const;
+export const consultationEmploymentTypes = ["Employed Full time", "Employed Part time", "Self-employed", "Retired", "Not employed"] as const;
+export const employmentBases = ["Permanent", "Temporary/Contract"] as const;
 export const incomeTypes = ["Salaried", "Commission", "Sales", "Mixed", "Pension", "Other", "No income"] as const;
 export const incomeFrequencies = ["Daily", "Fortnightly", "Monthly"] as const;
 export const contactDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
 export const contactWindows = ["Morning (8 am to noon)", "Afternoon (noon to 4 pm)", "Evening (4 to 8 pm)"] as const;
-export const coverStatuses = ["Have coverage", "Have some coverage", "Don't have but considering", "Don't have and not considering", "Not sure"] as const;
+export const coverStatuses = ["Don't understand insurance", "Don't have but considering", "Don't have and not considering", "Have coverage", "Have some coverage", "Not sure"] as const;
 export const timeframes = ["Within a month", "In the next few months", "Just exploring"] as const;
-export const contactMethods = ["Phone", "WhatsApp", "Email"] as const;
+export const contactMethods = ["Phone", "WhatsApp", "iMessage", "Email"] as const;
 export const enquiryEntries = ["Coverage finder", "Consultation request", "Coverage enquiry", "Term insurance enquiry", "Group benefits enquiry", "Market survey"] as const;
 export type EnquiryEntry = typeof enquiryEntries[number];
 export const enquiryConsent = "I agree that Joanson Baptiste James may use these details to respond to my enquiry by my chosen contact method.";
@@ -36,17 +38,23 @@ export function parseEnquiry(body: Record<string, unknown>) {
   const digits = phone.replace(/\D/g, "");
   const age = enquiryChoice(body.age, ageRanges);
   const goal = enquiryChoice(body.goal, coverageGoals);
-  const employment = enquiryChoice(body.employment, employmentTypes);
+  const employment = enquiryChoice(body.employment, [...employmentTypes, ...consultationEmploymentTypes]);
+  const employed = employment === "Employed Full time" || employment === "Employed Part time";
+  const employmentBasis = employed ? enquiryChoice(body.employmentBasis, employmentBases) : "";
   const currentCover = enquiryChoice(body.currentCover, [...coverStatuses, "No coverage"]);
   const timeframe = enquiryChoice(body.timeframe, timeframes);
   const method = enquiryChoice(body.method, contactMethods);
   const entry = enquiryChoice(body.entry, enquiryEntries);
+  const consultation = entry === "Consultation request";
+  const messagingPermission = consultation ? enquiryChoice(body.messagingPermission, ["Yes", "No"]) : "";
+  const incomeOmitted = consultation && body.incomeType === undefined && body.incomeAmount === undefined && body.incomeFrequency === undefined;
+  const timeframeOmitted = consultation && body.timeframe === undefined;
   const dateOfBirth = text(body.dateOfBirth, 10);
   const birth = new Date(dateOfBirth);
   const incomeType = enquiryChoice(body.incomeType, incomeTypes);
   const hasIncome = incomeType !== "No income";
   const amount = text(body.incomeAmount, 18);
-  const incomeAmount = hasIncome ? Number(amount) : 0;
+  const incomeAmount = incomeOmitted ? "" : hasIncome ? Number(amount) : 0;
   const incomeFrequency = hasIncome ? enquiryChoice(body.incomeFrequency, incomeFrequencies) : "";
   const days = choices(body.contactDays, contactDays);
   const windows = choices(body.contactWindows, contactWindows);
@@ -56,8 +64,8 @@ export function parseEnquiry(body: Record<string, unknown>) {
       !name || !/^\+?[\d\s()-]+$/.test(phone) || digits.length < 7 || digits.length > 15 ||
       !/^\d{4}-\d{2}-\d{2}$/.test(dateOfBirth) || dateOfBirth < "1900-01-01" || !Number.isFinite(birth.getTime()) ||
       birth.toISOString().slice(0, 10) !== dateOfBirth || birth > new Date() ||
-      !entry || !goal || !employment || !currentCover || !timeframe || !method || !days || !windows ||
-      !incomeType || (hasIncome && (!/^\d+(?:\.\d{1,2})?$/.test(amount) || !Number.isFinite(incomeAmount) || incomeAmount <= 0 || !incomeFrequency)) ||
+      !entry || !goal || !employment || (consultation && (!messagingPermission || (["WhatsApp", "iMessage"].includes(method) && messagingPermission !== "Yes"))) || (employed && !employmentBasis) || !currentCover || (!timeframeOmitted && !timeframe) || !method || !days || !windows ||
+      (!incomeOmitted && !incomeType) || (!incomeOmitted && hasIncome && (!/^\d+(?:\.\d{1,2})?$/.test(amount) || !Number.isFinite(incomeAmount) || Number(incomeAmount) <= 0 || !incomeFrequency)) ||
       (entry === "Market survey" && (!survey?.Q1 || survey.F1 !== "Yes, I would like to arrange a conversation" || body.informationConsent !== true)) ||
       body.contactConsent !== true || (method === "Email" && (!email || !emailConsent))) return null;
   const company = entry === "Group benefits enquiry" ? text(body.company, 100) : "";
@@ -66,7 +74,7 @@ export function parseEnquiry(body: Record<string, unknown>) {
   const purpose = entry === "Term insurance enquiry" ? text(body.purpose, 150) : "";
   if (entry === "Group benefits enquiry" && (!Number.isSafeInteger(headcount) || headcount <= 0)) return null;
   if (entry === "Term insurance enquiry" && (!Number.isFinite(coverAmount) || coverAmount <= 0)) return null;
-  return { requestId, name, phone, email, emailConsent, emailPermission: emailConsent ? "Permission given" : "Permission not given", age, dateOfBirth, goal, employment, currentCover, timeframe, method,
+  return { requestId, name, phone, messagingPermission, email, emailConsent, emailPermission: emailConsent ? "Permission given" : "Permission not given", age, dateOfBirth, goal, employment, employmentBasis, currentCover, timeframe, method,
     entry, incomeType, incomeAmount, incomeFrequency, contactDays: days, contactWindows: windows,
     notes: text(body.notes, 1000), contactConsent: true as const, company, headcount, coverAmount, purpose,
     ...(survey ? { survey, informationConsent: true as const } : {}) };

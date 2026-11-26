@@ -1,122 +1,29 @@
-import { pageMetadata } from '@/lib/seo';
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
-import CallbackForm from "@/components/CallbackForm";
+import InsuranceEnquiry from "@/components/InsuranceEnquiry";
 import WhatsAppCTA from "@/components/tools/WhatsAppCTA";
 import AdsConversion from "@/components/AdsConversion";
-import { getSiteSettings } from "@/lib/siteData";
-import { buildWhatsAppLink } from "@/config/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Book a consultation",
-  description:
-    "Book a no-pressure consultation with Joanson “Joey” Baptiste James to compare insurance options in Jamaica, or request contact at a time that suits you.",
+  title: "Request a consultation",
+  description: "Request a conversation with Joanson Baptiste James about insurance in Jamaica. Share a few details and choose when to be contacted.",
   alternates: { canonical: "/book" },
 });
 
-// Google Calendar appointment schedule. The embed URL (gv=true) renders the
-// booking calendar directly on the page; the short link is the fallback.
-const BOOKING_EMBED_URL =
-  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0TjoKDCzfn9hhNjys85YBZHe4ZG9DgHvLMXTvb_m4e7nZHpSoprNkaXpYzXWQCsm7AcL6TYj5K?gv=true";
-const BOOKING_LINK = "https://calendar.app.google/3wqF6ZAHwCmSmpZJ7";
-
-export default async function BookPage() {
-  const message = "Hi, I'd like to book a meeting to talk through my options.";
-  const settings = await getSiteSettings();
-  const whatsappLink = buildWhatsAppLink(settings.whatsappNumber, message);
-
+export default function BookPage() {
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-2xl">
       <AdsConversion sendTo="AW-18282133568/QM1DCMyU7sccEMDwzI1E" />
-      <div className="text-center">
-        <h1 className="mt-2 text-3xl font-semibold text-brand sm:text-4xl">
-          Let&apos;s find a time to talk
-        </h1>
-        <p className="mt-3 text-lg text-slate-600">
-          Pick a time on the calendar below, request a callback, or{" "}
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-brand hover:underline"
-          >
-            message on WhatsApp
-          </a>
-          . No pressure, no obligation. Not ready to book?{" "}
-          <a
-            href="/survey"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-brand hover:underline"
-          >
-            Take my short market survey (opens in a new tab)
-          </a>{" "}
-          instead.
-        </p>
+      <header>
+        <h1 className="mt-2 text-3xl font-semibold">Request a consultation</h1>
+        <p className="mt-3">Tell Joanson a little about yourself and what you would like help with. Complete the questions below to request a conversation.</p>
+        <p className="mt-3">After you send your request, Joanson will contact you to arrange a suitable time. There is no obligation to buy insurance.</p>
+      </header>
+      <InsuranceEnquiry entry="Consultation request" />
+      <div className="mt-8">
+        <p className="mb-3">Prefer to message now?</p>
+        <WhatsAppCTA message="Hi Joanson, I would like to arrange a conversation about insurance." label="Message on WhatsApp" lead={{ source: "book-page" }} />
       </div>
-
-      <div className="mt-8 overflow-hidden bg-white shadow-sm">
-        <iframe
-          src={BOOKING_EMBED_URL}
-          title="Book a meeting"
-          className="h-[42rem] w-full"
-          loading="lazy"
-        />
-      </div>
-      <p className="mt-2 text-center text-sm text-slate-500">
-        Calendar not loading?{" "}
-        <a
-          href={BOOKING_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-semibold text-brand hover:underline"
-        >
-          Open the booking page in a new tab
-        </a>
-        .
-      </p>
-
-      <div className="mt-10 text-center">
-        <h2 className="text-xl font-semibold text-brand">
-          Prefer a callback?
-        </h2>
-        <p className="mt-1 text-slate-600">
-          Leave your details and I&apos;ll call you back instead.
-        </p>
-      </div>
-
-      <div className="mt-4">
-        <CallbackForm />
-      </div>
-
-      <div className="mt-6 text-center">
-        <p className="text-sm text-slate-500">Prefer to message now?</p>
-        <div className="mt-2 flex justify-center">
-          <WhatsAppCTA
-            message={message}
-            label="Chat on WhatsApp instead"
-            lead={{ source: "book-page" }}
-          />
-        </div>
-      </div>
-
-      {/* Market survey funnel ,  its own standalone page. */}
-      <a
-        href="/survey"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-10 block bg-white p-6 text-center transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-      >
-        <p className="mt-1 text-lg font-semibold text-brand">
-          Take my short market survey
-        </p>
-        <p className="mt-1 text-sm text-slate-600">
-          A few quick questions about insurance in Jamaica. No selling, and I
-          use it to understand what people really want.
-        </p>
-        <span className="mt-3 inline-block text-sm font-semibold text-brand">
-          Start the survey (opens in a new tab) →
-        </span>
-      </a>
     </div>
   );
 }

@@ -5,13 +5,13 @@ import { plainInsuranceText } from "@/lib/plain-insurance-text";
 import Link from "next/link";
 import { useEffect, useRef, useState, type InputHTMLAttributes } from "react";
 import type { Answers } from "@/lib/market-survey";
-import { coverageGoals, employmentTypes, coverStatuses, timeframes, contactMethods, enquiryConsent, contactDays, contactWindows, incomeTypes, incomeFrequencies, type EnquiryEntry } from "@/lib/insurance-enquiry";
+import { coverageGoals, employmentTypes, consultationEmploymentTypes, employmentBases, coverStatuses, timeframes, contactMethods, enquiryConsent, contactDays, contactWindows, incomeTypes, incomeFrequencies, type EnquiryEntry } from "@/lib/insurance-enquiry";
 
 const input = "mt-3 block w-full border border-slate-300 bg-white p-3 font-normal";
 type Question = {
   key: string;
   title: string;
-  control?: "select" | "choices" | "comments" | "consent";
+  control?: "select" | "radio" | "choices" | "comments" | "consent";
   options?: readonly string[];
   optional?: boolean;
   attributes?: InputHTMLAttributes<HTMLInputElement>;
@@ -36,19 +36,23 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
     }
   }, [step, status]);
 
-  const questions: Question[] = [
+  const consultation = entry === "Consultation request";
+  const employed = values.employment === "Employed Full time" || values.employment === "Employed Part time";
+  const allQuestions: Question[] = [
     { key: "name", title: "Full name", attributes: { autoComplete: "name", maxLength: 100, pattern: /.*\S.*/.source } },
     { key: "phone", title: "Phone number, including area code", attributes: { type: "tel", autoComplete: "tel", maxLength: 30, pattern: /\+?[\s\(\)\-]*\d(?:[\s\(\)\-]*\d){6,14}[\s\(\)\-]*/.source } },
+    ...(consultation ? [{ key: "messagingPermission", title: "Can we contact you via WhatsApp or iMessage?", control: "radio" as const, options: ["Yes", "No"] }] : []),
     { key: "email", title: "Email address", optional: true, attributes: { type: "email", autoComplete: "email", maxLength: 254 } },
-    { key: "dateOfBirth", title: "Date of birth", attributes: { type: "date", autoComplete: "bday", min: "1900-01-01" } },
-    { key: "employment", title: "Employment type", control: "select", options: employmentTypes },
+    { key: "dateOfBirth", title: "Date of birth", attributes: { type: "date", autoComplete: "bday", min: "1900-01-01", max: new Date().toISOString().slice(0, 10) } },
+    { key: "employment", title: "Employment type", control: "select", options: consultation ? consultationEmploymentTypes : employmentTypes },
+    ...(employed ? [{ key: "employmentBasis", title: "Is your employment permanent or temporary/contract?", control: "select" as const, options: employmentBases }] : []),
     { key: "incomeType", title: "Income type", control: "select", options: incomeTypes },
     ...(values.incomeType === "No income" ? [] : [
       { key: "incomeAmount", title: "Income amount (J$) per pay period", attributes: { type: "number", min: "0.01", step: "0.01", max: "9999999999999.99" } },
       { key: "incomeFrequency", title: "Income frequency", control: "select" as const, options: incomeFrequencies },
     ]),
     { key: "goal", title: "What are you looking for?", control: "select", options: coverageGoals },
-    { key: "currentCover", title: entry === "Group benefits enquiry" ? "Does your company currently have group insurance?" : "Do you currently have insurance?", control: "select", options: coverStatuses },
+    { key: "currentCover", title: entry === "Group benefits enquiry" ? "Does your company currently have group insurance?" : "Where are you with insurance?", control: "select", options: coverStatuses },
     { key: "timeframe", title: "When would you like to explore insurance?", control: "select", options: timeframes },
     ...(entry === "Group benefits enquiry" ? [
       { key: "company", title: "Company name", optional: true, attributes: { maxLength: 100 } },
@@ -58,20 +62,24 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
       { key: "coverAmount", title: "Amount of insurance needed (J$)", attributes: { type: "number", min: 1 } },
       { key: "purpose", title: "Reason for insurance", optional: true, attributes: { maxLength: 150 } },
     ] : []),
-    { key: "method", title: "Preferred contact method", control: "select", options: contactMethods.filter(method => method !== "Email" || (values.email && values.emailConsent === "on")) },
+    { key: "method", title: "Preferred contact method", control: "select", options: contactMethods.filter(method => (method !== "Email" || (values.email && values.emailConsent === "on")) && (method !== "iMessage" || consultation) && (!consultation || !["WhatsApp", "iMessage"].includes(method) || values.messagingPermission === "Yes")) },
     { key: "contactDays", title: "Which days work for you?", control: "choices", options: contactDays },
     { key: "contactWindows", title: "What times work for you?", control: "choices", options: contactWindows },
     { key: "notes", title: "Comments", control: "comments", optional: true },
     { key: "contactConsent", title: "Permission to respond", control: "consent" },
   ];
+  const consultationOrder = ["name", "dateOfBirth", "employment", ...(employed ? ["employmentBasis"] : []), "goal", "currentCover", "phone", "messagingPermission", "email", "method", "contactDays", "contactWindows", "notes", "contactConsent"];
+  const questions = consultation ? consultationOrder.map(key => allQuestions.find(question => question.key === key)!) : allQuestions;
   const question = questions[step];
-  const { key, title, control, options, attributes, optional } = question;
+  const { key, optional } = question;
   const last = step === questions.length - 1;
-  const value = values[key] ?? "";
-  const ready = optional || (control === "choices" ? schedule[key].length > 0 : value.trim().length > 0);
+  const answered = (item: Question) => item.optional || (item.control === "choices" ? schedule[item.key].length > 0 : (values[item.key] ?? "").trim().length > 0);
+  const ready = consultation ? questions.every(answered) : answered(question);
 
   function update(key: string, value: string) {
     setValues(previous => ({ ...previous, [key]: value,
+      ...(key === "messagingPermission" && value !== "Yes" && ["WhatsApp", "iMessage"].includes(previous.method) ? { method: "" } : {}),
+      ...(key === "employment" ? { employmentBasis: "" } : {}),
       ...(key === "email" ? { emailConsent: "", ...(previous.method === "Email" ? { method: "" } : {}) } : {}),
       ...(key === "emailConsent" && !value && previous.method === "Email" ? { method: "" } : {}),
       ...(key === "incomeType" && value === "No income" ? { incomeAmount: "", incomeFrequency: "" } : {}),
@@ -87,7 +95,7 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!ready || inFlight.current) return;
-    if (!last) {
+    if (!consultation && !last) {
       go(step + 1);
       return;
     }
@@ -116,8 +124,8 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
 
   if (status === "sent") return (
     <section ref={prompt} tabIndex={-1} role="status" className="mt-6 border border-slate-200 bg-white p-6">
-      <h2 className="text-xl font-semibold text-brand">Your enquiry was received</h2>
-      <p className="mt-2 text-slate-600">Joanson can follow up using the contact method you selected.</p>
+      <h2 className="text-xl font-semibold text-brand">{consultation ? "Your consultation request was received" : "Your enquiry was received"}</h2>
+      <p className="mt-2 text-slate-600">{consultation ? "Joanson will contact you using your chosen method to arrange a suitable time. Your appointment is not confirmed yet." : "Joanson can follow up using the contact method you selected."}</p>
       <Link href="/" className="button-text">Return to the website</Link>
     </section>
   );
@@ -125,11 +133,20 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
   return (
     <form onSubmit={submit} className="mt-6 max-w-2xl border border-slate-200 bg-white p-6 sm:p-8">
       <div hidden aria-hidden="true"><label>Website<input name="website" autoComplete="off" tabIndex={-1} value={values.website ?? ""} onChange={event => update("website", event.target.value)} /></label></div>
-      <section ref={prompt} tabIndex={-1} aria-label={title}>
-        <p className="mb-3 text-sm text-slate-600">Question {step + 1} of {questions.length}</p>
+      {(consultation ? questions : [question]).map(({ key, title, control, options, attributes, optional }) => {
+        const value = values[key] ?? "";
+        return <section key={key} ref={consultation ? undefined : prompt} tabIndex={-1} aria-label={title} className={consultation ? "mb-8" : undefined}>
+        {!consultation && <p className="mb-3 text-sm text-slate-600">Question {step + 1} of {questions.length}</p>}
         <fieldset key={key} disabled={status === "sending"}>
           <legend className="text-xl font-semibold text-brand">{title}{optional ? " (optional)" : ""}</legend>
-          {control === "choices" ? (
+          {control === "radio" ? (
+            <div className="mt-4 flex gap-6">
+              {options?.map(option => <label key={option} className="flex items-center gap-2">
+                <input type="radio" name={key} value={option} required checked={value === option} onChange={() => update(key, option)} />
+                {option}
+              </label>)}
+            </div>
+          ) : control === "choices" ? (
             <>
               <p className="mt-2 text-sm text-slate-600">Select all that apply.{key === "contactWindows" && " Times are in Jamaica."}</p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -152,7 +169,7 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
           ) : control === "select" ? (
             <select aria-label={title} required className={input} value={value} onChange={event => update(key, event.target.value)}>
               <option value="" disabled>Choose an option</option>
-              {options?.map(option => <option key={option} value={option}>{plainInsuranceText(option)}</option>)}
+              {options?.map(option => <option key={option} value={option}>{key === "currentCover" && option === "Don't have but considering" ? "Don't have insurance, but considering it" : key === "currentCover" && option === "Don't have and not considering" ? "Don't have insurance and not considering it" : plainInsuranceText(option)}</option>)}
             </select>
           ) : control === "comments" ? (
             <>
@@ -172,12 +189,13 @@ export default function InsuranceEnquiry({ age = "", goal = "", entry = "Coverag
             </>
           )}
         </fieldset>
-      </section>
+      </section>;
+      })}
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        {step > 0 && <button type="button" className="button-text" disabled={status === "sending"} onClick={() => go(step - 1)}>Back</button>}
-        {optional && <button type="button" className="button-text" onClick={() => { update(key, ""); go(step + 1); }}>Skip</button>}
+        {!consultation && step > 0 && <button type="button" className="button-text" disabled={status === "sending"} onClick={() => go(step - 1)}>Back</button>}
+        {!consultation && optional && <button type="button" className="button-text" onClick={() => { update(key, ""); go(step + 1); }}>Skip</button>}
         <button type="submit" disabled={!ready || status === "sending"} className="button-primary ml-auto disabled:opacity-50">
-          {status === "sending" ? "Sending…" : last ? "Send enquiry" : "Continue"}
+          {status === "sending" ? "Sending…" : consultation ? "Send request" : last ? "Send enquiry" : "Continue"}
         </button>
       </div>
       {status === "error" && <p role="alert" className="mt-4 text-sm text-flame">Your enquiry could not be saved. Your answers are still here. Check your details and try again.</p>}

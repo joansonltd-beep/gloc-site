@@ -1,4 +1,5 @@
 import BrandTagline from "@/components/BrandTagline";
+import WelcomeIntro from "@/components/WelcomeIntro";
 import PublicPageImage from "@/components/PublicPageImage";
 import Image from "next/image";
 import { Archivo, Barlow_Semi_Condensed, DM_Sans, Syne } from "next/font/google";
@@ -48,6 +49,7 @@ export default async function SiteLayout({
   };
   return (
     <SiteSettingsProvider whatsappNumber={settings.whatsappNumber}>
+        <WelcomeIntro brandClassName={wordmarkFont.className} />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
