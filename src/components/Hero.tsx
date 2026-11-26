@@ -8,7 +8,7 @@ import Link from "next/link";
 import { ageRanges, coverageGoals } from "@/lib/insurance-enquiry";
 
 const featured = [
-  { label: "Insurance finder", photo: "family-garden" },
+  { label: "Insurance finder", photo: "pexels-8236397" },
   { label: "Critical illness insurance", photo: "clinic-conversation", copySide: "right", href: "/protect/critical-illness", action: "Explore critical illness insurance", description: "A cash benefit after a qualifying serious illness can help with treatment, everyday bills and time away from work." },
   { label: "Life insurance", photo: "family-dinner", href: "/protect/life-insurance", action: "Explore life insurance", description: "Help the people you leave behind pay household bills, school fees and debts when you die." },
   { label: "Health Insurance", photo: "health-checkup", href: "/protect/health", action: "Explore health insurance", description: "Help pay for eligible doctor visits, prescriptions, tests and hospital care, depending on the plan." },
@@ -67,7 +67,6 @@ export default function Hero({ headline, description }: { headline: string; desc
         </div>
       </div>
       <div className="hero-controls" aria-label="Slideshow controls">
-        <button type="button" className="hero-control-arrow" aria-label="Previous slide" onClick={() => select(active - 1)}>‹</button>
         <div className="hero-steps">
           {featured.map((item, index) => (
             <button key={item.label} type="button" className="hero-step"
@@ -77,7 +76,6 @@ export default function Hero({ headline, description }: { headline: string; desc
             </button>
           ))}
         </div>
-        <button type="button" className="hero-control-arrow" aria-label="Next slide" onClick={() => select(active + 1)}>›</button>
       </div>
     </section>
   );

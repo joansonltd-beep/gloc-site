@@ -201,15 +201,16 @@ export const Instagram = ({ className }: IconProps) => (
 // Map a product-line slug to its icon so rendering never depends on an emoji
 // string in the content/CMS data.
 const SERVICE_IMAGES: Record<string, readonly [string, string]> = {
+  "homepage-team": ["/images/services/team-photo.webp", "Three colleagues reviewing a document together"],
   "family-tropical": ["/images/stock/family-tropical.webp", "Parents and their daughter spending time together in a lush garden"],
   "retirement-portrait": ["/images/stock/retirement-portrait.webp", "An older couple embracing beside colourful flowers"],
-  "life-insurance": ["/images/stock/family-dinner.webp", "Several generations of a family gathering around a dinner table"],
-  health: ["/images/stock/health-checkup.webp", "A clinician examining a child with a stethoscope"],
-  "critical-illness": ["/images/stock/clinic-conversation.webp", "A clinician talks with a woman during a visit"],
-  "personal-accident": ["/images/stock/city-cyclist.webp", "A woman riding a bicycle on a sunlit path"],
+  "life-insurance": ["/images/services/life-photo.webp", "Parents walking with their child on a boardwalk"],
+  health: ["/images/services/health-photo.webp", "A doctor examining a patient"],
+  "critical-illness": ["/images/services/illness-photo.webp", "A family smiling together at home"],
+  "personal-accident": ["/images/services/accident-photo.webp", "A cyclist wearing a helmet"],
   "pension-annuities": ["/images/stock/retirement-planning.webp", "An older couple reviewing documents together"],
-  "investments-mutual-funds": ["/images/stock/savings-together.webp", "A couple talking with a book and laptop on a sofa"],
-  "group-employee-benefits": ["/images/stock/team-at-work.webp", "A construction team working in hard hats and safety vests"],
+  "investments-mutual-funds": ["/images/services/savings-photo.webp", "A couple reviewing household documents"],
+  "group-employee-benefits": ["/images/stock/pexels-1181355.webp", "Colleagues discussing plans around a meeting table"],
   motor: ["/images/services/motor-photo.webp", "Smiling man driving a car"],
   home: ["/images/services/home-photo.webp", "Family sitting together on the front steps of their home"],
   property: ["/images/services/property-photo.webp", "Colourful building with palm trees and a wooden front door"],

@@ -19,7 +19,7 @@ export default function AnonymousFeedbackPage() {
   return (
     <main className={"anonymous-feedback " + bodyFont.className + " " + headingFont.variable}>
       <Link href="/" className="feedback-brand">Joanson</Link>
-      <div className="feedback-photo"><Image src="/images/stock/family-garden.webp" alt="A family spending time outdoors" fill sizes="(max-width:760px) 100vw, 720px" /></div>
+      <div className="feedback-photo"><Image src="/images/stock/pexels-7191917.webp" alt="A woman having a conversation on her phone at home" fill sizes="(max-width:760px) 100vw, 720px" /></div>
       <h1>What is keeping you from getting insurance?</h1>
       <p>Cost, trust, finding the right cover or something else. Share what has made it difficult for you.</p>
       <p>Share as much or as little as you like. You can use a nickname or leave the username blank.</p>

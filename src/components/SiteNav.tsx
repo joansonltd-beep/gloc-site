@@ -66,11 +66,11 @@ export default function SiteNav() {
                 }
               }}>
               <div className="site-nav-label">
-                <Link href={href} aria-current={pathname === href ? "page" : undefined} onClick={close}>{label}</Link>
+                <Link href={href} aria-current={pathname === href ? "page" : undefined} onFocus={() => setActive(id)} onClick={close}>{label}</Link>
                 <button type="button" className="site-nav-trigger" aria-expanded={active === id}
                   aria-label={`${label} submenu`} aria-controls={`nav-${id}`} ref={active === id ? trigger : null}
                   onClick={() => setActive(active === id ? "" : id)}>
-                  <span aria-hidden>⌄</span>
+                  <span aria-hidden>+</span>
                 </button>
               </div>
               <div className="site-nav-panel" id={`nav-${id}`} hidden={active !== id}>

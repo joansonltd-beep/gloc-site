@@ -4,7 +4,7 @@ import type { ClusterData } from "@/lib/siteData";
 const icons: Record<string, string> = {
   protect: "family-tropical",
   grow: "retirement-portrait",
-  business: "group-employee-benefits",
+  business: "homepage-team",
 };
 export default function ClusterCards({
   clusters,

@@ -33,3 +33,30 @@ The previous retirement carousel and coverage card used the older couple portrai
 The current retirement carousel and coverage card use `public/images/stock/retirement-planning.webp`: [A Happy Elderly Couple Holding a Document](https://www.pexels.com/photo/a-happy-elderly-couple-holding-a-document-8441854/), by Kampus Production. Pexels records a Nikon D600 photograph taken May 5, 2021 and published June 22, 2021, in Portugal. Downloaded from the original photo endpoint, resized to 1800 pixels wide and encoded as WebP. No generative edits. Used under the Pexels License linked above. The people pictured are stock models, not clients or endorsers.
 
 The homepage slider's retirement slide uses `public/images/stock/retirement-bench.webp`: an older couple on a bench outdoors, https://www.pexels.com/photo/14488976/. Downloaded at 2400 pixels wide from the Pexels image server, resized to 1800 pixels wide and encoded as WebP. Used under the Pexels License linked above. The people pictured are stock models, not clients or endorsers.
+
+## Dedicated photographs, November 26, 2026
+
+Repeated photos were separated into dedicated page banners, homepage slides and cards. Each file below is a different real Pexels photograph under the Pexels License. No generated images or generative edits. Models are not clients or endorsers; locations are not claimed to be Caribbean. Original stock files and their source notes above remain in the repository for rollback.
+
+ - `stock/pexels-8236397.webp`: https://www.pexels.com/photo/8236397/
+ - `stock/pexels-1181355.webp`: https://www.pexels.com/photo/1181355/
+ - `stock/pexels-1181396.webp`: https://www.pexels.com/photo/1181396/
+ - `stock/pexels-1181406.webp`: https://www.pexels.com/photo/1181406/
+ - `stock/pexels-6280118.webp`: https://www.pexels.com/photo/6280118/
+ - `stock/pexels-3184325.webp`: https://www.pexels.com/photo/3184325/
+ - `stock/pexels-3769021.webp`: https://www.pexels.com/photo/3769021/
+ - `stock/pexels-3184291.webp`: https://www.pexels.com/photo/3184291/
+ - `stock/pexels-9869379.webp`: https://www.pexels.com/photo/9869379/
+ - `stock/pexels-9429449.webp`: https://www.pexels.com/photo/9429449/
+ - `stock/pexels-1181435.webp`: https://www.pexels.com/photo/1181435/
+ - `stock/pexels-6578997.webp`: https://www.pexels.com/photo/6578997/
+ - `stock/pexels-9869396.webp`: https://www.pexels.com/photo/9869396/
+ - `stock/pexels-7659567.webp`: https://www.pexels.com/photo/7659567/
+ - `stock/pexels-8562333.webp`: https://www.pexels.com/photo/8562333/
+ - `stock/pexels-5991144.webp`: https://www.pexels.com/photo/5991144/
+ - `stock/pexels-5727778.webp`: https://www.pexels.com/photo/5727778/
+ - `stock/pexels-7579831.webp`: https://www.pexels.com/photo/7579831/
+ - `stock/pexels-6303662.webp`: https://www.pexels.com/photo/6303662/
+ - `stock/pexels-17962051.webp`: https://www.pexels.com/photo/17962051/
+ - `stock/pexels-9034965.webp`: https://www.pexels.com/photo/9034965/
+ - `stock/pexels-7191917.webp`: https://www.pexels.com/photo/7191917/

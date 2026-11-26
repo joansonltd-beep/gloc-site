@@ -171,7 +171,7 @@ textarea {
   padding-block: 12px;
 }
 .site-nav-trigger {
-  display: grid;
+  display: none;
   min-width: 28px;
   min-height: 44px;
   place-items: center;
@@ -370,7 +370,7 @@ textarea {
   gap: 4px;
   padding: 8px 12px;
   color: white;
-  background: rgb(16 37 45 / 87%);
+  background: transparent;
 }
 .hero-controls button {
   min-width: 40px;
@@ -382,7 +382,6 @@ textarea {
   outline-color: white;
   outline-offset: 2px;
 }
-.hero-control-arrow { font-size: 34px; line-height: 1; }
 .hero-steps { display: flex; align-items: center; gap: 16px; width: min(420px, 60vw); }
 .hero-controls .hero-step { flex: 1; min-width: 0; padding: 16px 0; cursor: pointer; }
 .hero-step-track { display: block; width: 100%; height: 3px; background: rgb(255 255 255 / 35%); }
@@ -732,6 +731,7 @@ textarea {
     justify-content: space-between;
   }
   .site-nav-trigger {
+    display: grid;
     min-width: 44px;
     font-size: 18px;
   }
