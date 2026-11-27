@@ -2,7 +2,7 @@ import BrandTagline from "@/components/BrandTagline";
 import WelcomeIntro from "@/components/WelcomeIntro";
 import PublicPageImage from "@/components/PublicPageImage";
 import Image from "next/image";
-import { Archivo, Barlow_Semi_Condensed, DM_Sans, Syne } from "next/font/google";
+import { Archivo, Barlow_Semi_Condensed, DM_Sans, Syne, Outfit, Dancing_Script } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 const GOOGLE_ADS_ID="AW-18282133568";
@@ -14,6 +14,9 @@ import SiteNav from "@/components/SiteNav";
 import { SiteSettingsProvider } from "@/components/SiteSettingsProvider";
 import { getSiteSettings } from "@/lib/siteData";
 import { SITE_URL } from "@/lib/siteUrl";
+
+const introTaglineFont = Outfit({ weight: ["400", "600"], subsets: ["latin"], display: "swap" });
+const introLifeFont = Dancing_Script({ weight: "600", subsets: ["latin"], display: "swap" });
 
 const wordmarkFont = Syne({ weight: "700", subsets: ["latin"], display: "swap" });
 const siteFont = Archivo({ subsets: ["latin"], display: "swap", variable: "--font-public-body" });
@@ -38,7 +41,7 @@ export default async function SiteLayout({
     name: "Joanson “Joey” Baptiste James",
     description: "Independent insurance guidance and comparison across multiple insurers in Jamaica.",
     telephone: `+${settings.whatsappNumber}`,
-    jobTitle: "Insurance agent",
+    jobTitle: "Financial advisor",
     url: SITE_URL,
     image: settings.headshotUrl || undefined,
     sameAs: [
@@ -49,7 +52,7 @@ export default async function SiteLayout({
   };
   return (
     <SiteSettingsProvider whatsappNumber={settings.whatsappNumber}>
-        <WelcomeIntro brandClassName={wordmarkFont.className} />
+        <WelcomeIntro taglineClassName={introTaglineFont.className} lifeClassName={introLifeFont.className} brandClassName={wordmarkFont.className} previewEnabled={process.env.INTRO_PREVIEW === "1"} />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
@@ -122,6 +125,7 @@ gtag('config', '${GOOGLE_ADS_ID}');`}
               <a href={buildWhatsAppLink(settings.whatsappNumber, "Hi, I would like to discuss my insurance options.")} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
               <Link href="/brochures">Product documents</Link>
               <Link href="/privacy">Privacy policy</Link>
+              <Link href="/credits">Image &amp; map credits</Link>
               <SocialLinks settings={settings} />
             </div>
           </div>

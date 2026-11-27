@@ -77,7 +77,7 @@ export default function MarketSurvey({ children }: { children: React.ReactNode }
           <input autoComplete="name" required pattern={/.*\S.*/.source} maxLength={200} className={inputClass}
             aria-describedby="information-consent" value={name} onChange={event => setName(event.target.value)} />
         </label>
-        <p id="information-consent" className="text-sm leading-relaxed text-slate-600">By entering your name, you consent to your information being used by Joanson Baptiste James to tailor insurance agent services.</p>
+        <p id="information-consent" className="text-sm leading-relaxed text-slate-600">By entering your name, you consent to your information being used by Joanson Baptiste James to tailor financial advisor services.</p>
         <p className="text-sm text-slate-600"><Link href="/privacy" className="underline">Privacy Policy</Link></p>
         <button type="submit" className="button-primary">Agree and continue</button>
       </form>

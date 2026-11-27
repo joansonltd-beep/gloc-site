@@ -31,7 +31,7 @@ export type AboutData = {
 };
 
 export const DEFAULT_SETTINGS: SiteSettings = {
-  whatsappNumber: "18762109898",
+  whatsappNumber: "18763195639",
   professionalDescription: "Insurance Guidance in Jamaica",
   footerDisclaimer:
     "Information on this website is general in nature and does not constitute financial, legal or tax advice. Insurance products, eligibility, terms and pricing vary by insurer and individual circumstances.",
@@ -84,7 +84,7 @@ export const DEFAULT_ILLNESS_COSTS: IllnessCost[] = [];
 
 export const DEFAULT_ABOUT: AboutData = {
   teaser:
-    "I am Joanson “Joey” Baptiste James, an insurance agent serving clients across Jamaica.",
+    "I am Joanson “Joey” Baptiste James, a financial advisor serving clients across Jamaica.",
   storyParagraphs: [
     "I help individuals, families and business owners throughout Jamaica compare insurance options and understand how each fits their priorities and budget.",
     "My experience in Caribbean financial services shapes a practical approach: listen first, explain clearly and give you room to decide. Whether you are getting insurance for the first time or reviewing existing insurance, we discuss what each option includes, what it leaves out and what it costs.",

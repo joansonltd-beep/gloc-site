@@ -33,11 +33,11 @@ export default async function Home() {
         </section>
         <section className="personal-section">
           <div>
-            <h2>Meet your insurance agent</h2>
+            <h2>Meet your financial advisor</h2>
           </div>
           <div>
             <p>
-              {settings.agentName} is an insurance agent serving Jamaica.
+              {settings.agentName} is a financial advisor serving Jamaica.
               Joanson helps you compare options from multiple insurers and explains
               how each option fits your needs.
             </p>

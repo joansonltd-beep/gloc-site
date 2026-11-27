@@ -43,7 +43,7 @@ export default function PrivacyPage() {
         <h2 className="text-xl font-semibold text-brand">How your information is used</h2>
         <p>
           Joanson Baptiste James uses survey information to understand planning needs
-          and tailor insurance agent services. Enquiry details
+          and tailor financial advisor services. Enquiry details
           are used to contact you and to prepare for your conversation with Joanson. They are
           sent to the configured lead-capture service. Joanson does not sell or share
           your information with third parties for their own marketing.

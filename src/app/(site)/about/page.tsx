@@ -8,9 +8,9 @@ import LearnMore from "@/components/LearnMore";
 import { getAbout, getSiteSettings } from "@/lib/siteData";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Joanson | Insurance Agent Jamaica",
+  title: "About Joanson | Financial Advisor Jamaica",
   description:
-    "Meet Joanson “Joey” Baptiste James, an insurance agent serving Jamaica. Compare your insurance options with clear, practical guidance.",
+    "Meet Joanson “Joey” Baptiste James, a financial advisor serving Jamaica. Compare your insurance options with clear, practical guidance.",
   alternates: { canonical: "/about" },
 });
 
@@ -37,7 +37,7 @@ export default async function AboutPage() {
           <div className="relative mx-auto aspect-[4/5] w-60 overflow-hidden rounded-sm ring-1 ring-slate-200 md:mx-0">
             <Image
               src={aboutPhoto}
-              alt={`${settings.agentName}, insurance agent in Jamaica`}
+              alt={`${settings.agentName}, financial advisor in Jamaica`}
               fill
               sizes="(max-width: 768px) 240px, 240px"
               className="object-cover"

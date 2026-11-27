@@ -5,7 +5,7 @@ export const SHARE_IMAGE = {
   url: '/images/joanson-social.png',
   width: 1200,
   height: 630,
-  alt: 'Joanson “Joey” Baptiste James, independent insurance guidance across Jamaica',
+  alt: 'Joanson “Joey” Baptiste James, Financial Advisor in Jamaica. Life insurance, critical illness, pension plans and group insurance.',
 };
 
 // Keep search and sharing metadata aligned for each canonical public page.

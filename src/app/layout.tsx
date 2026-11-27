@@ -35,11 +35,11 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { default: title, template: `%s | ${name}` },
     description,
     keywords: [
-      "insurance agent Jamaica",
+      "financial advisor Jamaica",
       "insurance guidance Jamaica",
       "business insurance Jamaica",
       "group health insurance Jamaica",
-      "insurance agent Jamaica",
+      "financial advisor Jamaica",
       name,
       "life insurance Jamaica",
       "health insurance Jamaica",
