@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { logoOutline } from "@/lib/logo-outline";
 import { jamaicaOutline } from "@/lib/jamaica-outline";
 
 const slides = [
@@ -84,13 +85,18 @@ export default function WelcomeIntro({ brandClassName, taglineClassName, lifeCla
               <path className="intro-coastline intro-coastline-south" pathLength="1" d={jamaicaOutline.south} stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
               {jamaicaOutline.parishes.map((d, i) => <path key={i} className="intro-parish" d={d} pathLength="1" style={{ animationDelay: `${6800 + i * 15}ms` }} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />)}
             </svg>
-            <span className={brandClassName}>Joanson</span>
+            <div className="intro-name-lockup">
+              <svg className="intro-logo" viewBox={logoOutline.viewBox} aria-hidden="true">
+                <image className="intro-logo-colour" href="/brand/joanson-pillars-green-yellow-black.png" width="160" height="160" />
+                {logoOutline.paths.map((d, i) => <path key={i} d={d} fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="round" pathLength="1" />)}
+              </svg>
+              <span className={brandClassName}>Joanson</span>
+            </div>
           </div>
           <div className="intro-brand-signoff">
             <p className={`intro-brand-tagline ${taglineClassName}`}>Your <span className="intro-agent">agent</span> for <em className={lifeClassName}>life</em></p>
           </div>
           </div>
-          <div className="intro-bottom-logo"><Image src="/brand/joanson-pillars-green-yellow-black.png" alt="Joanson logo" width={96} height={96} /></div>
         </div>
       </div>
       {preview ? <nav className="intro-preview-controls" aria-label="Intro preview controls">
